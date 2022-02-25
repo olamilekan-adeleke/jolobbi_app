@@ -5,10 +5,10 @@
 
 // @dart = 2.15
 
-// When `package:jolobbi_app/main.dart` defines `main`, that definition is shadowed by the definition below.
-export 'package:jolobbi_app/main.dart';
+// When `file:///tmp/flutter_tools.KEZNFN/flutter_test_listener.XENMSR/listener.dart` defines `main`, that definition is shadowed by the definition below.
+export 'file:///tmp/flutter_tools.KEZNFN/flutter_test_listener.XENMSR/listener.dart';
 
-import 'package:jolobbi_app/main.dart' as entrypoint;
+import 'file:///tmp/flutter_tools.KEZNFN/flutter_test_listener.XENMSR/listener.dart' as entrypoint;
 import 'dart:io'; // flutter_ignore: dart_io_import.
 import 'package:path_provider_android/path_provider_android.dart';
 import 'package:path_provider_ios/path_provider_ios.dart';

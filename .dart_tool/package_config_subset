@@ -98,6 +98,10 @@ dbus
 2.15
 file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/dbus-0.7.1/
 file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/dbus-0.7.1/lib/
+equatable
+2.12
+file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.3/
+file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/equatable-2.0.3/lib/
 fake_async
 2.12
 file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0/
