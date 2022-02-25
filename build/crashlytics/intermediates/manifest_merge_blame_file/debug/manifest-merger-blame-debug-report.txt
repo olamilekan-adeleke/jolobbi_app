@@ -1,0 +1,12 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="net.kikuchy.crashlytics" >
+4
+5    <uses-sdk android:minSdkVersion="16" />
+5-->/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/crashlytics-0.0.2/android/src/main/AndroidManifest.xml
+6
+7    <uses-permission android:name="android.permission.INTERNET" />
+7-->/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/crashlytics-0.0.2/android/src/main/AndroidManifest.xml:3:5-67
+7-->/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/crashlytics-0.0.2/android/src/main/AndroidManifest.xml:3:22-64
+8
+9</manifest>

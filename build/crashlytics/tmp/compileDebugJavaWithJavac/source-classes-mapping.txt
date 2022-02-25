@@ -1,0 +1,6 @@
+net/kikuchy/crashlytics/CrashlyticsPlugin.java
+ net.kikuchy.crashlytics.CrashlyticsPlugin
+net/kikuchy/crashlytics/BuildConfig.java
+ net.kikuchy.crashlytics.BuildConfig
+net/kikuchy/crashlytics/FlutterException.java
+ net.kikuchy.crashlytics.FlutterException
