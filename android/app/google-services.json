@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "43442800977",
+    "project_id": "jolobbi-staging",
+    "storage_bucket": "jolobbi-staging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43442800977:android:e5ec1c8c7b6cf1d2edab70",
+        "android_client_info": {
+          "package_name": "com.example.jolobbi_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43442800977-4kvtmt60qa26l9nc477drbthhagfamti.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS-7oV8oQ4qCqidxsKS8w1oKqRouUa1Yc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43442800977-4kvtmt60qa26l9nc477drbthhagfamti.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
