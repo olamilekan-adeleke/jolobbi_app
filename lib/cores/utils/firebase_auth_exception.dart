@@ -14,7 +14,6 @@ enum AuthResultStatus {
 
 class AuthExceptionHandler {
   static handleException(e) {
-
     log(e.code);
     AuthResultStatus status;
 
@@ -76,5 +75,12 @@ class AuthExceptionHandler {
     }
 
     return errorMessage;
+  }
+
+  static String catchError(e) {
+    AuthResultStatus _status = AuthExceptionHandler.handleException(e);
+    final errorMsg = AuthExceptionHandler.generateExceptionMessage(_status);
+
+    return errorMsg;
   }
 }

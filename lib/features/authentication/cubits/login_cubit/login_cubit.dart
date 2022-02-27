@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jolobbi_app/cores/utils/firebase_auth_exception.dart';
+import 'package:jolobbi_app/cores/utils/local_storage.dart';
 import 'package:jolobbi_app/features/authentication/cubits/auth_state_cubit.dart';
 import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
 import 'package:jolobbi_app/features/authentication/models/login_model.dart';
@@ -12,6 +15,7 @@ class LoginCubit extends Cubit<LoginModel> {
 
   final AuthenticatedState authenticationState;
   final LoginRepository loginRepository;
+  final LocalStorage _localStorage = LocalStorage.instance;
 
   void onEmailChange(String email) {
     emit(state.copyWith(email: email));
@@ -30,9 +34,15 @@ class LoginCubit extends Cubit<LoginModel> {
         password: state.password,
       );
 
+      await _localStorage.saveLoginDetails(state.email, state.password);
+
       emit(state.copyWith(loginStatus: LoginStatus.success));
-    } catch (e) {
-      final String error = '';
+
+      authenticationState.copyWith(
+        authStatus: AuthenticatedStatus.authenticated,
+      );
+    } on FirebaseAuthException catch (e) {
+      final String error = AuthExceptionHandler.catchError(e);
 
       emit(
         state.copyWith(
@@ -40,8 +50,54 @@ class LoginCubit extends Cubit<LoginModel> {
           exceptionText: error,
         ),
       );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          loginStatus: LoginStatus.error,
+          exceptionText: e.toString(),
+        ),
+      );
     }
   }
 
-  void biometricLogin() {}
+  Future<void> biometricLogin() async {
+    try {
+      emit(state.copyWith(loginStatus: LoginStatus.busy));
+
+      LoginModel? _loginModel = await _localStorage.getSavedUser();
+
+      if (_loginModel == null) {
+        throw 'No User Was Found, Please Login With Email And Password';
+      }
+
+      state.copyWith(email: _loginModel.email, password: _loginModel.password);
+
+      await loginRepository.loginUserWithEmailAndPassword(
+        email: state.email,
+        password: state.password,
+      );
+
+      emit(state.copyWith(loginStatus: LoginStatus.success));
+      
+      authenticationState.copyWith(
+        authStatus: AuthenticatedStatus.authenticated,
+      );
+    } on FirebaseAuthException catch (e) {
+      final String error = AuthExceptionHandler.catchError(e);
+
+      emit(
+        state.copyWith(
+          loginStatus: LoginStatus.error,
+          exceptionText: error,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          loginStatus: LoginStatus.error,
+          exceptionText: e.toString(),
+        ),
+      );
+    }
+  }
 }
