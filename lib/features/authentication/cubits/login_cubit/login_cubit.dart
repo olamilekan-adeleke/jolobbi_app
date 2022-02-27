@@ -62,6 +62,12 @@ class LoginCubit extends Cubit<LoginModel> {
 
   Future<void> biometricLogin() async {
     try {
+      bool didAuthenticate = await loginRepository.useBiometricLogin();
+
+      if (didAuthenticate == false) {
+        throw 'Could Not Authenticate User Using Biometric';
+      }
+
       emit(state.copyWith(loginStatus: LoginStatus.busy));
 
       LoginModel _loginModel = await _localStorage.getSavedUser();
