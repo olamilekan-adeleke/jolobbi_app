@@ -22,17 +22,26 @@ class LoginCubit extends Cubit<LoginModel> {
   }
 
   Future<void> onSubmitFom() async {
-    emit(state.copyWith(loginStatus: LoginStatus.busy));
+    try {
+      emit(state.copyWith(loginStatus: LoginStatus.busy));
 
-    bool? result = await loginRepository.loginUserWithEmailAndPassword(
-      email: state.email,
-      password: state.password,
-    );
+      await loginRepository.loginUserWithEmailAndPassword(
+        email: state.email,
+        password: state.password,
+      );
 
-    emit(state.copyWith(loginStatus: LoginStatus.success));
+      emit(state.copyWith(loginStatus: LoginStatus.success));
+    } catch (e) {
+      final String error = '';
+
+      emit(
+        state.copyWith(
+          loginStatus: LoginStatus.error,
+          exceptionText: error,
+        ),
+      );
+    }
   }
 
-  void biometricLogin(){
-    
-  }
+  void biometricLogin() {}
 }
