@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jolobbi_app/cores/utils/crashlytics_helper.dart';
 import 'package:jolobbi_app/cores/utils/firebase_auth_exception.dart';
 import 'package:jolobbi_app/cores/utils/local_storage.dart';
 import 'package:jolobbi_app/features/authentication/cubits/auth_state_cubit.dart';
@@ -16,6 +17,7 @@ class LoginCubit extends Cubit<LoginModel> {
   final AuthenticatedState authenticationState;
   final LoginRepository loginRepository;
   final LocalStorage _localStorage = LocalStorage.instance;
+  static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();
 
   void onEmailChange(String email) {
     emit(state.copyWith(email: email));
@@ -43,7 +45,7 @@ class LoginCubit extends Cubit<LoginModel> {
       authenticationState.copyWith(
         authStatus: AuthenticatedStatus.authenticated,
       );
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e, s) {
       final String error = AuthExceptionHandler.catchError(e);
 
       emit(
@@ -52,12 +54,24 @@ class LoginCubit extends Cubit<LoginModel> {
           exceptionText: error,
         ),
       );
-    } catch (e) {
+
+      _crashlyticsHelper.logError(
+        e.toString(),
+        s,
+        functionName: 'login-onSubmitFom',
+      );
+    } catch (e, s) {
       emit(
         state.copyWith(
           loginStatus: LoginStatus.error,
           exceptionText: e.toString(),
         ),
+      );
+
+      _crashlyticsHelper.logError(
+        e.toString(),
+        s,
+        functionName: 'login-onSubmitFom',
       );
     }
   }
@@ -88,7 +102,7 @@ class LoginCubit extends Cubit<LoginModel> {
       authenticationState.copyWith(
         authStatus: AuthenticatedStatus.authenticated,
       );
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e, s) {
       final String error = AuthExceptionHandler.catchError(e);
 
       emit(
@@ -97,12 +111,24 @@ class LoginCubit extends Cubit<LoginModel> {
           exceptionText: error,
         ),
       );
-    } catch (e) {
+
+      _crashlyticsHelper.logError(
+        e.toString(),
+        s,
+        functionName: 'login-biometricLogin',
+      );
+    } catch (e, s) {
       emit(
         state.copyWith(
           loginStatus: LoginStatus.error,
           exceptionText: e.toString(),
         ),
+      );
+
+      _crashlyticsHelper.logError(
+        e.toString(),
+        s,
+        functionName: 'login-biometricLogin',
       );
     }
   }

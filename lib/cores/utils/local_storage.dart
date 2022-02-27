@@ -8,6 +8,7 @@ class LocalStorage {
   static final LocalStorage instance = LocalStorage._internal();
   LocalStorage._internal();
   factory LocalStorage() => instance;
+  String userEmail = '';
 
   final FlutterSecureStorage storage = const FlutterSecureStorage();
   final loginDetailsKey = 'LoginDetailsKey';
@@ -18,6 +19,7 @@ class LocalStorage {
       final String value = json.encode(data);
 
       await storage.write(key: loginDetailsKey, value: value);
+      userEmail = email;
     } catch (e) {
       throw e.toString();
     }
@@ -39,6 +41,8 @@ class LocalStorage {
         email: data['email'],
         password: data['password'],
       );
+
+      userEmail = data['email'];
     } catch (e) {
       throw e.toString();
     }

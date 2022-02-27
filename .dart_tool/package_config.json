@@ -8,6 +8,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "analytics",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/analytics-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "analyzer",
       "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/analyzer-2.8.0",
       "packageUri": "lib/",
@@ -120,6 +126,12 @@
       "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/coverage-1.0.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "crashlytics",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/crashlytics-0.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "1.19"
     },
     {
       "name": "cross_file",
@@ -462,6 +474,12 @@
       "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/local_auth-1.1.11",
       "packageUri": "lib/",
       "languageVersion": "2.14"
+    },
+    {
+      "name": "logger",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/logger-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "logging",
@@ -854,7 +872,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-02-27T10:26:29.926462Z",
+  "generated": "2022-02-27T11:41:19.066798Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

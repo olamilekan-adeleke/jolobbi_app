@@ -1,6 +1,7 @@
 # This is a generated file; do not edit or check into version control.
 cloud_firestore=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-3.1.9/
 cloud_firestore_web=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-2.6.9/
+crashlytics=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/crashlytics-0.0.2/
 firebase_analytics=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics-9.1.1/
 firebase_analytics_web=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics_web-0.4.0+7/
 firebase_auth=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-3.3.9/
