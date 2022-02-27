@@ -29,6 +29,8 @@ class LoginCubit extends Cubit<LoginModel> {
     try {
       emit(state.copyWith(loginStatus: LoginStatus.busy));
 
+      state.validateModel();
+
       await loginRepository.loginUserWithEmailAndPassword(
         email: state.email,
         password: state.password,
@@ -62,15 +64,17 @@ class LoginCubit extends Cubit<LoginModel> {
 
   Future<void> biometricLogin() async {
     try {
+      emit(state.copyWith(loginStatus: LoginStatus.busy));
+
       bool didAuthenticate = await loginRepository.useBiometricLogin();
 
       if (didAuthenticate == false) {
         throw 'Could Not Authenticate User Using Biometric';
       }
 
-      emit(state.copyWith(loginStatus: LoginStatus.busy));
-
       LoginModel _loginModel = await _localStorage.getSavedUser();
+
+      state.validateModel();
 
       state.copyWith(email: _loginModel.email, password: _loginModel.password);
 

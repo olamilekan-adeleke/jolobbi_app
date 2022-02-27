@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
-
 import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
 
 class LoginModel extends Equatable {
@@ -46,6 +43,13 @@ class LoginModel extends Equatable {
       password: map['password'] ?? '',
       exceptionText: map['exceptionText'] ?? '',
     );
+  }
+
+  bool validateModel() {
+    if (email.isEmpty) throw 'Email Is Required!';
+    if (password.isEmpty) throw 'Password Is Required!';
+
+    return true;
   }
 
   @override

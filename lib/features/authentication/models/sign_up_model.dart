@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
 import 'package:equatable/equatable.dart';
+
+import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
 
 class SignUpModel extends Equatable {
   final String id;
@@ -8,7 +9,7 @@ class SignUpModel extends Equatable {
   final String password;
   final String name;
   final String mobile;
-  final String profileUrl;
+  final String? profileUrl;
   final int? dateJoined;
   final SignUpStatus signUpStatus;
   final String exceptionText;
@@ -19,7 +20,7 @@ class SignUpModel extends Equatable {
     this.password = '',
     this.name = '',
     this.mobile = '',
-    this.profileUrl = '',
+    this.profileUrl,
     this.dateJoined,
     this.signUpStatus = SignUpStatus.unknown,
     this.exceptionText = '',
@@ -44,19 +45,16 @@ class SignUpModel extends Equatable {
       password: map['password'] ?? '',
       name: map['name'] ?? '',
       mobile: map['mobile'] ?? '',
-      profileUrl: map['profileUrl'] ?? '',
-      dateJoined: map['dateJoined']?.toInt(),
+      profileUrl: map['profileUrl'],
+      dateJoined: map['dateJoined'],
     );
   }
 
-  
   bool validateModel() {
-    if (id.isNotEmpty &&
-        email.isNotEmpty &&
+    if (email.isNotEmpty &&
         password.isNotEmpty &&
         name.isNotEmpty &&
-        mobile.isNotEmpty &&
-        profileUrl.isNotEmpty) {
+        mobile.isNotEmpty) {
       return true;
     }
 
@@ -74,4 +72,28 @@ class SignUpModel extends Equatable {
         signUpStatus,
         exceptionText,
       ];
+
+  SignUpModel copyWith({
+    String? id,
+    String? email,
+    String? password,
+    String? name,
+    String? mobile,
+    String? profileUrl,
+    int? dateJoined,
+    SignUpStatus? signUpStatus,
+    String? exceptionText,
+  }) {
+    return SignUpModel(
+      id: id ?? this.id,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      name: name ?? this.name,
+      mobile: mobile ?? this.mobile,
+      profileUrl: profileUrl ?? this.profileUrl,
+      dateJoined: dateJoined ?? this.dateJoined,
+      signUpStatus: signUpStatus ?? this.signUpStatus,
+      exceptionText: exceptionText ?? this.exceptionText,
+    );
+  }
 }
