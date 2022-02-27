@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+
 import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
 
-class LoginModel extends Equatable{
+class LoginModel extends Equatable {
   const LoginModel({
     required this.email,
     required this.password,
@@ -21,10 +22,9 @@ class LoginModel extends Equatable{
       'email': email,
       'password': password,
       'exceptionText': exceptionText,
+      'loginStatus': loginStatus.toString(),
     };
   }
-
-  
 
   LoginModel copyWith({
     String? email,
@@ -40,7 +40,14 @@ class LoginModel extends Equatable{
     );
   }
 
+  factory LoginModel.fromMap(Map<String, dynamic> map) {
+    return LoginModel(
+      email: map['email'] ?? '',
+      password: map['password'] ?? '',
+      exceptionText: map['exceptionText'] ?? '',
+    );
+  }
+
   @override
-  
   List<Object?> get props => [email, password, exceptionText, loginStatus];
 }

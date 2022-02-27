@@ -64,11 +64,7 @@ class LoginCubit extends Cubit<LoginModel> {
     try {
       emit(state.copyWith(loginStatus: LoginStatus.busy));
 
-      LoginModel? _loginModel = await _localStorage.getSavedUser();
-
-      if (_loginModel == null) {
-        throw 'No User Was Found, Please Login With Email And Password';
-      }
+      LoginModel _loginModel = await _localStorage.getSavedUser();
 
       state.copyWith(email: _loginModel.email, password: _loginModel.password);
 
@@ -78,7 +74,7 @@ class LoginCubit extends Cubit<LoginModel> {
       );
 
       emit(state.copyWith(loginStatus: LoginStatus.success));
-      
+
       authenticationState.copyWith(
         authStatus: AuthenticatedStatus.authenticated,
       );

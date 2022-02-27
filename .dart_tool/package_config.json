@@ -314,6 +314,42 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_secure_storage",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage-5.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_secure_storage_linux",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_linux-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_secure_storage_macos",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_macos-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_secure_storage_platform_interface",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_platform_interface-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_secure_storage_web",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_web-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "flutter_secure_storage_windows",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_secure_storage_windows-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_svg",
       "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_svg-1.0.3",
       "packageUri": "lib/",
@@ -420,6 +456,12 @@
       "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/lints-1.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "local_auth",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/local_auth-1.1.11",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
     },
     {
       "name": "logging",
@@ -812,7 +854,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-02-26T11:02:40.361186Z",
+  "generated": "2022-02-27T10:26:29.926462Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }
