@@ -16,7 +16,7 @@ class RetryButtonWidget extends StatelessWidget {
           border: Border.all(),
           borderRadius: BorderRadius.circular(5.0),
         ),
-        child: const CustomTextWidget(
+        child: const TextWidget(
            'Retry',
           fontWeight: FontWeight.w300,
         ),

@@ -34,19 +34,19 @@ class CustomScaffoldWidget extends StatelessWidget {
         appBar: appBar,
         backgroundColor: bg ?? Colors.white.withOpacity(0.95),
         body: SizedBox(
-          height: sizerHeight(98),
+          height: sh(98),
           child: useSingleScroll
               ? SingleChildScrollView(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: usePadding ? sizerSp(15.0) : 0,
+                      horizontal: usePadding ? sp(15.0) : 0,
                     ),
                     child: body,
                   ),
                 )
               : Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: usePadding ? sizerSp(15.0) : 0,
+                    horizontal: usePadding ? sp(15.0) : 0,
                   ),
                   child: body,
                 ),

@@ -43,7 +43,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             maxLines: widget.maxLine,
             enabled: widget.enabled,
             cursorColor: kcPrimaryColor,
-            style: GoogleFonts.poppins(fontSize: sizerSp(11)),
+            style: GoogleFonts.poppins(fontSize: sp(11)),
             controller: widget.textEditingController,
             autocorrect: widget.autoCorrect,
             autovalidateMode: widget.validator != null
@@ -54,25 +54,25 @@ class _CustomTextFieldState extends State<CustomTextField> {
               fillColor: Colors.grey.shade100,
               border: OutlineInputBorder(
                 borderSide: const BorderSide(color: Colors.transparent),
-                borderRadius: BorderRadius.circular(sizerSp(5.0)),
+                borderRadius: BorderRadius.circular(sp(5.0)),
               ),
               focusedBorder: OutlineInputBorder(
                 borderSide: const BorderSide(color: Colors.transparent),
-                borderRadius: BorderRadius.circular(sizerSp(5.0)),
+                borderRadius: BorderRadius.circular(sp(5.0)),
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: const BorderSide(color: Colors.transparent),
-                borderRadius: BorderRadius.circular(sizerSp(5.0)),
+                borderRadius: BorderRadius.circular(sp(5.0)),
               ),
               disabledBorder: OutlineInputBorder(
                 borderSide: const BorderSide(color: Colors.transparent),
-                borderRadius: BorderRadius.circular(sizerSp(5.0)),
+                borderRadius: BorderRadius.circular(sp(5.0)),
               ),
               hintText: widget.hintText,
               hintStyle: TextStyle(
                 color: Colors.grey.shade600,
                 fontWeight: FontWeight.w400,
-                fontSize: sizerSp(11),
+                fontSize: sp(11),
               ),
               suffixIcon: widget.isPassword == true
                   ? IconButton(
@@ -120,7 +120,7 @@ class CommentFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: sizerSp(35),
+      height: sp(35),
       child: TextFormField(
         maxLines: maxLine,
         enabled: enabled,
@@ -136,19 +136,19 @@ class CommentFormField extends StatelessWidget {
           fillColor: Colors.grey.shade100,
           border: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.transparent),
-            borderRadius: BorderRadius.circular(sizerSp(20)),
+            borderRadius: BorderRadius.circular(sp(20)),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.transparent),
-            borderRadius: BorderRadius.circular(sizerSp(20)),
+            borderRadius: BorderRadius.circular(sp(20)),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.transparent),
-            borderRadius: BorderRadius.circular(sizerSp(20)),
+            borderRadius: BorderRadius.circular(sp(20)),
           ),
           disabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.transparent),
-            borderRadius: BorderRadius.circular(sizerSp(20)),
+            borderRadius: BorderRadius.circular(sp(20)),
           ),
           hintText: hintText,
           hintStyle: TextStyle(

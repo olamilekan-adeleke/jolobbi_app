@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import '../../cores/constants/color.dart';
 
@@ -97,7 +99,7 @@ class CustomButton extends StatelessWidget {
         );
       }
     } else {
-      child = CustomTextWidget(
+      child = TextWidget(
         text ?? 'no text',
         textColor: textColor ?? Colors.white,
         fontSize: textSize,

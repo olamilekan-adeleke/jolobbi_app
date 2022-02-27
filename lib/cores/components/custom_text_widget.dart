@@ -3,11 +3,11 @@ import '../constants/font_size.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomTextWidget extends StatelessWidget {
-  const CustomTextWidget(
+class TextWidget extends StatelessWidget {
+  const TextWidget(
     this.text, {
     Key? key,
-    this.fontSize = kfsMeduim,
+    this.fontSize = kfsMedium,
     this.textColor = kcTextColor,
     this.fontWeight = FontWeight.w400,
     this.textAlign = TextAlign.justify,

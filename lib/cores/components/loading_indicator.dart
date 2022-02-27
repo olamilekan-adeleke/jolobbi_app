@@ -12,8 +12,8 @@ class CustomLoadingIndicatorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircularProgressIndicator(
-      color: Colors.grey[200],
+    return CircularProgressIndicator.adaptive(
+      // color: Colors.grey[200],
       backgroundColor: Colors.grey,
       strokeWidth: strokeWidth ?? 2.0,
       value: value,
