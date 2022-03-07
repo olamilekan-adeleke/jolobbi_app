@@ -17,7 +17,4 @@ class AuthenticatedStateCubit extends Cubit<AuthenticatedStatus> {
       authStatus: authStatus ?? this.authStatus,
     );
   }
-
-  @override
-  List<Object?> get props => [authStatus];
 }
