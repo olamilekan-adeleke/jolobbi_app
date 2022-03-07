@@ -14,7 +14,7 @@ class LoginCubit extends Cubit<LoginModel> {
     required this.loginRepository,
   }) : super(const LoginModel(email: '', password: ''));
 
-  final AuthenticatedState authenticationState;
+  final AuthenticatedStateCubit authenticationState;
   final LoginRepository loginRepository;
   final LocalStorage _localStorage = LocalStorage.instance;
   static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();

@@ -1,18 +1,19 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
 
-class AuthenticatedState extends Equatable {
-  const AuthenticatedState({
-    this.authStatus = AuthenticatedStatus.unauthenticated,
-  });
+class AuthenticatedStateCubit extends Cubit<AuthenticatedStatus> {
+  AuthenticatedStateCubit({
+    required this.authStatus,
+  }) : super(AuthenticatedStatus.unauthenticated);
 
   final AuthenticatedStatus authStatus;
 
-  AuthenticatedState copyWith({
+  AuthenticatedStateCubit copyWith({
     AuthenticatedStatus? authStatus,
   }) {
-    return AuthenticatedState(
+    return AuthenticatedStateCubit(
       authStatus: authStatus ?? this.authStatus,
     );
   }

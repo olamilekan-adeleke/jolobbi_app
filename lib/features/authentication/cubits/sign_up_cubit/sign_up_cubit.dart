@@ -15,7 +15,7 @@ class SignUpCubit extends Cubit<SignUpModel> {
     required this.signUpRepository,
   }) : super(const SignUpModel());
 
-  final AuthenticatedState authenticationState;
+  final AuthenticatedStateCubit authenticationState;
   final SignUpRepository signUpRepository;
   final LocalStorage _localStorage = LocalStorage.instance;
   static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();

@@ -14,11 +14,11 @@ void main() {
     'Login Cubit',
     () {
       late LoginCubit sut;
-      late AuthenticatedState authenticationState;
+      late AuthenticatedStateCubit authenticationState;
       late LoginRepository mockLoginRepository;
 
       setUp(() {
-        authenticationState = const AuthenticatedState();
+        authenticationState = const AuthenticatedStateCubit();
         mockLoginRepository = MockLoginRepository();
         sut = LoginCubit(
           authenticationState: authenticationState,

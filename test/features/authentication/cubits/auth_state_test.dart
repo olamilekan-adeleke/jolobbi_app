@@ -6,10 +6,10 @@ void main() {
   group(
     'Authentication State',
     () {
-      late AuthenticatedState sut;
+      late AuthenticatedStateCubit sut;
 
       setUp(() {
-        sut = const AuthenticatedState();
+        sut = const AuthenticatedStateCubit();
       });
 
       test(
