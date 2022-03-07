@@ -7,7 +7,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffoldWidget(
+    return const CustomScaffoldWidget(
       body: Text('login screen'),
     );
   }
