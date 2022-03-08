@@ -8,12 +8,12 @@
         "source": "/home/kod-x/projects/jolobbi_app/android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "/home/kod-x/projects/jolobbi_app/build/app/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "/home/kod-x/projects/jolobbi_app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
-    },
-    {
         "merged": "/home/kod-x/projects/jolobbi_app/build/app/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
         "source": "/home/kod-x/projects/jolobbi_app/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/kod-x/projects/jolobbi_app/build/app/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/kod-x/projects/jolobbi_app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
         "merged": "/home/kod-x/projects/jolobbi_app/build/app/intermediates/res/merged/debug/drawable-v21_launch_background.xml.flat",

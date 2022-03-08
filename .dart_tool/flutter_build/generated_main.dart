@@ -5,10 +5,10 @@
 
 // @dart = 2.16
 
-// When `file:///tmp/flutter_tools.IPLBKX/flutter_test_listener.OBLAFT/listener.dart` defines `main`, that definition is shadowed by the definition below.
-export 'file:///tmp/flutter_tools.IPLBKX/flutter_test_listener.OBLAFT/listener.dart';
+// When `package:jolobbi_app/main.dart` defines `main`, that definition is shadowed by the definition below.
+export 'package:jolobbi_app/main.dart';
 
-import 'file:///tmp/flutter_tools.IPLBKX/flutter_test_listener.OBLAFT/listener.dart' as entrypoint;
+import 'package:jolobbi_app/main.dart' as entrypoint;
 import 'dart:io'; // flutter_ignore: dart_io_import.
 import 'package:path_provider_android/path_provider_android.dart';
 import 'package:path_provider_ios/path_provider_ios.dart';

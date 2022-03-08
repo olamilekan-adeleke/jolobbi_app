@@ -8,13 +8,9 @@ class AuthenticatedStateCubit extends Cubit<AuthenticatedStatus> {
     required this.authStatus,
   }) : super(AuthenticatedStatus.unauthenticated);
 
-  final AuthenticatedStatus authStatus;
+  AuthenticatedStatus authStatus;
 
-  AuthenticatedStateCubit copyWith({
-    AuthenticatedStatus? authStatus,
-  }) {
-    return AuthenticatedStateCubit(
-      authStatus: authStatus ?? this.authStatus,
-    );
+  void copyWith({required AuthenticatedStatus authStatus}) {
+    this.authStatus = authStatus;
   }
 }

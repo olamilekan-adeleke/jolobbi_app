@@ -1,18 +1,18 @@
 [
     {
         "merged": "/home/kod-x/projects/jolobbi_app/build/image_picker/intermediates/res/merged/debug/drawable/notification_tile_bg.xml",
-        "source": "/home/kod-x/.gradle/caches/transforms-2/files-2.1/8ec5a4192b12a309556d408337153575/core-1.6.0/res/drawable/notification_tile_bg.xml"
+        "source": "/home/kod-x/.gradle/caches/transforms-2/files-2.1/6c9ed8c0e4d9f5bc155691c4cd205ba8/core-1.6.0/res/drawable/notification_tile_bg.xml"
     },
     {
         "merged": "/home/kod-x/projects/jolobbi_app/build/image_picker/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
-        "source": "/home/kod-x/.gradle/caches/transforms-2/files-2.1/8ec5a4192b12a309556d408337153575/core-1.6.0/res/drawable/notification_icon_background.xml"
+        "source": "/home/kod-x/.gradle/caches/transforms-2/files-2.1/6c9ed8c0e4d9f5bc155691c4cd205ba8/core-1.6.0/res/drawable/notification_icon_background.xml"
     },
     {
         "merged": "/home/kod-x/projects/jolobbi_app/build/image_picker/intermediates/res/merged/debug/drawable/notification_bg.xml",
-        "source": "/home/kod-x/.gradle/caches/transforms-2/files-2.1/8ec5a4192b12a309556d408337153575/core-1.6.0/res/drawable/notification_bg.xml"
+        "source": "/home/kod-x/.gradle/caches/transforms-2/files-2.1/6c9ed8c0e4d9f5bc155691c4cd205ba8/core-1.6.0/res/drawable/notification_bg.xml"
     },
     {
         "merged": "/home/kod-x/projects/jolobbi_app/build/image_picker/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
-        "source": "/home/kod-x/.gradle/caches/transforms-2/files-2.1/8ec5a4192b12a309556d408337153575/core-1.6.0/res/drawable/notification_bg_low.xml"
+        "source": "/home/kod-x/.gradle/caches/transforms-2/files-2.1/6c9ed8c0e4d9f5bc155691c4cd205ba8/core-1.6.0/res/drawable/notification_bg_low.xml"
     }
 ]
