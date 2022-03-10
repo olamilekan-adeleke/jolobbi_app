@@ -48,7 +48,7 @@ class SignUpFormWidget extends StatelessWidget {
             verticalSpace(),
             CustomTextField(
               hintText: 'Mobile Number',
-              onChanged: context.read<SignUpCubit>().onEmailChange,
+              onChanged: context.read<SignUpCubit>().onMobileChange,
               validator: mobileValidator,
             ),
             verticalSpace(),
