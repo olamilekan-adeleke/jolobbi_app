@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import '../../cores/constants/color.dart';
 
+import '../utils/sizer_utils.dart';
 import 'custom_circular_progress_indicator.dart';
 import 'custom_text_widget.dart';
 
@@ -83,7 +84,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double __defaultHeight = 60.0;
+    const double __defaultHeight = 45.0;
     final double __defaultWidth = MediaQuery.of(context).size.width * 0.95;
 
     Widget child;
@@ -116,12 +117,12 @@ class CustomButton extends StatelessWidget {
           shape: circular
               ? MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(100.0),
+                    borderRadius: BorderRadius.circular(sp(100.0)),
                   ),
                 )
               : MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50.0),
+                    borderRadius: BorderRadius.circular(sp(5.0)),
                   ),
                 ),
           backgroundColor: busy

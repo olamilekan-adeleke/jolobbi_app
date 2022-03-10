@@ -10,26 +10,26 @@ import 'package:jolobbi_app/features/authentication/repository/login_repository.
 
 class LoginCubit extends Cubit<LoginModel> {
   LoginCubit({
-    required this.authenticationState,
+    // required this.authenticationState,
     required this.loginRepository,
   }) : super(const LoginModel(email: '', password: ''));
 
-  final AuthenticatedStateCubit authenticationState;
+  // final AuthenticatedStateCubit authenticationState;
   final LoginRepository loginRepository;
   final LocalStorage _localStorage = LocalStorage.instance;
   static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();
 
   void onEmailChange(String email) {
-    emit(state.copyWith(email: email));
+    emit(state.copyWith(email: email, loginStatus: LoginStatus.unknown));
   }
 
   void onPasswordChange(String password) {
-    emit(state.copyWith(password: password));
+    emit(state.copyWith(password: password, loginStatus: LoginStatus.unknown));
   }
 
   Future<void> onSubmitFom() async {
     try {
-      emit(state.copyWith(loginStatus: LoginStatus.busy));
+      emit(state.copyWith(loginStatus: LoginStatus.busy, exceptionText: ''));
 
       state.validateModel();
 
@@ -42,9 +42,9 @@ class LoginCubit extends Cubit<LoginModel> {
 
       emit(state.copyWith(loginStatus: LoginStatus.success));
 
-      authenticationState.copyWith(
-        authStatus: AuthenticatedStatus.authenticated,
-      );
+      // authenticationState.copyWith(
+      //   authStatus: AuthenticatedStatus.authenticated,
+      // );
     } on FirebaseAuthException catch (e, s) {
       final String error = AuthExceptionHandler.catchError(e);
 
@@ -99,9 +99,9 @@ class LoginCubit extends Cubit<LoginModel> {
 
       emit(state.copyWith(loginStatus: LoginStatus.success));
 
-      authenticationState.copyWith(
-        authStatus: AuthenticatedStatus.authenticated,
-      );
+      // authenticationState.copyWith(
+      //   authStatus: AuthenticatedStatus.authenticated,
+      // );
     } on FirebaseAuthException catch (e, s) {
       final String error = AuthExceptionHandler.catchError(e);
 

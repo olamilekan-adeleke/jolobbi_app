@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jolobbi_app/cores/utils/crashlytics_helper.dart';
 import 'package:jolobbi_app/cores/utils/firebase_auth_exception.dart';
 import 'package:jolobbi_app/cores/utils/local_storage.dart';
-import 'package:jolobbi_app/features/authentication/cubits/auth_state_cubit.dart';
 import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
 import 'package:jolobbi_app/features/authentication/repository/sign_up_repositry.dart';
 
@@ -11,11 +10,11 @@ import '../../models/sign_up_model.dart';
 
 class SignUpCubit extends Cubit<SignUpModel> {
   SignUpCubit({
-    required this.authenticationState,
+    // required this.authenticationState,
     required this.signUpRepository,
   }) : super(const SignUpModel());
 
-  final AuthenticatedStateCubit authenticationState;
+  // final AuthenticatedStateCubit authenticationState;
   final SignUpRepository signUpRepository;
   final LocalStorage _localStorage = LocalStorage.instance;
   static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();
@@ -47,9 +46,9 @@ class SignUpCubit extends Cubit<SignUpModel> {
       await _localStorage.saveLoginDetails(state.email, state.password);
 
       emit(state.copyWith(signUpStatus: SignUpStatus.success));
-      authenticationState.copyWith(
-        authStatus: AuthenticatedStatus.authenticated,
-      );
+      // authenticationState.copyWith(
+      //   authStatus: AuthenticatedStatus.authenticated,
+      // );
     } on FirebaseAuthException catch (e, s) {
       final String error = AuthExceptionHandler.catchError(e);
 

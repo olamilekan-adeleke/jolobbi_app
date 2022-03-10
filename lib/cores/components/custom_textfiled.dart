@@ -15,12 +15,14 @@ class CustomTextField extends StatefulWidget {
     this.enabled = true,
     this.maxLine = 1,
     this.suffix,
+    this.onChanged,
   }) : super(key: key);
 
   final TextEditingController? textEditingController;
   final bool autoCorrect;
   final String hintText;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
   final TextInputType textInputType;
   final bool isPassword;
   final bool enabled;
@@ -33,60 +35,64 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   final ValueNotifier<bool> obscureText = ValueNotifier<bool>(false);
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<bool>(
       valueListenable: obscureText,
       builder: (BuildContext context, bool value, dynamic child) {
-        return Card(
-          child: TextFormField(
-            maxLines: widget.maxLine,
-            enabled: widget.enabled,
-            cursorColor: kcPrimaryColor,
-            style: GoogleFonts.poppins(fontSize: sp(11)),
-            controller: widget.textEditingController,
-            autocorrect: widget.autoCorrect,
-            autovalidateMode: widget.validator != null
-                ? AutovalidateMode.onUserInteraction
-                : null,
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.grey.shade100,
-              border: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.transparent),
-                borderRadius: BorderRadius.circular(sp(5.0)),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.transparent),
-                borderRadius: BorderRadius.circular(sp(5.0)),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.transparent),
-                borderRadius: BorderRadius.circular(sp(5.0)),
-              ),
-              disabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: Colors.transparent),
-                borderRadius: BorderRadius.circular(sp(5.0)),
-              ),
-              hintText: widget.hintText,
-              hintStyle: TextStyle(
-                color: Colors.grey.shade600,
-                fontWeight: FontWeight.w400,
-                fontSize: sp(11),
-              ),
-              suffixIcon: widget.isPassword == true
-                  ? IconButton(
-                      icon: const Icon(Icons.remove_red_eye_outlined),
-                      onPressed: () => obscureText.value = !obscureText.value,
-                    )
-                  : widget.suffix != null
-                      ? Icon(widget.suffix)
-                      : const SizedBox(),
+        return TextFormField(
+          maxLines: widget.maxLine,
+          enabled: widget.enabled,
+          cursorColor: kcPrimaryColor,
+          style: GoogleFonts.poppins(fontSize: sp(11)),
+          controller: widget.textEditingController,
+          autocorrect: widget.autoCorrect,
+          autovalidateMode: widget.validator != null
+              ? AutovalidateMode.onUserInteraction
+              : null,
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.grey.shade100,
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.transparent),
+              borderRadius: BorderRadius.circular(sp(5.0)),
             ),
-            keyboardType: widget.textInputType,
-            obscureText: value,
-            validator: (String? val) => widget.validator!(val?.trim()),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.transparent),
+              borderRadius: BorderRadius.circular(sp(5.0)),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.transparent),
+              borderRadius: BorderRadius.circular(sp(5.0)),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.transparent),
+              borderRadius: BorderRadius.circular(sp(5.0)),
+            ),
+            hintText: widget.hintText,
+            hintStyle: TextStyle(
+              color: Colors.grey.shade600,
+              fontWeight: FontWeight.w400,
+              fontSize: sp(11),
+            ),
+            suffixIcon: widget.isPassword == true
+                ? IconButton(
+                    icon: const Icon(Icons.remove_red_eye_outlined),
+                    onPressed: () => obscureText.value = !obscureText.value,
+                  )
+                : widget.suffix != null
+                    ? Icon(widget.suffix)
+                    : const SizedBox(),
           ),
+          keyboardType: widget.textInputType,
+          obscureText: value && widget.isPassword,
+          validator: (String? val) => widget.validator!(val?.trim()),
+          onChanged: (String val) {
+            if (widget.onChanged == null) return;
+
+            widget.onChanged!(val.trim());
+          },
         );
       },
     );

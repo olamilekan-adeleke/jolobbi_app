@@ -16,26 +16,20 @@ class JolobbiApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AuthenticatedStateCubit>(
-      create: (context) => AuthenticatedStateCubit(
-        authStatus: AuthenticatedStatus.unauthenticated,
-      ),
-      lazy: false,
-      child: MultiBlocProvider(
-        providers: _BlocProviderHelper().blocList(context),
-        child: Sizer(
-          builder: (_, __, ___) {
-            return MaterialApp(
-              title: 'Jolobbi Dev',
-              theme: ThemeData(
-                primarySwatch: Colors.orange,
-                primaryColor: kcPrimaryColor,
-                errorColor: kcSuccessColor,
-              ),
-              home: const AuthStateScreen(),
-            );
-          },
-        ),
+    return MultiBlocProvider(
+      providers: _BlocProviderHelper().blocList(context),
+      child: Sizer(
+        builder: (_, __, ___) {
+          return MaterialApp(
+            title: 'Jolobbi Dev',
+            theme: ThemeData(
+              primarySwatch: Colors.orange,
+              primaryColor: kcPrimaryColor,
+              errorColor: kcErrorColor,
+            ),
+            home: const AuthStateScreen(),
+          );
+        },
       ),
     );
   }
@@ -47,17 +41,17 @@ class _BlocProviderHelper {
 
   List<BlocProvider> blocList(BuildContext context) {
     return <BlocProvider>[
-      BlocProvider(
-        create: (context) => LoginCubit(
-          authenticationState: context.read<AuthenticatedStateCubit>(),
-          loginRepository: loginRepository,
+      BlocProvider<AuthenticatedStateCubit>(
+        create: (_) => AuthenticatedStateCubit(
+          authStatus: AuthenticatedStatus.unauthenticated,
         ),
+        lazy: false,
       ),
-      BlocProvider(
-        create: (context) => SignUpCubit(
-          authenticationState: context.read<AuthenticatedStateCubit>(),
-          signUpRepository: signUpRepository,
-        ),
+      BlocProvider<LoginCubit>(
+        create: (_) => LoginCubit(loginRepository: loginRepository),
+      ),
+      BlocProvider<SignUpCubit>(
+        create: (_) => SignUpCubit(signUpRepository: signUpRepository),
       ),
     ];
   }

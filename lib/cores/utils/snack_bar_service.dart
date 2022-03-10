@@ -19,6 +19,7 @@ class SnackBarService {
       backgroundColor: Colors.red,
       action: SnackBarAction(
         label: 'dismiss',
+        textColor: kcWhite,
         onPressed: () => hideSnackBar(context),
       ),
     );
@@ -42,6 +43,7 @@ class SnackBarService {
       backgroundColor: Colors.green,
       action: SnackBarAction(
         label: 'dismiss',
+        textColor: kcWhite,
         onPressed: () => hideSnackBar(context),
       ),
     );
@@ -65,6 +67,7 @@ class SnackBarService {
       backgroundColor: Colors.grey.shade800,
       action: SnackBarAction(
         label: 'dismiss',
+        textColor: kcWhite,
         onPressed: () => hideSnackBar(context),
       ),
     );
