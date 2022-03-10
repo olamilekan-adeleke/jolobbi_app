@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:jolobbi_app/features/authentication/models/sign_up_model.dart';
 
 import '../../../cores/constants/firebase_collection_key.dart';
+import '../models/sign_up_model.dart';
 
 class SignUpRepository {
   static final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -19,7 +19,7 @@ class SignUpRepository {
   Future<void> saveUserDataToDataBase(SignUpModel signUpModel) async {
     final DocumentReference documentReference = userCollectionRef.doc();
 
-    signUpModel.copyWith(id: documentReference.id);
+    signUpModel = signUpModel.copyWith(id: documentReference.id);
 
     await documentReference.set(signUpModel.toMap());
   }

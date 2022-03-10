@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
+import '../enum/auth_enum.dart';
 
 class SignUpModel extends Equatable {
   final String id;
   final String email;
   final String password;
   final String name;
-  final String mobile;
+  final String? mobile;
   final String? profileUrl;
   final int? dateJoined;
   final SignUpStatus signUpStatus;
@@ -44,21 +44,18 @@ class SignUpModel extends Equatable {
       email: map['email'] ?? '',
       password: map['password'] ?? '',
       name: map['name'] ?? '',
-      mobile: map['mobile'] ?? '',
+      mobile: map['mobile'],
       profileUrl: map['profileUrl'],
       dateJoined: map['dateJoined'],
     );
   }
 
   bool validateModel() {
-    if (email.isNotEmpty &&
-        password.isNotEmpty &&
-        name.isNotEmpty &&
-        mobile.isNotEmpty) {
-      return true;
-    }
+    if (email.isEmpty) throw 'Email Is Required!';
+    if (password.isEmpty) throw 'Password Is Required!';
+    if (name.isEmpty) throw 'Name Is Required!';
 
-    return false;
+    return true;
   }
 
   @override

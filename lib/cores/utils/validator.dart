@@ -39,3 +39,21 @@ String? emailValidator(String? value) {
 
   return null;
 }
+
+String? nameValidator(String? value) {
+  if (value == '' || value == null) {
+    return 'Name must not be empty!';
+  } else if (value.trim().length <= 2) {
+    return 'Name must be min 3 characters long!';
+  }
+  return null;
+}
+
+String? mobileValidator(String? value) {
+  if (value == '' || value == null) {
+    return 'Mobile must not be empty!';
+  } else if (value.trim().length <= 10) {
+    return 'Mobile must be min 11 characters long!';
+  }
+  return null;
+}

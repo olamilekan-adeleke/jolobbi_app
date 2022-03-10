@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jolobbi_app/cores/components/custom_button.dart';
-import 'package:jolobbi_app/cores/components/custom_textfiled.dart';
-import 'package:jolobbi_app/features/authentication/cubits/login_cubit/login_cubit.dart';
-import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
 
+import '../../../../../cores/components/custom_button.dart';
 import '../../../../../cores/components/custom_text_widget.dart';
+import '../../../../../cores/components/custom_textfiled.dart';
 import '../../../../../cores/components/image_widget.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
 import '../../../../../cores/utils/validator.dart';
+import '../../../cubits/login_cubit/login_cubit.dart';
+import '../../../enum/auth_enum.dart';
 import '../../../models/login_model.dart';
+import '../../screens/auth_state_screen.dart';
 
 class LoginFormWidget extends StatelessWidget {
   const LoginFormWidget({Key? key}) : super(key: key);
@@ -45,7 +46,7 @@ class LoginFormWidget extends StatelessWidget {
             onChanged: context.read<LoginCubit>().onPasswordChange,
             validator: passwordValidator,
           ),
-          verticalSpace(40),
+          verticalSpace(),
           BlocBuilder<LoginCubit, LoginModel>(
             builder: (context, state) {
               if (state.loginStatus == LoginStatus.busy) {
@@ -64,7 +65,7 @@ class LoginFormWidget extends StatelessWidget {
               if (state.loginStatus == LoginStatus.busy) {
                 return Container();
               }
-              
+
               return Center(
                 child: GestureDetector(
                   onTap: context.read<LoginCubit>().biometricLogin,
@@ -79,6 +80,25 @@ class LoginFormWidget extends StatelessWidget {
                 ),
               );
             },
+          ),
+          verticalSpace(20),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (_) => const AuthStateScreen(
+                    isLoginScreen: false,
+                  ),
+                ),
+              );
+            },
+            child: Center(
+              child: TextWidget(
+                'New Here? Click To Create An Account',
+                fontWeight: FontWeight.w500,
+                fontSize: sp(11),
+              ),
+            ),
           ),
         ],
       ),

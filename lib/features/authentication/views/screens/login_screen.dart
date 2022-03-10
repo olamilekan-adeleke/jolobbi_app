@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jolobbi_app/cores/constants/color.dart';
 
 import '../../../../cores/components/custom_scaffold_widget.dart';
+import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../../../cores/utils/snack_bar_service.dart';
 import '../../cubits/auth_state_cubit.dart';
@@ -18,8 +18,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(context.read<LoginCubit>().state.toMap().toString());
-
     return BlocListener<LoginCubit, LoginModel>(
       listener: (context, state) {
         if (state.loginStatus == LoginStatus.success) {

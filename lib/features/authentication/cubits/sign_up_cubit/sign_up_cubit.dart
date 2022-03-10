@@ -1,43 +1,45 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jolobbi_app/cores/utils/crashlytics_helper.dart';
-import 'package:jolobbi_app/cores/utils/firebase_auth_exception.dart';
-import 'package:jolobbi_app/cores/utils/local_storage.dart';
-import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
-import 'package:jolobbi_app/features/authentication/repository/sign_up_repositry.dart';
 
+import '../../../../cores/utils/crashlytics_helper.dart';
+import '../../../../cores/utils/firebase_auth_exception.dart';
+import '../../../../cores/utils/local_storage.dart';
+import '../../enum/auth_enum.dart';
 import '../../models/sign_up_model.dart';
+import '../../repository/sign_up_repositry.dart';
 
 class SignUpCubit extends Cubit<SignUpModel> {
   SignUpCubit({
-    // required this.authenticationState,
     required this.signUpRepository,
   }) : super(const SignUpModel());
 
-  // final AuthenticatedStateCubit authenticationState;
   final SignUpRepository signUpRepository;
   final LocalStorage _localStorage = LocalStorage.instance;
   static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();
 
-  void onEmailChange(String email) => emit(state.copyWith(email: email));
+  void onEmailChange(String email) {
+    emit(state.copyWith(email: email, signUpStatus: SignUpStatus.unknown));
+  }
 
-  void onPasswordChange(String password) =>
-      emit(state.copyWith(password: password));
+  void onMobileChange(String mobile) {
+    emit(state.copyWith(mobile: mobile, signUpStatus: SignUpStatus.unknown));
+  }
 
-  void onNamedChange(String name) => emit(state.copyWith(name: name));
+  void onPasswordChange(String password) {
+    emit(
+      state.copyWith(password: password, signUpStatus: SignUpStatus.unknown),
+    );
+  }
 
-  void onMobileChange(String mobile) => emit(state.copyWith(mobile: mobile));
-
-  void onProfileUrlUpdate(String profileUrl) =>
-      emit(state.copyWith(profileUrl: profileUrl));
+  void onNameChange(String name) {
+    emit(state.copyWith(name: name, signUpStatus: SignUpStatus.unknown));
+  }
 
   Future<void> onSubmittedForm() async {
     try {
-      emit(state.copyWith(signUpStatus: SignUpStatus.busy));
+      emit(state.copyWith(signUpStatus: SignUpStatus.busy, exceptionText: ''));
 
-      if (!state.validateModel()) {
-        throw 'Model Validation Not Passed!';
-      }
+      state.validateModel();
 
       await signUpRepository.signUpUserWithEmailAndPassword(state);
 
@@ -46,9 +48,6 @@ class SignUpCubit extends Cubit<SignUpModel> {
       await _localStorage.saveLoginDetails(state.email, state.password);
 
       emit(state.copyWith(signUpStatus: SignUpStatus.success));
-      // authenticationState.copyWith(
-      //   authStatus: AuthenticatedStatus.authenticated,
-      // );
     } on FirebaseAuthException catch (e, s) {
       final String error = AuthExceptionHandler.catchError(e);
 

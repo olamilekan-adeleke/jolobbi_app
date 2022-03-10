@@ -1,6 +1,7 @@
-import 'package:jolobbi_app/cores/components/custom_text_widget.dart';
-import 'package:jolobbi_app/cores/constants/color.dart';
 import 'package:flutter/material.dart';
+
+import '../components/custom_text_widget.dart';
+import '../constants/color.dart';
 
 class SnackBarService {
   static void showErrorSnackBar({
@@ -9,7 +10,11 @@ class SnackBarService {
     Duration duration = const Duration(seconds: 4),
   }) {
     final snackBar = SnackBar(
-      content: TextWidget(message, textColor: kcWhite),
+      content: TextWidget(
+        message,
+        textColor: kcWhite,
+        textAlign: TextAlign.left,
+      ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
@@ -33,7 +38,11 @@ class SnackBarService {
     Duration duration = const Duration(seconds: 4),
   }) {
     final snackBar = SnackBar(
-      content: TextWidget(message, textColor: kcWhite),
+      content: TextWidget(
+        message,
+        textColor: kcWhite,
+        textAlign: TextAlign.left,
+      ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
@@ -57,7 +66,11 @@ class SnackBarService {
     Duration duration = const Duration(seconds: 4),
   }) {
     final snackBar = SnackBar(
-      content: TextWidget(message, textColor: kcWhite),
+      content: TextWidget(
+        message,
+        textColor: kcWhite,
+        textAlign: TextAlign.left,
+      ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
