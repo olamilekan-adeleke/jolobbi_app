@@ -14,15 +14,15 @@
 14    <uses-permission android:name="android.permission.INTERNET" />
 14-->/home/kod-x/projects/jolobbi_app/android/app/src/debug/AndroidManifest.xml:6:5-66
 14-->/home/kod-x/projects/jolobbi_app/android/app/src/debug/AndroidManifest.xml:6:22-64
-15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-15-->[:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-79
-15-->[:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-76
-16    <uses-permission android:name="android.permission.WAKE_LOCK" />
-16-->[:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-68
-16-->[:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:9:22-65
-17    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-17-->[:local_auth] /home/kod-x/projects/jolobbi_app/build/local_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-74
-17-->[:local_auth] /home/kod-x/projects/jolobbi_app/build/local_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:22-71
+15    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+15-->/home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:3:5-73
+15-->/home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:3:22-71
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-79
+16-->[:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-76
+17    <uses-permission android:name="android.permission.WAKE_LOCK" />
+17-->[:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-68
+17-->[:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:9:22-65
 18    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 18-->[:flutter_local_notifications] /home/kod-x/projects/jolobbi_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-81
 18-->[:flutter_local_notifications] /home/kod-x/projects/jolobbi_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-78

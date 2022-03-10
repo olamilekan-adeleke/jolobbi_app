@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jolobbi_app/cores/constants/color.dart';
 
 class CustomImageWidget extends StatelessWidget {
   const CustomImageWidget({
@@ -55,9 +55,13 @@ class CustomImageWidget extends StatelessWidget {
           placeholder: (_, __) =>
               const Center(child: CircularProgressIndicator()),
         );
+      case ImageTypes.svg:
+        return SvgPicture.asset(
+          imageUrl,
+          color: kcPrimaryColor.withOpacity(0.6),
+        );
     }
   }
 }
 
-
-enum ImageTypes { network, file, asset, profile, none }
+enum ImageTypes { network, file, asset, profile, none, svg }

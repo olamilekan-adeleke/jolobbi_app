@@ -27,7 +27,6 @@ class LoginScreen extends StatelessWidget {
               .read<AuthenticatedStateCubit>()
               .updateState(AuthenticatedStatus.authenticated);
 
-          log('login');
           log(context.read<AuthenticatedStateCubit>().authStatus.toString());
         } else if (state.loginStatus == LoginStatus.error) {
           String error = context.read<LoginCubit>().state.exceptionText;

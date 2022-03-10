@@ -8,8 +8,8 @@ class FoodHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const  CustomScaffoldWidget(
-      body: TextWidget('Food Home Page '),
+    return const CustomScaffoldWidget(
+      body: Center(child: TextWidget('Food Home Page ')),
     );
   }
 }

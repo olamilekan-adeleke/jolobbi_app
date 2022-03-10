@@ -10,11 +10,9 @@ import 'package:jolobbi_app/features/authentication/repository/login_repository.
 
 class LoginCubit extends Cubit<LoginModel> {
   LoginCubit({
-    // required this.authenticationState,
     required this.loginRepository,
   }) : super(const LoginModel(email: '', password: ''));
 
-  // final AuthenticatedStateCubit authenticationState;
   final LoginRepository loginRepository;
   final LocalStorage _localStorage = LocalStorage.instance;
   static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();
@@ -41,10 +39,6 @@ class LoginCubit extends Cubit<LoginModel> {
       await _localStorage.saveLoginDetails(state.email, state.password);
 
       emit(state.copyWith(loginStatus: LoginStatus.success));
-
-      // authenticationState.copyWith(
-      //   authStatus: AuthenticatedStatus.authenticated,
-      // );
     } on FirebaseAuthException catch (e, s) {
       final String error = AuthExceptionHandler.catchError(e);
 
@@ -78,7 +72,7 @@ class LoginCubit extends Cubit<LoginModel> {
 
   Future<void> biometricLogin() async {
     try {
-      emit(state.copyWith(loginStatus: LoginStatus.busy));
+      emit(state.copyWith(loginStatus: LoginStatus.busy, exceptionText: ''));
 
       bool didAuthenticate = await loginRepository.useBiometricLogin();
 
@@ -88,9 +82,14 @@ class LoginCubit extends Cubit<LoginModel> {
 
       LoginModel _loginModel = await _localStorage.getSavedUser();
 
-      state.validateModel();
+      emit(
+        state.copyWith(
+          email: _loginModel.email,
+          password: _loginModel.password,
+        ),
+      );
 
-      state.copyWith(email: _loginModel.email, password: _loginModel.password);
+      state.validateModel();
 
       await loginRepository.loginUserWithEmailAndPassword(
         email: state.email,
@@ -98,10 +97,6 @@ class LoginCubit extends Cubit<LoginModel> {
       );
 
       emit(state.copyWith(loginStatus: LoginStatus.success));
-
-      // authenticationState.copyWith(
-      //   authStatus: AuthenticatedStatus.authenticated,
-      // );
     } on FirebaseAuthException catch (e, s) {
       final String error = AuthExceptionHandler.catchError(e);
 

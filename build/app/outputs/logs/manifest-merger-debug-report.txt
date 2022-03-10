@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 application
-INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:3:4-33:19
+INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:5:4-35:19
 MERGED from [:firebase_crashlytics] /home/kod-x/projects/jolobbi_app/build/firebase_crashlytics/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_crashlytics] /home/kod-x/projects/jolobbi_app/build/firebase_crashlytics/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:cloud_firestore] /home/kod-x/projects/jolobbi_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
@@ -90,11 +90,11 @@ MERGED from [io.fabric.sdk.android:fabric:1.4.3] /home/kod-x/.gradle/caches/tran
 	android:name
 		INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml
 manifest
-ADDED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-34:12
-INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-34:12
-INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-34:12
-INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-34:12
-MERGED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-34:12
+ADDED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
+INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
+INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
+INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
+MERGED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
 MERGED from [:firebase_crashlytics] /home/kod-x/projects/jolobbi_app/build/firebase_crashlytics/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:cloud_firestore] /home/kod-x/projects/jolobbi_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-19:12
@@ -204,14 +204,22 @@ INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/debug/AndroidMani
 		INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/debug/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-34:12
+		ADDED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
 		INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/debug/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml
-		ADDED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-34:12
+		ADDED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
 		INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.USE_FINGERPRINT
+ADDED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:3:5-73
+MERGED from [:local_auth] /home/kod-x/projects/jolobbi_app/build/local_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-74
+MERGED from [:local_auth] /home/kod-x/projects/jolobbi_app/build/local_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-74
+MERGED from [androidx.biometric:biometric:1.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/7c666b29ba3f59edcb0a7173b6524349/biometric-1.1.0/AndroidManifest.xml:27:5-74
+MERGED from [androidx.biometric:biometric:1.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/7c666b29ba3f59edcb0a7173b6524349/biometric-1.1.0/AndroidManifest.xml:27:5-74
+	android:name
+		ADDED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml:3:22-71
 uses-sdk
 INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/kod-x/projects/jolobbi_app/android/app/src/main/AndroidManifest.xml
@@ -646,12 +654,6 @@ ADDED from [:image_picker] /home/kod-x/projects/jolobbi_app/build/image_picker/i
 		ADDED from [:image_picker] /home/kod-x/projects/jolobbi_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:15:17-72
 	android:name
 		ADDED from [:image_picker] /home/kod-x/projects/jolobbi_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:14:17-67
-uses-permission#android.permission.USE_FINGERPRINT
-ADDED from [:local_auth] /home/kod-x/projects/jolobbi_app/build/local_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-74
-MERGED from [androidx.biometric:biometric:1.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/7c666b29ba3f59edcb0a7173b6524349/biometric-1.1.0/AndroidManifest.xml:27:5-74
-MERGED from [androidx.biometric:biometric:1.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/7c666b29ba3f59edcb0a7173b6524349/biometric-1.1.0/AndroidManifest.xml:27:5-74
-	android:name
-		ADDED from [:local_auth] /home/kod-x/projects/jolobbi_app/build/local_auth/intermediates/library_manifest/debug/AndroidManifest.xml:9:22-71
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
 ADDED from [:flutter_local_notifications] /home/kod-x/projects/jolobbi_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-81
 	android:name

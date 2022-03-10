@@ -6,6 +6,7 @@ import 'package:jolobbi_app/features/authentication/cubits/login_cubit/login_cub
 import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
 
 import '../../../../../cores/components/custom_text_widget.dart';
+import '../../../../../cores/components/image_widget.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
 import '../../../../../cores/utils/validator.dart';
 import '../../../models/login_model.dart';
@@ -54,6 +55,28 @@ class LoginFormWidget extends StatelessWidget {
               return CustomButton(
                 text: 'Login',
                 onTap: context.read<LoginCubit>().onSubmitFom,
+              );
+            },
+          ),
+          verticalSpace(20),
+          BlocBuilder<LoginCubit, LoginModel>(
+            builder: (context, state) {
+              if (state.loginStatus == LoginStatus.busy) {
+                return Container();
+              }
+              
+              return Center(
+                child: GestureDetector(
+                  onTap: context.read<LoginCubit>().biometricLogin,
+                  child: SizedBox(
+                    height: sp(20),
+                    width: sp(20),
+                    child: const CustomImageWidget(
+                      imageUrl: 'assets/images/thumb_print_icon.svg',
+                      imageTypes: ImageTypes.svg,
+                    ),
+                  ),
+                ),
               );
             },
           ),
