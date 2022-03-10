@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jolobbi_app/cores/constants/color.dart';
-import 'package:jolobbi_app/features/authentication/cubits/login_cubit/login_cubit.dart';
-import 'package:jolobbi_app/features/authentication/cubits/sign_up_cubit/sign_up_cubit.dart';
 import 'package:sizer/sizer.dart';
 
+import 'cores/constants/color.dart';
 import 'features/authentication/cubits/auth_state_cubit.dart';
+import 'features/authentication/cubits/forgot_password/forgot_password_cubit.dart';
+import 'features/authentication/cubits/login_cubit/login_cubit.dart';
+import 'features/authentication/cubits/sign_up_cubit/sign_up_cubit.dart';
 import 'features/authentication/enum/auth_enum.dart';
+import 'features/authentication/repository/forgot_password_repository.dart';
 import 'features/authentication/repository/login_repository.dart';
 import 'features/authentication/repository/sign_up_repositry.dart';
 import 'features/authentication/views/screens/auth_state_screen.dart';
@@ -38,6 +40,8 @@ class JolobbiApp extends StatelessWidget {
 class _BlocProviderHelper {
   static final LoginRepository loginRepository = LoginRepository();
   static final SignUpRepository signUpRepository = SignUpRepository();
+  static final ForgotPasswordRepository forgotPasswordRepository =
+      ForgotPasswordRepository();
 
   List<BlocProvider> blocList(BuildContext context) {
     return <BlocProvider>[
@@ -52,6 +56,9 @@ class _BlocProviderHelper {
       ),
       BlocProvider<SignUpCubit>(
         create: (_) => SignUpCubit(signUpRepository: signUpRepository),
+      ),
+      BlocProvider<ForgotPasswordCubit>(
+        create: (_) => ForgotPasswordCubit(forgotPasswordRepository),
       ),
     ];
   }
