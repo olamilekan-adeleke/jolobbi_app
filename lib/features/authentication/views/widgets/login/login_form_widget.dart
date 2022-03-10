@@ -11,6 +11,7 @@ import '../../../cubits/login_cubit/login_cubit.dart';
 import '../../../enum/auth_enum.dart';
 import '../../../models/login_model.dart';
 import '../../screens/auth_state_screen.dart';
+import '../../screens/forgot_password.dart';
 
 class LoginFormWidget extends StatelessWidget {
   const LoginFormWidget({Key? key}) : super(key: key);
@@ -45,6 +46,24 @@ class LoginFormWidget extends StatelessWidget {
             isPassword: true,
             onChanged: context.read<LoginCubit>().onPasswordChange,
             validator: passwordValidator,
+          ),
+          verticalSpace(5),
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const ForgotPasswordScreen(),
+                ),
+              );
+            },
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: TextWidget(
+                'Forgot Password?',
+                fontWeight: FontWeight.w500,
+                fontSize: sp(11),
+              ),
+            ),
           ),
           verticalSpace(),
           BlocBuilder<LoginCubit, LoginModel>(
