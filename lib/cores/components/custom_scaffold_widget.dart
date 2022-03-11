@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../utils/sizer_utils.dart';
 
 class CustomScaffoldWidget extends StatelessWidget {
@@ -8,6 +9,7 @@ class CustomScaffoldWidget extends StatelessWidget {
     this.appBar,
     this.usePadding = true,
     this.useSingleScroll = true,
+    this.useSafeArea = true,
     this.bg,
     this.scaffoldKey,
     this.drawer,
@@ -22,12 +24,14 @@ class CustomScaffoldWidget extends StatelessWidget {
   final AppBar? appBar;
   final bool usePadding;
   final bool useSingleScroll;
+  final bool useSafeArea;
   final Color? bg;
   final GlobalKey<ScaffoldState>? scaffoldKey;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      top: useSafeArea,
       child: Scaffold(
         drawerEnableOpenDragGesture: true,
         key: scaffoldKey,

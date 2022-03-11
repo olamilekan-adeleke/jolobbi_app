@@ -4,17 +4,20 @@ import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:jolobbi_app/cores/constants/color.dart';
+
+import '../constants/color.dart';
 
 class CustomImageWidget extends StatelessWidget {
   const CustomImageWidget({
     Key? key,
     required this.imageUrl,
     required this.imageTypes,
+    this.fit,
   }) : super(key: key);
 
   final String imageUrl;
   final ImageTypes imageTypes;
+  final BoxFit? fit;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class CustomImageWidget extends StatelessWidget {
       case ImageTypes.network:
         return CachedNetworkImage(
           imageUrl: imageUrl,
-          fit: BoxFit.fill,
+          fit: fit ?? BoxFit.fill,
           errorWidget: (_, __, ___) => const Center(child: Icon(Icons.error)),
           placeholder: (_, __) =>
               const Center(child: CircularProgressIndicator()),
@@ -31,13 +34,13 @@ class CustomImageWidget extends StatelessWidget {
       case ImageTypes.file:
         return Image.file(
           File(imageUrl),
-          fit: BoxFit.fill,
+          fit: fit ?? BoxFit.fill,
           errorBuilder: (_, __, ___) => const Center(child: Icon(Icons.error)),
         );
       case ImageTypes.asset:
         return Image.asset(
           imageUrl,
-          fit: BoxFit.fill,
+          fit: fit ?? BoxFit.fill,
           errorBuilder: (_, __, e) {
             log(e.toString());
             return const Center(child: Icon(Icons.error));
@@ -50,7 +53,7 @@ class CustomImageWidget extends StatelessWidget {
       case ImageTypes.profile:
         return CachedNetworkImage(
           imageUrl: imageUrl,
-          fit: BoxFit.fill,
+          fit: fit ?? BoxFit.fill,
           errorWidget: (_, __, ___) => const Center(child: Icon(Icons.person)),
           placeholder: (_, __) =>
               const Center(child: CircularProgressIndicator()),
