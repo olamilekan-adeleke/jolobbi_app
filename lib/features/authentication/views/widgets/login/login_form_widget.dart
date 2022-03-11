@@ -33,12 +33,14 @@ class LoginFormWidget extends StatelessWidget {
             'Enter your email and password to access your account',
             fontWeight: FontWeight.w300,
             fontSize: sp(11),
+
           ),
           verticalSpace(20),
           CustomTextField(
             hintText: 'Email',
             onChanged: context.read<LoginCubit>().onEmailChange,
             validator: emailValidator,
+            textInputType: TextInputType.emailAddress,
           ),
           verticalSpace(),
           CustomTextField(
@@ -46,6 +48,7 @@ class LoginFormWidget extends StatelessWidget {
             isPassword: true,
             onChanged: context.read<LoginCubit>().onPasswordChange,
             validator: passwordValidator,
+            textInputType: TextInputType.visiblePassword,
           ),
           verticalSpace(5),
           GestureDetector(

@@ -1,7 +1,7 @@
 const functions = require("firebase-functions");
 const incrementNewUserCount = require("../controllers/increment_new_user_count");
 
-const onNewUserCreatedFunction = async (context, snapshot) => {
+const onNewUserCreatedFunction = async (snapshot, context) => {
   try {
     const user = snapshot.data();
 

@@ -38,18 +38,21 @@ class SignUpFormWidget extends StatelessWidget {
               hintText: 'Name',
               onChanged: context.read<SignUpCubit>().onNameChange,
               validator: nameValidator,
+              textInputType: TextInputType.text,
             ),
             verticalSpace(),
             CustomTextField(
               hintText: 'Email',
               onChanged: context.read<SignUpCubit>().onEmailChange,
               validator: emailValidator,
+              textInputType: TextInputType.emailAddress,
             ),
             verticalSpace(),
             CustomTextField(
               hintText: 'Mobile Number',
               onChanged: context.read<SignUpCubit>().onMobileChange,
               validator: mobileValidator,
+              textInputType: TextInputType.number,
             ),
             verticalSpace(),
             CustomTextField(
@@ -57,6 +60,7 @@ class SignUpFormWidget extends StatelessWidget {
               isPassword: true,
               onChanged: context.read<SignUpCubit>().onPasswordChange,
               validator: passwordValidator,
+              textInputType: TextInputType.visiblePassword,
             ),
             verticalSpace(),
             BlocBuilder<SignUpCubit, SignUpModel>(
