@@ -16,8 +16,11 @@ class FoodHomeHeaderWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Icon(Icons.menu, size: sp(20), color: kcIconGrey),
-            TextWidget('Fast food',
-                fontSize: sp(20), fontWeight: FontWeight.w500),
+            TextWidget(
+              'Fast food',
+              fontSize: sp(20),
+              fontWeight: FontWeight.w500,
+            ),
             Icon(CupertinoIcons.bell, size: sp(20), color: kcIconGrey),
           ],
         ),
