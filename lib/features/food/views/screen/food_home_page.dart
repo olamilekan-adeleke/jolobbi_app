@@ -12,11 +12,12 @@ class FoodHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffoldWidget(
-        body: Column(
-      children: <Widget>[
-        verticalSpace(),
-        const FoodHomeHeaderWidget(),
-      ],
-    ));
+      body: Column(
+        children: <Widget>[
+          verticalSpace(),
+          const FoodHomeHeaderWidget(),
+        ],
+      ),
+    );
   }
 }
