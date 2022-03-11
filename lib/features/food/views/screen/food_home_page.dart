@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../cores/components/custom_scaffold_widget.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../widgets/food_home_header_widget.dart';
+import '../widgets/food_item_list_view_widget.dart';
 import '../widgets/popular_food_vender_widget.dart';
 
 class FoodHomePage extends StatelessWidget {
@@ -13,6 +14,7 @@ class FoodHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffoldWidget(
+      useSingleScroll: false,
       body: Column(
         children: <Widget>[
           verticalSpace(),
@@ -20,6 +22,7 @@ class FoodHomePage extends StatelessWidget {
           verticalSpace(),
           const PopularFoodVendorWidget(),
           verticalSpace(5),
+          const FoodItemListViewWidget(),
         ],
       ),
     );

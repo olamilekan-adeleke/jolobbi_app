@@ -20,7 +20,7 @@ class PopularFoodVendorWidget extends StatelessWidget {
         ),
         verticalSpace(20),
         SizedBox(
-          height: sp(80),
+          height: sp(60),
           width: double.infinity,
           child: ListView.builder(
             itemCount: 10,
