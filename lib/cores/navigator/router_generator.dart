@@ -5,6 +5,7 @@ import '../../features/authentication/views/screens/forgot_password.dart';
 import '../../features/authentication/views/screens/login_screen.dart';
 import '../../features/authentication/views/screens/sign_up_screen.dart';
 import '../../features/food/views/screen/food_home_page.dart';
+import '../../features/food/views/screen/selcted_food_item_screen.dart';
 import 'error_route_screen.dart';
 
 class RouteGenerator {
@@ -22,6 +23,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
       case FoodHomePage.route:
         return MaterialPageRoute(builder: (_) => const FoodHomePage());
+      case SelectedFoodItemWidget.route:
+        return MaterialPageRoute(
+          builder: (_) => const SelectedFoodItemWidget(),
+        );
 
       // case '/second':
       //   // Validation of correct data type
