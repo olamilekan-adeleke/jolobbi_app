@@ -8,6 +8,7 @@ const Color kcGrey600 = Color(0xffBDBDBD);
 const Color kcGrey800 = Color(0xffBDBDBD);
 const Color kcGrey300 = Color(0xffD6D6D6);
 const Color kcGrey100 = Color(0xffF5F5F5);
+const Color kcIconGrey = Color(0xff888888);
 const Color kcBackground = Color(0xffE8E7E5);
 const Color kcWhite = Color(0xffEEEEEE);
 const Color kcSuccessColor = Color(0xff15DC71);

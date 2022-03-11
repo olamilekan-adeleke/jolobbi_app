@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jolobbi_app/cores/navigator/app_router.dart';
 import 'package:sizer/sizer.dart';
 
 import 'cores/constants/color.dart';
+import 'cores/navigator/router_generator.dart';
 import 'features/authentication/cubits/auth_state_cubit.dart';
 import 'features/authentication/cubits/forgot_password/forgot_password_cubit.dart';
 import 'features/authentication/cubits/login_cubit/login_cubit.dart';
@@ -29,7 +31,9 @@ class JolobbiApp extends StatelessWidget {
               primaryColor: kcPrimaryColor,
               errorColor: kcErrorColor,
             ),
-            home: const AuthStateScreen(),
+            initialRoute: AuthStateScreen.route,
+            onGenerateRoute: RouteGenerator.generateRoute,
+            navigatorKey: AppRouter.instance.navigatorKey,
           );
         },
       ),

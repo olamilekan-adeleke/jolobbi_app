@@ -10,6 +10,7 @@ import 'sign_up_screen.dart';
 class AuthStateScreen extends StatelessWidget {
   const AuthStateScreen({Key? key, this.isLoginScreen = true})
       : super(key: key);
+  static const String route = '/';
 
   final bool isLoginScreen;
 

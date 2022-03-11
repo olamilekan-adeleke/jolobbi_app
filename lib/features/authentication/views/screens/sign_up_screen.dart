@@ -16,6 +16,8 @@ import '../widgets/sign_up/sign_up_form_widget.dart';
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
+  static const String route = '/sign-up';
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<SignUpCubit, SignUpModel>(
