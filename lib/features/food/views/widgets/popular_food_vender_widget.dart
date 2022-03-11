@@ -20,19 +20,19 @@ class PopularFoodVendorWidget extends StatelessWidget {
         ),
         verticalSpace(20),
         SizedBox(
-          height: sp(100),
+          height: sp(80),
           width: double.infinity,
           child: ListView.builder(
             itemCount: 10,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, snapshot) {
-              return Padding(
-                padding: EdgeInsets.all(sp(5)),
+              return SizedBox(
+                width: sp(65),
                 child: Column(
                   children: [
                     SizedBox(
-                      height: sp(50),
-                      width: sp(50),
+                      height: sp(40),
+                      width: sp(40),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(sp(100)),
                         child: const CustomImageWidget(
@@ -45,6 +45,8 @@ class PopularFoodVendorWidget extends StatelessWidget {
                       'Shoprite',
                       fontSize: sp(14),
                       fontWeight: FontWeight.w400,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ],
                 ),
