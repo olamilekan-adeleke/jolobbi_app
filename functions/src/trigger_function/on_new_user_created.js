@@ -1,5 +1,6 @@
 const functions = require("firebase-functions");
 const incrementNewUserCount = require("../controllers/increment_new_user_count");
+const createUserWallet = require("../controllers/create_user_wallet");
 
 const onNewUserCreatedFunction = async (snapshot, context) => {
   try {

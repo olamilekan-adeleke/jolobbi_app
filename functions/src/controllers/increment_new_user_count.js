@@ -10,10 +10,13 @@ const incrementNewUserCount = async () => {
     .firestore()
     .collection("stats")
     .doc("new_user_count")
-    .update({
-      [`${date}`]: admin.firestore.FieldValue.increment(1),
-      [`month_${month}`]: admin.firestore.FieldValue.increment(1),
-    });
+    .set(
+      {
+        [`${date}`]: admin.firestore.FieldValue.increment(1),
+        [`month_${month}`]: admin.firestore.FieldValue.increment(1),
+      },
+      { merge: true }
+    );
 
   functions.logger.log(`New user count incremented`);
 };
