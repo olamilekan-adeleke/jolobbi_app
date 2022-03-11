@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../cores/constants/color.dart';
@@ -34,7 +35,7 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  final ValueNotifier<bool> obscureText = ValueNotifier<bool>(false);
+  final ValueNotifier<bool> obscureText = ValueNotifier<bool>(true);
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +79,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             suffixIcon: widget.isPassword == true
                 ? IconButton(
-                    icon: const Icon(Icons.remove_red_eye_outlined),
+                    icon: Icon(
+                      value
+                          ? CupertinoIcons.eye_slash_fill
+                          : CupertinoIcons.eye_fill,
+                    ),
                     onPressed: () => obscureText.value = !obscureText.value,
                   )
                 : widget.suffix != null

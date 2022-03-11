@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jolobbi_app/cores/utils/crashlytics_helper.dart';
 import 'package:jolobbi_app/cores/utils/firebase_auth_exception.dart';
 import 'package:jolobbi_app/cores/utils/local_storage.dart';
-import 'package:jolobbi_app/features/authentication/cubits/auth_state_cubit.dart';
 import 'package:jolobbi_app/features/authentication/enum/auth_enum.dart';
 import 'package:jolobbi_app/features/authentication/models/login_model.dart';
 import 'package:jolobbi_app/features/authentication/repository/login_repository.dart';
