@@ -1,5 +1,5 @@
 const functions = require("firebase-functions");
-const admin = require("../firebase");
+const admin = require("../../firebase_admin_helper");
 
 const createUserWallet = async (userId) => {
   await admin.firestore().collection("wallets").doc(userId).set({
@@ -8,8 +8,6 @@ const createUserWallet = async (userId) => {
   });
 
   functions.logger.log(`created wallet for user ${userId}`);
-
-  return Promise.resolve();
 };
 
 module.exports = createUserWallet;

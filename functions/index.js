@@ -1,7 +1,5 @@
 const functions = require("firebase-functions");
-const {
-  onNewUserCreatedFunction,
-} = require("./src/trigger_function/on_new_user_created");
+const onNewUserCreatedFunction = require("./src/trigger_function/on_new_user_created");
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
