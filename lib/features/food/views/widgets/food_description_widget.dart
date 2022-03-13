@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jolobbi_app/features/food/views/widgets/food_item_add_on_widget.dart';
 
 import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/utils/sizer_utils.dart';
@@ -20,18 +21,15 @@ class FoodDescriptionAndAddonWidget extends StatelessWidget {
           child: DefaultTabController(
             length: 2,
             child: Column(
-              children: <Widget>[
-                const TabBar(
-                  tabs: [
-                    Tab(text: 'Extras'),
-                    Tab(text: 'Add On'),
-                  ],
+              children: const <Widget>[
+                TabBar(
+                  tabs: [Tab(text: 'Extras'), Tab(text: 'Add On')],
                 ),
                 Expanded(
                   child: TabBarView(
                     children: [
-                      const FoodItemExtraListViewWidget(),
-                      Center(child: TextWidget('Add On' * 5)),
+                      FoodItemExtraListViewWidget(),
+                      FoodItemAddOnListViewWidget(),
                     ],
                   ),
                 ),
