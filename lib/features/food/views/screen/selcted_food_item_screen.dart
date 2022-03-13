@@ -6,6 +6,7 @@ import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../widgets/food_description_widget.dart';
+import '../widgets/food_item_cart_buttom_widget.dart';
 import '../widgets/food_item_review_list_view_widget.dart';
 
 class SelectedFoodItemWidget extends StatelessWidget {
@@ -47,6 +48,10 @@ class SelectedFoodItemWidget extends StatelessWidget {
               ),
               child: const FoodItemBodyWidget(),
             ),
+          ),
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: FoodItemCartButtonWidget(),
           ),
         ],
       ),

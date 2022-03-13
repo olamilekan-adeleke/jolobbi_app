@@ -11,5 +11,6 @@ const Color kcGrey100 = Color(0xffF5F5F5);
 const Color kcIconGrey = Color(0xff888888);
 const Color kcBackground = Color(0xffE8E7E5);
 const Color kcWhite = Color(0xFFFFFDFD);
+const Color kcBlack = Color(0xFF000000);
 const Color kcSuccessColor = Color(0xff15DC71);
 const Color kcErrorColor = Color(0xffFF0202);
