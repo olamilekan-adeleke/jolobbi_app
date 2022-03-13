@@ -6,6 +6,7 @@ import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../widgets/food_description_widget.dart';
+import '../widgets/food_item_review_list_view_widget.dart';
 
 class SelectedFoodItemWidget extends StatelessWidget {
   const SelectedFoodItemWidget({Key? key}) : super(key: key);
@@ -69,18 +70,15 @@ class FoodItemBodyWidget extends StatelessWidget {
             child: DefaultTabController(
               length: 2,
               child: Column(
-                children: <Widget>[
-                  const TabBar(
-                    tabs: [
-                      Tab(text: 'Description'),
-                      Tab(text: 'Reviews'),
-                    ],
+                children: const <Widget>[
+                  TabBar(
+                    tabs: [Tab(text: 'Description'), Tab(text: 'Reviews')],
                   ),
                   Flexible(
                     child: TabBarView(
                       children: [
-                        const FoodDescriptionAndAddonWidget(),
-                        Center(child: TextWidget('Reviews' * 5)),
+                        FoodDescriptionAndAddonWidget(),
+                        FoodItemReviewListViewWidget(),
                       ],
                     ),
                   ),
