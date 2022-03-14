@@ -13,18 +13,11 @@ class FoodItemCartButtonWidget extends StatelessWidget {
       children: <Widget>[
         horizontalSpace(5),
         Expanded(
-          child: CustomButton(
-            color: kcBlack,
-            text: 'CheckOut',
-            onTap: () {},
-          ),
+          child: CustomButton(color: kcBlack, text: 'Checkout', onTap: () {}),
         ),
         horizontalSpace(5),
         Expanded(
-          child: CustomButton(
-            text: 'CheckOut',
-            onTap: () {},
-          ),
+          child: CustomButton(text: 'Add To Cart', onTap: () {}),
         ),
         horizontalSpace(5),
       ],
