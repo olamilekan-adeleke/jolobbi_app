@@ -5,10 +5,11 @@ class FoodVendorService {
   final FoodRepository _foodRepository = FoodRepository();
 
   FoodVendorService() {
-    getFoodVendor();
+    getFoodVendors();
+    getFoodItems();
   }
 
-  Future<List<FoodVendorDataModel>> getFoodVendor() async {
+  Future<List<FoodVendorDataModel>> getFoodVendors() async {
     List<Map<String, dynamic>> _foodVendorRawData =
         await _foodRepository.getFoodVendor();
 
@@ -16,6 +17,12 @@ class FoodVendorService {
         .map((Map<String, dynamic> e) => FoodVendorDataModel.fromMap(e))
         .toList();
 
+    // todo: save item to local storage
+
     return vendorList;
+  }
+
+  Future<void> getFoodItems() async {
+    await _foodRepository.getFoodItem();
   }
 }

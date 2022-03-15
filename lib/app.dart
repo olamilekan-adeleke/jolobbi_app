@@ -14,6 +14,7 @@ import 'features/authentication/repository/forgot_password_repository.dart';
 import 'features/authentication/repository/login_repository.dart';
 import 'features/authentication/repository/sign_up_repositry.dart';
 import 'features/authentication/views/screens/auth_state_screen.dart';
+import 'features/food/cubit/food_item_cubit.dart';
 import 'features/food/cubit/food_vendor_cubit.dart';
 import 'features/food/service/food_vendor_service.dart';
 
@@ -69,7 +70,9 @@ class _BlocProviderHelper {
       ),
       BlocProvider<FoodVendorCubit>(
         create: (_) => FoodVendorCubit(foodVendorService),
-        lazy: false,
+      ),
+      BlocProvider<FoodItemCubit>(
+        create: (_) => FoodItemCubit(foodVendorService),
       ),
     ];
   }
