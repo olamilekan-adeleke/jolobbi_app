@@ -14,6 +14,8 @@ import 'features/authentication/repository/forgot_password_repository.dart';
 import 'features/authentication/repository/login_repository.dart';
 import 'features/authentication/repository/sign_up_repositry.dart';
 import 'features/authentication/views/screens/auth_state_screen.dart';
+import 'features/food/cubit/food_vendor_cubit.dart';
+import 'features/food/service/food_vendor_service.dart';
 
 class JolobbiApp extends StatelessWidget {
   const JolobbiApp({Key? key}) : super(key: key);
@@ -46,6 +48,7 @@ class _BlocProviderHelper {
   static final SignUpRepository signUpRepository = SignUpRepository();
   static final ForgotPasswordRepository forgotPasswordRepository =
       ForgotPasswordRepository();
+  static final FoodVendorService foodVendorService = FoodVendorService();
 
   List<BlocProvider> blocList(BuildContext context) {
     return <BlocProvider>[
@@ -63,6 +66,10 @@ class _BlocProviderHelper {
       ),
       BlocProvider<ForgotPasswordCubit>(
         create: (_) => ForgotPasswordCubit(forgotPasswordRepository),
+      ),
+      BlocProvider<FoodVendorCubit>(
+        create: (_) => FoodVendorCubit(foodVendorService),
+        lazy: false,
       ),
     ];
   }
