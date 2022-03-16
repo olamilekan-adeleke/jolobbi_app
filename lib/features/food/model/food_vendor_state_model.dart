@@ -5,23 +5,24 @@ class FoodVendorStateModel {
   FoodVendorStateModel({
     this.status = FoodVendorStatus.unknown,
     this.errorText = "",
-  });
+    List<FoodVendorDataModel>? foodVendorDataModels,
+  }) : foodVendorDataModels = foodVendorDataModels ?? [];
 
   final FoodVendorStatus status;
   final String errorText;
-  final List<FoodVendorDataModel> foodVendorDataModels = [];
+  List<FoodVendorDataModel> foodVendorDataModels = [];
+
+  
 
   FoodVendorStateModel copyWith({
     FoodVendorStatus? status,
     String? errorText,
+    List<FoodVendorDataModel>? foodVendorDataModels,
   }) {
     return FoodVendorStateModel(
       status: status ?? this.status,
       errorText: errorText ?? this.errorText,
+      foodVendorDataModels:  foodVendorDataModels ?? this.foodVendorDataModels,
     );
-  }
-
-  void addFoodVendor(FoodVendorDataModel foodVendorDataModel) {
-    foodVendorDataModels.add(foodVendorDataModel);
   }
 }

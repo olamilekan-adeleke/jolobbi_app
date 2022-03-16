@@ -19,9 +19,12 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
       List<FoodVendorDataModel> foodVendor =
           await foodVendorService.getFoodVendors();
 
-      foodVendor.forEach(state.addFoodVendor);
-
-      emit(state.copyWith(status: FoodVendorStatus.success));
+      emit(
+        state.copyWith(
+          status: FoodVendorStatus.success,
+          foodVendorDataModels: foodVendor,
+        ),
+      );
     } catch (e, s) {
       emit(
         state.copyWith(

@@ -57,7 +57,7 @@ class PopularFoodVendorWidget extends StatelessWidget {
               height: sp(60),
               width: double.infinity,
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: state.foodVendorDataModels.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (_, int index) {
                   final FoodVendorDataModel foodVendor =
