@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jolobbi_app/cores/components/error_widget.dart';
 import 'package:jolobbi_app/cores/components/loading_indicator.dart';
+import 'package:jolobbi_app/features/food/model/food_vendor_data_model.dart';
 
 import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/components/image_widget.dart';
@@ -27,7 +29,28 @@ class PopularFoodVendorWidget extends StatelessWidget {
         BlocBuilder<FoodVendorCubit, FoodVendorStateModel>(
           builder: (context, state) {
             if (state.status == FoodVendorStatus.busy) {
-              return const CustomLoadingIndicatorWidget();
+              return Center(
+                child: Column(
+                  children: [
+                    const CustomLoadingIndicatorWidget(),
+                    verticalSpace(5),
+                  ],
+                ),
+              );
+            }
+
+            if (state.status == FoodVendorStatus.error) {
+              return Center(
+                child: Column(
+                  children: [
+                    CustomErrorWidget(
+                      message: state.errorText,
+                      callback: context.read<FoodVendorCubit>().getFoodVendor,
+                    ),
+                    verticalSpace(5),
+                  ],
+                ),
+              );
             }
 
             return SizedBox(
@@ -36,7 +59,10 @@ class PopularFoodVendorWidget extends StatelessWidget {
               child: ListView.builder(
                 itemCount: 10,
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, snapshot) {
+                itemBuilder: (_, int index) {
+                  final FoodVendorDataModel foodVendor =
+                      state.foodVendorDataModels[index];
+
                   return SizedBox(
                     width: sp(65),
                     child: Column(
@@ -46,14 +72,14 @@ class PopularFoodVendorWidget extends StatelessWidget {
                           width: sp(40),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(sp(100)),
-                            child: const CustomImageWidget(
-                              imageUrl: 'assets/images/food.png',
-                              imageTypes: ImageTypes.asset,
+                            child: CustomImageWidget(
+                              imageUrl: foodVendor.image,
+                              imageTypes: ImageTypes.network,
                             ),
                           ),
                         ),
                         TextWidget(
-                          'Shoprite',
+                          foodVendor.name,
                           fontSize: sp(14),
                           fontWeight: FontWeight.w400,
                           maxLines: 1,

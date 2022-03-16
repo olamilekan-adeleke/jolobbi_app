@@ -18,22 +18,24 @@ class AuthStateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthenticatedStateCubit, AuthenticatedStatus>(
       builder: (context, state) {
-        switch (state) {
-          case AuthenticatedStatus.authenticated:
-            return const FoodHomePage();
-          case AuthenticatedStatus.unauthenticated:
-            if (isLoginScreen) {
-              return const LoginScreen();
-            } else {
-              return const SignUpScreen();
-            }
-          default:
-            if (isLoginScreen) {
-              return const LoginScreen();
-            } else {
-              return const SignUpScreen();
-            }
-        }
+
+        return const FoodHomePage();
+        // switch (state) {
+        //   case AuthenticatedStatus.authenticated:
+        //     return const FoodHomePage();
+        //   case AuthenticatedStatus.unauthenticated:
+        //     if (isLoginScreen) {
+        //       return const LoginScreen();
+        //     } else {
+        //       return const SignUpScreen();
+        //     }
+        //   default:
+        //     if (isLoginScreen) {
+        //       return const LoginScreen();
+        //     } else {
+        //       return const SignUpScreen();
+        //     }
+        // }
       },
     );
   }
