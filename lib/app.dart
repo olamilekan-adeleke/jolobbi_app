@@ -72,7 +72,7 @@ class _BlocProviderHelper {
         create: (_) => FoodVendorCubit(foodVendorService)..getFoodVendor(),
       ),
       BlocProvider<FoodItemCubit>(
-        create: (_) => FoodItemCubit(foodVendorService),
+        create: (_) => FoodItemCubit(foodVendorService)..getFoodItem(),
       ),
     ];
   }

@@ -4,13 +4,15 @@ import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/navigator/app_router.dart';
+import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../model/food_item_data_model.dart';
 import '../screen/selcted_food_item_screen.dart';
 
 class FoodItemWidget extends StatelessWidget {
-  const FoodItemWidget({
-    Key? key,
-  }) : super(key: key);
+  const FoodItemWidget(this.foodItem, {Key? key}) : super(key: key);
+
+  final FoodItemDataModel foodItem;
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +40,9 @@ class FoodItemWidget extends StatelessWidget {
             SizedBox(
               height: sp(120),
               width: double.infinity,
-              child: const CustomImageWidget(
-                imageUrl: 'assets/images/food_2.png',
-                imageTypes: ImageTypes.asset,
+              child: CustomImageWidget(
+                imageUrl: foodItem.image,
+                imageTypes: ImageTypes.network,
               ),
             ),
             Padding(
@@ -55,12 +57,12 @@ class FoodItemWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextWidget(
-                        'Sushi Shima',
+                        foodItem.name,
                         fontSize: sp(16),
                         fontWeight: FontWeight.w500,
                       ),
                       TextWidget(
-                        'Charcoal',
+                        foodItem.fastFoodName,
                         fontSize: sp(11),
                         fontWeight: FontWeight.w400,
                       ),
@@ -70,7 +72,7 @@ class FoodItemWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       TextWidget(
-                        'NGN 2,000',
+                        'NGN ${currencyFormatter(foodItem.price)}',
                         fontSize: sp(16),
                         fontWeight: FontWeight.w500,
                       ),

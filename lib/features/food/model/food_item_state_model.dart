@@ -5,23 +5,24 @@ class FoodItemStateModel {
   FoodItemStateModel({
     this.status = FoodItemStatus.unknown,
     this.errorText = "",
-  });
+    List<FoodItemDataModel>? foodItemDataModel,
+  }) : foodItemDataModel =foodItemDataModel ?? [];
 
   final FoodItemStatus status;
   final String errorText;
-  final List<FoodItemDataModel> foodItemDataModel = [];
+  List<FoodItemDataModel> foodItemDataModel;
 
   FoodItemStateModel copyWith({
     FoodItemStatus? status,
     String? errorText,
+    List<FoodItemDataModel>? foodItemDataModels,
   }) {
     return FoodItemStateModel(
       status: status ?? this.status,
       errorText: errorText ?? this.errorText,
+      foodItemDataModel:  foodItemDataModels ?? this.foodItemDataModel,
     );
   }
 
-  void addFoodItem(FoodItemDataModel foodItemDataModel) {
-    this.foodItemDataModel.add(foodItemDataModel);
-  }
+  
 }

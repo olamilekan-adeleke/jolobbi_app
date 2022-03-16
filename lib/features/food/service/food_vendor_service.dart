@@ -1,10 +1,9 @@
+import '../model/food_item_data_model.dart';
 import '../model/food_vendor_data_model.dart';
 import '../repository/food_repository.dart';
 
 class FoodVendorService {
   final FoodRepository _foodRepository = FoodRepository();
-
- 
 
   Future<List<FoodVendorDataModel>> getFoodVendors() async {
     List<Map<String, dynamic>> _foodVendorRawData =
@@ -19,7 +18,14 @@ class FoodVendorService {
     return vendorList;
   }
 
-  Future<void> getFoodItems() async {
-    await _foodRepository.getFoodItem();
+  Future<List<FoodItemDataModel>> getFoodItems() async {
+    List<Map<String, dynamic>> _foodItemRawData =
+        await _foodRepository.getFoodItem();
+
+    List<FoodItemDataModel> foodList = _foodItemRawData
+        .map((Map<String, dynamic> e) => FoodItemDataModel.fromMap(e))
+        .toList();
+
+    return foodList;
   }
 }

@@ -28,7 +28,7 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
     } catch (e, s) {
       emit(
         state.copyWith(
-          status: FoodVendorStatus.busy,
+          status: FoodVendorStatus.error,
           errorText: e.toString(),
         ),
       );

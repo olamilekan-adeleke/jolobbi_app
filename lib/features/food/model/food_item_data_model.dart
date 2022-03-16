@@ -17,9 +17,9 @@ class FoodItemDataModel {
   final int likesCount;
   final String image;
   final List<String> searchKey;
-  final List<AddOn> addOn;
+  final List<AddOn>? addOn;
   final int price;
-  final List<AddOn> extra;
+  final List<AddOn>? extra;
   final String name;
   final String fastFoodId;
   final String fastFoodName;
@@ -32,9 +32,13 @@ class FoodItemDataModel {
       likesCount: json["likes_count"],
       image: json["image"],
       searchKey: List<String>.from(json["search_key"].map((x) => x)),
-      addOn: List<AddOn>.from(json["addOn"].map((x) => AddOn.fromMap(x))),
+      addOn: json["addOn"] == null
+          ? null
+          : List<AddOn>.from(json["addOn"].map((x) => AddOn.fromMap(x))),
       price: json["price"],
-      extra: List<AddOn>.from(json["extra"].map((x) => AddOn.fromMap(x))),
+      extra: json["extra"] == null
+          ? null
+          : List<AddOn>.from(json["extra"].map((x) => AddOn.fromMap(x))),
       name: json["name"],
       fastFoodId: json["fast_food_id"],
       fastFoodName: json["fast_food_name"],
@@ -49,9 +53,13 @@ class FoodItemDataModel {
       "likes_count": likesCount,
       "image": image,
       "search_key": List<dynamic>.from(searchKey.map((x) => x)),
-      "addOn": List<dynamic>.from(addOn.map((x) => x.toMap())),
+      "addOn": addOn == null
+          ? null
+          : List<dynamic>.from(addOn!.map((x) => x.toMap())),
       "price": price,
-      "extra": List<dynamic>.from(extra.map((x) => x.toMap())),
+      "extra": extra == null
+          ? null
+          : List<dynamic>.from(extra!.map((x) => x.toMap())),
       "name": name,
       "fast_food_id": fastFoodId,
       "fast_food_name": fastFoodName,
