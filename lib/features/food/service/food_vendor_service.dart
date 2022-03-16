@@ -4,10 +4,7 @@ import '../repository/food_repository.dart';
 class FoodVendorService {
   final FoodRepository _foodRepository = FoodRepository();
 
-  FoodVendorService() {
-    getFoodVendors();
-    getFoodItems();
-  }
+ 
 
   Future<List<FoodVendorDataModel>> getFoodVendors() async {
     List<Map<String, dynamic>> _foodVendorRawData =

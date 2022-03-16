@@ -9,7 +9,7 @@ class FoodVendorStateModel {
 
   final FoodVendorStatus status;
   final String errorText;
-  final List<FoodVendorDataModel> foodVendorDataModel = [];
+  final List<FoodVendorDataModel> foodVendorDataModels = [];
 
   FoodVendorStateModel copyWith({
     FoodVendorStatus? status,
@@ -22,6 +22,6 @@ class FoodVendorStateModel {
   }
 
   void addFoodVendor(FoodVendorDataModel foodVendorDataModel) {
-    this.foodVendorDataModel.add(foodVendorDataModel);
+    foodVendorDataModels.add(foodVendorDataModel);
   }
 }
