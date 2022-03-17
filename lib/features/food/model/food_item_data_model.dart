@@ -12,6 +12,8 @@ class FoodItemDataModel {
     required this.description,
     required this.id,
     required this.type,
+    required this.averageRating,
+    required this.ratingCount,
   });
 
   final int likesCount;
@@ -26,6 +28,8 @@ class FoodItemDataModel {
   final String description;
   final String id;
   final String type;
+  final double averageRating;
+  final double ratingCount;
 
   factory FoodItemDataModel.fromMap(Map<String, dynamic> json) {
     return FoodItemDataModel(
@@ -45,6 +49,8 @@ class FoodItemDataModel {
       description: json["description"],
       id: json["id"],
       type: json["type"],
+      averageRating: json["average_rating"] ?? 0.0,
+      ratingCount: json["rating_count"] ?? 0,
     );
   }
 
@@ -66,6 +72,8 @@ class FoodItemDataModel {
       "description": description,
       "id": id,
       "type": type,
+      "average_rating": averageRating,
+      "rating_count": ratingCount,
     };
   }
 }

@@ -45,10 +45,10 @@ class FoodItemListViewWidget extends StatelessWidget {
               return Expanded(
                 child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: state.foodItemDataModel.length,
+                  itemCount: state.foodItemDataModels.length,
                   itemBuilder: (_, int index) {
                     final FoodItemDataModel foodItem =
-                        state.foodItemDataModel[index];
+                        state.foodItemDataModels[index];
 
                     return FoodItemWidget(foodItem);
                   },

@@ -5,14 +5,17 @@ import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../model/food_item_data_model.dart';
 import '../widgets/food_description_widget.dart';
 import '../widgets/food_item_cart_buttom_widget.dart';
 import '../widgets/food_item_review_list_view_widget.dart';
 
 class SelectedFoodItemWidget extends StatelessWidget {
-  const SelectedFoodItemWidget({Key? key}) : super(key: key);
+  const SelectedFoodItemWidget(this.foodItem, {Key? key}) : super(key: key);
 
   static const String route = '/selected-food-item';
+
+  final FoodItemDataModel foodItem;
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +49,12 @@ class SelectedFoodItemWidget extends StatelessWidget {
                   topRight: Radius.circular(sp(10)),
                 ),
               ),
-              child: const FoodItemBodyWidget(),
+              child: FoodItemBodyWidget(foodItem),
             ),
           ),
-          const Align(
+          Align(
             alignment: Alignment.bottomCenter,
-            child: FoodItemCartButtonWidget(),
+            child: FoodItemCartButtonWidget(foodItem),
           ),
         ],
       ),
@@ -60,9 +63,9 @@ class SelectedFoodItemWidget extends StatelessWidget {
 }
 
 class FoodItemBodyWidget extends StatelessWidget {
-  const FoodItemBodyWidget({
-    Key? key,
-  }) : super(key: key);
+  const FoodItemBodyWidget(this.foodItem, {Key? key}) : super(key: key);
+
+  final FoodItemDataModel foodItem;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +73,7 @@ class FoodItemBodyWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: sp(15), vertical: sp(20)),
       child: Column(
         children: <Widget>[
-          const FoodItemHeaderWidget(),
+          FoodItemHeaderWidget(foodItem),
           Expanded(
             child: DefaultTabController(
               length: 2,
@@ -98,10 +101,9 @@ class FoodItemBodyWidget extends StatelessWidget {
 }
 
 class FoodItemHeaderWidget extends StatelessWidget {
-  const FoodItemHeaderWidget({
-    Key? key,
-  }) : super(key: key);
+  const FoodItemHeaderWidget(this.foodItem, {Key? key}) : super(key: key);
 
+  final FoodItemDataModel foodItem;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -122,7 +124,10 @@ class FoodItemHeaderWidget extends StatelessWidget {
                   size: sp(13),
                   color: kcPrimaryColor,
                 ),
-                TextWidget('4.5(283)', fontSize: sp(15)),
+                TextWidget(
+                  '${foodItem.a}(${foodItem.ratingCount})',
+                  fontSize: sp(15),
+                ),
                 TextWidget(
                   'Charcoal',
                   fontSize: sp(14),

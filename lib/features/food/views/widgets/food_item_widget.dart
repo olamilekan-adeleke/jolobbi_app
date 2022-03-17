@@ -18,7 +18,10 @@ class FoodItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        AppRouter.instance.navigateTo(SelectedFoodItemWidget.route);
+        AppRouter.instance.navigateTo(
+          SelectedFoodItemWidget.route,
+          arguments: foodItem,
+        );
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: sp(5)),
@@ -86,7 +89,7 @@ class FoodItemWidget extends StatelessWidget {
                           ),
                           horizontalSpace(2),
                           TextWidget(
-                            '4.5(283)',
+                            '${foodItem.ratingCount}(${foodItem.ratingCount})',
                             fontSize: sp(12),
                             fontWeight: FontWeight.w400,
                           ),

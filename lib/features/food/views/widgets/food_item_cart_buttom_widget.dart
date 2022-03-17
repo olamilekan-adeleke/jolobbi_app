@@ -3,9 +3,12 @@ import 'package:jolobbi_app/cores/constants/color.dart';
 
 import '../../../../cores/components/custom_button.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../model/food_item_data_model.dart';
 
 class FoodItemCartButtonWidget extends StatelessWidget {
-  const FoodItemCartButtonWidget({Key? key}) : super(key: key);
+  const FoodItemCartButtonWidget(this.foodItem, {Key? key}) : super(key: key);
+
+  final FoodItemDataModel foodItem;
 
   @override
   Widget build(BuildContext context) {
