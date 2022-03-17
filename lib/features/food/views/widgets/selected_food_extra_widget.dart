@@ -3,25 +3,34 @@ import 'package:jolobbi_app/cores/components/custom_text_widget.dart';
 
 import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
+import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../model/food_item_data_model.dart';
 
-class FoodItemExtraListViewWidget extends StatelessWidget {
-  const FoodItemExtraListViewWidget({Key? key}) : super(key: key);
+class SelectedFoodItemExtraListViewWidget extends StatelessWidget {
+  const SelectedFoodItemExtraListViewWidget(this.extras, {Key? key})
+      : super(key: key);
+
+  final List<Extras> extras;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 20,
+      itemCount: extras.length,
       itemBuilder: (_, int index) {
-        return const FoodItemExtraWidget();
+        final Extras extra = extras[index];
+
+        return _FoodItemExtraWidget(extra);
       },
     );
   }
 }
 
-class FoodItemExtraWidget extends StatelessWidget {
-  const FoodItemExtraWidget({Key? key}) : super(key: key);
+class _FoodItemExtraWidget extends StatelessWidget {
+  const _FoodItemExtraWidget(this.extra, {Key? key}) : super(key: key);
+
+  final Extras extra;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +41,9 @@ class FoodItemExtraWidget extends StatelessWidget {
           SizedBox(
             height: sp(40),
             width: sp(40),
-            child: const CustomImageWidget(
-              imageUrl: 'assets/images/extra_food.png',
-              imageTypes: ImageTypes.asset,
+            child: CustomImageWidget(
+              imageUrl: extra.image,
+              imageTypes: ImageTypes.network,
             ),
           ),
           horizontalSpace(5),
@@ -42,12 +51,12 @@ class FoodItemExtraWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextWidget(
-                'Extra Rice',
+                extra.name,
                 fontSize: sp(12),
                 fontWeight: FontWeight.w300,
               ),
               TextWidget(
-                'NGN 50',
+                'NGN ${currencyFormatter(extra.price)}',
                 fontSize: sp(14),
                 fontWeight: FontWeight.w500,
               ),

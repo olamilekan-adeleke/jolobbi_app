@@ -5,7 +5,7 @@ class FoodItemDataModel {
     required this.searchKey,
     required this.addOn,
     required this.price,
-    required this.extra,
+    required this.extras,
     required this.name,
     required this.fastFoodId,
     required this.fastFoodName,
@@ -21,7 +21,7 @@ class FoodItemDataModel {
   final List<String> searchKey;
   final List<AddOn>? addOn;
   final int price;
-  final List<AddOn>? extra;
+  final List<Extras>? extras;
   final String name;
   final String fastFoodId;
   final String fastFoodName;
@@ -29,7 +29,7 @@ class FoodItemDataModel {
   final String id;
   final String type;
   final double averageRating;
-  final double ratingCount;
+  final int ratingCount;
 
   factory FoodItemDataModel.fromMap(Map<String, dynamic> json) {
     return FoodItemDataModel(
@@ -40,9 +40,9 @@ class FoodItemDataModel {
           ? null
           : List<AddOn>.from(json["addOn"].map((x) => AddOn.fromMap(x))),
       price: json["price"],
-      extra: json["extra"] == null
+      extras: json["extra"] == null
           ? null
-          : List<AddOn>.from(json["extra"].map((x) => AddOn.fromMap(x))),
+          : List<Extras>.from(json["extra"].map((x) => Extras.fromMap(x))),
       name: json["name"],
       fastFoodId: json["fast_food_id"],
       fastFoodName: json["fast_food_name"],
@@ -63,9 +63,9 @@ class FoodItemDataModel {
           ? null
           : List<dynamic>.from(addOn!.map((x) => x.toMap())),
       "price": price,
-      "extra": extra == null
+      "extra": extras == null
           ? null
-          : List<dynamic>.from(extra!.map((x) => x.toMap())),
+          : List<dynamic>.from(extras!.map((x) => x.toMap())),
       "name": name,
       "fast_food_id": fastFoodId,
       "fast_food_name": fastFoodName,
@@ -91,6 +91,35 @@ class AddOn {
 
   factory AddOn.fromMap(Map<String, dynamic> json) {
     return AddOn(
+      image: json["image"],
+      price: json["price"],
+      name: json["name"],
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      "image": image,
+      "price": price,
+      "name": name,
+    };
+  }
+}
+
+
+class Extras {
+  Extras({
+    required this.image,
+    required this.price,
+    required this.name,
+  });
+
+  final String image;
+  final int price;
+  final String name;
+
+  factory Extras.fromMap(Map<String, dynamic> json) {
+    return Extras(
       image: json["image"],
       price: json["price"],
       name: json["name"],

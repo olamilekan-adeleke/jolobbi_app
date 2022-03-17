@@ -4,9 +4,10 @@ import '../../../../cores/components/custom_scaffold_widget.dart';
 import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
+import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../model/food_item_data_model.dart';
-import '../widgets/food_description_widget.dart';
+import '../widgets/selected_food_description_widget.dart';
 import '../widgets/food_item_cart_buttom_widget.dart';
 import '../widgets/food_item_review_list_view_widget.dart';
 
@@ -78,15 +79,15 @@ class FoodItemBodyWidget extends StatelessWidget {
             child: DefaultTabController(
               length: 2,
               child: Column(
-                children: const <Widget>[
-                  TabBar(
+                children: <Widget>[
+                  const TabBar(
                     tabs: [Tab(text: 'Description'), Tab(text: 'Reviews')],
                   ),
                   Flexible(
                     child: TabBarView(
                       children: [
-                        FoodDescriptionAndAddonWidget(),
-                        FoodItemReviewListViewWidget(),
+                        SelectedFoodDescriptionAndAddonWidget(foodItem),
+                        const FoodItemReviewListViewWidget(),
                       ],
                     ),
                   ),
@@ -113,7 +114,7 @@ class FoodItemHeaderWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextWidget(
-              'Sushi Shima',
+              foodItem.name,
               fontSize: sp(18),
               fontWeight: FontWeight.w500,
             ),
@@ -125,7 +126,7 @@ class FoodItemHeaderWidget extends StatelessWidget {
                   color: kcPrimaryColor,
                 ),
                 TextWidget(
-                  '${foodItem.a}(${foodItem.ratingCount})',
+                  '${foodItem.averageRating}(${foodItem.ratingCount})',
                   fontSize: sp(15),
                 ),
                 TextWidget(
@@ -138,7 +139,7 @@ class FoodItemHeaderWidget extends StatelessWidget {
           ],
         ),
         TextWidget(
-          'NGN 2,000',
+          'NGN ${currencyFormatter(foodItem.price)}',
           fontSize: sp(18),
           fontWeight: FontWeight.w500,
         ),

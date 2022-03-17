@@ -89,7 +89,7 @@ class FoodItemWidget extends StatelessWidget {
                           ),
                           horizontalSpace(2),
                           TextWidget(
-                            '${foodItem.ratingCount}(${foodItem.ratingCount})',
+                            '${foodItem.averageRating}(${foodItem.ratingCount})',
                             fontSize: sp(12),
                             fontWeight: FontWeight.w400,
                           ),
