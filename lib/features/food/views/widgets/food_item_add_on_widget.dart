@@ -3,25 +3,33 @@ import 'package:jolobbi_app/cores/components/custom_text_widget.dart';
 
 import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
+import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../model/food_item_data_model.dart';
 
 class FoodItemAddOnListViewWidget extends StatelessWidget {
-  const FoodItemAddOnListViewWidget({Key? key}) : super(key: key);
+  const FoodItemAddOnListViewWidget(this.addOns, {Key? key}) : super(key: key);
+
+  final List<AddOn> addOns;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 20,
+      itemCount: addOns.length,
       itemBuilder: (_, int index) {
-        return const FoodItemAddOnWidget();
+        final AddOn addOn = addOns[index];
+
+        return FoodItemAddOnWidget(addOn);
       },
     );
   }
 }
 
 class FoodItemAddOnWidget extends StatelessWidget {
-  const FoodItemAddOnWidget({Key? key}) : super(key: key);
+  const FoodItemAddOnWidget(this.addOn, {Key? key}) : super(key: key);
+
+  final AddOn addOn;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +40,9 @@ class FoodItemAddOnWidget extends StatelessWidget {
           SizedBox(
             height: sp(40),
             width: sp(40),
-            child: const CustomImageWidget(
-              imageUrl: 'assets/images/stew.png',
-              imageTypes: ImageTypes.asset,
+            child: CustomImageWidget(
+              imageUrl: addOn.image,
+              imageTypes: ImageTypes.network,
             ),
           ),
           horizontalSpace(5),
@@ -42,12 +50,12 @@ class FoodItemAddOnWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextWidget(
-                'Stew',
+                addOn.name,
                 fontSize: sp(12),
                 fontWeight: FontWeight.w300,
               ),
               TextWidget(
-                'NGN 50',
+                'NGN ${currencyFormatter(addOn.price)}',
                 fontSize: sp(14),
                 fontWeight: FontWeight.w500,
               ),

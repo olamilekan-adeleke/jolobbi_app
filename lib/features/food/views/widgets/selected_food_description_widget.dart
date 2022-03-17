@@ -27,7 +27,7 @@ class SelectedFoodDescriptionAndAddonWidget extends StatelessWidget {
           child: DefaultTabController(
             length: 2,
             child: Column(
-              children:  <Widget>[
+              children: <Widget>[
                 const TabBar(
                   tabs: [Tab(text: 'Extras'), Tab(text: 'Add On')],
                 ),
@@ -35,7 +35,7 @@ class SelectedFoodDescriptionAndAddonWidget extends StatelessWidget {
                   child: TabBarView(
                     children: [
                       SelectedFoodItemExtraListViewWidget(foodItem.extras!),
-                      const FoodItemAddOnListViewWidget(),
+                      FoodItemAddOnListViewWidget(foodItem.addOn!),
                     ],
                   ),
                 ),
