@@ -110,37 +110,36 @@ class FoodItemHeaderWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: sw(59),
-              child: TextWidget(
+        Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextWidget(
                 foodItem.name,
                 fontSize: sp(18),
                 fontWeight: FontWeight.w500,
                 textAlign: TextAlign.left,
               ),
-            ),
-            Row(
-              children: [
-                Icon(
-                  Icons.star_rate,
-                  size: sp(13),
-                  color: kcPrimaryColor,
-                ),
-                TextWidget(
-                  '${foodItem.averageRating}(${foodItem.ratingCount})',
-                  fontSize: sp(15),
-                ),
-                TextWidget(
-                  'Charcoal',
-                  fontSize: sp(14),
-                  fontWeight: FontWeight.w300,
-                ),
-              ],
-            ),
-          ],
+              Row(
+                children: [
+                  Icon(
+                    Icons.star_rate,
+                    size: sp(13),
+                    color: kcPrimaryColor,
+                  ),
+                  TextWidget(
+                    '${foodItem.averageRating}(${foodItem.ratingCount})',
+                    fontSize: sp(15),
+                  ),
+                  TextWidget(
+                    'Charcoal',
+                    fontSize: sp(14),
+                    fontWeight: FontWeight.w300,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
         TextWidget(
           'NGN ${currencyFormatter(foodItem.price)}',

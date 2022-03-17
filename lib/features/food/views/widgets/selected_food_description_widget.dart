@@ -23,27 +23,89 @@ class SelectedFoodDescriptionAndAddonWidget extends StatelessWidget {
           foodItem.description,
           fontSize: sp(12),
         ),
-        Expanded(
-          child: DefaultTabController(
-            length: 2,
-            child: Column(
-              children: <Widget>[
-                const TabBar(
-                  tabs: [Tab(text: 'Extras'), Tab(text: 'Add On')],
+        _AddOnAndExtraWidget(foodItem: foodItem),
+      ],
+    );
+  }
+}
+
+class _AddOnAndExtraWidget extends StatelessWidget {
+  const _AddOnAndExtraWidget({
+    Key? key,
+    required this.foodItem,
+  }) : super(key: key);
+
+  final FoodItemDataModel foodItem;
+
+  @override
+  Widget build(BuildContext context) {
+    if (foodItem.addOn == null && foodItem.extras == null) {
+      return Container();
+    }
+
+    if (foodItem.addOn == null) {
+      return Expanded(
+        child: DefaultTabController(
+          length: 1,
+          child: Column(
+            children: <Widget>[
+              const TabBar(
+                tabs: [Tab(text: 'Extras')],
+              ),
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    SelectedFoodItemExtraListViewWidget(foodItem.extras!),
+                  ],
                 ),
-                Expanded(
-                  child: TabBarView(
-                    children: [
-                      SelectedFoodItemExtraListViewWidget(foodItem.extras!),
-                      FoodItemAddOnListViewWidget(foodItem.addOn!),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-      ],
+      );
+    }
+
+    if (foodItem.extras == null) {
+      return Expanded(
+        child: DefaultTabController(
+          length: 1,
+          child: Column(
+            children: <Widget>[
+              const TabBar(
+                tabs: [Tab(text: 'Add on')],
+              ),
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    FoodItemAddOnListViewWidget(foodItem.addOn!),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Expanded(
+      child: DefaultTabController(
+        length: 2,
+        child: Column(
+          children: <Widget>[
+            const TabBar(
+              tabs: [Tab(text: 'Extras'), Tab(text: 'Add On')],
+            ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  SelectedFoodItemExtraListViewWidget(foodItem.extras!),
+                  FoodItemAddOnListViewWidget(foodItem.addOn!),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
