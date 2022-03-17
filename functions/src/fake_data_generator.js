@@ -102,6 +102,9 @@
 //       likes_count: 1,
 //       extra: generateExtra(6),
 //       addOn: generateAddOn(4),
+//       average_rating: faker.datatype.number({ max: 5, precision: 0.01 }),
+//       rating_count: faker.datatype.number({ max: 50000 }),
+//       time_added: new Date().getTime(),
 //     };
 
 //     log(`generating ${index} product | Food ...`);
@@ -134,6 +137,9 @@
 //       fast_food_name: merchantName,
 //       fast_food_id: merchantId,
 //       likes_count: 1,
+//       average_rating: faker.datatype.number({ max: 5, precision: 0.01 }),
+//       rating_count: faker.datatype.number({ max: 50000 }),
+//       time_added: new Date().getTime(),
 //     };
 
 //     log(`generating ${index} product | Drinks ...`);
@@ -166,6 +172,9 @@
 //       fast_food_name: merchantName,
 //       fast_food_id: merchantId,
 //       likes_count: 1,
+//       average_rating: faker.datatype.number({ max: 5, precision: 0.01 }),
+//       rating_count: faker.datatype.number({ max: 50000 }),
+//       time_added: new Date().getTime(),
 //     };
 
 //     log(`generating ${index} product | Snacks ...`);
@@ -232,4 +241,4 @@
 //   }
 // }
 
-//// generateFakeData();
+// // generateFakeData();

@@ -37,11 +37,16 @@ class FoodRepository {
   Future<List<Map<String, dynamic>>> getFoodItem({
     int limit = 10,
     String? lastDocId,
+    int? timeAdded,
   }) async {
-    Query query = foodItemCollectionRef.limit(10);
+    Query query = foodItemCollectionRef
+        .limit(10)
+        .where('type', isEqualTo: 'food')
+        .orderBy('id')
+        .orderBy('time_added');
 
     if (lastDocId != null) {
-      query = query.startAfter([lastDocId]);
+      query = query.startAfter([lastDocId, timeAdded]);
     }
 
     QuerySnapshot querySnapshot = await query.get();
@@ -57,5 +62,3 @@ class FoodRepository {
     return dataList;
   }
 }
-
-

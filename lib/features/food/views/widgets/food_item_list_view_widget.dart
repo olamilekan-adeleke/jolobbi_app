@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../cores/components/error_widget.dart';
@@ -11,8 +12,25 @@ import '../../model/food_item_state_model.dart';
 import 'food_item_list_view_tab_bar_widget.dart';
 import 'food_item_widget.dart';
 
-class FoodItemListViewWidget extends StatelessWidget {
+class FoodItemListViewWidget extends StatefulWidget {
   const FoodItemListViewWidget({Key? key}) : super(key: key);
+
+  static final ScrollController scrollController = ScrollController();
+
+  @override
+  State<FoodItemListViewWidget> createState() => _FoodItemListViewWidgetState();
+}
+
+class _FoodItemListViewWidgetState extends State<FoodItemListViewWidget> {
+  static final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      context.read<FoodItemCubit>().initScrollListener(scrollController);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,16 +60,28 @@ class FoodItemListViewWidget extends StatelessWidget {
                   ),
                 );
               }
-              return Expanded(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: state.foodItemDataModels.length,
-                  itemBuilder: (_, int index) {
-                    final FoodItemDataModel foodItem =
-                        state.foodItemDataModels[index];
 
-                    return FoodItemWidget(foodItem);
-                  },
+              return Expanded(
+                child: Stack(
+                  children: [
+                    ListView.builder(
+                      controller: scrollController,
+                      shrinkWrap: true,
+                      itemCount: state.foodItemDataModels.length,
+                      itemBuilder: (_, int index) {
+                        final FoodItemDataModel foodItem =
+                            state.foodItemDataModels[index];
+
+                        return FoodItemWidget(foodItem);
+                      },
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: state.status == FoodItemStatus.moreBusy
+                          ? const LoadingMoreWidget()
+                          : Container(),
+                    ),
+                  ],
                 ),
               );
             },
