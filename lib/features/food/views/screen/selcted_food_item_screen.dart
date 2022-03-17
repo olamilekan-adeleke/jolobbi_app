@@ -113,10 +113,14 @@ class FoodItemHeaderWidget extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextWidget(
-              foodItem.name,
-              fontSize: sp(18),
-              fontWeight: FontWeight.w500,
+            SizedBox(
+              width: sw(59),
+              child: TextWidget(
+                foodItem.name,
+                fontSize: sp(18),
+                fontWeight: FontWeight.w500,
+                textAlign: TextAlign.left,
+              ),
             ),
             Row(
               children: [
