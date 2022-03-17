@@ -56,20 +56,27 @@ class FoodItemWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextWidget(
-                        foodItem.name,
-                        fontSize: sp(16),
-                        fontWeight: FontWeight.w500,
-                      ),
-                      TextWidget(
-                        foodItem.fastFoodName,
-                        fontSize: sp(11),
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ],
+                  SizedBox(
+                    width: sw(55),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextWidget(
+                          foodItem.name,
+                          fontSize: sp(16),
+                          fontWeight: FontWeight.w500,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        TextWidget(
+                          foodItem.fastFoodName,
+                          fontSize: sp(11),
+                          fontWeight: FontWeight.w400,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
