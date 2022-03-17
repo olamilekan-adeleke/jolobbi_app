@@ -28,7 +28,7 @@ class FoodItemDataModel {
   final String description;
   final String id;
   final String type;
-  final double averageRating;
+  final num averageRating;
   final int ratingCount;
 
   factory FoodItemDataModel.fromMap(Map<String, dynamic> json) {
@@ -49,7 +49,7 @@ class FoodItemDataModel {
       description: json["description"],
       id: json["id"],
       type: json["type"],
-      averageRating: json["average_rating"] ?? 0.0,
+      averageRating: (json["average_rating"] ?? 0.0) as num,
       ratingCount: json["rating_count"] ?? 0,
     );
   }
@@ -105,7 +105,6 @@ class AddOn {
     };
   }
 }
-
 
 class Extras {
   Extras({

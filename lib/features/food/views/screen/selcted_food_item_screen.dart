@@ -120,6 +120,11 @@ class FoodItemHeaderWidget extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 textAlign: TextAlign.left,
               ),
+              TextWidget(
+                foodItem.fastFoodName,
+                fontSize: sp(14),
+                fontWeight: FontWeight.w300,
+              ),
               Row(
                 children: [
                   Icon(
@@ -130,11 +135,6 @@ class FoodItemHeaderWidget extends StatelessWidget {
                   TextWidget(
                     '${foodItem.averageRating}(${foodItem.ratingCount})',
                     fontSize: sp(15),
-                  ),
-                  TextWidget(
-                    'Charcoal',
-                    fontSize: sp(14),
-                    fontWeight: FontWeight.w300,
                   ),
                 ],
               ),
