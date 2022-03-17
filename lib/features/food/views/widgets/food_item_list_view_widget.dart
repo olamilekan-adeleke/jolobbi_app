@@ -67,10 +67,10 @@ class _FoodItemListViewWidgetState extends State<FoodItemListViewWidget> {
                     ListView.builder(
                       controller: scrollController,
                       shrinkWrap: true,
-                      itemCount: state.foodItemDataModels.length,
+                      itemCount: state.foodItems.length,
                       itemBuilder: (_, int index) {
                         final FoodItemDataModel foodItem =
-                            state.foodItemDataModels[index];
+                            state.foodItems[index];
 
                         return FoodItemWidget(foodItem);
                       },
