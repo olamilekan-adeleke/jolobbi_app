@@ -446,6 +446,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  geoflutterfire2:
+    dependency: "direct main"
+    description:
+      name: geoflutterfire2
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.3.11"
   glob:
     dependency: transitive
     description:
@@ -542,6 +549,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.11"
+  location:
+    dependency: "direct main"
+    description:
+      name: location
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.3.0"
+  location_platform_interface:
+    dependency: transitive
+    description:
+      name: location_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.3.0"
+  location_web:
+    dependency: transitive
+    description:
+      name: location_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.1"
   logger:
     dependency: transitive
     description:

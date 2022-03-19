@@ -22,7 +22,8 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^6.0.0-beta.0",
-    "firebase-functions-test": "^0.2.0"
+    "firebase-functions-test": "^0.2.0",
+    "geofirestore": "^5.0.0"
   },
   "private": true
 }

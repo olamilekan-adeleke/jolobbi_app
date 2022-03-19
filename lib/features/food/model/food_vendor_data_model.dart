@@ -56,7 +56,7 @@ class FoodVendorContact {
     required this.email,
   });
 
-  final int number;
+  final String number;
   final String email;
 
   factory FoodVendorContact.fromMap(Map<String, dynamic> json) {

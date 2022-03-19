@@ -3,6 +3,7 @@
 // const { faker } = require("@faker-js/faker");
 // const admin = require("firebase-admin");
 // const uuid = require("uuid");
+// const GeoFirestore = require("geofirestore").GeoFirestore;
 
 // var serviceAccount = require("../jolobbi-staging-firebase-adminsdk-c5tjv-e0d041a5df.json");
 
@@ -11,6 +12,13 @@
 // });
 
 // const firestoreDatabase = admin.firestore();
+
+// const geofirestore = new GeoFirestore(firestoreDatabase);
+
+// const geoRestaurantsCollection = geofirestore.collection("restaurants");
+// const geoFoodItemsCollection = geofirestore.collection("fast_food_items");
+// const geoDrinksItemsCollection = geofirestore.collection("drink_items");
+// const geoSnacksItemsCollection = geofirestore.collection("snack_items");
 
 // function log(message) {
 //   console.log(`FakeDataPopulator | ${message}`);
@@ -25,10 +33,18 @@
 // }
 
 // async function createMerchantDocument(merchant) {
-//   const documentReference = await firestoreDatabase
-//     .collection("restaurants")
-//     .doc(merchant.id)
-//     .set(merchant);
+//   //   const documentReference = await geoRestaurantsCollection
+//   //     .doc(merchant.id)
+//   //     .set({ ...merchant });
+
+//   let geoPoint = {
+//     coordinates: new admin.firestore.GeoPoint(8.4806506, 4.6267146),
+//   };
+
+//   const documentReference = await geoRestaurantsCollection.add({
+//     ...merchant,
+//     ...geoPoint,
+//   });
 //   return documentReference.id;
 // }
 
@@ -55,7 +71,7 @@
 //       rating: faker.datatype.float({ max: 5 }),
 //       number_of_ratings: faker.datatype.number({ max: 500 }),
 //       contact: {
-//         number: 08011223344,
+//         number: "08011223344",
 //         email: "fast@food.com",
 //       },
 //       location: {
@@ -109,7 +125,7 @@
 
 //     log(`generating ${index} product | Food ...`);
 
-//     await createMerchantProduct(product);
+//     await createMerchantFoodProduct(product);
 
 //     await createFoodItemReview(productId);
 //   }
@@ -144,9 +160,9 @@
 
 //     log(`generating ${index} product | Drinks ...`);
 
-//     await createMerchantProduct(product);
+//     await createMerchantDrinkProduct(product);
 
-//     await createFoodItemReview(productId);
+//     await createDrinkItemReview(productId);
 //   }
 
 //   for (let index = 0; index < 5; index++) {
@@ -179,9 +195,9 @@
 
 //     log(`generating ${index} product | Snacks ...`);
 
-//     await createMerchantProduct(product);
+//     await createMerchantSnackProduct(product);
 
-//     await createFoodItemReview(productId);
+//     await createSnackItemReview(productId);
 //   }
 // }
 
@@ -215,11 +231,32 @@
 //   return addOn;
 // }
 
-// async function createMerchantProduct(product) {
-//   await firestoreDatabase
-//     .collection("fast_food_items")
+// async function createMerchantFoodProduct(product) {
+//   let geoPoint = {
+//     coordinates: new admin.firestore.GeoPoint(8.4806506, 4.6267146),
+//   };
+
+//   await geoFoodItemsCollection.doc(product.id).set({ ...product, ...geoPoint });
+// }
+
+// async function createMerchantDrinkProduct(product) {
+//   let geoPoint = {
+//     coordinates: new admin.firestore.GeoPoint(8.4806506, 4.6267146),
+//   };
+
+//   await geoDrinksItemsCollection
 //     .doc(product.id)
-//     .set(product);
+//     .set({ ...product, ...geoPoint });
+// }
+
+// async function createMerchantSnackProduct(product) {
+//   let geoPoint = {
+//     coordinates: new admin.firestore.GeoPoint(8.4806506, 4.6267146),
+//   };
+
+//   await geoSnacksItemsCollection
+//     .doc(product.id)
+//     .set({ ...product, ...geoPoint });
 // }
 
 // async function createFoodItemReview(productId) {
@@ -235,6 +272,44 @@
 
 //     await firestoreDatabase
 //       .collection("fast_food_items")
+//       .doc(productId)
+//       .collection("reviews")
+//       .add(reviewData);
+//   }
+// }
+
+// async function createDrinkItemReview(productId) {
+//   for (let index = 0; index < 10; index++) {
+//     const reviewData = {
+//       user_name: faker.name.findName(),
+//       user_image: faker.image.imageUrl(640, 640, "food", true),
+//       user_image: faker.image.imageUrl(200, 200, "person", true),
+//       user_id: "123456789",
+//       date_time: new Date().getTime(),
+//       review: faker.lorem.paragraph(2),
+//     };
+
+//     await firestoreDatabase
+//       .collection("drink_items")
+//       .doc(productId)
+//       .collection("reviews")
+//       .add(reviewData);
+//   }
+// }
+
+// async function createSnackItemReview(productId) {
+//   for (let index = 0; index < 10; index++) {
+//     const reviewData = {
+//       user_name: faker.name.findName(),
+//       user_image: faker.image.imageUrl(640, 640, "food", true),
+//       user_image: faker.image.imageUrl(200, 200, "person", true),
+//       user_id: "123456789",
+//       date_time: new Date().getTime(),
+//       review: faker.lorem.paragraph(2),
+//     };
+
+//     await firestoreDatabase
+//       .collection("snack_items")
 //       .doc(productId)
 //       .collection("reviews")
 //       .add(reviewData);

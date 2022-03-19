@@ -710,6 +710,7 @@ drawable ic_done_white_24dp
 drawable ic_fingerprint_white_24dp
 drawable ic_priority_high_white_24dp
 drawable launch_background
+drawable navigation_empty_icon
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low

@@ -2,10 +2,15 @@
 // import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:geoflutterfire2/geoflutterfire2.dart';
+import 'package:location/location.dart';
 
 import '../../../cores/constants/firebase_collection_key.dart';
 
 class FoodRepository {
+  final GeoFlutterFire geoFlutterFire = GeoFlutterFire();
+  final Location location = Location();
+
   static final CollectionReference foodVendorCollectionRef =
       FirebaseFirestore.instance.collection(FOOD_VENDOR_REF);
   static final CollectionReference foodItemCollectionRef =
@@ -39,11 +44,23 @@ class FoodRepository {
     String? lastDocId,
     int? timeAdded,
   }) async {
-    Query query = foodItemCollectionRef
-        .limit(10)
-        .where('type', isEqualTo: 'food')
-        .orderBy('id')
-        .orderBy('time_added');
+    LocationData locationData = await location.getLocation();
+
+    if (locationData.latitude == null || locationData.longitude == null) {
+      throw 'Unable to get location!';
+    }
+
+    final GeoFirePoint center = geoFlutterFire.point(
+      latitude: locationData.latitude!,
+      longitude: locationData.longitude!,
+    );
+
+    Query query =
+        foodItemCollectionRef.limit(10).where('type', isEqualTo: 'food');
+
+    geoFlutterFire
+        .collection(collectionRef: foodItemCollectionRef)
+        .within(center: center, radius: 5, field: 'g');
 
     if (lastDocId != null) {
       query = query.startAfter([lastDocId, timeAdded]);
