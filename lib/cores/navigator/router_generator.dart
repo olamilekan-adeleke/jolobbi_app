@@ -8,6 +8,7 @@ import '../../features/food/model/food_item_data_model.dart';
 import '../../features/food/views/screen/food_home_page.dart';
 import '../../features/food/views/screen/selcted_food_item_screen.dart';
 import '../../features/food/views/screen/vendor/all_food_vendor_screen.dart';
+import '../../features/food/views/screen/vendor/selected_vendor_screen.dart';
 import 'error_route_screen.dart';
 
 class RouteGenerator {
@@ -36,14 +37,8 @@ class RouteGenerator {
         }
       case AllFoodVendorScreen.route:
         return MaterialPageRoute(builder: (_) => const AllFoodVendorScreen());
-
-      // case '/second':
-      //   // Validation of correct data type
-      //   if (args is String) {
-      //     return MaterialPageRoute(
-      //       builder: (_) => SecondPage(data: args),
-      //     );
-      //   }
+      case SelectedVendorScreen.route:
+        return MaterialPageRoute(builder: (_) => const SelectedVendorScreen());
 
       default:
         return errorRoute();

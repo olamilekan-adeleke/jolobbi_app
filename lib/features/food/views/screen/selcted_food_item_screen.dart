@@ -31,9 +31,9 @@ class SelectedFoodItemWidget extends StatelessWidget {
             child: SizedBox(
               height: sh(35),
               width: double.infinity,
-              child: const CustomImageWidget(
-                imageUrl: 'assets/images/food_3.png',
-                imageTypes: ImageTypes.asset,
+              child: CustomImageWidget(
+                imageUrl: foodItem.image,
+                imageTypes: ImageTypes.network,
                 fit: BoxFit.fill,
               ),
             ),
