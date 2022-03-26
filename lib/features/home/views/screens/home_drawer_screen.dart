@@ -4,6 +4,7 @@ import 'package:jolobbi_app/cores/navigator/app_router.dart';
 
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../../food/views/screen/favorite/favorite_food_screen.dart';
 import '../../../food/views/screen/vendor/all_food_vendor_screen.dart';
 import '../widget/drawer/drawer_item_wigdet.dart';
 import '../widget/drawer/drawer_user_profile.dart';
@@ -27,9 +28,19 @@ class HomeDrawerWidget extends StatelessWidget {
           ),
           verticalSpace(20),
           DrawerItemWidget(
+            icon: Icons.favorite,
+            title: 'Favorite',
+            onTap: () {
+              AppRouter.instance.goBack();
+              AppRouter.instance.navigateTo(FavoriteScreen.route);
+            },
+          ),
+          verticalSpace(20),
+          DrawerItemWidget(
             icon: Icons.store_mall_directory_outlined,
             title: 'See All Vendor',
             onTap: () {
+              AppRouter.instance.goBack();
               AppRouter.instance.navigateTo(AllFoodVendorScreen.route);
             },
           ),
