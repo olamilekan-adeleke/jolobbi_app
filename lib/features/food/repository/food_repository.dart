@@ -13,14 +13,21 @@ class FoodRepository {
 
   static final CollectionReference foodVendorCollectionRef =
       FirebaseFirestore.instance.collection(FOOD_VENDOR_REF);
+
   static final CollectionReference foodItemCollectionRef =
       FirebaseFirestore.instance.collection(FOOD_ITEMS_REF);
+
+  static final CollectionReference drinksCollectionRef =
+      FirebaseFirestore.instance.collection(DRINK_ITEMS_REF);
+
+  static final CollectionReference snacksCollectionRef =
+      FirebaseFirestore.instance.collection(SNACK_ITEMS_REF);
 
   Future<List<Map<String, dynamic>>> getFoodVendor({
     int limit = 10,
     String? lastDocId,
   }) async {
-    Query query = foodVendorCollectionRef.limit(10);
+    Query query = foodVendorCollectionRef.limit(limit);
 
     if (lastDocId != null) {
       query = query.startAfter([lastDocId]);
@@ -43,6 +50,7 @@ class FoodRepository {
     int limit = 10,
     String? lastDocId,
     int? timeAdded,
+    String? vendorId,
   }) async {
     // LocationData locationData = await location.getLocation();
 
@@ -56,7 +64,7 @@ class FoodRepository {
     // );
 
     Query query = foodItemCollectionRef
-        .limit(10)
+        .limit(limit)
         .where('type', isEqualTo: 'food')
         .orderBy('id')
         .orderBy('time_added');
@@ -69,12 +77,78 @@ class FoodRepository {
       query = query.startAfter([lastDocId, timeAdded]);
     }
 
+    if (vendorId != null) {
+      query = query.where('fast_food_id', isEqualTo: vendorId);
+    }
+
     QuerySnapshot querySnapshot = await query.get();
 
     final List<dynamic> rawDataList =
         querySnapshot.docs.map((e) => e.data()).toList();
 
     // log(json.encode(rawDataList));
+
+    List<Map<String, dynamic>> dataList =
+        rawDataList.map((e) => Map<String, dynamic>.from(e)).toList();
+
+    return dataList;
+  }
+
+  Future<List<Map<String, dynamic>>> getDrinkItem({
+    int limit = 10,
+    String? lastDocId,
+    int? timeAdded,
+    String? vendorId,
+  }) async {
+    Query query = drinksCollectionRef
+        .limit(limit)
+        .where('type', isEqualTo: 'drinks')
+        .orderBy('id')
+        .orderBy('time_added');
+
+    if (lastDocId != null) {
+      query = query.startAfter([lastDocId, timeAdded]);
+    }
+
+    if (vendorId != null) {
+      query = query.where('fast_food_id', isEqualTo: vendorId);
+    }
+
+    QuerySnapshot querySnapshot = await query.get();
+
+    final List<dynamic> rawDataList =
+        querySnapshot.docs.map((e) => e.data()).toList();
+
+    List<Map<String, dynamic>> dataList =
+        rawDataList.map((e) => Map<String, dynamic>.from(e)).toList();
+
+    return dataList;
+  }
+
+  Future<List<Map<String, dynamic>>> getSnackItem({
+    int limit = 10,
+    String? lastDocId,
+    int? timeAdded,
+    String? vendorId,
+  }) async {
+    Query query = snacksCollectionRef
+        .limit(limit)
+        .where('type', isEqualTo: 'snacks')
+        .orderBy('id')
+        .orderBy('time_added');
+
+    if (lastDocId != null) {
+      query = query.startAfter([lastDocId, timeAdded]);
+    }
+
+    if (vendorId != null) {
+      query = query.where('fast_food_id', isEqualTo: vendorId);
+    }
+
+    QuerySnapshot querySnapshot = await query.get();
+
+    final List<dynamic> rawDataList =
+        querySnapshot.docs.map((e) => e.data()).toList();
 
     List<Map<String, dynamic>> dataList =
         rawDataList.map((e) => Map<String, dynamic>.from(e)).toList();

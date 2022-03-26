@@ -7,6 +7,7 @@ import '../../../../../cores/constants/color.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
 import '../../../model/food_vendor_data_model.dart';
 import '../../widgets/vendor/vendor_about_widget.dart';
+import '../../widgets/vendor/vendor_menu_widget.dart';
 
 class SelectedVendorScreen extends StatelessWidget {
   const SelectedVendorScreen(this.foodVendor, {Key? key}) : super(key: key);
@@ -64,11 +65,12 @@ class VendorDetailsBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: sp(15), vertical: sp(20)),
+      padding: EdgeInsets.symmetric(horizontal: sp(15)),
       child: Column(
         children: <Widget>[
-          FoodItemHeaderWidget(foodVendor),
           verticalSpace(),
+          FoodItemHeaderWidget(foodVendor),
+          verticalSpace(4),
           Expanded(
             child: DefaultTabController(
               length: 2,
@@ -80,10 +82,10 @@ class VendorDetailsBodyWidget extends StatelessWidget {
                       Tab(text: 'About'),
                     ],
                   ),
-                  Flexible(
+                  Expanded(
                     child: TabBarView(
                       children: [
-                        Container(),
+                        VendorMenuWidget(foodVendor.id),
                         VendorAboutWidget(foodVendor),
                       ],
                     ),

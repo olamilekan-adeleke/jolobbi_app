@@ -9,3 +9,12 @@ enum FoodVendorStatus {
 }
 
 enum FoodItemStatus { unknown, busy, moreBusy, error, moreError, success }
+
+enum VendorMenuStatus {
+  unknown,
+  busy,
+  moreBusy,
+  error,
+  moreError,
+  success,
+}

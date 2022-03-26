@@ -27,6 +27,7 @@ class FoodVendorService {
   Future<List<FoodItemDataModel>> getFoodItems({
     int limit = 10,
     String? lastDocId,
+    String? vendorId,
     int? timeAdded,
   }) async {
     List<Map<String, dynamic>> _foodItemRawData =
@@ -34,6 +35,49 @@ class FoodVendorService {
       limit: limit,
       lastDocId: lastDocId,
       timeAdded: timeAdded,
+      vendorId: vendorId,
+    );
+
+    List<FoodItemDataModel> foodList = _foodItemRawData
+        .map((Map<String, dynamic> e) => FoodItemDataModel.fromMap(e))
+        .toList();
+
+    return foodList;
+  }
+
+  Future<List<FoodItemDataModel>> getDrinkItems({
+    int limit = 10,
+    String? lastDocId,
+    String? vendorId,
+    int? timeAdded,
+  }) async {
+    List<Map<String, dynamic>> _foodItemRawData =
+        await _foodRepository.getDrinkItem(
+      limit: limit,
+      lastDocId: lastDocId,
+      timeAdded: timeAdded,
+      vendorId: vendorId,
+    );
+
+    List<FoodItemDataModel> foodList = _foodItemRawData
+        .map((Map<String, dynamic> e) => FoodItemDataModel.fromMap(e))
+        .toList();
+
+    return foodList;
+  }
+
+  Future<List<FoodItemDataModel>> getSnackItems({
+    int limit = 10,
+    String? lastDocId,
+    String? vendorId,
+    int? timeAdded,
+  }) async {
+    List<Map<String, dynamic>> _foodItemRawData =
+        await _foodRepository.getSnackItem(
+      limit: limit,
+      lastDocId: lastDocId,
+      timeAdded: timeAdded,
+      vendorId: vendorId,
     );
 
     List<FoodItemDataModel> foodList = _foodItemRawData
