@@ -18,22 +18,20 @@ class DrawerItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: <Widget>[
-            Icon(icon, size: sp(15), color: kcWhite),
-            horizontalSpace(),
-            TextWidget(
-              title,
-              fontSize: sp(15),
-              fontWeight: FontWeight.w400,
-              textColor: kcWhite,
-            ),
-          ],
-        ),
-        // const Divider(color: kc),
-      ],
+    return GestureDetector(
+      onTap: onTap ?? () {},
+      child: Row(
+        children: <Widget>[
+          Icon(icon, size: sp(15), color: kcWhite),
+          horizontalSpace(),
+          TextWidget(
+            title,
+            fontSize: sp(15),
+            fontWeight: FontWeight.w400,
+            textColor: kcWhite,
+          ),
+        ],
+      ),
     );
   }
 }
