@@ -18,6 +18,8 @@ import 'features/food/cubit/food_item_cubit.dart';
 import 'features/food/cubit/food_vendor_cubit.dart';
 import 'features/food/cubit/vendor_meun_cubit.dart';
 import 'features/food/service/food_vendor_service.dart';
+import 'features/profile/cubit/profile_details_cubit.dart';
+import 'features/profile/service/profile_service.dart';
 
 class JolobbiApp extends StatelessWidget {
   const JolobbiApp({Key? key}) : super(key: key);
@@ -51,6 +53,7 @@ class _BlocProviderHelper {
   static final ForgotPasswordRepository forgotPasswordRepository =
       ForgotPasswordRepository();
   static final FoodVendorService foodVendorService = FoodVendorService();
+  static final ProfileService profileService = ProfileService();
 
   List<BlocProvider> blocList(BuildContext context) {
     return <BlocProvider>[
@@ -78,6 +81,10 @@ class _BlocProviderHelper {
       ),
       BlocProvider<VendorMenuCubit>(
         create: (_) => VendorMenuCubit(foodVendorService),
+      ),
+      BlocProvider<ProfileDetailsCubit>(
+        create: (_) =>
+            ProfileDetailsCubit(profileService)..getCurrentLoginUserData(),
       ),
     ];
   }

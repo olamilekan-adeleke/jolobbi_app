@@ -11,7 +11,7 @@ class FoodHomePage extends StatelessWidget {
   const FoodHomePage({Key? key}) : super(key: key);
 
   static const String route = '/food-home';
-  static final GlobalKey<ScaffoldState> _key = GlobalKey(); // Create a key
+  static final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
