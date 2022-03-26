@@ -12,24 +12,66 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
   final FoodVendorService foodVendorService;
   static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();
 
-  Future<void> getFoodVendor() async {
+  Future<void> getPopularFoodVendor() async {
     try {
-      emit(state.copyWith(status: FoodVendorStatus.busy, errorText: ''));
+      emit(state.copyWith(
+          status: FoodVendorStatus.getPopularBusy, errorText: ''));
 
       List<FoodVendorDataModel> foodVendor =
           await foodVendorService.getFoodVendors();
 
       emit(
         state.copyWith(
-          status: FoodVendorStatus.success,
-          foodVendorDataModels: foodVendor,
+          status: FoodVendorStatus.getPopularSuccess,
+          popularFoodVendorDataModels: foodVendor,
         ),
       );
     } catch (e, s) {
       emit(
         state.copyWith(
-          status: FoodVendorStatus.error,
+          status: FoodVendorStatus.getPopularError,
           errorText: e.toString(),
+        ),
+      );
+
+      _crashlyticsHelper.logError(
+        e.toString(),
+        s,
+        functionName: 'getFoodVendor',
+      );
+    }
+  }
+
+  Future<void> getFoodVendor([bool getMore = false]) async {
+    try {
+      emit(
+        state.copyWith(
+          status: FoodVendorStatus.getAllBusy,
+          allErrorText: '',
+        ),
+      );
+
+      List<FoodVendorDataModel> foodVendor = [];
+
+      if (getMore) {
+        foodVendor = await foodVendorService.getFoodVendors(
+          lastDocId: state.allFoodVendorDataModels.last.id,
+        );
+      } else {
+        foodVendor = await foodVendorService.getFoodVendors();
+      }
+
+      emit(
+        state.copyWith(
+          status: FoodVendorStatus.getAllSuccess,
+          allFoodVendorDataModels: foodVendor,
+        ),
+      );
+    } catch (e, s) {
+      emit(
+        state.copyWith(
+          status: FoodVendorStatus.getAllError,
+          allErrorText: e.toString(),
         ),
       );
 

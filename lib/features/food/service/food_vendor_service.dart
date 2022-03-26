@@ -5,9 +5,15 @@ import '../repository/food_repository.dart';
 class FoodVendorService {
   final FoodRepository _foodRepository = FoodRepository();
 
-  Future<List<FoodVendorDataModel>> getFoodVendors() async {
+  Future<List<FoodVendorDataModel>> getFoodVendors({
+    int limit = 10,
+    String? lastDocId,
+  }) async {
     List<Map<String, dynamic>> _foodVendorRawData =
-        await _foodRepository.getFoodVendor();
+        await _foodRepository.getFoodVendor(
+      limit: limit,
+      lastDocId: lastDocId,
+    );
 
     List<FoodVendorDataModel> vendorList = _foodVendorRawData
         .map((Map<String, dynamic> e) => FoodVendorDataModel.fromMap(e))

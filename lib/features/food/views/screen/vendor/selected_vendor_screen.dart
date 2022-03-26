@@ -63,26 +63,29 @@ class VendorDetailsBodyWidget extends StatelessWidget {
         children: <Widget>[
           const FoodItemHeaderWidget(),
           verticalSpace(),
-          // Expanded(
-          //   child: DefaultTabController(
-          //     length: 2,
-          //     child: Column(
-          //       children: <Widget>[
-          //         const TabBar(
-          //           tabs: [Tab(text: 'Description'), Tab(text: 'Reviews')],
-          //         ),
-          //         Flexible(
-          //           child: TabBarView(
-          //             children: [
-          //               SelectedFoodDescriptionAndAddonWidget(foodItem),
-          //               const FoodItemReviewListViewWidget(),
-          //             ],
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
+          Expanded(
+            child: DefaultTabController(
+              length: 2,
+              child: Column(
+                children: <Widget>[
+                  const TabBar(
+                    tabs: [
+                      Tab(text: 'Menu'),
+                      Tab(text: 'About'),
+                    ],
+                  ),
+                  Flexible(
+                    child: TabBarView(
+                      children: [
+                        Container(),
+                        Container(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

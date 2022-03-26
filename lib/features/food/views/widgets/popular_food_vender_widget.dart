@@ -28,7 +28,7 @@ class PopularFoodVendorWidget extends StatelessWidget {
         verticalSpace(20),
         BlocBuilder<FoodVendorCubit, FoodVendorStateModel>(
           builder: (context, state) {
-            if (state.status == FoodVendorStatus.busy) {
+            if (state.status == FoodVendorStatus.getPopularBusy) {
               return Center(
                 child: Column(
                   children: [
@@ -39,13 +39,13 @@ class PopularFoodVendorWidget extends StatelessWidget {
               );
             }
 
-            if (state.status == FoodVendorStatus.error) {
+            if (state.status == FoodVendorStatus.getPopularError) {
               return Center(
                 child: Column(
                   children: [
                     CustomErrorWidget(
                       message: state.errorText,
-                      callback: context.read<FoodVendorCubit>().getFoodVendor,
+                      callback: context.read<FoodVendorCubit>().getPopularFoodVendor,
                     ),
                     verticalSpace(5),
                   ],
@@ -57,11 +57,11 @@ class PopularFoodVendorWidget extends StatelessWidget {
               height: sp(60),
               width: double.infinity,
               child: ListView.builder(
-                itemCount: state.foodVendorDataModels.length,
+                itemCount: state.popularFoodVendorDataModels.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (_, int index) {
                   final FoodVendorDataModel foodVendor =
-                      state.foodVendorDataModels[index];
+                      state.popularFoodVendorDataModels[index];
 
                   return SizedBox(
                     width: sp(65),

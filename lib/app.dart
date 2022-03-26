@@ -69,7 +69,9 @@ class _BlocProviderHelper {
         create: (_) => ForgotPasswordCubit(forgotPasswordRepository),
       ),
       BlocProvider<FoodVendorCubit>(
-        create: (_) => FoodVendorCubit(foodVendorService)..getFoodVendor(),
+        create: (_) => FoodVendorCubit(foodVendorService)
+          ..getPopularFoodVendor()
+          ..getFoodVendor(),
       ),
       BlocProvider<FoodItemCubit>(
         create: (_) => FoodItemCubit(foodVendorService)..getFoodItem(),
