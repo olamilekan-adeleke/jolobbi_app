@@ -6,6 +6,7 @@ import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../../food/views/screen/favorite/favorite_food_screen.dart';
 import '../../../food/views/screen/vendor/all_food_vendor_screen.dart';
+import '../../../profile/views/screens/profile_screen.dart';
 import '../widget/drawer/drawer_item_wigdet.dart';
 import '../widget/drawer/drawer_user_profile.dart';
 
@@ -24,15 +25,16 @@ class HomeDrawerWidget extends StatelessWidget {
           DrawerItemWidget(
             icon: CupertinoIcons.person,
             title: 'Profile',
-            onTap: () {},
+            onTap: () {
+              AppRouter.instance.popAndNavigateTo(ProfileScreen.route);
+            },
           ),
           verticalSpace(20),
           DrawerItemWidget(
             icon: Icons.favorite,
             title: 'Favorite',
             onTap: () {
-              AppRouter.instance.goBack();
-              AppRouter.instance.navigateTo(FavoriteScreen.route);
+              AppRouter.instance.popAndNavigateTo(FavoriteScreen.route);
             },
           ),
           verticalSpace(20),
@@ -40,8 +42,7 @@ class HomeDrawerWidget extends StatelessWidget {
             icon: Icons.store_mall_directory_outlined,
             title: 'See All Vendor',
             onTap: () {
-              AppRouter.instance.goBack();
-              AppRouter.instance.navigateTo(AllFoodVendorScreen.route);
+              AppRouter.instance.popAndNavigateTo(AllFoodVendorScreen.route);
             },
           ),
           verticalSpace(20),

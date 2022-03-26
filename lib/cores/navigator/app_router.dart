@@ -14,6 +14,15 @@ class AppRouter {
     );
   }
 
+  Future<dynamic> popAndNavigateTo(String routeName, {Object? arguments}) {
+    navigatorKey.currentState!.pop();
+
+    return navigatorKey.currentState!.pushNamed(
+      routeName,
+      arguments: arguments,
+    );
+  }
+
   Future<dynamic> navigateToAndReplace(String routeName) {
     return navigatorKey.currentState!.pushReplacementNamed(routeName);
   }
