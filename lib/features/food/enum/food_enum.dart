@@ -4,6 +4,7 @@ enum FoodVendorStatus {
   getPopularError,
   getPopularSuccess,
   getAllBusy,
+  getMoreAllBusy,
   getAllError,
   getAllSuccess,
 }

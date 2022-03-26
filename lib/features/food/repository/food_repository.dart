@@ -27,7 +27,7 @@ class FoodRepository {
     int limit = 10,
     String? lastDocId,
   }) async {
-    Query query = foodVendorCollectionRef.limit(limit);
+    Query query = foodVendorCollectionRef.limit(limit).orderBy('id');
 
     if (lastDocId != null) {
       query = query.startAfter([lastDocId]);

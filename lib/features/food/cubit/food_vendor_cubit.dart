@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jolobbi_app/features/food/enum/food_enum.dart';
 
@@ -11,6 +14,17 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
 
   final FoodVendorService foodVendorService;
   static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();
+
+  void initScrollListener(ScrollController scrollController) {
+    scrollController.addListener(() {
+      if (scrollController.position.pixels >=
+          scrollController.position.maxScrollExtent) {
+        log('end of line');
+
+        getFoodVendor(true);
+      }
+    });
+  }
 
   Future<void> getPopularFoodVendor() async {
     try {
@@ -44,12 +58,22 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
 
   Future<void> getFoodVendor([bool getMore = false]) async {
     try {
-      emit(
-        state.copyWith(
-          status: FoodVendorStatus.getAllBusy,
-          allErrorText: '',
-        ),
-      );
+      if (getMore) {
+        emit(
+          state.copyWith(
+            status: FoodVendorStatus.getMoreAllBusy,
+            allErrorText: '',
+          ),
+        );
+      } else {
+        if (state.allFoodVendorDataModels.isNotEmpty) return;
+        emit(
+          state.copyWith(
+            status: FoodVendorStatus.getAllBusy,
+            allErrorText: '',
+          ),
+        );
+      }
 
       List<FoodVendorDataModel> foodVendor = [];
 
@@ -64,7 +88,10 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
       emit(
         state.copyWith(
           status: FoodVendorStatus.getAllSuccess,
-          allFoodVendorDataModels: foodVendor,
+          allFoodVendorDataModels: [
+            ...state.allFoodVendorDataModels,
+            ...foodVendor,
+          ],
         ),
       );
     } catch (e, s) {

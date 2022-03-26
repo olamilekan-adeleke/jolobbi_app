@@ -15,10 +15,29 @@ import '../../../model/food_vendor_state_model.dart';
 import '../../widgets/vendor/vendor_item_list_tile.dart';
 import 'selected_vendor_screen.dart';
 
-class AllFoodVendorScreen extends StatelessWidget {
+class AllFoodVendorScreen extends StatefulWidget {
   const AllFoodVendorScreen({Key? key}) : super(key: key);
 
   static const String route = '/all-food-vendor';
+
+  @override
+  State<AllFoodVendorScreen> createState() => _AllFoodVendorScreenState();
+}
+
+class _AllFoodVendorScreenState extends State<AllFoodVendorScreen> {
+  static final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      final FoodVendorCubit cubit = context.read<FoodVendorCubit>();
+
+      cubit.getFoodVendor();
+
+      cubit.initScrollListener(scrollController);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,22 +78,33 @@ class AllFoodVendorScreen extends StatelessWidget {
               }
 
               return Flexible(
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (_, int index) {
-                    final FoodVendorDataModel foodVendor =
-                        state.allFoodVendorDataModels[index];
+                child: Stack(
+                  children: [
+                    ListView.builder(
+                      controller: scrollController,
+                      itemCount: state.allFoodVendorDataModels.length,
+                      itemBuilder: (_, int index) {
+                        final FoodVendorDataModel foodVendor =
+                            state.allFoodVendorDataModels[index];
 
-                    return GestureDetector(
-                      onTap: () {
-                        AppRouter.instance.navigateTo(
-                          SelectedVendorScreen.route,
-                          arguments: foodVendor,
+                        return GestureDetector(
+                          onTap: () {
+                            AppRouter.instance.navigateTo(
+                              SelectedVendorScreen.route,
+                              arguments: foodVendor,
+                            );
+                          },
+                          child: VendorItemListTileWidget(foodVendor),
                         );
                       },
-                      child: VendorItemListTileWidget(foodVendor),
-                    );
-                  },
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: state.status == FoodVendorStatus.getMoreAllBusy
+                          ? const LoadingMoreWidget()
+                          : Container(),
+                    ),
+                  ],
                 ),
               );
             },
