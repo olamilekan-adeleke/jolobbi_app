@@ -8,18 +8,18 @@ class FoodVendorService {
   Future<List<FoodVendorDataModel>> getFoodVendors({
     int limit = 10,
     String? lastDocId,
+    String? searchQuery,
   }) async {
     List<Map<String, dynamic>> _foodVendorRawData =
         await _foodRepository.getFoodVendor(
       limit: limit,
       lastDocId: lastDocId,
+      searchQuery: searchQuery,
     );
 
     List<FoodVendorDataModel> vendorList = _foodVendorRawData
         .map((Map<String, dynamic> e) => FoodVendorDataModel.fromMap(e))
         .toList();
-
-    // todo: save item to local storage
 
     return vendorList;
   }

@@ -26,11 +26,16 @@ class FoodRepository {
   Future<List<Map<String, dynamic>>> getFoodVendor({
     int limit = 10,
     String? lastDocId,
+    String? searchQuery,
   }) async {
     Query query = foodVendorCollectionRef.limit(limit).orderBy('id');
 
     if (lastDocId != null) {
       query = query.startAfter([lastDocId]);
+    }
+
+    if (searchQuery != null) {
+      query = query.where('search_key', arrayContains: searchQuery);
     }
 
     QuerySnapshot querySnapshot = await query.get();

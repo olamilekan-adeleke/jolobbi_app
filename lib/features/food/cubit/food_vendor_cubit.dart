@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -14,6 +15,8 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
 
   final FoodVendorService foodVendorService;
   static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();
+  Timer? _debounce;
+  String query = '';
 
   void initScrollListener(ScrollController scrollController) {
     scrollController.addListener(() {
@@ -21,7 +24,11 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
           scrollController.position.maxScrollExtent) {
         log('end of line');
 
-        getFoodVendor(true);
+        if (query.isNotEmpty) {
+          getFoodVendor(true);
+        } else {
+          searchFoodVendor(query, true);
+        }
       }
     });
   }
@@ -71,6 +78,7 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
           state.copyWith(
             status: FoodVendorStatus.getAllBusy,
             allErrorText: '',
+            allFoodVendorDataModels: [],
           ),
         );
       }
@@ -83,6 +91,79 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
         );
       } else {
         foodVendor = await foodVendorService.getFoodVendors();
+      }
+
+      emit(
+        state.copyWith(
+          status: FoodVendorStatus.getAllSuccess,
+          allFoodVendorDataModels: [
+            ...state.allFoodVendorDataModels,
+            ...foodVendor,
+          ],
+        ),
+      );
+    } catch (e, s) {
+      emit(
+        state.copyWith(
+          status: FoodVendorStatus.getAllError,
+          allErrorText: e.toString(),
+        ),
+      );
+
+      _crashlyticsHelper.logError(
+        e.toString(),
+        s,
+        functionName: 'getFoodVendor',
+      );
+    }
+  }
+
+  void onSearchFieldChanged(String query) {
+    this.query = query;
+
+    _debounce?.cancel();
+
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      if (query.isNotEmpty) {
+        getFoodVendor();
+      } else {
+        searchFoodVendor(query);
+      }
+    });
+  }
+
+  Future<void> searchFoodVendor(String query, [bool getMore = false]) async {
+    try {
+      if (getMore) {
+        emit(
+          state.copyWith(
+            status: FoodVendorStatus.getMoreAllBusy,
+            allErrorText: '',
+          ),
+        );
+      } else {
+        log('tap');
+        // if (state.allFoodVendorDataModels.isNotEmpty) return;
+        emit(
+          state.copyWith(
+            status: FoodVendorStatus.getAllBusy,
+            allErrorText: '',
+            allFoodVendorDataModels: [],
+          ),
+        );
+      }
+
+      List<FoodVendorDataModel> foodVendor = [];
+
+      if (getMore) {
+        foodVendor = await foodVendorService.getFoodVendors(
+          lastDocId: state.allFoodVendorDataModels.last.id,
+          searchQuery: query,
+        );
+      } else {
+        foodVendor = await foodVendorService.getFoodVendors(
+          searchQuery: query,
+        );
       }
 
       emit(

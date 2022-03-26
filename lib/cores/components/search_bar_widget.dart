@@ -12,23 +12,26 @@ class SearchBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: sp(5)),
-      height: sp(40),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(sp(5)),
-        color: kcWhite,
-      ),
-      child: Row(
-        children: <Widget>[
-          Icon(CupertinoIcons.search, size: sp(20), color: kcIconGrey),
-          horizontalSpace(5),
-          TextWidget(
-            title ?? 'Search for food',
-            fontSize: sp(15),
-            fontWeight: FontWeight.w300,
-          ),
-        ],
+    return GestureDetector(
+      onTap: onTap ?? () {},
+      child: Container(
+        padding: EdgeInsets.only(left: sp(5)),
+        height: sp(40),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(sp(5)),
+          color: kcWhite,
+        ),
+        child: Row(
+          children: <Widget>[
+            Icon(CupertinoIcons.search, size: sp(20), color: kcIconGrey),
+            horizontalSpace(5),
+            TextWidget(
+              title ?? 'Search for food',
+              fontSize: sp(15),
+              fontWeight: FontWeight.w300,
+            ),
+          ],
+        ),
       ),
     );
   }

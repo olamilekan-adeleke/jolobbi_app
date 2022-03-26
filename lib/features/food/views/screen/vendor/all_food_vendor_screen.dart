@@ -14,6 +14,7 @@ import '../../../model/food_vendor_data_model.dart';
 import '../../../model/food_vendor_state_model.dart';
 import '../../widgets/vendor/vendor_item_list_tile.dart';
 import 'selected_vendor_screen.dart';
+import 'vendor_search_page.dart';
 
 class AllFoodVendorScreen extends StatefulWidget {
   const AllFoodVendorScreen({Key? key}) : super(key: key);
@@ -48,7 +49,12 @@ class _AllFoodVendorScreenState extends State<AllFoodVendorScreen> {
           verticalSpace(),
           const AppBarWidget('Vendors'),
           verticalSpace(),
-          const SearchBarWidget(title: 'Search for vendor'),
+          SearchBarWidget(
+            title: 'Search for vendor',
+            onTap: () {
+              AppRouter.instance.navigateTo(VendorSearchScreen.route);
+            },
+          ),
           verticalSpace(),
           BlocBuilder<FoodVendorCubit, FoodVendorStateModel>(
             builder: (context, state) {

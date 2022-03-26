@@ -10,6 +10,7 @@ import '../../features/food/views/screen/food_home_page.dart';
 import '../../features/food/views/screen/selcted_food_item_screen.dart';
 import '../../features/food/views/screen/vendor/all_food_vendor_screen.dart';
 import '../../features/food/views/screen/vendor/selected_vendor_screen.dart';
+import '../../features/food/views/screen/vendor/vendor_search_page.dart';
 import 'error_route_screen.dart';
 
 class RouteGenerator {
@@ -55,6 +56,9 @@ class RouteGenerator {
         } else {
           return errorRoute();
         }
+
+      case VendorSearchScreen.route:
+        return MaterialPageRoute(builder: (_) => const VendorSearchScreen());
 
       default:
         return errorRoute();
