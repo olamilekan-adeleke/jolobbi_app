@@ -6,7 +6,9 @@ import 'package:jolobbi_app/cores/constants/color.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 
 class FoodHomeHeaderWidget extends StatelessWidget {
-  const FoodHomeHeaderWidget({Key? key}) : super(key: key);
+  const FoodHomeHeaderWidget({Key? key, this.onTap}) : super(key: key);
+
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,14 @@ class FoodHomeHeaderWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Icon(Icons.menu, size: sp(20), color: kcIconGrey),
+            GestureDetector(
+              onTap: onTap ?? () {},
+              child: Icon(
+                Icons.menu,
+                size: sp(20),
+                color: kcIconGrey,
+              ),
+            ),
             TextWidget(
               'Fast food',
               fontSize: sp(20),

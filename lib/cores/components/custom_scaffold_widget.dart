@@ -21,7 +21,7 @@ class CustomScaffoldWidget extends StatelessWidget {
   final Widget? bottomNav;
   final Widget? floatingActionButton;
   final Widget body;
-  final AppBar? appBar;
+  final Widget? appBar;
   final bool usePadding;
   final bool useSingleScroll;
   final bool useSafeArea;
@@ -35,7 +35,12 @@ class CustomScaffoldWidget extends StatelessWidget {
       child: Scaffold(
         drawerEnableOpenDragGesture: true,
         key: scaffoldKey,
-        appBar: appBar,
+        appBar: appBar == null
+            ? null
+            : PreferredSize(
+                child: appBar!,
+                preferredSize: const Size(double.infinity, kToolbarHeight),
+              ),
         backgroundColor: bg ?? Colors.white.withOpacity(0.95),
         body: SizedBox(
           height: sh(98),
