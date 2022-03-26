@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jolobbi_app/features/food/views/screen/home_drawer_screen.dart';
+import 'package:jolobbi_app/features/home/views/screens/home_drawer_screen.dart';
 
 import '../../../../cores/components/custom_scaffold_widget.dart';
 import '../../../../cores/utils/sizer_utils.dart';

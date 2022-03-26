@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jolobbi_app/features/food/views/widgets/drawer/drawer_item_wigdet.dart';
 
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/sizer_utils.dart';
-import '../widgets/drawer/drawer_user_profile.dart';
+import '../widget/drawer/drawer_item_wigdet.dart';
+import '../widget/drawer/drawer_user_profile.dart';
+
 
 class HomeDrawerWidget extends StatelessWidget {
   const HomeDrawerWidget({Key? key}) : super(key: key);
