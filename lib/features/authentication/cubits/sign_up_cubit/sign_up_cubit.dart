@@ -41,7 +41,10 @@ class SignUpCubit extends Cubit<SignUpModel> {
 
       state.validateModel();
 
-      await signUpRepository.signUpUserWithEmailAndPassword(state);
+      String? uid =
+          await signUpRepository.signUpUserWithEmailAndPassword(state);
+
+      emit(state.copyWith(id: uid));
 
       await signUpRepository.saveUserDataToDataBase(state);
 

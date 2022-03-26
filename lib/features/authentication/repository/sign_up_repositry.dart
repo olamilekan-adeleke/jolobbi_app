@@ -9,17 +9,20 @@ class SignUpRepository {
   static final CollectionReference userCollectionRef =
       FirebaseFirestore.instance.collection(USER_REF);
 
-  Future<void> signUpUserWithEmailAndPassword(SignUpModel signUpModel) async {
-    await _firebaseAuth.createUserWithEmailAndPassword(
+  Future<String?> signUpUserWithEmailAndPassword(
+      SignUpModel signUpModel) async {
+    final UserCredential data =
+        await _firebaseAuth.createUserWithEmailAndPassword(
       email: signUpModel.email,
       password: signUpModel.password,
     );
+
+    return data.user?.uid;
   }
 
   Future<void> saveUserDataToDataBase(SignUpModel signUpModel) async {
-    final DocumentReference documentReference = userCollectionRef.doc();
-
-    signUpModel = signUpModel.copyWith(id: documentReference.id);
+    final DocumentReference documentReference =
+        userCollectionRef.doc(signUpModel.id);
 
     await documentReference.set(signUpModel.toMap());
   }
