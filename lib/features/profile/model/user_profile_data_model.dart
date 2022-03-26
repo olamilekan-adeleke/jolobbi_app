@@ -47,4 +47,24 @@ class UserProfileDataModel {
 
   factory UserProfileDataModel.fromJson(String source) =>
       UserProfileDataModel.fromMap(json.decode(source));
+
+  UserProfileDataModel copyWith({
+    String? id,
+    String? email,
+    String? password,
+    String? name,
+    String? mobile,
+    String? profileUrl,
+    int? dateJoined,
+  }) {
+    return UserProfileDataModel(
+      id: id ?? this.id,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      name: name ?? this.name,
+      mobile: mobile ?? this.mobile,
+      profileUrl: profileUrl ?? this.profileUrl,
+      dateJoined: dateJoined ?? this.dateJoined,
+    );
+  }
 }

@@ -6,7 +6,9 @@ import '../../../../cores/components/app_bar_widget.dart';
 import '../../../../cores/components/custom_scaffold_widget.dart';
 import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/constants/color.dart';
+import '../../../../cores/navigator/app_router.dart';
 import '../widgets/profile_header_widget.dart';
+import 'update_profile_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -30,13 +32,21 @@ class ProfileScreen extends StatelessWidget {
             child: const ProfileHeaderWidget(),
           ),
           verticalSpace(40),
-          _profileItem(CupertinoIcons.person, 'My Account'),
+          _profileItem(
+            CupertinoIcons.person,
+            'My Account',
+            onTap: () {
+              AppRouter.instance.navigateTo(UpdateProfileScreen.route);
+            },
+          ),
           verticalSpace(5),
           _profileItem(Icons.find_in_page_outlined, 'Order History'),
           verticalSpace(5),
-          _profileItem(Icons.location_on_outlined, 'Change Address'),
+          _profileItem(Icons.location_on_outlined, 'Address'),
           verticalSpace(5),
           _profileItem(CupertinoIcons.lock_fill, 'Change password'),
+          verticalSpace(5),
+          _profileItem(CupertinoIcons.lock_fill, 'Change Wallet Pin'),
           verticalSpace(5),
         ],
       ),

@@ -11,6 +11,7 @@ class ProfileDetailsCubit extends Cubit<UserProfileStateModel> {
 
   final ProfileService profileService;
   static final CrashlyticsHelper _crashlyticsHelper = CrashlyticsHelper();
+  
 
   Future<void> getCurrentLoginUserData() async {
     try {
@@ -42,4 +43,7 @@ class ProfileDetailsCubit extends Cubit<UserProfileStateModel> {
       );
     }
   }
+
+
+
 }

@@ -19,6 +19,7 @@ import 'features/food/cubit/food_vendor_cubit.dart';
 import 'features/food/cubit/vendor_meun_cubit.dart';
 import 'features/food/service/food_vendor_service.dart';
 import 'features/profile/cubit/profile_details_cubit.dart';
+import 'features/profile/cubit/update_profile_cubit.dart';
 import 'features/profile/service/profile_service.dart';
 
 class JolobbiApp extends StatelessWidget {
@@ -85,6 +86,9 @@ class _BlocProviderHelper {
       BlocProvider<ProfileDetailsCubit>(
         create: (_) =>
             ProfileDetailsCubit(profileService)..getCurrentLoginUserData(),
+      ),
+      BlocProvider<UpdateProfileCubit>(
+        create: (_) => UpdateProfileCubit(profileService),
       ),
     ];
   }
