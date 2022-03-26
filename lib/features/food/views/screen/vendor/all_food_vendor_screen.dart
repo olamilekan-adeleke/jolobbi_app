@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../cores/components/app_bar_widget.dart';
 import '../../../../../cores/components/custom_scaffold_widget.dart';
+import '../../../../../cores/components/search_bar_widget.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
 import '../../widgets/vendor/vendor_item_list_tile.dart';
 
@@ -18,6 +19,8 @@ class AllFoodVendorScreen extends StatelessWidget {
         children: <Widget>[
           verticalSpace(),
           const AppBarWidget('Vendors'),
+          verticalSpace(),
+          const SearchBarWidget(title: 'Search for vendor'),
           verticalSpace(),
           Flexible(
             child: ListView.builder(

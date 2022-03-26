@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jolobbi_app/cores/components/custom_text_widget.dart';
 import 'package:jolobbi_app/cores/constants/color.dart';
 
+import '../../../../cores/components/search_bar_widget.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 
 class FoodHomeHeaderWidget extends StatelessWidget {
@@ -34,25 +35,7 @@ class FoodHomeHeaderWidget extends StatelessWidget {
           ],
         ),
         verticalSpace(20),
-        Container(
-          padding: EdgeInsets.only(left: sp(5)),
-          height: sp(40),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(sp(5)),
-            color: kcWhite,
-          ),
-          child: Row(
-            children: <Widget>[
-              Icon(CupertinoIcons.search, size: sp(20), color: kcIconGrey),
-              horizontalSpace(5),
-              TextWidget(
-                'Search for food',
-                fontSize: sp(15),
-                fontWeight: FontWeight.w300,
-              ),
-            ],
-          ),
-        )
+        const SearchBarWidget(),
       ],
     );
   }
