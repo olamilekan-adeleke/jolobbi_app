@@ -67,8 +67,10 @@ class AllFoodVendorScreen extends StatelessWidget {
 
                     return GestureDetector(
                       onTap: () {
-                        AppRouter.instance
-                            .navigateTo(SelectedVendorScreen.route);
+                        AppRouter.instance.navigateTo(
+                          SelectedVendorScreen.route,
+                          arguments: foodVendor,
+                        );
                       },
                       child: VendorItemListTileWidget(foodVendor),
                     );

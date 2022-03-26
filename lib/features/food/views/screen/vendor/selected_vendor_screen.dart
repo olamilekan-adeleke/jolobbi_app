@@ -5,9 +5,12 @@ import '../../../../../cores/components/custom_text_widget.dart';
 import '../../../../../cores/components/image_widget.dart';
 import '../../../../../cores/constants/color.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
+import '../../../model/food_vendor_data_model.dart';
 
 class SelectedVendorScreen extends StatelessWidget {
-  const SelectedVendorScreen({Key? key}) : super(key: key);
+  const SelectedVendorScreen(this.foodVendor, {Key? key}) : super(key: key);
+
+  final FoodVendorDataModel foodVendor;
 
   static const String route = '/selected-vendor-screen';
 
@@ -24,9 +27,9 @@ class SelectedVendorScreen extends StatelessWidget {
             child: SizedBox(
               height: sh(35),
               width: double.infinity,
-              child: const CustomImageWidget(
-                imageUrl: 'assets/images/food_3.png',
-                imageTypes: ImageTypes.asset,
+              child: CustomImageWidget(
+                imageUrl: foodVendor.image,
+                imageTypes: ImageTypes.network,
                 fit: BoxFit.fill,
               ),
             ),
@@ -43,7 +46,7 @@ class SelectedVendorScreen extends StatelessWidget {
                   topRight: Radius.circular(sp(10)),
                 ),
               ),
-              child: const VendorDetailsBodyWidget(),
+              child: VendorDetailsBodyWidget(foodVendor),
             ),
           ),
         ],
@@ -53,7 +56,9 @@ class SelectedVendorScreen extends StatelessWidget {
 }
 
 class VendorDetailsBodyWidget extends StatelessWidget {
-  const VendorDetailsBodyWidget({Key? key}) : super(key: key);
+  const VendorDetailsBodyWidget(this.foodVendor, {Key? key}) : super(key: key);
+
+  final FoodVendorDataModel foodVendor;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +66,7 @@ class VendorDetailsBodyWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: sp(15), vertical: sp(20)),
       child: Column(
         children: <Widget>[
-          const FoodItemHeaderWidget(),
+          FoodItemHeaderWidget(foodVendor),
           verticalSpace(),
           Expanded(
             child: DefaultTabController(
@@ -93,7 +98,9 @@ class VendorDetailsBodyWidget extends StatelessWidget {
 }
 
 class FoodItemHeaderWidget extends StatelessWidget {
-  const FoodItemHeaderWidget({Key? key}) : super(key: key);
+  const FoodItemHeaderWidget(this.foodVendor, {Key? key}) : super(key: key);
+
+  final FoodVendorDataModel foodVendor;
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +112,7 @@ class FoodItemHeaderWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextWidget(
-                'Vendor name',
+                foodVendor.name,
                 fontSize: sp(18),
                 fontWeight: FontWeight.w500,
                 textAlign: TextAlign.left,
@@ -118,7 +125,7 @@ class FoodItemHeaderWidget extends StatelessWidget {
                     color: kcPrimaryColor,
                   ),
                   TextWidget(
-                    'Tanke, Ilorin',
+                    foodVendor.location.locationName,
                     fontSize: sp(14),
                     fontWeight: FontWeight.w300,
                     textColor: kcIconGrey,
