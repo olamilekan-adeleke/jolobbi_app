@@ -56,8 +56,7 @@ class FoodItemCubit extends Cubit<FoodItemStateModel> {
   }
 
   Future<void> getMoreFoodItem() async {
-    if (state.foodItems.isEmpty ||
-        state.status == FoodItemStatus.moreBusy) {
+    if (state.foodItems.isEmpty || state.status == FoodItemStatus.moreBusy) {
       return;
     }
 
@@ -66,6 +65,7 @@ class FoodItemCubit extends Cubit<FoodItemStateModel> {
 
       List<FoodItemDataModel> foodList = await foodVendorService.getFoodItems(
         lastDocId: state.foodItems.last.id,
+        timeAdded: state.foodItems.last.timestamp,
       );
 
       emit(

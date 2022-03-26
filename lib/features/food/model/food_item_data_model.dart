@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class FoodItemDataModel {
   FoodItemDataModel({
     required this.likesCount,
@@ -14,6 +16,7 @@ class FoodItemDataModel {
     required this.type,
     required this.averageRating,
     required this.ratingCount,
+    required this.timestamp,
   });
 
   final int likesCount;
@@ -30,6 +33,7 @@ class FoodItemDataModel {
   final String type;
   final num averageRating;
   final int ratingCount;
+  final int timestamp;
 
   factory FoodItemDataModel.fromMap(Map<String, dynamic> json) {
     return FoodItemDataModel(
@@ -51,6 +55,7 @@ class FoodItemDataModel {
       type: json["type"],
       averageRating: (json["average_rating"] ?? 0.0) as num,
       ratingCount: json["rating_count"] ?? 0,
+      timestamp: json["time_added"] ?? 0,
     );
   }
 
@@ -74,6 +79,7 @@ class FoodItemDataModel {
       "type": type,
       "average_rating": averageRating,
       "rating_count": ratingCount,
+      "time_added": Timestamp.now().millisecondsSinceEpoch,
     };
   }
 }
