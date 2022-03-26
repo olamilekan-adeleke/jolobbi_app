@@ -55,8 +55,11 @@ class FoodRepository {
     //   longitude: locationData.longitude!,
     // );
 
-    Query query =
-        foodItemCollectionRef.limit(10).where('type', isEqualTo: 'food');
+    Query query = foodItemCollectionRef
+        .limit(10)
+        .where('type', isEqualTo: 'food')
+        .orderBy('id')
+        .orderBy('time_added');
 
     // geoFlutterFire
     //     .collection(collectionRef: foodItemCollectionRef)

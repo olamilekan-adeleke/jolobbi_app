@@ -26,7 +26,6 @@ class VendorItemListTileWidget extends StatelessWidget {
               ),
             ),
             horizontalSpace(),
-            
           ],
         ),
       ),
