@@ -37,7 +37,7 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
       _crashlyticsHelper.logError(
         e.toString(),
         s,
-        functionName: 'getFoodVendor',
+        functionName: 'getPopularFoodVendor',
       );
     }
   }
