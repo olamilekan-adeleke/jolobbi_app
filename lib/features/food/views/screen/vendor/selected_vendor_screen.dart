@@ -6,6 +6,7 @@ import '../../../../../cores/components/image_widget.dart';
 import '../../../../../cores/constants/color.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
 import '../../../model/food_vendor_data_model.dart';
+import '../../widgets/vendor/vendor_about_widget.dart';
 
 class SelectedVendorScreen extends StatelessWidget {
   const SelectedVendorScreen(this.foodVendor, {Key? key}) : super(key: key);
@@ -83,7 +84,7 @@ class VendorDetailsBodyWidget extends StatelessWidget {
                     child: TabBarView(
                       children: [
                         Container(),
-                        Container(),
+                        VendorAboutWidget(foodVendor),
                       ],
                     ),
                   ),
