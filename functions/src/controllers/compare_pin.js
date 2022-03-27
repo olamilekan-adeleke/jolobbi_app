@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 const comparePinAndUpdate = async (oldPin, currentHashedPin, newPin) => {
   const oldPinHashed = bcrypt.hashSync(oldPin, 10);

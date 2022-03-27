@@ -1,4 +1,5 @@
 const saveWalletPin = require("../controllers/save_wallet_pin");
+const functions = require("firebase-functions");
 
 const createUserWalletPinFunction = async (req, res) => {
   try {
@@ -12,6 +13,8 @@ const createUserWalletPinFunction = async (req, res) => {
 
     res.status(201).json({ status: "success", msg: "Pin Successful Created!" });
   } catch (error) {
+    functions.logger.error(error);
+
     res
       .status(error.code ?? 500)
       .json({ status: "fail", msg: error.msg ?? "something went wrong" });
