@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../cores/components/app_bar_widget.dart';
 import '../../../../cores/components/custom_scaffold_widget.dart';
-import '../../../../cores/components/image_widget.dart';
-import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../../../cores/utils/snack_bar_service.dart';
 import '../../cubit/profile_details_cubit.dart';
-import '../../model/user_profile_state_model.dart';
+import '../../cubit/update_profile_cubit.dart';
+import '../../enum/profile_enum.dart';
+import '../../model/update_user_profile_model.dart';
 import '../widgets/update_profile_form_widget.dart';
 
 class UpdateProfileScreen extends StatelessWidget {
@@ -18,8 +19,22 @@ class UpdateProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffoldWidget(
-      body: BlocListener<ProfileDetailsCubit, UserProfileStateModel>(
-        listener: (context, state) {},
+      useSingleScroll: false,
+      body: BlocListener<UpdateProfileCubit, UpdateUserProfileStateModel>(
+        listener: (context, state) {
+          if (state.status == UpdateProfileStatus.success) {
+            context.read<ProfileDetailsCubit>().getCurrentLoginUserData();
+            SnackBarService.showSuccessSnackBar(
+              context: context,
+              message: 'Profile Update Successful!',
+            );
+          } else if (state.status == UpdateProfileStatus.error) {
+            SnackBarService.showErrorSnackBar(
+              context: context,
+              message: state.errorText,
+            );
+          }
+        },
         child: Column(
           children: <Widget>[
             verticalSpace(),

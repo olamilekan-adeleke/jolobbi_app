@@ -7,6 +7,7 @@ class UpdateUserProfileStateModel {
   final String name;
   final String mobile;
   final String profileUrl;
+  final String filePath;
   final String errorText;
   final UpdateProfileStatus status;
 
@@ -14,6 +15,7 @@ class UpdateUserProfileStateModel {
     this.email = '',
     this.name = '',
     this.mobile = '',
+    this.filePath = '',
     this.profileUrl = '',
     this.errorText = '',
     this.status = UpdateProfileStatus.unknown,
@@ -24,6 +26,7 @@ class UpdateUserProfileStateModel {
     String? name,
     String? mobile,
     String? profileUrl,
+    String? filePath,
     String? errorText,
     UpdateProfileStatus? status,
   }) {
@@ -31,6 +34,7 @@ class UpdateUserProfileStateModel {
       email: email ?? this.email,
       name: name ?? this.name,
       mobile: mobile ?? this.mobile,
+      filePath: filePath ?? this.filePath,
       profileUrl: profileUrl ?? this.profileUrl,
       errorText: errorText ?? this.errorText,
       status: status ?? this.status,
@@ -44,18 +48,4 @@ class UpdateUserProfileStateModel {
       if (profileUrl.isNotEmpty) 'profileUrl': profileUrl,
     };
   }
-
-  factory UpdateUserProfileStateModel.fromMap(Map<String, dynamic> map) {
-    return UpdateUserProfileStateModel(
-      email: map['email'] ?? '',
-      name: map['name'] ?? '',
-      mobile: map['mobile'] ?? '',
-      profileUrl: map['profileUrl'] ?? '',
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory UpdateUserProfileStateModel.fromJson(String source) =>
-      UpdateUserProfileStateModel.fromMap(json.decode(source));
 }

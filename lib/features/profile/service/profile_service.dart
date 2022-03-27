@@ -10,4 +10,14 @@ class ProfileService {
 
     return UserProfileDataModel.fromMap(data);
   }
+
+  Future<void> updateUserData(Map<String, dynamic> data) async {
+    await _profileRepository.updateUserData(data);
+  }
+
+  Future<String> uploadImage(String filePath) async {
+    final String imageUrl = await _profileRepository.uploadImage(filePath);
+
+    return imageUrl;
+  }
 }
