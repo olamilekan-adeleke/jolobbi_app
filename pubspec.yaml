@@ -42,10 +42,11 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_google_places: ^0.3.0
   flutter_local_notifications: ^9.3.2
   flutter_secure_storage: ^5.0.2
   flutter_svg: ^1.0.3
-  geoflutterfire2: ^2.3.11
+  # geoflutterfire2: ^2.3.11
   google_fonts: ^2.3.0
   image_picker: ^0.8.4+9
   local_auth: ^1.1.11

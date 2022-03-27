@@ -410,12 +410,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "geoflutterfire2",
-      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/geoflutterfire2-2.3.11",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "glob",
       "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/glob-2.0.2",
       "packageUri": "lib/",
@@ -914,7 +908,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-03-26T23:58:37.544690Z",
+  "generated": "2022-03-27T00:30:58.855882Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }
