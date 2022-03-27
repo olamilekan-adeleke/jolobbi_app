@@ -1,4 +1,4 @@
-const comparePin = require("../controllers/compare_pin");
+const comparePinAndUpdate = require("../controllers/compare_pin");
 
 const updateUserWalletPinFunction = async (req, res) => {
   try {
@@ -10,7 +10,7 @@ const updateUserWalletPinFunction = async (req, res) => {
 
     const userPinData = await getUserPinById();
 
-    await comparePin(oldPin, userPinData.pin);
+    await comparePinAndUpdate(oldPin, userPinData.pin, newPin);
 
     res.status(201).json({ status: "success", msg: "Pin Successful Updated!" });
   } catch (error) {
