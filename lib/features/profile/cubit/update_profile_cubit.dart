@@ -42,6 +42,8 @@ class UpdateProfileCubit extends Cubit<UpdateUserProfileStateModel> {
 
       String? imageUrl = await _uploadImage();
 
+      if (imageUrl != null) emit(state.copyWith(profileUrl: imageUrl));
+
       await profileService.updateUserData(state.toMap());
 
       emit(state.copyWith(status: UpdateProfileStatus.success));

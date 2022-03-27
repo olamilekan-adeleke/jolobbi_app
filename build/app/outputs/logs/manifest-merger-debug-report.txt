@@ -9,6 +9,8 @@ MERGED from [:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebas
 MERGED from [:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-17:19
 MERGED from [:firebase_auth] /home/kod-x/projects/jolobbi_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] /home/kod-x/projects/jolobbi_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] /home/kod-x/projects/jolobbi_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_storage] /home/kod-x/projects/jolobbi_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_messaging] /home/kod-x/projects/jolobbi_app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-44:19
 MERGED from [:firebase_messaging] /home/kod-x/projects/jolobbi_app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-44:19
 MERGED from [:firebase_core] /home/kod-x/projects/jolobbi_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-13:19
@@ -37,6 +39,8 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/cache
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/c7d961062f251ac19c7f117585b763f9/jetified-firebase-auth-21.0.1/AndroidManifest.xml:26:5-81:19
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:16:5-24:19
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:16:5-24:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:29:5-37:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:29:5-37:19
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:26:5-34:19
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:26:5-34:19
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] /home/kod-x/.gradle/caches/transforms-2/files-2.1/cead3be898859779a5c3d5a9b291213c/jetified-firebase-appcheck-interop-16.0.0-beta02/AndroidManifest.xml:24:5-20
@@ -105,6 +109,7 @@ MERGED from [:firebase_crashlytics] /home/kod-x/projects/jolobbi_app/build/fireb
 MERGED from [:cloud_firestore] /home/kod-x/projects/jolobbi_app/build/cloud_firestore/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-19:12
 MERGED from [:firebase_auth] /home/kod-x/projects/jolobbi_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_storage] /home/kod-x/projects/jolobbi_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_messaging] /home/kod-x/projects/jolobbi_app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-46:12
 MERGED from [:firebase_core] /home/kod-x/projects/jolobbi_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:image_picker] /home/kod-x/projects/jolobbi_app/build/image_picker/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-19:12
@@ -128,6 +133,7 @@ MERGED from [com.google.android.datatransport:transport-runtime:3.1.2] /home/kod
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/5cb81d1e3c3084b0fc3927f94fc2d46e/jetified-firebase-encoders-json-18.0.0/AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/c7d961062f251ac19c7f117585b763f9/jetified-firebase-auth-21.0.1/AndroidManifest.xml:17:1-83:12
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:2:1-26:12
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:15:1-39:12
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:17:1-36:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] /home/kod-x/.gradle/caches/transforms-2/files-2.1/cead3be898859779a5c3d5a9b291213c/jetified-firebase-appcheck-interop-16.0.0-beta02/AndroidManifest.xml:15:1-26:12
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b84c779497d419841903308b01de455e/jetified-firebase-installations-17.0.0/AndroidManifest.xml:2:1-24:12
@@ -242,6 +248,8 @@ MERGED from [:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebas
 MERGED from [:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] /home/kod-x/projects/jolobbi_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] /home/kod-x/projects/jolobbi_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_storage] /home/kod-x/projects/jolobbi_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:firebase_storage] /home/kod-x/projects/jolobbi_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_messaging] /home/kod-x/projects/jolobbi_app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_messaging] /home/kod-x/projects/jolobbi_app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /home/kod-x/projects/jolobbi_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
@@ -288,6 +296,8 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/cache
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/c7d961062f251ac19c7f117585b763f9/jetified-firebase-auth-21.0.1/AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] /home/kod-x/.gradle/caches/transforms-2/files-2.1/cead3be898859779a5c3d5a9b291213c/jetified-firebase-appcheck-interop-16.0.0-beta02/AndroidManifest.xml:19:5-21:41
@@ -468,6 +478,8 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/cache
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/c7d961062f251ac19c7f117585b763f9/jetified-firebase-auth-21.0.1/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:14:5-67
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:27:5-67
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:27:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b84c779497d419841903308b01de455e/jetified-firebase-installations-17.0.0/AndroidManifest.xml:11:5-67
@@ -500,6 +512,8 @@ MERGED from [:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebas
 MERGED from [:firebase_analytics] /home/kod-x/projects/jolobbi_app/build/firebase_analytics/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-16:19
 MERGED from [:firebase_auth] /home/kod-x/projects/jolobbi_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_auth] /home/kod-x/projects/jolobbi_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_storage] /home/kod-x/projects/jolobbi_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_storage] /home/kod-x/projects/jolobbi_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_messaging] /home/kod-x/projects/jolobbi_app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:33:9-37:19
 MERGED from [:firebase_messaging] /home/kod-x/projects/jolobbi_app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:33:9-37:19
 MERGED from [:firebase_core] /home/kod-x/projects/jolobbi_app/build/firebase_core/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-12:19
@@ -514,6 +528,8 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/cache
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/c7d961062f251ac19c7f117585b763f9/jetified-firebase-auth-21.0.1/AndroidManifest.xml:74:9-80:19
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:17:9-23:19
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:17:9-23:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:30:9-36:19
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:30:9-36:19
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b84c779497d419841903308b01de455e/jetified-firebase-installations-17.0.0/AndroidManifest.xml:15:9-21:19
@@ -554,6 +570,8 @@ MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/cache
 MERGED from [com.google.firebase:firebase-auth:21.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/c7d961062f251ac19c7f117585b763f9/jetified-firebase-auth-21.0.1/AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:13:5-79
 MERGED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:13:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:26:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-installations:17.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b84c779497d419841903308b01de455e/jetified-firebase-installations-17.0.0/AndroidManifest.xml:10:5-79
@@ -600,6 +618,12 @@ ADDED from [:firebase_auth] /home/kod-x/projects/jolobbi_app/build/firebase_auth
 		ADDED from [:firebase_auth] /home/kod-x/projects/jolobbi_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_auth] /home/kod-x/projects/jolobbi_app/build/firebase_auth/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-124
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_storage] /home/kod-x/projects/jolobbi_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_storage] /home/kod-x/projects/jolobbi_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_storage] /home/kod-x/projects/jolobbi_app/build/firebase_storage/intermediates/library_manifest/debug/AndroidManifest.xml:10:17-126
 service#io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService
 ADDED from [:firebase_messaging] /home/kod-x/projects/jolobbi_app/build/firebase_messaging/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-15:72
 	android:exported
@@ -890,6 +914,12 @@ ADDED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/c
 		ADDED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:22:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-firestore:24.0.1] /home/kod-x/.gradle/caches/transforms-2/files-2.1/d9a0a3ebda02f87c92bbc4241335066b/jetified-firebase-firestore-24.0.1/AndroidManifest.xml:21:17-111
+meta-data#com.google.firebase.components:com.google.firebase.storage.StorageRegistrar
+ADDED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:33:13-35:85
+	android:value
+		ADDED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:35:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-storage:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cf0859930f776e695ed4be142b0fafe/jetified-firebase-storage-20.0.0/AndroidManifest.xml:34:17-107
 meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
 ADDED from [com.google.android.gms:play-services-measurement-api:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/0f3593b45880c46b1557ff08a55e1d37/jetified-play-services-measurement-api-20.1.0/AndroidManifest.xml:30:13-32:85
 	android:value

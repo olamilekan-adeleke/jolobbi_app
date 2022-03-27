@@ -19,7 +19,6 @@ class UpdateProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffoldWidget(
-      useSingleScroll: false,
       body: BlocListener<UpdateProfileCubit, UpdateUserProfileStateModel>(
         listener: (context, state) {
           if (state.status == UpdateProfileStatus.success) {
