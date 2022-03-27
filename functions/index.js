@@ -1,5 +1,6 @@
 const functions = require("firebase-functions");
 const createUserWalletPinFunction = require("./src/http_function/create_wallet_pin");
+const updateUserWalletPinFunction = require("./src/http_function/update_wallet_pin");
 const onNewUserCreatedFunction = require("./src/trigger_function/on_new_user_created");
 
 // // Create and Deploy Your First Cloud Functions
@@ -12,6 +13,10 @@ const onNewUserCreatedFunction = require("./src/trigger_function/on_new_user_cre
 
 exports.createUserWalletPin = functions.https.onRequest(
   createUserWalletPinFunction
+);
+
+exports.updateUserWalletPin = functions.https.onRequest(
+  updateUserWalletPinFunction
 );
 
 exports.onNewUserCreate = functions.firestore
