@@ -5,14 +5,6 @@ class ProfileRepository {
 
 
   void createWalletPin(){
-    try {
-
-      
-
-
-      
-    } catch (e, s) {
-      throw e.toString();
-    }
+    
   }
 }
