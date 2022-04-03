@@ -18,8 +18,8 @@ import 'features/food/cubit/food_item_cubit.dart';
 import 'features/food/cubit/food_vendor_cubit.dart';
 import 'features/food/cubit/vendor_meun_cubit.dart';
 import 'features/food/service/food_vendor_service.dart';
-import 'features/profile/cubit/profile_details_cubit.dart';
-import 'features/profile/cubit/update_profile_cubit.dart';
+import 'features/profile/cubit/user_profile/profile_details_cubit.dart';
+import 'features/profile/cubit/user_profile/update_profile_cubit.dart';
 import 'features/profile/service/profile_service.dart';
 
 class JolobbiApp extends StatelessWidget {

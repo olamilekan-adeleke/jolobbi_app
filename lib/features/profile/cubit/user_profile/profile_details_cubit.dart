@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../cores/utils/crashlytics_helper.dart';
-import '../enum/profile_enum.dart';
-import '../model/user_profile_data_model.dart';
-import '../model/user_profile_state_model.dart';
-import '../service/profile_service.dart';
+import '../../../../cores/utils/crashlytics_helper.dart';
+import '../../enum/profile_enum.dart';
+import '../../model/user_profile_data_model.dart';
+import '../../model/user_profile_state_model.dart';
+import '../../service/profile_service.dart';
 
 class ProfileDetailsCubit extends Cubit<UserProfileStateModel> {
   ProfileDetailsCubit(this.profileService) : super(UserProfileStateModel());

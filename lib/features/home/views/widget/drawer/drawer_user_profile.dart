@@ -7,7 +7,7 @@ import '../../../../../cores/components/image_widget.dart';
 import '../../../../../cores/components/loading_indicator.dart';
 import '../../../../../cores/constants/color.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
-import '../../../../profile/cubit/profile_details_cubit.dart';
+import '../../../../profile/cubit/user_profile/profile_details_cubit.dart';
 import '../../../../profile/enum/profile_enum.dart';
 import '../../../../profile/model/user_profile_state_model.dart';
 

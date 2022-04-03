@@ -1,10 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../cores/utils/crashlytics_helper.dart';
-import '../enum/profile_enum.dart';
-import '../model/update_user_profile_model.dart';
-import '../service/profile_service.dart';
+import '../../../../cores/utils/crashlytics_helper.dart';
+import '../../enum/profile_enum.dart';
+import '../../model/update_user_profile_model.dart';
+import '../../service/profile_service.dart';
 
 class UpdateProfileCubit extends Cubit<UpdateUserProfileStateModel> {
   UpdateProfileCubit(this.profileService)
