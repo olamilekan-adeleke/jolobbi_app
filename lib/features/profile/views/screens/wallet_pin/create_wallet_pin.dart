@@ -27,10 +27,12 @@ class CreateWalletPinPage extends StatelessWidget {
           ),
           verticalSpace(5),
           TextWidget(
-            'You\' use this pin for verification any time you want to make a transaction on your wallet',
+            'You\'ll use this pin for verification any time you want to make a transaction on your wallet',
             fontSize: sp(12),
-            textColor: kcGrey300,
+            textColor: kcSubTextColor,
+            textAlign: TextAlign.center,
           ),
+          verticalSpace(30),
         ],
       ),
     );

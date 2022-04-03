@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const Color kcTextColor = Color(0xff121111);
+final Color kcSubTextColor = const Color(0xff121111).withOpacity(0.8);
 const Color kcPrimaryColor = Color(0xffFF9A02);
 const Color kcGreyLight = Color(0xffEEEEEE);
 const Color kcGrey400 = Color(0xffBDBDBD);
