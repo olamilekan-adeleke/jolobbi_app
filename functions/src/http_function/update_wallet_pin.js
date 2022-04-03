@@ -14,7 +14,7 @@ const updateUserWalletPinFunction = async (req, res) => {
 
     functions.logger.log(userPinData);
 
-    await comparePinAndUpdate(oldPin, userPinData.pin, newPin);
+    await comparePinAndUpdate(oldPin, userPinData.pin, newPin, userId);
 
     res.status(201).json({ status: "success", msg: "Pin Successful Updated!" });
   } catch (error) {

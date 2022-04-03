@@ -51,8 +51,8 @@ MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /home/kod-x/.grad
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/c415d900e3425e63ab1df65318a0613e/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-common:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/ca0a9ec311157001599b2a78adae11bf/jetified-firebase-common-20.0.0/AndroidManifest.xml:25:5-38:19
 MERGED from [com.google.firebase:firebase-common:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/ca0a9ec311157001599b2a78adae11bf/jetified-firebase-common-20.0.0/AndroidManifest.xml:25:5-38:19
-MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/2cba9b7ba5af785e8d6277cf346db688/jetified-play-services-location-16.0.0/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/2cba9b7ba5af785e8d6277cf346db688/jetified-play-services-location-16.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cacffbac8d4300ef1d48f861df6d6d4/jetified-play-services-location-16.0.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cacffbac8d4300ef1d48f861df6d6d4/jetified-play-services-location-16.0.0/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:28:5-44:19
 MERGED from [com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:28:5-44:19
 MERGED from [com.google.android.gms:play-services-measurement-sdk:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/07af198f62dc19a1f479d1bd14a1caab/jetified-play-services-measurement-sdk-20.1.0/AndroidManifest.xml:22:5-23:19
@@ -121,6 +121,8 @@ MERGED from [:path_provider_android] /home/kod-x/projects/jolobbi_app/build/path
 MERGED from [:flutter_secure_storage] /home/kod-x/projects/jolobbi_app/build/flutter_secure_storage/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-13:12
 MERGED from [:integration_test] /home/kod-x/projects/jolobbi_app/build/integration_test/intermediates/library_manifest/debug/AndroidManifest.xml:7:1-12:12
 MERGED from [:crashlytics] /home/kod-x/projects/jolobbi_app/build/crashlytics/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:google_api_headers] /home/kod-x/projects/jolobbi_app/build/google_api_headers/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:package_info_plus] /home/kod-x/projects/jolobbi_app/build/package_info_plus/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:location] /home/kod-x/projects/jolobbi_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-18:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /home/kod-x/.gradle/caches/transforms-2/files-2.1/3f3ff641ec333180f41fe0729bfe58a4/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] /home/kod-x/.gradle/caches/transforms-2/files-2.1/a7211503b4ab1b27410fe6ede09b5894/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
@@ -143,7 +145,7 @@ MERGED from [androidx.exifinterface:exifinterface:1.3.0] /home/kod-x/.gradle/cac
 MERGED from [androidx.security:security-crypto:1.1.0-alpha03] /home/kod-x/.gradle/caches/transforms-2/files-2.1/3467ad7257da79bfd98d7e03d5c7587e/jetified-security-crypto-1.1.0-alpha03/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.biometric:biometric:1.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/7c666b29ba3f59edcb0a7173b6524349/biometric-1.1.0/AndroidManifest.xml:17:1-29:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/2af512844b99b74ee6d763d6e2c46e58/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/2cba9b7ba5af785e8d6277cf346db688/jetified-play-services-location-16.0.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cacffbac8d4300ef1d48f861df6d6d4/jetified-play-services-location-16.0.0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:17:1-46:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/07af198f62dc19a1f479d1bd14a1caab/jetified-play-services-measurement-sdk-20.1.0/AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/f1708b1dbecb969803a34eea5478f533/jetified-play-services-places-placereport-16.0.0/AndroidManifest.xml:17:1-24:12
@@ -272,6 +274,10 @@ MERGED from [:integration_test] /home/kod-x/projects/jolobbi_app/build/integrati
 MERGED from [:integration_test] /home/kod-x/projects/jolobbi_app/build/integration_test/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-44
 MERGED from [:crashlytics] /home/kod-x/projects/jolobbi_app/build/crashlytics/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:crashlytics] /home/kod-x/projects/jolobbi_app/build/crashlytics/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:google_api_headers] /home/kod-x/projects/jolobbi_app/build/google_api_headers/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:google_api_headers] /home/kod-x/projects/jolobbi_app/build/google_api_headers/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:package_info_plus] /home/kod-x/projects/jolobbi_app/build/package_info_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:package_info_plus] /home/kod-x/projects/jolobbi_app/build/package_info_plus/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:location] /home/kod-x/projects/jolobbi_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:location] /home/kod-x/projects/jolobbi_app/build/location/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [androidx.window:window-java:1.0.0-beta04] /home/kod-x/.gradle/caches/transforms-2/files-2.1/3f3ff641ec333180f41fe0729bfe58a4/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
@@ -316,8 +322,8 @@ MERGED from [androidx.biometric:biometric:1.1.0] /home/kod-x/.gradle/caches/tran
 MERGED from [androidx.biometric:biometric:1.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/7c666b29ba3f59edcb0a7173b6524349/biometric-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.2.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/2af512844b99b74ee6d763d6e2c46e58/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.2.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/2af512844b99b74ee6d763d6e2c46e58/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
-MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/2cba9b7ba5af785e8d6277cf346db688/jetified-play-services-location-16.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/2cba9b7ba5af785e8d6277cf346db688/jetified-play-services-location-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cacffbac8d4300ef1d48f861df6d6d4/jetified-play-services-location-16.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/4cacffbac8d4300ef1d48f861df6d6d4/jetified-play-services-location-16.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-sdk:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/07af198f62dc19a1f479d1bd14a1caab/jetified-play-services-measurement-sdk-20.1.0/AndroidManifest.xml:20:5-44

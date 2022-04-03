@@ -2,7 +2,12 @@ const bcrypt = require("bcrypt");
 const functions = require("firebase-functions");
 const admin = require("../../firebase_admin_helper");
 
-const comparePinAndUpdate = async (oldPin, currentHashedPin, newPin) => {
+const comparePinAndUpdate = async (
+  oldPin,
+  currentHashedPin,
+  newPin,
+  userId
+) => {
   //   const oldPinHashed = bcrypt.hashSync(oldPin, 10);
 
   const result = bcrypt.compareSync(oldPin, currentHashedPin);

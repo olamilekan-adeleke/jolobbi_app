@@ -24,11 +24,11 @@ class AppBarWidget extends StatelessWidget {
         if (showBackButton)
           GestureDetector(
             onTap: AppRouter.instance.goBack,
-            child: Icon(Icons.arrow_back_ios_rounded, size: sp(10)),
+            child: Icon(Icons.arrow_back, size: sp(20)),
           )
         else
           Container(),
-        TextWidget(title, fontSize: sp(21)),
+        TextWidget(title, fontSize: sp(16), fontWeight: FontWeight.w700),
         trilling ?? Container(),
       ],
     );

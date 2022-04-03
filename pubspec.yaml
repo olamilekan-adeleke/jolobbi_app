@@ -51,6 +51,7 @@ dependencies:
   image_picker: ^0.8.4+9
   local_auth: ^1.1.11
   location: ^4.3.0
+  pin_code_fields: ^7.3.0
   shimmer: ^2.0.0
   sizer: ^2.0.15
   uuid: ^3.0.6

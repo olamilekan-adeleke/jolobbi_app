@@ -1,4 +1,4 @@
-#Sun Mar 27 01:19:17 WAT 2022
+#Sun Apr 03 23:25:32 WAT 2022
 path.4=classes_0.dex
 path.3=classes3.dex
 path.2=classes2.dex
@@ -19,6 +19,8 @@ base.8=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeL
 base.7=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_11.dex
 base.6=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_10.dex
 base.5=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_1.dex
+renamed.22=classes23.dex
+renamed.21=classes22.dex
 renamed.20=classes21.dex
 renamed.18=classes19.dex
 renamed.17=classes18.dex
@@ -40,6 +42,8 @@ base.14=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/merge
 base.19=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_15.dex
 base.18=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_9.dex
 base.20=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_16.dex
+base.22=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_18.dex
+base.21=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_17.dex
 renamed.3=classes4.dex
 path.12=classes_3.dex
 renamed.2=classes3.dex
@@ -62,3 +66,5 @@ base.12=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/merge
 path.20=classes_16.dex
 base.11=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_2.dex
 base.10=/home/kod-x/projects/jolobbi_app/build/app/intermediates/dex/debug/mergeLibDexDebug/classes_14.dex
+path.21=classes_17.dex
+path.22=classes_18.dex

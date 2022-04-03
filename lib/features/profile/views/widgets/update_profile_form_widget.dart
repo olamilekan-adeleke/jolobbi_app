@@ -110,7 +110,7 @@ class UpdateProfileFormWidget extends StatelessWidget {
                 }
 
                 return CustomButton(
-                  text: 'Create Account',
+                  text: 'Update Profile',
                   onTap: updateProfileCubit.onSubmittedForm,
                 );
               },
