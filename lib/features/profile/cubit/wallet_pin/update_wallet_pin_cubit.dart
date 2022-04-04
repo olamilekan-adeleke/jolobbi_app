@@ -16,6 +16,10 @@ class UpdateWalletPinCubit extends Cubit<UpdateWalletPinStateModel> {
     emit(state.copyWith(pin: pin, status: UpdateWalletPinStatus.unknown));
   }
 
+  void onOldPinChange(String pin) {
+    emit(state.copyWith(oldPin: pin, status: UpdateWalletPinStatus.unknown));
+  }
+
   Future<void> createWalletPin() async {
     try {
       if (state.pin.isEmpty || state.pin.length < 4) {
@@ -52,6 +56,10 @@ class UpdateWalletPinCubit extends Cubit<UpdateWalletPinStateModel> {
           status: UpdateWalletPinStatus.error,
         ),
       );
+    } else {
+      emit(
+        state.copyWith(status: UpdateWalletPinStatus.success),
+      );
     }
   }
 
@@ -68,7 +76,11 @@ class UpdateWalletPinCubit extends Cubit<UpdateWalletPinStateModel> {
       await walletPinService.updateWalletPin(state.oldPin, state.pin);
 
       emit(
-        state.copyWith(pin: '', status: UpdateWalletPinStatus.success),
+        state.copyWith(
+          pin: '',
+          status: UpdateWalletPinStatus.success,
+          oldPin: '',
+        ),
       );
     } catch (e, s) {
       emit(

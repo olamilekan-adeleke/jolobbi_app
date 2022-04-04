@@ -27,6 +27,13 @@ class AppRouter {
     return navigatorKey.currentState!.pushReplacementNamed(routeName);
   }
 
+  Future<dynamic> navigateToAndReplaceUntil(String routeName) {
+    return navigatorKey.currentState!.pushNamedAndRemoveUntil(
+      routeName,
+      (route) => routeName == route.settings.name,
+    );
+  }
+
   void goBack([Object? data]) {
     return navigatorKey.currentState!.pop(data);
   }

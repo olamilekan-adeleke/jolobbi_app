@@ -9,7 +9,7 @@ import '../../../../cores/constants/color.dart';
 import '../../../../cores/navigator/app_router.dart';
 import '../widgets/profile_header_widget.dart';
 import 'update_profile_screen.dart';
-import 'wallet_pin/create_wallet_pin.dart';
+import 'wallet_pin/update_wallet_pin_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -50,8 +50,8 @@ class ProfileScreen extends StatelessWidget {
           _profileItem(
             CupertinoIcons.lock_fill,
             'Change Wallet Pin',
-             onTap: () {
-              AppRouter.instance.navigateTo(CreateWalletPinPage.route);
+            onTap: () {
+              AppRouter.instance.navigateTo(UpdateWalletPinPage.route);
             },
           ),
           verticalSpace(5),

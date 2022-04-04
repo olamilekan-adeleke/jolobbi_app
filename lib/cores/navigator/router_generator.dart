@@ -14,7 +14,9 @@ import '../../features/food/views/screen/vendor/selected_vendor_screen.dart';
 import '../../features/food/views/screen/vendor/vendor_search_page.dart';
 import '../../features/profile/views/screens/profile_screen.dart';
 import '../../features/profile/views/screens/update_profile_screen.dart';
+import '../../features/profile/views/screens/wallet_pin/confrim_update_wallet_pin_screen.dart';
 import '../../features/profile/views/screens/wallet_pin/create_wallet_pin.dart';
+import '../../features/profile/views/screens/wallet_pin/update_wallet_pin_screen.dart';
 import 'error_route_screen.dart';
 
 class RouteGenerator {
@@ -75,6 +77,14 @@ class RouteGenerator {
 
       case CreateWalletPinPage.route:
         return MaterialPageRoute(builder: (_) => const CreateWalletPinPage());
+
+      case UpdateWalletPinPage.route:
+        return MaterialPageRoute(builder: (_) => const UpdateWalletPinPage());
+
+      case ConfirmUpdateWalletPinPage.route:
+        return MaterialPageRoute(
+          builder: (_) => const ConfirmUpdateWalletPinPage(),
+        );
 
       default:
         return errorRoute();
