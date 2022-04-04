@@ -8,6 +8,7 @@ import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/navigator/app_router.dart';
 import '../widgets/profile_header_widget.dart';
+import 'address/all_address_srceen.dart';
 import 'update_profile_screen.dart';
 import 'wallet_pin/update_wallet_pin_screen.dart';
 
@@ -43,7 +44,13 @@ class ProfileScreen extends StatelessWidget {
           verticalSpace(5),
           _profileItem(Icons.find_in_page_outlined, 'Order History'),
           verticalSpace(5),
-          _profileItem(Icons.location_on_outlined, 'Address'),
+          _profileItem(
+            Icons.location_on_outlined,
+            'Address',
+            onTap: () {
+              AppRouter.instance.navigateTo(AllAddressScreen.route);
+            },
+          ),
           verticalSpace(5),
           _profileItem(CupertinoIcons.lock_fill, 'Change password'),
           verticalSpace(5),

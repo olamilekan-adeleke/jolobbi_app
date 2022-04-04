@@ -12,6 +12,8 @@ import '../../features/food/views/screen/selcted_food_item_screen.dart';
 import '../../features/food/views/screen/vendor/all_food_vendor_screen.dart';
 import '../../features/food/views/screen/vendor/selected_vendor_screen.dart';
 import '../../features/food/views/screen/vendor/vendor_search_page.dart';
+import '../../features/profile/views/screens/address/add_address_page.dart';
+import '../../features/profile/views/screens/address/all_address_srceen.dart';
 import '../../features/profile/views/screens/profile_screen.dart';
 import '../../features/profile/views/screens/update_profile_screen.dart';
 import '../../features/profile/views/screens/wallet_pin/confrim_update_wallet_pin_screen.dart';
@@ -85,6 +87,12 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const ConfirmUpdateWalletPinPage(),
         );
+
+      case AllAddressScreen.route:
+        return MaterialPageRoute(builder: (_) => const AllAddressScreen());
+
+      case AddAddressScreen.route:
+        return MaterialPageRoute(builder: (_) => const AddAddressScreen());
 
       default:
         return errorRoute();
