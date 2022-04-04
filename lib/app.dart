@@ -18,10 +18,12 @@ import 'features/food/cubit/food_item_cubit.dart';
 import 'features/food/cubit/food_vendor_cubit.dart';
 import 'features/food/cubit/vendor_meun_cubit.dart';
 import 'features/food/service/food_vendor_service.dart';
+import 'features/profile/cubit/address_cubit/update_address_cubit.dart';
 import 'features/profile/cubit/user_profile/profile_details_cubit.dart';
 import 'features/profile/cubit/user_profile/update_profile_cubit.dart';
 import 'features/profile/cubit/wallet_pin/update_wallet_pin_cubit.dart';
 import 'features/profile/service/profile_service.dart';
+import 'features/profile/service/update_wallet_service.dart';
 import 'features/profile/service/wallet_service.dart';
 
 class JolobbiApp extends StatelessWidget {
@@ -58,6 +60,7 @@ class _BlocProviderHelper {
   static final FoodVendorService foodVendorService = FoodVendorService();
   static final ProfileService profileService = ProfileService();
   static final WalletPinService walletPinService = WalletPinService();
+  static final UpdateAddressService updateAddressService = UpdateAddressService();
 
   List<BlocProvider> blocList(BuildContext context) {
     return <BlocProvider>[
@@ -95,6 +98,9 @@ class _BlocProviderHelper {
       ),
        BlocProvider<UpdateWalletPinCubit>(
         create: (_) => UpdateWalletPinCubit(walletPinService),
+      ),
+      BlocProvider<UpdateAddressCubit>(
+        create: (_) => UpdateAddressCubit(updateAddressService),
       ),
     ];
   }
