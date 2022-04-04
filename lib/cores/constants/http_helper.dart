@@ -26,10 +26,10 @@ class HttpHelper {
     }
   }
 
-  static Future<Map<String, dynamic>> post(
-    String uri,
-    Map<String, dynamic> body,
-  ) async {
+  static Future<Map<String, dynamic>> post({
+  required  String uri,
+  required  Map<String, dynamic> body,
+  }) async {
     try {
       final Map<String, String> headers = {'Content-Type': 'application/json'};
 
