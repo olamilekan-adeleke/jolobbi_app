@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../cores/constants/api.dart';
 import '../../../cores/constants/http_helper.dart';
 
-class ProfileRepository {
+class WalletPinRepository {
   static final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<void> createWalletPin(String pin) async {
