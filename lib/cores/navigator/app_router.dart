@@ -27,7 +27,7 @@ class AppRouter {
     return navigatorKey.currentState!.pushReplacementNamed(routeName);
   }
 
-  void goBack() {
-    return navigatorKey.currentState!.pop();
+  void goBack([Object? data]) {
+    return navigatorKey.currentState!.pop(data);
   }
 }

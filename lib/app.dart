@@ -20,7 +20,9 @@ import 'features/food/cubit/vendor_meun_cubit.dart';
 import 'features/food/service/food_vendor_service.dart';
 import 'features/profile/cubit/user_profile/profile_details_cubit.dart';
 import 'features/profile/cubit/user_profile/update_profile_cubit.dart';
+import 'features/profile/cubit/wallet_pin/update_wallet_pin_cubit.dart';
 import 'features/profile/service/profile_service.dart';
+import 'features/profile/service/wallet_service.dart';
 
 class JolobbiApp extends StatelessWidget {
   const JolobbiApp({Key? key}) : super(key: key);
@@ -55,6 +57,7 @@ class _BlocProviderHelper {
       ForgotPasswordRepository();
   static final FoodVendorService foodVendorService = FoodVendorService();
   static final ProfileService profileService = ProfileService();
+  static final WalletPinService walletPinService = WalletPinService();
 
   List<BlocProvider> blocList(BuildContext context) {
     return <BlocProvider>[
@@ -89,6 +92,9 @@ class _BlocProviderHelper {
       ),
       BlocProvider<UpdateProfileCubit>(
         create: (_) => UpdateProfileCubit(profileService),
+      ),
+       BlocProvider<UpdateWalletPinCubit>(
+        create: (_) => UpdateWalletPinCubit(walletPinService),
       ),
     ];
   }
