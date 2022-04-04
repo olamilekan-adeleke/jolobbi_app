@@ -8,6 +8,7 @@ class UserProfileDataModel {
   final String? mobile;
   final String? profileUrl;
   final int? dateJoined;
+  final List<AddressModel>? address;
 
   const UserProfileDataModel({
     this.id = '',
@@ -17,6 +18,7 @@ class UserProfileDataModel {
     this.mobile = '',
     this.profileUrl,
     this.dateJoined,
+    this.address,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,6 +30,7 @@ class UserProfileDataModel {
       'mobile': mobile,
       'profileUrl': profileUrl,
       'dateJoined': dateJoined,
+      'address': address?.map((ele) => ele.toMap()).toList(),
     };
   }
 
@@ -40,6 +43,11 @@ class UserProfileDataModel {
       mobile: map['mobile'],
       profileUrl: map['profileUrl'],
       dateJoined: map['dateJoined']?.toInt(),
+      address: map['address'] == null
+          ? null
+          : List<AddressModel>.from(
+              map['address'].map((ele) => AddressModel.fromMap(ele)),
+            ),
     );
   }
 
@@ -65,6 +73,42 @@ class UserProfileDataModel {
       mobile: mobile ?? this.mobile,
       profileUrl: profileUrl ?? this.profileUrl,
       dateJoined: dateJoined ?? this.dateJoined,
+    );
+  }
+}
+
+class AddressModel {
+  final String location;
+  final String locationDescription;
+  final String tag;
+  final double lat;
+  final double lng;
+
+  AddressModel({
+    required this.location,
+    required this.locationDescription,
+    required this.tag,
+    required this.lat,
+    required this.lng,
+  });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'location': location,
+      'locationDescription': locationDescription,
+      'tag': tag,
+      'lat': lat,
+      'lng': lng,
+    };
+  }
+
+  factory AddressModel.fromMap(Map<String, dynamic> map) {
+    return AddressModel(
+      location: map['location'] ?? '',
+      locationDescription: map['locationDescription'] ?? '',
+      tag: map['tag'] ?? '',
+      lat: map['lat']?.toDouble() ?? 0.0,
+      lng: map['lng']?.toDouble() ?? 0.0,
     );
   }
 }
