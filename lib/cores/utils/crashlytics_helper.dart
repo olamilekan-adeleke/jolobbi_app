@@ -16,7 +16,7 @@ class CrashlyticsHelper {
       // Temporarily toggle this to true if you want to test crash reporting in your app.
       await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
     } else {
-      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+      // await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
       // Handle Crashlytics enabled status when not in Debug,
       // e.g. allow your users to opt-in to crash reporting.
     }

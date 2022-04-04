@@ -16,4 +16,19 @@ class WalletPinRepository {
       body: <String, dynamic>{'pin': pin, 'userId': userId},
     );
   }
+
+  Future<void> updateWalletPin(String oldPin, String newPin) async {
+    final String? userId = _firebaseAuth.currentUser?.uid;
+
+    if (userId == null) throw 'Error: User not login';
+
+    await HttpHelper.post(
+      uri: ApiEndpoints.updateWalletPin,
+      body: <String, dynamic>{
+        'oldPin': oldPin,
+        'newPin': newPin,
+        'userId': userId,
+      },
+    );
+  }
 }
