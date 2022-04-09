@@ -37,3 +37,6 @@ path_provider_linux=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pu
 path_provider_macos=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.5/
 path_provider_windows=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.5/
 sqflite=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-2.0.2/
+webview_flutter=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter-3.0.2/
+webview_flutter_android=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_android-2.8.5/
+webview_flutter_wkwebview=/home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/webview_flutter_wkwebview-2.7.2/
