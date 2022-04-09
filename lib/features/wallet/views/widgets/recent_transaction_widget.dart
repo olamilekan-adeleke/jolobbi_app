@@ -12,27 +12,25 @@ class RecentTransactionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          TextWidget(
-            'Recent Transactions',
-            fontSize: sp(16),
-            fontWeight: FontWeight.w600,
-          ),
-          verticalSpace(20),
-          Flexible(
-            child: ListView.separated(
-              separatorBuilder: (_, __) => const Divider(),
-              itemCount: 10,
-              itemBuilder: (_, int index) {
-                return const TransactionItemWidget();
-              },
-            ),
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        TextWidget(
+          'Recent Transactions',
+          fontSize: sp(16),
+          fontWeight: FontWeight.w600,
+        ),
+        verticalSpace(20),
+        ListView.separated(
+          itemCount: 10,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          separatorBuilder: (_, __) => const Divider(),
+          itemBuilder: (_, int index) {
+            return const TransactionItemWidget();
+          },
+        ),
+      ],
     );
   }
 }

@@ -104,7 +104,7 @@ class _BlocProviderHelper {
         create: (_) => UpdateAddressCubit(updateAddressService),
       ),
         BlocProvider<WalletCubit>(
-        create: (_) => WalletCubit()..getWalletData(),
+        create: (_) => WalletCubit()..getWalletBalance(),
       ),
     ];
   }

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 
 import '../../../../cores/components/custom_button.dart';
 import '../../../../cores/components/custom_text_widget.dart';
+import '../../cubit/wallet_cubit.dart';
+import '../../model/wallet_state_model.dart';
 
 class WalletBalanceWidget extends StatelessWidget {
   const WalletBalanceWidget({Key? key}) : super(key: key);
@@ -34,11 +37,15 @@ class WalletBalanceWidget extends StatelessWidget {
                   textColor: kcWhite,
                 ),
                 const Spacer(),
-                TextWidget(
-                  'NGN ${currencyFormatter(23628)}',
-                  fontSize: sp(25),
-                  fontWeight: FontWeight.w700,
-                  textColor: kcWhite,
+                BlocBuilder<WalletCubit, WalletStateModel>(
+                  builder: (context, state) {
+                    return TextWidget(
+                      'NGN ${currencyFormatter(state.walletData?.cashBalance ?? 0)}',
+                      fontSize: sp(25),
+                      fontWeight: FontWeight.w700,
+                      textColor: kcWhite,
+                    );
+                  },
                 ),
                 const Spacer(),
                 Padding(
