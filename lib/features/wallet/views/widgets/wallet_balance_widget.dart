@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jolobbi_app/cores/utils/bottom_sheet_helper.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
@@ -8,6 +9,7 @@ import '../../../../cores/components/custom_button.dart';
 import '../../../../cores/components/custom_text_widget.dart';
 import '../../cubit/wallet_cubit.dart';
 import '../../model/wallet_state_model.dart';
+import 'fund_wallet_amount_widget.dart';
 
 class WalletBalanceWidget extends StatelessWidget {
   const WalletBalanceWidget({Key? key}) : super(key: key);
@@ -54,7 +56,12 @@ class WalletBalanceWidget extends StatelessWidget {
                     text: 'Fund Wallet',
                     textColor: kcTextColor,
                     color: kcWhite,
-                    onTap: () {},
+                    onTap: () {
+                      BottomSheetHelper.show(
+                        context: context,
+                        child: const FundWalletAmountWidget(),
+                      );
+                    },
                   ),
                 ),
                 verticalSpace(),

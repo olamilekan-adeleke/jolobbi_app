@@ -57,3 +57,13 @@ String? mobileValidator(String? value) {
   }
   return null;
 }
+
+String? amountValidator(String? value) {
+  if (value == '' || value == null) {
+    return 'Amount must not be empty!';
+  } else if (value.trim().length < 1) {
+    return 'Amount Must be minimum of above NGN 10!';
+  }
+
+  return null;
+}

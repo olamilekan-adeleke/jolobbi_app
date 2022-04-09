@@ -30,7 +30,8 @@ class WalletScreen extends StatelessWidget {
               verticalSpace(20),
               const WalletBalanceWidget(),
               verticalSpace(40),
-              const RecentTransactionWidget()
+              const RecentTransactionWidget(),
+              verticalSpace(),
             ],
           ),
         ),
