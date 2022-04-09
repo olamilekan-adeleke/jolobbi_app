@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jolobbi_app/cores/navigator/app_router.dart';
 
 import '../../../../cores/constants/color.dart';
+import '../../../../cores/navigator/app_router.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../../food/views/screen/favorite/favorite_food_screen.dart';
 import '../../../food/views/screen/vendor/all_food_vendor_screen.dart';
@@ -27,6 +27,14 @@ class HomeDrawerWidget extends StatelessWidget {
             title: 'Profile',
             onTap: () {
               AppRouter.instance.popAndNavigateTo(ProfileScreen.route);
+            },
+          ),
+          verticalSpace(20),
+          DrawerItemWidget(
+            icon: Icons.favorite,
+            title: 'Wallet',
+            onTap: () {
+              // AppRouter.instance.popAndNavigateTo(FavoriteScreen.route);
             },
           ),
           verticalSpace(20),
