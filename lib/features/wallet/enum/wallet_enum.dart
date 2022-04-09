@@ -1,0 +1,1 @@
+enum WalletStatus{unknown, busy, error,success }

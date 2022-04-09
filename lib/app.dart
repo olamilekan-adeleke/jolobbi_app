@@ -25,6 +25,7 @@ import 'features/profile/cubit/wallet_pin/update_wallet_pin_cubit.dart';
 import 'features/profile/service/profile_service.dart';
 import 'features/profile/service/update_wallet_service.dart';
 import 'features/profile/service/wallet_service.dart';
+import 'features/wallet/cubit/wallet_cubit.dart';
 
 class JolobbiApp extends StatelessWidget {
   const JolobbiApp({Key? key}) : super(key: key);
@@ -101,6 +102,9 @@ class _BlocProviderHelper {
       ),
       BlocProvider<UpdateAddressCubit>(
         create: (_) => UpdateAddressCubit(updateAddressService),
+      ),
+        BlocProvider<WalletCubit>(
+        create: (_) => WalletCubit()..getWalletData(),
       ),
     ];
   }
