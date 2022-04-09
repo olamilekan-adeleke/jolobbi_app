@@ -32,7 +32,7 @@ class HomeDrawerWidget extends StatelessWidget {
           ),
           verticalSpace(20),
           DrawerItemWidget(
-            icon: Icons.favorite,
+            icon: Icons.account_balance_wallet_outlined,
             title: 'Wallet',
             onTap: () {
               AppRouter.instance.popAndNavigateTo(WalletScreen.route);

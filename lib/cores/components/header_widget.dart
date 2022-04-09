@@ -6,10 +6,11 @@ import '../../../../cores/components/search_bar_widget.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 
-class FoodHomeHeaderWidget extends StatelessWidget {
-  const FoodHomeHeaderWidget({Key? key, this.onTap}) : super(key: key);
+class HeaderWidget extends StatelessWidget {
+  const HeaderWidget(this.title, {Key? key, this.onTap}) : super(key: key);
 
   final Function()? onTap;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class FoodHomeHeaderWidget extends StatelessWidget {
               ),
             ),
             TextWidget(
-              'Fast food',
+              title,
               fontSize: sp(20),
               fontWeight: FontWeight.w500,
             ),
