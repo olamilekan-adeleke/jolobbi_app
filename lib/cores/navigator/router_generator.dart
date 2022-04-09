@@ -19,6 +19,7 @@ import '../../features/profile/views/screens/update_profile_screen.dart';
 import '../../features/profile/views/screens/wallet_pin/confrim_update_wallet_pin_screen.dart';
 import '../../features/profile/views/screens/wallet_pin/create_wallet_pin.dart';
 import '../../features/profile/views/screens/wallet_pin/update_wallet_pin_screen.dart';
+import '../../features/wallet/views/screens/wallet_screen.dart';
 import 'error_route_screen.dart';
 
 class RouteGenerator {
@@ -93,6 +94,9 @@ class RouteGenerator {
 
       case AddAddressScreen.route:
         return MaterialPageRoute(builder: (_) => const AddAddressScreen());
+
+      case WalletScreen.route:
+        return MaterialPageRoute(builder: (_) => const WalletScreen());
 
       default:
         return errorRoute();

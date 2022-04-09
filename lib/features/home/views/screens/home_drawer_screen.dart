@@ -7,6 +7,7 @@ import '../../../../cores/utils/sizer_utils.dart';
 import '../../../food/views/screen/favorite/favorite_food_screen.dart';
 import '../../../food/views/screen/vendor/all_food_vendor_screen.dart';
 import '../../../profile/views/screens/profile_screen.dart';
+import '../../../wallet/views/screens/wallet_screen.dart';
 import '../widget/drawer/drawer_item_wigdet.dart';
 import '../widget/drawer/drawer_user_profile.dart';
 
@@ -34,7 +35,7 @@ class HomeDrawerWidget extends StatelessWidget {
             icon: Icons.favorite,
             title: 'Wallet',
             onTap: () {
-              // AppRouter.instance.popAndNavigateTo(FavoriteScreen.route);
+              AppRouter.instance.popAndNavigateTo(WalletScreen.route);
             },
           ),
           verticalSpace(20),
