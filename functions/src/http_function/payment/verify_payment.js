@@ -31,7 +31,7 @@ const verifyPaymentFunction = async (req, res) => {
     );
 
     // fund user wallet
-    await updateUserCashWallet(responseData.amount);
+    await updateUserCashWallet(userId, responseData.amount);
 
     res.status(200).json({ status: "success", msg: "Transaction Successful!" });
   } catch (error) {
