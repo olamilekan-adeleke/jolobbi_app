@@ -1,7 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require("../../firebase_admin_helper");
 
-const incrementNewUserCount = async () => {
+const updateTotalWalletAmountStat = async (amount) => {
   const today = new Date();
   const month = today.getMonth() + 1;
   const date = today.getFullYear() + "-" + month + "-" + today.getDate();
@@ -9,13 +9,13 @@ const incrementNewUserCount = async () => {
   await admin
     .firestore()
     .collection("stats")
-    .doc("new_user_count")
+    .doc("total_wallet_amount")
     .collection(`${today.getFullYear()}`)
     .doc("stat")
     .set(
       {
-        [`${date}`]: admin.firestore.FieldValue.increment(1),
-        [`month_${month}`]: admin.firestore.FieldValue.increment(1),
+        [`${date}`]: admin.firestore.FieldValue.increment(amount),
+        [`month_${month}`]: admin.firestore.FieldValue.increment(amount),
       },
       { merge: true }
     );
@@ -23,4 +23,4 @@ const incrementNewUserCount = async () => {
   functions.logger.log(`New user count incremented`);
 };
 
-module.exports = incrementNewUserCount;
+module.exports = updateTotalWalletAmountStat;

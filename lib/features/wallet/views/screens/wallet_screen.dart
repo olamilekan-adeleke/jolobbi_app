@@ -26,8 +26,10 @@ class WalletScreen extends StatelessWidget {
         listener: (context, state) {
           if (state.status == WalletStatus.error) {
             return SnackBarService.showErrorSnackBar(
-                context: context, message: state.errorText);
+                context: context, message: state.errorText,);
           } else if (state.status == WalletStatus.success) {
+            context.read<WalletCubit>().getWalletBalance();
+            
             return SnackBarService.showSuccessSnackBar(
               context: context,
               message: 'Transaction is been processed, '
