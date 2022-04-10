@@ -1,4 +1,5 @@
 const admin = require("../../../firebase_admin_helper");
+const functions = require("firebase-functions");
 
 const addNewUserTransactionHistory = async (
   userId,
@@ -11,7 +12,7 @@ const addNewUserTransactionHistory = async (
     .collection("users")
     .doc(userId)
     .collection("transactions")
-    .set({
+    .add({
       description: description,
       transactionData: flutterwaveData,
       type: type,
