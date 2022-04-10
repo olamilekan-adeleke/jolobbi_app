@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jolobbi_app/features/wallet/enum/wallet_enum.dart';
-import 'package:jolobbi_app/features/wallet/model/wallet_data_model.dart';
+import '../enum/wallet_enum.dart';
+import '../model/wallet_data_model.dart';
 
 import '../../../cores/utils/crashlytics_helper.dart';
 import '../model/wallet_state_model.dart';

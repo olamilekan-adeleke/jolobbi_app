@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../cores/constants/color.dart';
 import '../../cores/utils/sizer_utils.dart';
@@ -18,6 +19,7 @@ class CustomTextField extends StatefulWidget {
     this.suffix,
     this.onChanged,
     this.fillColor,
+    this.inputFormatters,
   }) : super(key: key);
 
   final TextEditingController? textEditingController;
@@ -31,6 +33,7 @@ class CustomTextField extends StatefulWidget {
   final int? maxLine;
   final IconData? suffix;
   final Color? fillColor;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
@@ -45,6 +48,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       valueListenable: obscureText,
       builder: (BuildContext context, bool value, dynamic child) {
         return TextFormField(
+          inputFormatters: widget.inputFormatters,
           maxLines: widget.maxLine,
           enabled: widget.enabled,
           cursorColor: kcPrimaryColor,

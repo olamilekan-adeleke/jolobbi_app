@@ -14,6 +14,11 @@ class AppRouter {
     );
   }
 
+  Future<dynamic> navigate(Widget page, {Object? arguments}) {
+    return navigatorKey.currentState!
+        .push(MaterialPageRoute(builder: (_) => page));
+  }
+
   Future<dynamic> popAndNavigateTo(String routeName, {Object? arguments}) {
     navigatorKey.currentState!.pop();
 

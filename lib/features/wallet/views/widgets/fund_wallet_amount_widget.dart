@@ -1,9 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:jolobbi_app/cores/components/custom_button.dart';
-import 'package:jolobbi_app/cores/components/custom_text_widget.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uuid/uuid.dart';
+
+import '../../../../cores/components/custom_button.dart';
+import '../../../../cores/components/custom_text_widget.dart';
 
 import '../../../../cores/components/custom_textfiled.dart';
+import '../../../../cores/navigator/app_router.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../../../cores/utils/snack_bar_service.dart';
+import '../../../profile/cubit/user_profile/profile_details_cubit.dart';
+import '../../cubit/fund_wallet_cubit.dart';
+import '../screens/flutter_wave_web_view.dart';
 
 class FundWalletAmountWidget extends StatelessWidget {
   const FundWalletAmountWidget({Key? key}) : super(key: key);
@@ -33,11 +44,53 @@ class FundWalletAmountWidget extends StatelessWidget {
         verticalSpace(5),
         CustomTextField(
           hintText: 'NGN 1,000',
-          onChanged: (_) {},
+          textInputType: TextInputType.number,
+          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+          onChanged: (String value) {
+            context.read<FundWalletCubit>().onAmountChange(value);
+          },
         ),
         verticalSpace(40),
-        CustomButton(text: 'Proceed To Payment', onTap: () {}),
+        CustomButton(
+          text: 'Proceed To Payment',
+          onTap: () => _fund(context),
+        ),
       ],
     );
+  }
+
+  void _fund(BuildContext context) async {
+    final FundWalletCubit _fundWalletCubit = context.read<FundWalletCubit>();
+
+    final ProfileDetailsCubit profileCubit =
+        context.read<ProfileDetailsCubit>();
+
+    if (_fundWalletCubit.state.amount.isEmpty) {
+      return SnackBarService.showWarningSnackBar(
+        context: context,
+        message: 'Please Enter Amount!',
+      );
+    }
+
+    if (profileCubit.state.userData == null) {
+      // todo: log out user!
+
+      return SnackBarService.showErrorSnackBar(
+        context: context,
+        message: 'User Data was not found!',
+      );
+    }
+
+    final Map<String, dynamic> paymentResponse =
+        await AppRouter.instance.navigate(
+      FlutterWeb(
+        amount: _fundWalletCubit.state.amount,
+        transactionRef: "jolobbi_food-${const Uuid().v1()}",
+        description: "Fund Wallet",
+        user: profileCubit.state.userData!,
+      ),
+    );
+
+    log(paymentResponse.toString());
   }
 }
