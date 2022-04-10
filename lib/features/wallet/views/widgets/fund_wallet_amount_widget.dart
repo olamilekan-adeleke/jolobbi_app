@@ -100,7 +100,7 @@ class FundWalletAmountWidget extends StatelessWidget {
 
     // {status: successful, customer: {name: Jack The Ripper , email: teduvf@gmail.com, phone_number: 07052936789}, transaction_id: 3280034, tx_ref: jolobbi_food-e4c55180-b8b9-11ec-8048-d9477a230981, flw_ref: FLW-MOCK-269d126fa66f7bc963e75ecc0c3ceebb, currency: NGN, amount: 200}
 
-    _fundWalletCubit.fundWallet(paymentResponse['tx_ref']);
+    _fundWalletCubit.fundWallet(paymentResponse['transaction_id']);
     AppRouter.instance.goBack();
   }
 }
