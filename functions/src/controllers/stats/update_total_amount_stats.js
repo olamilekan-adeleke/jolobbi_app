@@ -1,5 +1,5 @@
 const functions = require("firebase-functions");
-const admin = require("../../firebase_admin_helper");
+const admin = require("../../../firebase_admin_helper");
 
 const updateTotalWalletAmountStat = async (amount) => {
   const today = new Date();
