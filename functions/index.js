@@ -3,6 +3,8 @@ const createUserWalletPinFunction = require("./src/http_function/create_wallet_p
 const verifyPaymentFunction = require("./src/http_function/payment/verify_payment");
 const updateUserWalletPinFunction = require("./src/http_function/update_wallet_pin");
 const onNewUserCreatedFunction = require("./src/trigger_function/on_new_user_created");
+require("dotenv").config();
+
 
 // http functions
 

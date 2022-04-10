@@ -1,8 +1,7 @@
 const flutterwave = require("flutterwave-node-v3");
-require("dotenv").config();
 
 const verifyTransactionWithFlutterwave = async (id) => {
-  const flw = new Flutterwave(
+  const flw = new flutterwave(
     process.env.flutterWavePublicKey,
     process.env.flutterWaveSecretKey
   );

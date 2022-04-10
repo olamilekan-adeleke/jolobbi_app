@@ -13,10 +13,10 @@ const verifyPaymentFunction = async (req, res) => {
     }
 
     // get user data
-    const userData = await getUserDataById();
+    const userData = await getUserDataById(userId);
 
     // verify transaction with Flutterwave
-    const responseData = await verifyTransactionWithFlutterwave();
+    const responseData = await verifyTransactionWithFlutterwave(transId);
 
     // check if transaction ref already exist
     await checkIfTransactionExist(userData, responseData);

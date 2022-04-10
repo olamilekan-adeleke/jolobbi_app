@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -89,6 +91,8 @@ class FundWalletAmountWidget extends StatelessWidget {
       ),
     );
 
+    log(paymentResponse.toString());
+
     if (paymentResponse == null) {
       AppRouter.instance.goBack();
 
@@ -98,7 +102,7 @@ class FundWalletAmountWidget extends StatelessWidget {
       );
     }
 
-    // {status: successful, customer: {name: Jack The Ripper , email: teduvf@gmail.com, phone_number: 07052936789}, transaction_id: 3280034, tx_ref: jolobbi_food-e4c55180-b8b9-11ec-8048-d9477a230981, flw_ref: FLW-MOCK-269d126fa66f7bc963e75ecc0c3ceebb, currency: NGN, amount: 200}
+    // {status: successful, customer: {name: Jack The Ripper , email: teduvf@gmail.com, phone_number: 07052936789}, transaction_id: 3280243, tx_ref: jolobbi_food-9f61f1a0-b8cf-11ec-9613-e18c12f05117, flw_ref: FLW-M03K-df672cc4e6e41ea7cc1016820faff81a, currency: NGN, amount: 200}
 
     _fundWalletCubit.fundWallet(paymentResponse['transaction_id']);
     AppRouter.instance.goBack();
