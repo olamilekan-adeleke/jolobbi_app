@@ -15,11 +15,12 @@ class FundWalletCubit extends Cubit<FundWalletStateModel> {
     emit(state.copyWith(amount: amount, status: WalletStatus.unknown));
   }
 
-  void fundWallet() async {
+  void fundWallet(String transactionRef) async {
     try {
       emit(state.copyWith(errorText: '', status: WalletStatus.unknown));
 
-     
+      await _walletService.verifyTransaction(transactionRef);
+
       emit(state.copyWith(status: WalletStatus.success));
     } catch (e, s) {
       emit(state.copyWith(errorText: '$e', status: WalletStatus.error));

@@ -9,4 +9,8 @@ class WalletService {
 
     return WalletDataModel.fromMap(data);
   }
+
+  Future<void> verifyTransaction(String transactionRef) async {
+    await _walletRepository.verifyTransaction(transactionRef);
+  }
 }
