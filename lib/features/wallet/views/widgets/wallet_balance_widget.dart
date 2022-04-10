@@ -7,7 +7,10 @@ import '../../../../cores/utils/sizer_utils.dart';
 
 import '../../../../cores/components/custom_button.dart';
 import '../../../../cores/components/custom_text_widget.dart';
+import '../../cubit/fund_wallet_cubit.dart';
 import '../../cubit/wallet_cubit.dart';
+import '../../enum/wallet_enum.dart';
+import '../../model/fund_wallet_state_model.dart';
 import '../../model/wallet_state_model.dart';
 import 'fund_wallet_amount_widget.dart';
 
@@ -52,14 +55,22 @@ class WalletBalanceWidget extends StatelessWidget {
                 const Spacer(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: sp(20)),
-                  child: CustomButton(
-                    text: 'Fund Wallet',
-                    textColor: kcTextColor,
-                    color: kcWhite,
-                    onTap: () {
-                      BottomSheetHelper.show(
-                        context: context,
-                        child: const FundWalletAmountWidget(),
+                  child: BlocBuilder<FundWalletCubit, FundWalletStateModel>(
+                    builder: (context, state) {
+                      if (state.status == WalletStatus.busy) {
+                        return const CustomButton.loading();
+                      }
+
+                      return CustomButton(
+                        text: 'Fund Wallet',
+                        textColor: kcTextColor,
+                        color: kcWhite,
+                        onTap: () {
+                          BottomSheetHelper.show(
+                            context: context,
+                            child: const FundWalletAmountWidget(),
+                          );
+                        },
                       );
                     },
                   ),
