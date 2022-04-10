@@ -1,5 +1,6 @@
 const functions = require("firebase-functions");
 const getUserDataById = require("../../controllers/get_user_data_by_id");
+const addNewUserTransactionHistory = require("../../controllers/payment/add_new_user_transaction_history");
 const checkIfTransactionExist = require("../../controllers/payment/check_if_transaction_exist");
 const verifyTransactionWithFlutterwave = require("../../controllers/payment/verify_transaction_with_flutterwave");
 
@@ -21,6 +22,12 @@ const verifyPaymentFunction = async (req, res) => {
     await checkIfTransactionExist(userData, responseData);
 
     // add transaction to user transaction history!
+    await addNewUserTransactionHistory(
+      userId,
+      "You fund your wallet via flutterwave",
+      "fund_wallet",
+      flutterwaveData
+    );
 
     // fund user wallet
     await updateUserCashWallet(responseData.amount);
