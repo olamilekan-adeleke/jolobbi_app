@@ -14,7 +14,7 @@ const verifyTransactionWithFlutterwave = async (id) => {
     throw { code: 400, msg: response.message };
   }
 
-  return response;
+  return response.data;
 };
 
 module.exports = verifyTransactionWithFlutterwave;
