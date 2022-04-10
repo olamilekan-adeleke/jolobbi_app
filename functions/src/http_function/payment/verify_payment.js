@@ -20,8 +20,10 @@ const verifyPaymentFunction = async (req, res) => {
     // check if transaction ref already exist
     await checkIfTransactionExist(userData, responseData);
 
-    // added transaction to generate ledger transaction
     // add transaction to user transaction history!
+
+    // fund user wallet
+    await updateUserCashWallet(responseData.amount);
 
     res.status(200).json({ status: "success", msg: "Transaction Successful!" });
   } catch (error) {
