@@ -1,7 +1,7 @@
-const { database } = require("firebase-admin");
 const functions = require("firebase-functions");
 const sendNotificationHelper = require("../../controllers/notification/notification_helper");
 const sendNotificationToUserById = require("../../controllers/notification/send_notifcation_user_by_id");
+const addTransferHistoryUser = require("../../controllers/payment/add_transfer_history_for_user");
 const getVendorDataByTag = require("../../controllers/payment/get_business_data_by_tag");
 const transferFundToVendor = require("../../controllers/payment/transfer_fund_to_vendor");
 
@@ -39,7 +39,8 @@ const transferToBusinessByTag = async (req, res) => {
       notificationData
     );
 
-    // todo: add to notification history
+    // add to transaction history to user
+    addTransferHistoryUser(userId, amount, "Transfer fund to ", businessTag);
 
     res.status(200).json({ status: "success", msg: "Transfer Successful!" });
   } catch (error) {

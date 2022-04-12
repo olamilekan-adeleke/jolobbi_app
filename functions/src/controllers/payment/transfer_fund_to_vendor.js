@@ -1,4 +1,5 @@
 const admin = require("../../../firebase_admin_helper");
+const functions = require("firebase-functions");
 const updateUserCashWallet = require("../update_user_cash_wallet");
 
 const transferFundToVendor = async (vendorId, userId, amount) => {
@@ -15,9 +16,11 @@ const transferFundToVendor = async (vendorId, userId, amount) => {
 
     await transaction.update(userWalletRef, {
       cash_balance: admin.firestore.FieldValue.increment(
-        parseInt(amount) * 100
+        -(parseInt(amount) * 100)
       ),
     });
+
+    functions.logger.log(`updated wallet for user ${userId}`);
   });
 };
 

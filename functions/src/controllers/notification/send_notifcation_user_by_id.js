@@ -8,6 +8,8 @@ const sendNotificationToUserById = async (userId, title, body, data) => {
   const fcmToken = userData.fcm_token;
 
   await sendNotificationHelper(fcmToken, title, body, data);
+
+  functions.logger.log(`send notification for user ${userId}`);
 };
 
 module.exports = sendNotificationToUserById;
