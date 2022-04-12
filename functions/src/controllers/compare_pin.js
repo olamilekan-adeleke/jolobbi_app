@@ -8,10 +8,7 @@ const comparePinAndUpdate = async (
   newPin,
   userId
 ) => {
-  //   const oldPinHashed = bcrypt.hashSync(oldPin, 10);
-
   const result = bcrypt.compareSync(oldPin, currentHashedPin);
-  //   functions.logger.log(`old: ${oldPinHashed} | new: ${currentHashedPin}`);
 
   if (result == false) {
     throw { code: 400, msg: "Old Pin Does Not Match!" };
