@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../food/views/screen/food_home_page.dart';
 import '../../cubits/auth_state_cubit.dart';
 import '../../enum/auth_enum.dart';
+import 'login_screen.dart';
+import 'sign_up_screen.dart';
 
 class AuthStateScreen extends StatelessWidget {
   const AuthStateScreen({Key? key, this.isLoginScreen = true})

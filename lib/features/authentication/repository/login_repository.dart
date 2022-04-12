@@ -19,6 +19,8 @@ class LoginRepository {
       email: email,
       password: password,
     );
+
+    updateUserFCM();
   }
 
   Future<bool> useBiometricLogin() async {
