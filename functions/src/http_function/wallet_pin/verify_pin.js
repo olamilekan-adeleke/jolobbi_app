@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 const functions = require("firebase-functions");
-const admin = require("../../firebase_admin_helper");
+const getUserPinById = require("../../controllers/get_user_pin_by_id");
 
 const verifyWalletPinFunction = async (req, res) => {
   try {
