@@ -1,7 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:local_auth/local_auth.dart';
 
+import '../../../cores/constants/firebase_collection_key.dart';
+import 'push_notification_repo.dart';
+
 class LoginRepository {
+  static final CollectionReference userCollectionRef =
+      FirebaseFirestore.instance.collection(USER_REF);
   final LocalAuthentication localAuth = LocalAuthentication();
   static final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
@@ -33,4 +39,13 @@ class LoginRepository {
   }
 
   Future<bool> checkBiometric() async => await localAuth.canCheckBiometrics;
+
+  Future<void> updateUserFCM() async {
+    final DocumentReference documentReference =
+        userCollectionRef.doc(_firebaseAuth.currentUser!.uid);
+
+    await documentReference.update({
+      'fcm_token': await PushNotificationService().getFCMToken(),
+    });
+  }
 }

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../cores/constants/firebase_collection_key.dart';
 import '../models/sign_up_model.dart';
+import 'push_notification_repo.dart';
 
 class SignUpRepository {
   static final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -24,6 +25,9 @@ class SignUpRepository {
     final DocumentReference documentReference =
         userCollectionRef.doc(signUpModel.id);
 
-    await documentReference.set(signUpModel.toMap());
+    await documentReference.set({
+      ...signUpModel.toMap(),
+      'fcm_token': await PushNotificationService().getFCMToken(),
+    });
   }
 }
