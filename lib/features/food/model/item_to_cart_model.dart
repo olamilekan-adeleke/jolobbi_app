@@ -12,4 +12,7 @@ class ItemToCartModel {
       foodItem: foodItem ?? this.foodItem,
     );
   }
+
+  @override
+  String toString() => 'ItemToCartModel(foodItem: $foodItem)';
 }

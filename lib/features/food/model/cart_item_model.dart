@@ -90,6 +90,11 @@ class CartItemModel {
       count: count ?? this.count,
     );
   }
+
+  @override
+  String toString() {
+    return 'CartItemModel(image: $image, price: $price, name: $name, fastFoodId: $fastFoodId, fastFoodName: $fastFoodName, id: $id, type: $type, addOn: $addOn, extras: $extras, count: $count)';
+  }
 }
 
 class CartAddOn {

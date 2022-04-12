@@ -14,6 +14,7 @@ import 'features/authentication/repository/forgot_password_repository.dart';
 import 'features/authentication/repository/login_repository.dart';
 import 'features/authentication/repository/sign_up_repositry.dart';
 import 'features/authentication/views/screens/auth_state_screen.dart';
+import 'features/food/cubit/cart_cubit.dart';
 import 'features/food/cubit/food_item_cubit.dart';
 import 'features/food/cubit/food_vendor_cubit.dart';
 import 'features/food/cubit/vendor_meun_cubit.dart';
@@ -109,6 +110,7 @@ class _BlocProviderHelper {
         create: (_) => WalletCubit()..getWalletBalance(),
       ),
       BlocProvider<FundWalletCubit>(create: (_) => FundWalletCubit()),
+      BlocProvider<CartCubit>(create: (_) => CartCubit()),
     ];
   }
 }

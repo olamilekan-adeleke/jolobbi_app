@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../cores/components/custom_scaffold_widget.dart';
 import '../../../../cores/components/custom_text_widget.dart';
@@ -6,6 +7,7 @@ import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../cubit/item_cart_cubit.dart';
 import '../../model/food_item_data_model.dart';
 import '../widgets/selected_food_description_widget.dart';
 import '../widgets/food_item_cart_buttom_widget.dart';
@@ -20,44 +22,47 @@ class SelectedFoodItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffoldWidget(
-      useSingleScroll: false,
-      usePadding: false,
-      useSafeArea: false,
-      body: Stack(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.topCenter,
-            child: SizedBox(
-              height: sh(35),
-              width: double.infinity,
-              child: CustomImageWidget(
-                imageUrl: foodItem.image,
-                imageTypes: ImageTypes.network,
-                fit: BoxFit.fill,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: sh(68),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: kcWhite,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(sp(10)),
-                  topRight: Radius.circular(sp(10)),
+    return BlocProvider(
+      create: (BuildContext context) => ItemToCartCubit(),
+      child: CustomScaffoldWidget(
+        useSingleScroll: false,
+        usePadding: false,
+        useSafeArea: false,
+        body: Stack(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(
+                height: sh(35),
+                width: double.infinity,
+                child: CustomImageWidget(
+                  imageUrl: foodItem.image,
+                  imageTypes: ImageTypes.network,
+                  fit: BoxFit.fill,
                 ),
               ),
-              child: FoodItemBodyWidget(foodItem),
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: FoodItemCartButtonWidget(foodItem),
-          ),
-        ],
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: sh(68),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: kcWhite,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(sp(10)),
+                    topRight: Radius.circular(sp(10)),
+                  ),
+                ),
+                child: FoodItemBodyWidget(foodItem),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: FoodItemCartButtonWidget(foodItem),
+            ),
+          ],
+        ),
       ),
     );
   }

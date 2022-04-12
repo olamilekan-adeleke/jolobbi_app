@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jolobbi_app/features/food/model/food_item_data_model.dart';
 
@@ -20,6 +22,8 @@ class ItemToCartCubit extends Cubit<ItemToCartModel> {
     );
 
     emit(state.copyWith(foodItem: cartItem));
+
+    log(state.toString());
   }
 
   void addExtraItem(FoodItemDataModel foodItem, Extras extra) {
@@ -60,5 +64,7 @@ class ItemToCartCubit extends Cubit<ItemToCartModel> {
     }
 
     emit(state.copyWith(foodItem: cartItem));
+
+    log(state.toString());
   }
 }
