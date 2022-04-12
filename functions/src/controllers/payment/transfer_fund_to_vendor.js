@@ -13,7 +13,7 @@ const transferFundToVendor = async (vendorId, userId, amount) => {
 
     await updateUserCashWallet(vendorId, amount);
 
-    await transaction.update({
+    await transaction.update(userWalletRef, {
       cash_balance: admin.firestore.FieldValue.increment(
         parseInt(amount) * 100
       ),

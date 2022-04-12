@@ -1,4 +1,7 @@
+const { database } = require("firebase-admin");
 const functions = require("firebase-functions");
+const sendNotificationHelper = require("../../controllers/notification/notification_helper");
+const sendNotificationToUserById = require("../../controllers/notification/send_notifcation_user_by_id");
 const getVendorDataByTag = require("../../controllers/payment/get_business_data_by_tag");
 const transferFundToVendor = require("../../controllers/payment/transfer_fund_to_vendor");
 
@@ -19,6 +22,24 @@ const transferToBusinessByTag = async (req, res) => {
 
     // make transfer from user wallet to vendor wallet
     await transferFundToVendor(vendorData.id, userId, amount);
+
+    const notificationData = { type: "fund_transfer" };
+
+    await sendNotificationToUserById(
+      userId,
+      "Fund Transfer Successful!",
+      `Your transfer for NGN ${amount} to @${businessTag} was successful!`,
+      notificationData
+    );
+
+    await sendNotificationHelper(
+      vendorData.fcm_token,
+      "Fund Received!",
+      `Your just received NGN ${amount} from a user!`,
+      notificationData
+    );
+
+    // todo: add to notification history
 
     res.status(200).json({ status: "success", msg: "Transfer Successful!" });
   } catch (error) {
