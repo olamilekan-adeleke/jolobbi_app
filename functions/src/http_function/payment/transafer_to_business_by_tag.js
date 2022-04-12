@@ -10,9 +10,9 @@ const transferToBusinessByTag = async (req, res) => {
 
     if (!userId) throw { code: 400, msg: "User ID Is Required" };
 
-    if (!amount) throw { code: 400, msg: "Amount Tag Is Required" };
+    if (!amount) throw { code: 400, msg: "Amount Is Required" };
 
-    // get bussiness data by bussiness tag
+    // get business data by business tag
     const vendorData = await getVendorDataByTag(businessTag);
 
     functions.logger.log(vendorData);
