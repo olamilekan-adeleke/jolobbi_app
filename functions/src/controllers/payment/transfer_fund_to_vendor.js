@@ -5,10 +5,13 @@ const updateUserCashWallet = require("../update_user_cash_wallet");
 const transferFundToVendor = async (vendorId, userId, amount) => {
   const userWalletRef = admin.firestore().collection("wallets").doc(userId);
 
+  const _amount = amount * 100;
+
   await admin.firestore().runTransaction(async (transaction) => {
     const userWalletSnapshot = await transaction.get(userWalletRef);
 
-    if (userWalletSnapshot.cash_balance < amount * 100) {
+    
+    if (userWalletSnapshot.data().cash_balance < parseInt(_amount)) {
       throw { code: 400, msg: "Insufficient Balance!" };
     }
 

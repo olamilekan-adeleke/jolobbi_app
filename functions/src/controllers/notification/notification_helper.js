@@ -1,6 +1,11 @@
 const admin = require("../../../firebase_admin_helper");
 
 const sendNotificationHelper = async (token, title, body, data) => {
+  const options = {
+    priority: "high",
+    timeToLive: 60 * 60 * 24,
+  };
+
   const payload = {
     notification: {
       title: `${title}`,
@@ -8,14 +13,10 @@ const sendNotificationHelper = async (token, title, body, data) => {
     },
     data: data,
     token: token,
+   
   };
 
-  const options = {
-    priority: "high",
-    timeToLive: 60 * 60 * 24,
-  };
-
-  return admin.messaging().sendToDevice(payload, options);
+  return admin.messaging().send(payload);
 };
 
 module.exports = sendNotificationHelper;
