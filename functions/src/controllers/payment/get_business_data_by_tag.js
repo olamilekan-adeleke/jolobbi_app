@@ -12,7 +12,7 @@ const getVendorDataByTag = async (vendorTag) => {
     throw { code: 400, msg: "No Vendor Was Found With The Tag " + vendorTag };
   }
 
-    return snapshot[0].data();
+  return snapshot.docs[0].data();
 };
 
 module.exports = getVendorDataByTag;
