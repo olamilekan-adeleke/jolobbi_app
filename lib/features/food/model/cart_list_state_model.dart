@@ -1,20 +1,20 @@
 import 'cart_item_model.dart';
 
 class CartListStateModel {
-  List<CartItemModel> foodItem = [];
+  List<CartItemModel> cartItems = [];
 
   CartListStateModel({
     List<CartItemModel>? foodItem,
-  }) : foodItem = foodItem ?? [];
+  }) : cartItems = foodItem ?? [];
 
   CartListStateModel copyWith({
     List<CartItemModel>? foodItem,
   }) {
     return CartListStateModel(
-      foodItem: foodItem ?? this.foodItem,
+      foodItem: foodItem ?? this.cartItems,
     );
   }
 
   @override
-  String toString() => 'CartListStateModel(foodItem: $foodItem)';
+  String toString() => 'CartListStateModel(foodItem: $cartItems)';
 }
