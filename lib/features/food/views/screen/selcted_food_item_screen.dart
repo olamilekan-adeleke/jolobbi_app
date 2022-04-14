@@ -9,9 +9,10 @@ import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../cubit/item_cart_cubit.dart';
 import '../../model/food_item_data_model.dart';
-import '../widgets/selected_food_description_widget.dart';
+import '../widgets/cart/cart_icon_widget.dart';
 import '../widgets/food_item_cart_buttom_widget.dart';
 import '../widgets/food_item_review_list_view_widget.dart';
+import '../widgets/selected_food_description_widget.dart';
 
 class SelectedFoodItemWidget extends StatelessWidget {
   const SelectedFoodItemWidget(this.foodItem, {Key? key}) : super(key: key);
@@ -60,6 +61,21 @@ class SelectedFoodItemWidget extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: FoodItemCartButtonWidget(foodItem),
+            ),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: sp(15),
+                  horizontal: sp(10),
+                ),
+                child: Row(
+                  children: const [
+                    Spacer(),
+                    CartIconWidget(iconColor: kcWhite),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
