@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jolobbi_app/features/food/model/food_item_data_model.dart';
 
 import '../model/cart_item_model.dart';
+import '../model/food_item_data_model.dart';
 import '../model/item_to_cart_model.dart';
 
 class ItemToCartCubit extends Cubit<ItemToCartModel> {
@@ -19,6 +19,8 @@ class ItemToCartCubit extends Cubit<ItemToCartModel> {
       name: foodItem.name,
       price: foodItem.price,
       type: foodItem.type,
+      addOn: state.addOn,
+      extras: state.extras,
     );
 
     emit(state.copyWith(foodItem: cartItem));
@@ -144,10 +146,9 @@ class ItemToCartCubit extends Cubit<ItemToCartModel> {
     }
   }
 
-   int getAddOnCount(AddOn addOn) {
+  int getAddOnCount(AddOn addOn) {
     if (state.addOn.any((CartAddOn ele) => ele.name == addOn.name)) {
-      final int index =
-          state.addOn.indexWhere((ele) => ele.name == addOn.name);
+      final int index = state.addOn.indexWhere((ele) => ele.name == addOn.name);
       return state.addOn[index].count;
     } else {
       return 0;

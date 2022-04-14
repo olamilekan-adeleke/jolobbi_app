@@ -48,14 +48,14 @@ class CustomScaffoldWidget extends StatelessWidget {
               ? SingleChildScrollView(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: usePadding ? sp(15.0) : 0,
+                      horizontal: usePadding ? sp(10.0) : 0,
                     ),
                     child: body,
                   ),
                 )
               : Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: usePadding ? sp(15.0) : 0,
+                    horizontal: usePadding ? sp(10.0) : 0,
                   ),
                   child: body,
                 ),
