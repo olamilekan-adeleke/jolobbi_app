@@ -26,44 +26,57 @@ class ItemToCartCubit extends Cubit<ItemToCartModel> {
     log(state.toString());
   }
 
-  void addExtraItem(FoodItemDataModel foodItem, Extras extra) {
-    CartItemModel cartItem = CartItemModel(
-      count: 1,
-      fastFoodId: foodItem.fastFoodId,
-      fastFoodName: foodItem.fastFoodName,
-      id: foodItem.id,
-      image: foodItem.image,
-      name: foodItem.name,
-      price: foodItem.price,
-      type: foodItem.type,
-    );
+  void addExtraItem(Extras extra) {
+    if (state.extras.any((CartExtras ele) => ele.name == extra.name)) {
+      final int index =
+          state.extras.indexWhere((ele) => ele.name == extra.name);
 
-    final CartExtras cartExtra = CartExtras(
-      count: 1,
-      image: extra.image,
-      name: extra.name,
-      price: extra.price,
-    );
+      CartExtras cartExtraInList = state.extras[index];
 
-    int index = state.foodItem?.extras?.indexWhere((ele) =>
-            ele.name == cartExtra.name && ele.image == cartExtra.image) ??
-        -1;
+      cartExtraInList =
+          cartExtraInList.copyWith(count: cartExtraInList.count + 1);
 
-    if (index >= 0) {
-      final CartExtras updatedCartExtra =
-          cartExtra.copyWith(count: cartExtra.count + 1);
+      List<CartExtras> extraList = state.extras;
 
-      final int extraIndex = state.foodItem!.extras!
-          .indexWhere((ele) => ele.name == cartExtra.name);
+      extraList[index] = cartExtraInList;
 
-      state.foodItem!.extras![extraIndex] = updatedCartExtra;
-
-      cartItem = state.foodItem!;
+      emit(state.copyWith(extras: [...extraList]));
     } else {
-      cartItem = cartItem.copyWith(extras: [cartExtra]);
+      final CartExtras cartExtra = CartExtras(
+        count: 1,
+        image: extra.image,
+        name: extra.name,
+        price: extra.price,
+      );
+
+      emit(state.copyWith(extras: [...state.extras, cartExtra]));
     }
 
-    emit(state.copyWith(foodItem: cartItem));
+    log(state.toString());
+  }
+
+  void removeExtraItem(Extras extra) {
+    if (state.extras.any((CartExtras ele) => ele.name == extra.name)) {
+      final int index =
+          state.extras.indexWhere((ele) => ele.name == extra.name);
+
+      CartExtras cartExtraInList = state.extras[index];
+
+      if (cartExtraInList.count > 1) {
+        cartExtraInList =
+            cartExtraInList.copyWith(count: cartExtraInList.count - 1);
+
+        List<CartExtras> extraList = state.extras;
+
+        extraList[index] = cartExtraInList;
+
+        emit(state.copyWith(extras: [...extraList]));
+      } else {
+        state.extras.removeAt(index);
+
+        emit(state.copyWith(extras: [...state.extras]));
+      }
+    }
 
     log(state.toString());
   }

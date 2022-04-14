@@ -115,7 +115,7 @@ class CartAddOn {
       image: json["image"],
       price: json["price"],
       name: json["name"],
-      count: json["count"]?? 1,
+      count: json["count"] ?? 1,
     );
   }
 
@@ -140,6 +140,11 @@ class CartAddOn {
       name: name ?? this.name,
       count: count ?? this.count,
     );
+  }
+
+  @override
+  String toString() {
+    return 'CartAddOn(image: $image, price: $price, name: $name, count: $count)';
   }
 }
 
@@ -186,5 +191,10 @@ class CartExtras {
       name: name ?? this.name,
       count: count ?? this.count,
     );
+  }
+
+  @override
+  String toString() {
+    return 'CartExtras(image: $image, price: $price, name: $name, count: $count)';
   }
 }
