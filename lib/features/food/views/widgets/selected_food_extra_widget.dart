@@ -23,18 +23,18 @@ class SelectedFoodItemExtraListViewWidget extends StatelessWidget {
       itemBuilder: (_, int index) {
         final Extras extra = foodItem.extras![index];
 
-        return _FoodItemExtraWidget(foodItem, extra);
+        return _FoodItemExtraWidget( extra);
       },
     );
   }
 }
 
 class _FoodItemExtraWidget extends StatelessWidget {
-  _FoodItemExtraWidget(this.extra, {Key? key}) : super(key: key);
+  const _FoodItemExtraWidget(this.extra, {Key? key}) : super(key: key);
 
   final Extras extra;
   
-  int count = 0;
+  static int count = 0;
 
   @override
   Widget build(BuildContext context) {
