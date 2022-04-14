@@ -192,7 +192,7 @@ class _CartFoodItemWidget extends StatelessWidget {
               children: <Widget>[
                 _iconWidget(
                   Icons.remove_circle_outline,
-                  onTap: () => {},
+                  onTap: () => cartCubit.decrementCartItem(cart),
                 ),
                 verticalSpace(5),
                 BlocBuilder<CartCubit, CartListStateModel>(
@@ -207,7 +207,7 @@ class _CartFoodItemWidget extends StatelessWidget {
                 verticalSpace(5),
                 _iconWidget(
                   Icons.add_circle_outlined,
-                  onTap: () => {},
+                  onTap: () => cartCubit.incrementCartItem(cart),
                 ),
               ],
             ),

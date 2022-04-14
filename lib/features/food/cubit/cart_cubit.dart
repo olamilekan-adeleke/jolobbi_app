@@ -25,10 +25,6 @@ class CartCubit extends Cubit<CartListStateModel> {
     log('cart: ${state.toString()}');
   }
 
-  int getCartItemCount(CartItemModel cart) {
-    return 0;
-  }
-
   void deleteCartItem(CartItemModel cart) {
     final int index =
         state.cartItems.indexWhere((ele) => ele.name == cart.name);
@@ -48,9 +44,6 @@ class CartCubit extends Cubit<CartListStateModel> {
 
     final int itemIndex =
         _cartItem.extras?.indexWhere((ele) => ele.name == item.name) ?? -1;
-
-    final int item2Index =
-        _cartItem.addOn?.indexWhere((ele) => ele.name == item.name) ?? -1;
 
     if (itemIndex == -1) {
       final int item2Index =
@@ -80,5 +73,49 @@ class CartCubit extends Cubit<CartListStateModel> {
     }
   }
 
-  void getItemCount(CartItemModel cart) {}
+  int getCartItemCount(CartItemModel cart) {
+    if (state.cartItems.any((CartItemModel ele) => ele.name == cart.name)) {
+      final int index =
+          state.cartItems.indexWhere((ele) => ele.name == cart.name);
+      return state.cartItems[index].count;
+    } else {
+      return 0;
+    }
+  }
+
+  void incrementCartItem(CartItemModel cart) {
+    if (state.cartItems.any((CartItemModel ele) => ele.name == cart.name)) {
+      final int index =
+          state.cartItems.indexWhere((ele) => ele.name == cart.name);
+
+      CartItemModel cartInList = state.cartItems[index];
+
+      cartInList = cartInList.copyWith(count: cartInList.count + 1);
+
+      List<CartItemModel> list = state.cartItems;
+
+      list[index] = cartInList;
+
+      emit(state.copyWith(cartItems: list));
+    }
+  }
+
+  void decrementCartItem(CartItemModel cart) {
+    if (state.cartItems.any((CartItemModel ele) => ele.name == cart.name)) {
+      final int index =
+          state.cartItems.indexWhere((ele) => ele.name == cart.name);
+
+      CartItemModel cartInList = state.cartItems[index];
+
+      if (cartInList.count == 1) return;
+
+      cartInList = cartInList.copyWith(count: cartInList.count - 1);
+
+      List<CartItemModel> list = state.cartItems;
+
+      list[index] = cartInList;
+
+      emit(state.copyWith(cartItems: list));
+    }
+  }
 }
