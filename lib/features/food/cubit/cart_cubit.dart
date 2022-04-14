@@ -17,4 +17,36 @@ class CartCubit extends Cubit<CartListStateModel> {
   int getCartItemCount(CartItemModel cart) {
     return 0;
   }
+
+  void deleteCartItem(CartItemModel cart) {
+    final int index =
+        state.cartItems.indexWhere((ele) => ele.name == cart.name);
+
+    List<CartItemModel> items = state.cartItems;
+
+    items.removeAt(index);
+
+    emit(state.copyWith(cartItems: items));
+  }
+
+  void deleteExtraCartItem(CartItemModel cart, item) {
+    final int index =
+        state.cartItems.indexWhere((ele) => ele.name == cart.name);
+
+    CartItemModel _cartItem = state.cartItems[index];
+
+    final int itemIndex =
+        _cartItem.extras?.indexWhere((ele) => ele.name == item.name) ?? -1;
+
+    List<CartExtras> _itemsList = _cartItem.extras ?? [];
+
+    _itemsList.removeAt(itemIndex);
+
+    _cartItem.copyWith(extras: _itemsList);
+
+    // update cart in cart list
+    state.cartItems[index] = _cartItem;
+
+    emit(state);
+  }
 }
