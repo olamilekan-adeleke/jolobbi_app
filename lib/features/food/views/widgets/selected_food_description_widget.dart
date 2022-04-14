@@ -77,7 +77,7 @@ class _AddOnAndExtraWidget extends StatelessWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    FoodItemAddOnListViewWidget(foodItem.addOn!),
+                    FoodItemAddOnListViewWidget(foodItem),
                   ],
                 ),
               ),
@@ -99,7 +99,7 @@ class _AddOnAndExtraWidget extends StatelessWidget {
               child: TabBarView(
                 children: [
                   SelectedFoodItemExtraListViewWidget(foodItem),
-                  FoodItemAddOnListViewWidget(foodItem.addOn!),
+                  FoodItemAddOnListViewWidget(foodItem),
                 ],
               ),
             ),

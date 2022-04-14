@@ -8,6 +8,7 @@ import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../cubit/item_cart_cubit.dart';
 import '../../model/food_item_data_model.dart';
+import '../../model/item_to_cart_model.dart';
 
 class SelectedFoodItemExtraListViewWidget extends StatelessWidget {
   const SelectedFoodItemExtraListViewWidget(this.foodItem, {Key? key})
@@ -23,7 +24,7 @@ class SelectedFoodItemExtraListViewWidget extends StatelessWidget {
       itemBuilder: (_, int index) {
         final Extras extra = foodItem.extras![index];
 
-        return _FoodItemExtraWidget( extra);
+        return _FoodItemExtraWidget(extra);
       },
     );
   }
@@ -33,8 +34,6 @@ class _FoodItemExtraWidget extends StatelessWidget {
   const _FoodItemExtraWidget(this.extra, {Key? key}) : super(key: key);
 
   final Extras extra;
-  
-  static int count = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -78,41 +77,29 @@ class _FoodItemExtraWidget extends StatelessWidget {
               border: Border.all(color: kcIconGrey),
               borderRadius: BorderRadius.circular(sp(6)),
             ),
-            child: StatefulBuilder(builder: (context, setState) {
-              return Row(
-                children: <Widget>[
-                  _iconWidget(
-                    Icons.remove_circle_outline,
-                    onTap: () {
-                      if (count >= 1) {
-                        count--;
-                      }
-                      setState(() {});
-
-                      itemToCartCubit.removeExtraItem(extra);
-                    },
-                  ),
-                  horizontalSpace(8),
-                  TextWidget(
-                    '$count',
-                    fontSize: sp(14),
-                    fontWeight: FontWeight.w500,
-                  ),
-                  horizontalSpace(8),
-                  _iconWidget(
-                    Icons.add_circle_outlined,
-                    onTap: () {
-                      if (count <= 9) {
-                        count++;
-                      }
-                      setState(() {});
-
-                      itemToCartCubit.addExtraItem(extra);
-                    },
-                  ),
-                ],
-              );
-            }),
+            child: Row(
+              children: <Widget>[
+                _iconWidget(
+                  Icons.remove_circle_outline,
+                  onTap: () => itemToCartCubit.removeExtraItem(extra),
+                ),
+                horizontalSpace(8),
+                BlocBuilder<ItemToCartCubit, ItemToCartModel>(
+                  builder: (context, state) {
+                    return TextWidget(
+                      '${itemToCartCubit.getExtraCount(extra)}',
+                      fontSize: sp(14),
+                      fontWeight: FontWeight.w500,
+                    );
+                  },
+                ),
+                horizontalSpace(8),
+                _iconWidget(
+                  Icons.add_circle_outlined,
+                  onTap: () => itemToCartCubit.addExtraItem(extra),
+                ),
+              ],
+            ),
           ),
         ],
       ),

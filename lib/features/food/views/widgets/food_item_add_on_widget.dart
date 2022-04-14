@@ -1,24 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jolobbi_app/cores/components/custom_text_widget.dart';
 
 import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../cubit/item_cart_cubit.dart';
 import '../../model/food_item_data_model.dart';
+import '../../model/item_to_cart_model.dart';
 
 class FoodItemAddOnListViewWidget extends StatelessWidget {
-  const FoodItemAddOnListViewWidget(this.addOns, {Key? key}) : super(key: key);
+  const FoodItemAddOnListViewWidget(this.foodItem, {Key? key})
+      : super(key: key);
 
-  final List<AddOn> addOns;
+  final FoodItemDataModel foodItem;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: addOns.length,
+      itemCount: foodItem.addOn!.length,
       itemBuilder: (_, int index) {
-        final AddOn addOn = addOns[index];
+        final AddOn addOn = foodItem.addOn![index];
 
         return FoodItemAddOnWidget(addOn);
       },
@@ -33,6 +37,8 @@ class FoodItemAddOnWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ItemToCartCubit itemToCartCubit = context.read<ItemToCartCubit>();
+
     return Container(
       margin: EdgeInsets.only(bottom: sp(5)),
       child: Row(
@@ -73,28 +79,37 @@ class FoodItemAddOnWidget extends StatelessWidget {
             ),
             child: Row(
               children: <Widget>[
-                Icon(
+                _iconWidget(
                   Icons.remove_circle_outline,
-                  size: sp(15),
-                  color: kcPrimaryColor,
+                  onTap: () => itemToCartCubit.removeAddonItem(addOn),
                 ),
                 horizontalSpace(8),
-                TextWidget(
-                  '0',
-                  fontSize: sp(14),
-                  fontWeight: FontWeight.w500,
+                BlocBuilder<ItemToCartCubit, ItemToCartModel>(
+                  builder: (context, state) {
+                    return TextWidget(
+                      '${itemToCartCubit.getAddOnCount(addOn)}',
+                      fontSize: sp(14),
+                      fontWeight: FontWeight.w500,
+                    );
+                  },
                 ),
                 horizontalSpace(8),
-                Icon(
+                _iconWidget(
                   Icons.add_circle_outlined,
-                  size: sp(15),
-                  color: kcPrimaryColor,
+                  onTap: () => itemToCartCubit.addAddonItem(addOn),
                 ),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _iconWidget(IconData icon, {required onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Icon(icon, size: sp(15), color: kcPrimaryColor),
     );
   }
 }

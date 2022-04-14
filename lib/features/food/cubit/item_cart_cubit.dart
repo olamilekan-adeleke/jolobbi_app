@@ -80,4 +80,77 @@ class ItemToCartCubit extends Cubit<ItemToCartModel> {
 
     log(state.toString());
   }
+
+  void addAddonItem(AddOn addOn) {
+    if (state.addOn.any((CartAddOn ele) => ele.name == addOn.name)) {
+      final int index = state.addOn.indexWhere((ele) => ele.name == addOn.name);
+
+      CartAddOn cartAddOnInList = state.addOn[index];
+
+      cartAddOnInList =
+          cartAddOnInList.copyWith(count: cartAddOnInList.count + 1);
+
+      List<CartAddOn> addOnList = state.addOn;
+
+      addOnList[index] = cartAddOnInList;
+
+      emit(state.copyWith(addOn: [...addOnList]));
+    } else {
+      final CartAddOn cartAddon = CartAddOn(
+        count: 1,
+        image: addOn.image,
+        name: addOn.name,
+        price: addOn.price,
+      );
+
+      emit(state.copyWith(addOn: [...state.addOn, cartAddon]));
+    }
+
+    log(state.toString());
+  }
+
+  void removeAddonItem(AddOn addOn) {
+    if (state.addOn.any((CartAddOn ele) => ele.name == addOn.name)) {
+      final int index = state.addOn.indexWhere((ele) => ele.name == addOn.name);
+
+      CartAddOn cartAddonInList = state.addOn[index];
+
+      if (cartAddonInList.count > 1) {
+        cartAddonInList =
+            cartAddonInList.copyWith(count: cartAddonInList.count - 1);
+
+        List<CartAddOn> extraList = state.addOn;
+
+        extraList[index] = cartAddonInList;
+
+        emit(state.copyWith(addOn: [...extraList]));
+      } else {
+        state.addOn.removeAt(index);
+
+        emit(state.copyWith(addOn: [...state.addOn]));
+      }
+    }
+
+    log(state.toString());
+  }
+
+  int getExtraCount(Extras extra) {
+    if (state.extras.any((CartExtras ele) => ele.name == extra.name)) {
+      final int index =
+          state.extras.indexWhere((ele) => ele.name == extra.name);
+      return state.extras[index].count;
+    } else {
+      return 0;
+    }
+  }
+
+   int getAddOnCount(AddOn addOn) {
+    if (state.addOn.any((CartAddOn ele) => ele.name == addOn.name)) {
+      final int index =
+          state.addOn.indexWhere((ele) => ele.name == addOn.name);
+      return state.addOn[index].count;
+    } else {
+      return 0;
+    }
+  }
 }
