@@ -24,8 +24,8 @@ class CartItemWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             _CartFoodItemWidget(cart),
-            if ((cart.addOn?.isEmpty ?? false) ||
-                (cart.extras?.isEmpty ?? false))
+            if ((cart.addOn?.isNotEmpty ?? false) ||
+                (cart.extras?.isNotEmpty ?? false))
               const Divider(),
             _ExtraItemWidget(cart),
           ],

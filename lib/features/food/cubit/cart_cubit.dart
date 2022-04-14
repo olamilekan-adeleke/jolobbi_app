@@ -49,15 +49,36 @@ class CartCubit extends Cubit<CartListStateModel> {
     final int itemIndex =
         _cartItem.extras?.indexWhere((ele) => ele.name == item.name) ?? -1;
 
-    List<CartExtras> _itemsList = _cartItem.extras ?? [];
+    final int item2Index =
+        _cartItem.addOn?.indexWhere((ele) => ele.name == item.name) ?? -1;
 
-    _itemsList.removeAt(itemIndex);
+    if (itemIndex == -1) {
+      final int item2Index =
+          _cartItem.addOn?.indexWhere((ele) => ele.name == item.name) ?? -1;
 
-    _cartItem.copyWith(extras: _itemsList);
+      List<CartAddOn> _itemsList = _cartItem.addOn ?? [];
 
-    // update cart in cart list
-    state.cartItems[index] = _cartItem;
+      _itemsList.removeAt(item2Index);
 
-    emit(state);
+      _cartItem.copyWith(addOn: _itemsList);
+
+      // update cart in cart list
+      state.cartItems[index] = _cartItem;
+
+      emit(state);
+    } else {
+      List<CartExtras> _itemsList = _cartItem.extras ?? [];
+
+      _itemsList.removeAt(itemIndex);
+
+      _cartItem.copyWith(extras: _itemsList);
+
+      // update cart in cart list
+      state.cartItems[index] = _cartItem;
+
+      emit(state);
+    }
   }
+
+  void getItemCount(CartItemModel cart) {}
 }
