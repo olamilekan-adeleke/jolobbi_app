@@ -9,7 +9,18 @@ class CartCubit extends Cubit<CartListStateModel> {
   CartCubit() : super(CartListStateModel());
 
   void addFoodItemToCart(CartItemModel cartItem) {
-    emit(state.copyWith(cartItems: [...state.cartItems, cartItem]));
+    if (state.cartItems.any((ele) => ele.name == cartItem.name)) {
+      final int index =
+          state.cartItems.indexWhere((ele) => ele.name == cartItem.name);
+
+      List<CartItemModel> cartList = state.cartItems;
+
+      cartList[index] = cartItem;
+
+      emit(state.copyWith(cartItems: [...cartList]));
+    } else {
+      emit(state.copyWith(cartItems: [...state.cartItems, cartItem]));
+    }
 
     log('cart: ${state.toString()}');
   }
