@@ -8,10 +8,10 @@ class CartListStateModel {
   }) : cartItems = foodItem ?? [];
 
   CartListStateModel copyWith({
-    List<CartItemModel>? foodItem,
+    List<CartItemModel>? cartItems,
   }) {
     return CartListStateModel(
-      foodItem: foodItem ?? this.cartItems,
+      foodItem: cartItems ?? this.cartItems,
     );
   }
 

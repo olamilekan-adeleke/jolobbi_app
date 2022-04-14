@@ -7,6 +7,6 @@ class CartCubit extends Cubit<CartListStateModel> {
   CartCubit() : super(CartListStateModel());
 
   void addFoodItemToCart(CartItemModel cartItem) {
-    emit(state.copyWith(foodItem: [...state.cartItems, cartItem]));
+    emit(state.copyWith(cartItems: [...state.cartItems, cartItem]));
   }
 }
