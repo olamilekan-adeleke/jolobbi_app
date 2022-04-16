@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jolobbi_app/cores/utils/bottom_sheet_helper.dart';
 import '../../../../cores/constants/color.dart';
+import '../../../../cores/navigator/app_router.dart';
 import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 
@@ -12,6 +13,7 @@ import '../../cubit/wallet_cubit.dart';
 import '../../enum/wallet_enum.dart';
 import '../../model/fund_wallet_state_model.dart';
 import '../../model/wallet_state_model.dart';
+import '../screens/send_fund_to_vendor.dart';
 import 'fund_wallet_amount_widget.dart';
 
 class WalletBalanceWidget extends StatelessWidget {
@@ -62,7 +64,11 @@ class WalletBalanceWidget extends StatelessWidget {
                           text: 'Send Fund ',
                           textColor: kcWhite,
                           color: kcPrimaryColor,
-                          onTap: () {},
+                          onTap: () {
+                            AppRouter.instance.navigateTo(
+                              SendFundToVendor.route,
+                            );
+                          },
                         ),
                       ),
                       horizontalSpace(5),

@@ -21,6 +21,7 @@ import '../../features/profile/views/screens/update_profile_screen.dart';
 import '../../features/profile/views/screens/wallet_pin/confrim_update_wallet_pin_screen.dart';
 import '../../features/profile/views/screens/wallet_pin/create_wallet_pin.dart';
 import '../../features/profile/views/screens/wallet_pin/update_wallet_pin_screen.dart';
+import '../../features/wallet/views/screens/send_fund_to_vendor.dart';
 import '../../features/wallet/views/screens/wallet_screen.dart';
 import 'error_route_screen.dart';
 
@@ -85,6 +86,9 @@ class RouteGenerator {
 
       case UpdateWalletPinPage.route:
         return MaterialPageRoute(builder: (_) => const UpdateWalletPinPage());
+
+      case SendFundToVendor.route:
+        return MaterialPageRoute(builder: (_) => const SendFundToVendor());
 
       case ConfirmUpdateWalletPinPage.route:
         return MaterialPageRoute(
