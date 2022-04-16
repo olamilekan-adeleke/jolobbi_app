@@ -60,7 +60,7 @@ class CartCubit extends Cubit<CartListStateModel> {
 
       emit(state);
     } else {
-      List<CartExtras> _itemsList = _cartItem.extras ?? [];
+      List<CartAddOn> _itemsList = _cartItem.extras ?? [];
 
       _itemsList.removeAt(itemIndex);
 
@@ -116,6 +116,32 @@ class CartCubit extends Cubit<CartListStateModel> {
       list[index] = cartInList;
 
       emit(state.copyWith(cartItems: list));
+    }
+  }
+
+  int getCartSubItemCount(CartItemModel cart, CartAddOn subItem) {
+    if (state.cartItems.any((CartItemModel ele) => ele.name == cart.name)) {
+      final int index =
+          state.cartItems.indexWhere((ele) => ele.name == cart.name);
+
+      CartItemModel _cart = state.cartItems[index];
+
+      // check extra list
+
+      final int? extraIndex =
+          _cart.extras?.indexWhere((ele) => ele.name == subItem.name);
+
+      if (extraIndex == null || extraIndex == -1) {
+        //check addon list
+        final int? addonIndex =
+            _cart.addOn?.indexWhere((ele) => ele.name == subItem.name);
+
+        return _cart.addOn![addonIndex ?? 0].count;
+      } else {
+        return _cart.extras![extraIndex].count;
+      }
+    } else {
+      return 0;
     }
   }
 }

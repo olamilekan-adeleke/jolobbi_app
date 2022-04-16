@@ -3,12 +3,12 @@ import 'cart_item_model.dart';
 class ItemToCartModel {
   final CartItemModel? foodItem;
   List<CartAddOn> addOn = [];
-  List<CartExtras> extras = [];
+  List<CartAddOn> extras = [];
 
   ItemToCartModel({
     this.foodItem,
     final List<CartAddOn>? addOn,
-    final List<CartExtras>? extras,
+    final List<CartAddOn>? extras,
   })  : addOn = addOn ?? [],
         extras = extras ?? [];
 
@@ -19,7 +19,7 @@ class ItemToCartModel {
   ItemToCartModel copyWith({
     CartItemModel? foodItem,
     List<CartAddOn>? addOn,
-    List<CartExtras>? extras,
+    List<CartAddOn>? extras,
   }) {
     return ItemToCartModel(
       foodItem: foodItem ?? this.foodItem,

@@ -52,13 +52,17 @@ class _ExtraItemWidget extends StatelessWidget {
         itemBuilder: (_, int index) {
           final List list = [...?cart.extras, ...?cart.addOn];
 
-          return _item(list[index], cartCubit);
+          return _item(item: list[index], cartCubit: cartCubit, cart: cart);
         },
       ),
     );
   }
 
-  Widget _item(item, CartCubit cartCubit) {
+  Widget _item({
+    required CartItemModel cart,
+    required CartAddOn item,
+    required CartCubit cartCubit,
+  }) {
     return Dismissible(
       key: Key(item.name),
       onDismissed: (_) {
@@ -91,7 +95,7 @@ class _ExtraItemWidget extends StatelessWidget {
                   fontWeight: FontWeight.w300,
                 ),
                 TextWidget(
-                  'NGN ${currencyFormatter(item.price)}',
+                  'NGN ${currencyFormatter(item.price) }',
                   fontSize: sp(14),
                   fontWeight: FontWeight.w500,
                 ),
@@ -117,7 +121,7 @@ class _ExtraItemWidget extends StatelessWidget {
                   BlocBuilder<CartCubit, CartListStateModel>(
                     builder: (context, state) {
                       return TextWidget(
-                        '0',
+                        '${cartCubit.getCartSubItemCount(cart, item)}',
                         fontSize: sp(14),
                         fontWeight: FontWeight.w500,
                       );
@@ -176,7 +180,7 @@ class _CartFoodItemWidget extends StatelessWidget {
                 fontWeight: FontWeight.w300,
               ),
               TextWidget(
-                'NGN ${currencyFormatter(cart.price)}',
+                'NGN ${currencyFormatter(cart.price * cartCubit.getCartItemCount(cart))}',
                 fontSize: sp(14),
                 fontWeight: FontWeight.w500,
               ),
@@ -184,10 +188,7 @@ class _CartFoodItemWidget extends StatelessWidget {
           ),
           const Spacer(),
           Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: sp(10),
-              vertical: sp(5),
-            ),
+            padding: EdgeInsets.symmetric(horizontal: sp(10), vertical: sp(5)),
             child: Column(
               children: <Widget>[
                 _iconWidget(

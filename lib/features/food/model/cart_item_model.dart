@@ -9,7 +9,7 @@ class CartItemModel {
   final String id;
   final String type;
   final List<CartAddOn>? addOn;
-  final List<CartExtras>? extras;
+  final List<CartAddOn>? extras;
   final int count;
 
   CartItemModel({
@@ -53,8 +53,8 @@ class CartItemModel {
           ? List<CartAddOn>.from(map['addOn']?.map((x) => CartAddOn.fromMap(x)))
           : null,
       extras: map['extras'] != null
-          ? List<CartExtras>.from(
-              map['extras']?.map((x) => CartExtras.fromMap(x)))
+          ? List<CartAddOn>.from(
+              map['extras']?.map((x) => CartAddOn.fromMap(x)))
           : null,
       count: map['count']?.toInt() ?? 0,
     );
@@ -74,7 +74,7 @@ class CartItemModel {
     String? id,
     String? type,
     List<CartAddOn>? addOn,
-    List<CartExtras>? extras,
+    List<CartAddOn>? extras,
     int? count,
   }) {
     return CartItemModel(
@@ -148,53 +148,3 @@ class CartAddOn {
   }
 }
 
-class CartExtras {
-  CartExtras({
-    required this.image,
-    required this.price,
-    required this.name,
-    required this.count,
-  });
-
-  final String image;
-  final int price;
-  final String name;
-  final int count;
-
-  factory CartExtras.fromMap(Map<String, dynamic> json) {
-    return CartExtras(
-      image: json["image"],
-      price: json["price"],
-      name: json["name"],
-      count: json["count"],
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      "image": image,
-      "price": price,
-      "name": name,
-      "count": count,
-    };
-  }
-
-  CartExtras copyWith({
-    String? image,
-    int? price,
-    String? name,
-    int? count,
-  }) {
-    return CartExtras(
-      image: image ?? this.image,
-      price: price ?? this.price,
-      name: name ?? this.name,
-      count: count ?? this.count,
-    );
-  }
-
-  @override
-  String toString() {
-    return 'CartExtras(image: $image, price: $price, name: $name, count: $count)';
-  }
-}

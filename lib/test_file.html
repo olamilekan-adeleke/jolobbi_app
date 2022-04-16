@@ -1,0 +1,36 @@
+<script
+  type="text/javascript"
+  src="https://sdk.monnify.com/plugin/monnify.js"
+></script>
+<button onclick="payWithMonnify()">Pay with Monnify</button>
+
+<script type="text/javascript">
+  payWithMonnify();
+  function payWithMonnify() {
+    MonnifySDK.initialize({
+      amount: 5000,
+      currency: "NGN",
+      reference: "" + Math.floor(Math.random() * 1000000000 + 1),
+      customerName: "John Doe",
+      customerEmail: "monnify@monnify.com",
+      apiKey: "MK_TEST_BM0J9L4PF8",
+      contractCode: "5496050632",
+      paymentDescription: "Test Pay",
+      isTestMode: true,
+      metadata: {
+        name: "Damilare",
+        age: 45,
+      },
+      paymentMethods: ["CARD", "ACCOUNT_TRANSFER"],
+
+      onComplete: function (response) {
+        //Implement what happens when transaction is completed.
+        console.log(response);
+      },
+      onClose: function (data) {
+        //Implement what should happen when the modal is closed here
+        console.log(data);
+      },
+    });
+  }
+</script>

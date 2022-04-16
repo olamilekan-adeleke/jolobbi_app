@@ -29,22 +29,22 @@ class ItemToCartCubit extends Cubit<ItemToCartModel> {
   }
 
   void addExtraItem(Extras extra) {
-    if (state.extras.any((CartExtras ele) => ele.name == extra.name)) {
+    if (state.extras.any((CartAddOn ele) => ele.name == extra.name)) {
       final int index =
           state.extras.indexWhere((ele) => ele.name == extra.name);
 
-      CartExtras cartExtraInList = state.extras[index];
+      CartAddOn cartExtraInList = state.extras[index];
 
       cartExtraInList =
           cartExtraInList.copyWith(count: cartExtraInList.count + 1);
 
-      List<CartExtras> extraList = state.extras;
+      List<CartAddOn> extraList = state.extras;
 
       extraList[index] = cartExtraInList;
 
       emit(state.copyWith(extras: [...extraList]));
     } else {
-      final CartExtras cartExtra = CartExtras(
+      final CartAddOn cartExtra = CartAddOn(
         count: 1,
         image: extra.image,
         name: extra.name,
@@ -58,17 +58,17 @@ class ItemToCartCubit extends Cubit<ItemToCartModel> {
   }
 
   void removeExtraItem(Extras extra) {
-    if (state.extras.any((CartExtras ele) => ele.name == extra.name)) {
+    if (state.extras.any((CartAddOn ele) => ele.name == extra.name)) {
       final int index =
           state.extras.indexWhere((ele) => ele.name == extra.name);
 
-      CartExtras cartExtraInList = state.extras[index];
+      CartAddOn cartExtraInList = state.extras[index];
 
       if (cartExtraInList.count > 1) {
         cartExtraInList =
             cartExtraInList.copyWith(count: cartExtraInList.count - 1);
 
-        List<CartExtras> extraList = state.extras;
+        List<CartAddOn> extraList = state.extras;
 
         extraList[index] = cartExtraInList;
 
@@ -137,7 +137,7 @@ class ItemToCartCubit extends Cubit<ItemToCartModel> {
   }
 
   int getExtraCount(Extras extra) {
-    if (state.extras.any((CartExtras ele) => ele.name == extra.name)) {
+    if (state.extras.any((CartAddOn ele) => ele.name == extra.name)) {
       final int index =
           state.extras.indexWhere((ele) => ele.name == extra.name);
       return state.extras[index].count;
