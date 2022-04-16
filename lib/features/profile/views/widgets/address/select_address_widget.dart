@@ -9,35 +9,37 @@ import '../../../cubit/user_profile/profile_details_cubit.dart';
 import '../../../model/user_profile_data_model.dart';
 import '../../../model/user_profile_state_model.dart';
 
-class DropDownSelectAddressWidget extends StatelessWidget {
-  const DropDownSelectAddressWidget({Key? key}) : super(key: key);
+class BottomSheetSelectAddressWidget extends StatelessWidget {
+  const BottomSheetSelectAddressWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileDetailsCubit, UserProfileStateModel>(
-      builder: (context, state) {
-        if (state.userData?.address == null) {
-          return Column(
-            children: [
-              verticalSpace(100),
-              Icon(
-                Icons.location_on_outlined,
-                color: kcIconGrey.withOpacity(0.5),
-                size: sp(80),
-              ),
-              TextWidget(
-                'opps, it seems you have not added any delivery address, Click on the button below to add an address',
-                fontSize: sp(12),
-                textColor: kcSubTextColor,
-                textAlign: TextAlign.center,
-                fontWeight: FontWeight.w300,
-              ),
-            ],
-          );
-        }
+    return SizedBox(
+      height: sh(50),
+      child: BlocBuilder<ProfileDetailsCubit, UserProfileStateModel>(
+        builder: (context, state) {
+          if (state.userData?.address == null) {
+            return Column(
+              children: [
+                verticalSpace(100),
+                Icon(
+                  Icons.location_on_outlined,
+                  color: kcIconGrey.withOpacity(0.5),
+                  size: sp(80),
+                ),
+                TextWidget(
+                  'opps, it seems you have not added any delivery address, Click on the button below to add an address',
+                  fontSize: sp(12),
+                  textColor: kcSubTextColor,
+                  textAlign: TextAlign.center,
+                  fontWeight: FontWeight.w300,
+                ),
+              ],
+            );
+          }
 
-        return Flexible(
-          child: ListView.separated(
+          return ListView.separated(
+            shrinkWrap: true,
             separatorBuilder: (_, __) => const Divider(),
             itemCount: state.userData?.address?.length ?? 0,
             itemBuilder: (BuildContext context, int index) {
@@ -62,9 +64,9 @@ class DropDownSelectAddressWidget extends StatelessWidget {
                 ),
               );
             },
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

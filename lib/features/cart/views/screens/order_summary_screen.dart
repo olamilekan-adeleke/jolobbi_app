@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jolobbi_app/cores/components/custom_button.dart';
 import 'package:jolobbi_app/cores/utils/sizer_utils.dart';
 
 import '../../../../cores/components/app_bar_widget.dart';
 import '../../../../cores/components/custom_scaffold_widget.dart';
 import '../../../../cores/components/custom_text_widget.dart';
 import '../../cubit/order_fee_cubit.dart';
+import '../widgets/cart_address_widget.dart';
 import '../widgets/order_summary_widget.dart';
 
 class OrderSummaryScreen extends StatefulWidget {
@@ -30,6 +32,7 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffoldWidget(
+      useSingleScroll: false,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -50,6 +53,13 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
             fontWeight: FontWeight.w500,
           ),
           verticalSpace(),
+          const CartAddressWidget(),
+          const Spacer(),
+          CustomButton(
+            text: 'Proceed To Payment',
+            onTap: () {},
+          ),
+          verticalSpace(20),
         ],
       ),
     );
