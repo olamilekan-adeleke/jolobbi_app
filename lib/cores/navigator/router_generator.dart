@@ -4,6 +4,7 @@ import '../../features/authentication/views/screens/auth_state_screen.dart';
 import '../../features/authentication/views/screens/forgot_password.dart';
 import '../../features/authentication/views/screens/login_screen.dart';
 import '../../features/authentication/views/screens/sign_up_screen.dart';
+import '../../features/cart/views/screens/order_summary_screen.dart';
 import '../../features/food/model/food_item_data_model.dart';
 import '../../features/food/model/food_vendor_data_model.dart';
 import '../../features/cart/views/screens/cart_page.dart';
@@ -101,6 +102,9 @@ class RouteGenerator {
 
       case CartScreen.route:
         return MaterialPageRoute(builder: (_) => const CartScreen());
+
+      case OrderSummaryScreen.route:
+        return MaterialPageRoute(builder: (_) => const OrderSummaryScreen());
 
       default:
         return errorRoute();
