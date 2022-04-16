@@ -18,16 +18,19 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffoldWidget(
-      useSingleScroll: false,
+      // useSingleScroll: false,
       body: Column(
+        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           verticalSpace(),
           const AppBarWidget('My Cart', trilling: CartIconWidget()),
-          verticalSpace(20),
+          verticalSpace(),
           BlocBuilder<CartCubit, CartListStateModel>(
             builder: (context, state) {
               return Flexible(
                 child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: state.cartItems.length,
                   itemBuilder: (_, int index) {
                     final CartItemModel cartItem = state.cartItems[index];
@@ -38,6 +41,7 @@ class CartScreen extends StatelessWidget {
               );
             },
           ),
+          verticalSpace(40),
         ],
       ),
     );
