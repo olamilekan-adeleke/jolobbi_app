@@ -23,6 +23,8 @@ class CartCubit extends Cubit<CartListStateModel> {
     }
 
     log('cart: ${state.toString()}');
+
+    // TODO: update local storage
   }
 
   void deleteCartItem(CartItemModel cart) {
@@ -34,6 +36,8 @@ class CartCubit extends Cubit<CartListStateModel> {
     items.removeAt(index);
 
     emit(state.copyWith(cartItems: items));
+
+    // TODO: update local storage
   }
 
   void deleteExtraCartItem(CartItemModel cart, item) {
@@ -71,6 +75,8 @@ class CartCubit extends Cubit<CartListStateModel> {
 
       emit(state);
     }
+
+    // TODO: update local storage
   }
 
   int getCartItemCount(CartItemModel cart) {
@@ -97,6 +103,8 @@ class CartCubit extends Cubit<CartListStateModel> {
       list[index] = cartInList;
 
       emit(state.copyWith(cartItems: list));
+
+      // TODO: update local storage
     }
   }
 
@@ -116,6 +124,8 @@ class CartCubit extends Cubit<CartListStateModel> {
       list[index] = cartInList;
 
       emit(state.copyWith(cartItems: list));
+
+      // TODO: update local storage
     }
   }
 
@@ -142,6 +152,92 @@ class CartCubit extends Cubit<CartListStateModel> {
       }
     } else {
       return 0;
+    }
+  }
+
+  void incrementCartSubItemCount(CartItemModel cart, CartAddOn subItem) {
+    if (state.cartItems.any((CartItemModel ele) => ele.name == cart.name)) {
+      final int index =
+          state.cartItems.indexWhere((ele) => ele.name == cart.name);
+
+      CartItemModel _cart = state.cartItems[index];
+
+      // check extra list
+
+      final int? extraIndex =
+          _cart.extras?.indexWhere((ele) => ele.name == subItem.name);
+
+      if (extraIndex == null || extraIndex == -1) {
+        //check addon list
+        final int? addonIndex =
+            _cart.addOn?.indexWhere((ele) => ele.name == subItem.name);
+
+        CartAddOn _extraItem = _cart.addOn![addonIndex!];
+
+        if (_extraItem.count == 10) return;
+
+        _extraItem = _extraItem.copyWith(count: _extraItem.count + 1);
+
+        _cart.addOn![addonIndex] = _extraItem;
+      } else {
+        CartAddOn _extraItem = _cart.extras![extraIndex];
+
+        if (_extraItem.count == 10) return;
+
+        _extraItem = _extraItem.copyWith(count: _extraItem.count + 1);
+
+        _cart.extras![extraIndex] = _extraItem;
+      }
+
+      List<CartItemModel> list = state.cartItems;
+
+      list[index] = _cart;
+
+      emit(state.copyWith(cartItems: list));
+    }
+  }
+
+
+
+   void decrementCartSubItemCount(CartItemModel cart, CartAddOn subItem) {
+    if (state.cartItems.any((CartItemModel ele) => ele.name == cart.name)) {
+      final int index =
+          state.cartItems.indexWhere((ele) => ele.name == cart.name);
+
+      CartItemModel _cart = state.cartItems[index];
+
+      // check extra list
+
+      final int? extraIndex =
+          _cart.extras?.indexWhere((ele) => ele.name == subItem.name);
+
+      if (extraIndex == null || extraIndex == -1) {
+        //check addon list
+        final int? addonIndex =
+            _cart.addOn?.indexWhere((ele) => ele.name == subItem.name);
+
+        CartAddOn _extraItem = _cart.addOn![addonIndex!];
+
+        if (_extraItem.count == 1) return;
+
+        _extraItem = _extraItem.copyWith(count: _extraItem.count - 1);
+
+        _cart.addOn![addonIndex] = _extraItem;
+      } else {
+        CartAddOn _extraItem = _cart.extras![extraIndex];
+
+        if (_extraItem.count == 1) return;
+
+        _extraItem = _extraItem.copyWith(count: _extraItem.count - 1);
+
+        _cart.extras![extraIndex] = _extraItem;
+      }
+
+      List<CartItemModel> list = state.cartItems;
+
+      list[index] = _cart;
+
+      emit(state.copyWith(cartItems: list));
     }
   }
 }

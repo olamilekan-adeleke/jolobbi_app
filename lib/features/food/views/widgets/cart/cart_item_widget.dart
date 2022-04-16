@@ -95,7 +95,7 @@ class _ExtraItemWidget extends StatelessWidget {
                   fontWeight: FontWeight.w300,
                 ),
                 TextWidget(
-                  'NGN ${currencyFormatter(item.price) }',
+                  'NGN ${currencyFormatter(item.price * cartCubit.getCartSubItemCount(cart, item))}',
                   fontSize: sp(14),
                   fontWeight: FontWeight.w500,
                 ),
@@ -115,7 +115,10 @@ class _ExtraItemWidget extends StatelessWidget {
                 children: <Widget>[
                   _iconWidget(
                     Icons.remove_circle_outline,
-                    onTap: () => {},
+                    onTap: () => cartCubit.decrementCartSubItemCount(
+                      cart,
+                      item,
+                    ),
                   ),
                   horizontalSpace(8),
                   BlocBuilder<CartCubit, CartListStateModel>(
@@ -130,7 +133,10 @@ class _ExtraItemWidget extends StatelessWidget {
                   horizontalSpace(8),
                   _iconWidget(
                     Icons.add_circle_outlined,
-                    onTap: () => {},
+                    onTap: () => cartCubit.incrementCartSubItemCount(
+                      cart,
+                      item,
+                    ),
                   ),
                 ],
               ),
