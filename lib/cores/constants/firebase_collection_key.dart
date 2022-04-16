@@ -6,3 +6,4 @@ const String FOOD_ITEMS_REF = 'fast_food_items';
 const String DRINK_ITEMS_REF = 'drink_items';
 const String SNACK_ITEMS_REF = 'snack_items';
 const String WALLET_REF = 'wallets';
+const String FEE_REF = 'fees';
