@@ -5,11 +5,13 @@ import '../../../../cores/components/custom_button.dart';
 import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/components/custom_textfiled.dart';
 import '../../../../cores/constants/color.dart';
+import '../../../../cores/navigator/app_router.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../../../cores/utils/validator.dart';
 import '../../cubit/send_fund_cubit.dart';
 import '../../enum/wallet_enum.dart';
 import '../../model/send_fund_state_model.dart';
+import '../screens/scan_qr_code_screen.dart';
 
 class SendFundToVendorFormWidget extends StatelessWidget {
   const SendFundToVendorFormWidget({Key? key}) : super(key: key);
@@ -56,7 +58,9 @@ class SendFundToVendorFormWidget extends StatelessWidget {
             ),
             verticalSpace(10),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                AppRouter.instance.navigate(const ScanQRCodeScreen());
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
