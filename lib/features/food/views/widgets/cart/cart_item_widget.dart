@@ -162,6 +162,7 @@ class _CartFoodItemWidget extends StatelessWidget {
       onDismissed: (_) {
         cartCubit.deleteCartItem(cart);
       },
+      background: Container(color: Colors.red),
       child: Row(
         children: <Widget>[
           SizedBox(
