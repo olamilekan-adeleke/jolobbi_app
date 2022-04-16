@@ -28,7 +28,7 @@ class PushNotificationService {
       _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
   static const AndroidInitializationSettings _initialzationSettingsAndriod =
-      AndroidInitializationSettings('@mipmap/ic_notification_launcher');
+      AndroidInitializationSettings('@mipmap/ic_launcher');
 
   static const InitializationSettings _initializationSettings =
       InitializationSettings(android: _initialzationSettingsAndriod);
