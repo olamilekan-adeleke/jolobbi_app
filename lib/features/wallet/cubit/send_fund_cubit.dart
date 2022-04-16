@@ -4,9 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../enum/wallet_enum.dart';
 import '../model/send_fund_state_model.dart';
+import '../services/wallet_service.dart';
 
 class SendFundCubit extends Cubit<SendFundStateModel> {
   SendFundCubit() : super(SendFundStateModel());
+
+  static final WalletService _walletService = WalletService();
 
   void onVendorTagChange(String vendorTag) {
     emit(state.copyWith(vendorTag: vendorTag, status: WalletStatus.unknown));
@@ -18,11 +21,11 @@ class SendFundCubit extends Cubit<SendFundStateModel> {
     );
   }
 
-  void makeTransfer() {
+  Future<void> makeTransfer() async {
     try {
       emit(state.copyWith(errorText: '', status: WalletStatus.busy));
 
-      // add function call
+      await _walletService.transferToVendor(state.vendorTag, state.amount);
 
       emit(state.copyWith(errorText: '', status: WalletStatus.success));
     } catch (e, s) {

@@ -36,4 +36,15 @@ class WalletRepository {
       body: <String, dynamic>{'tx_ref': transactionRef, 'userId': userId},
     );
   }
+
+   Future<void> transferByBusinessTag(Map<String, dynamic> data) async {
+    final String? userId = _firebaseAuth.currentUser?.uid;
+
+    if (userId == null) throw 'Error: User not login';
+
+    await HttpHelper.post(
+      uri: ApiEndpoints.transferToVendor,
+      body: <String, dynamic>{...data, 'userId': userId},
+    );
+  }
 }

@@ -13,4 +13,10 @@ class WalletService {
   Future<void> verifyTransaction(String transactionRef) async {
     await _walletRepository.verifyTransaction(transactionRef);
   }
+
+  Future<void> transferToVendor(String vendorTag, int amount) async {
+    await _walletRepository.transferByBusinessTag(
+      <String, dynamic>{'amount': amount, 'businessTag': vendorTag},
+    );
+  }
 }
