@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import '../model/cart_list_state_model.dart';
 import 'cart_item_model.dart';
 
@@ -198,9 +197,7 @@ class CartCubit extends Cubit<CartListStateModel> {
     }
   }
 
-
-
-   void decrementCartSubItemCount(CartItemModel cart, CartAddOn subItem) {
+  void decrementCartSubItemCount(CartItemModel cart, CartAddOn subItem) {
     if (state.cartItems.any((CartItemModel ele) => ele.name == cart.name)) {
       final int index =
           state.cartItems.indexWhere((ele) => ele.name == cart.name);
@@ -240,5 +237,29 @@ class CartCubit extends Cubit<CartListStateModel> {
 
       emit(state.copyWith(cartItems: list));
     }
+  }
+
+  int itemTotalPrice() {
+    int extraTotal = 0;
+    int addOnTotal = 0;
+    int itemTotal = 0;
+
+    for (var ele in state.cartItems) {
+      ele.extras?.forEach((item) {
+        extraTotal += item.price * item.count;
+      });
+    }
+
+    for (var ele in state.cartItems) {
+      ele.addOn?.forEach((item) {
+        addOnTotal += item.price * item.count;
+      });
+    }
+
+    for (var ele in state.cartItems) {
+      itemTotal += ele.price * ele.count;
+    }
+
+    return extraTotal + addOnTotal + itemTotal;
   }
 }

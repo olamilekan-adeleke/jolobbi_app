@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../cubit/cart_cubit.dart';
 
 class OrderSummaryWidget extends StatelessWidget {
   const OrderSummaryWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final CartCubit cartCubit = context.read<CartCubit>();
+
     return Card(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: sp(10), vertical: sp(10)),
         child: Column(
           children: <Widget>[
-            itemWidget('Items', currencyFormatter(5)),
-            itemWidget('Items Total', 'NGN ${currencyFormatter(500)}'),
+            itemWidget('Items', cartCubit.state.cartItems.length.toString()),
+            itemWidget(
+              'Items Total',
+              'NGN ${currencyFormatter(cartCubit.itemTotalPrice())}',
+            ),
             itemWidget('Delivery Fee', 'NGN ${currencyFormatter(200)}'),
             itemWidget('Service Fee', 'NGN ${currencyFormatter(10)}'),
             itemWidget('Total', 'NGN ${currencyFormatter(2500)}', true),
