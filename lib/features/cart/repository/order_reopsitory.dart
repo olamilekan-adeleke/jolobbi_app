@@ -6,7 +6,7 @@ class OrderRepository {
   static final CollectionReference _feesRefCollectionRef =
       FirebaseFirestore.instance.collection(FEE_REF);
 
-  Future<Map<String, dynamic>> getOrderHistory() async {
+  Future<Map<String, dynamic>> getFeeData() async {
     final DocumentSnapshot documentSnapshot = await _feesRefCollectionRef
         .doc('order_fee')
         .get(const GetOptions(source: Source.server));
