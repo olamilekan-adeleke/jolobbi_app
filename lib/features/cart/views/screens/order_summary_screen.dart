@@ -4,6 +4,7 @@ import 'package:jolobbi_app/cores/utils/sizer_utils.dart';
 import '../../../../cores/components/app_bar_widget.dart';
 import '../../../../cores/components/custom_scaffold_widget.dart';
 import '../../../../cores/components/custom_text_widget.dart';
+import '../widgets/order_summary_widget.dart';
 
 class OrderSummaryScreen extends StatelessWidget {
   const OrderSummaryScreen({Key? key}) : super(key: key);
@@ -24,6 +25,15 @@ class OrderSummaryScreen extends StatelessWidget {
             fontSize: sp(15),
             fontWeight: FontWeight.w500,
           ),
+          verticalSpace(),
+          const OrderSummaryWidget(),
+          verticalSpace(20),
+          TextWidget(
+            'Address',
+            fontSize: sp(15),
+            fontWeight: FontWeight.w500,
+          ),
+          verticalSpace(),
         ],
       ),
     );
