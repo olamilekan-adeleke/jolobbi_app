@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../cores/components/custom_text_widget.dart';
 import '../../../../../cores/constants/color.dart';
+import '../../../../../cores/navigator/app_router.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
 import '../../../cubit/user_profile/profile_details_cubit.dart';
 import '../../../model/user_profile_data_model.dart';
 import '../../../model/user_profile_state_model.dart';
 
-class AddressListWidget extends StatelessWidget {
-  const AddressListWidget({Key? key}) : super(key: key);
+class DropDownSelectAddressWidget extends StatelessWidget {
+  const DropDownSelectAddressWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,9 @@ class AddressListWidget extends StatelessWidget {
               final AddressModel address = state.userData!.address![index];
 
               return ListTile(
-                
+                onTap: () {
+                  AppRouter.instance.goBack(address);
+                },
                 title: TextWidget(address.location, fontSize: sp(12)),
                 subtitle: TextWidget(
                   address.locationDescription,
@@ -53,10 +56,10 @@ class AddressListWidget extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                // trailing: Icon(
-                //   Icons.arrow_forward_ios_outlined,
-                //   size: sp(12),
-                // ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_outlined,
+                  size: sp(12),
+                ),
               );
             },
           ),
