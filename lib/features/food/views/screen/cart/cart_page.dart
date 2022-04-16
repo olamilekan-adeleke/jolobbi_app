@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../cores/components/app_bar_widget.dart';
+import '../../../../../cores/components/custom_button.dart';
 import '../../../../../cores/components/custom_scaffold_widget.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
 import '../../../cubit/cart_cubit.dart';
@@ -41,6 +42,8 @@ class CartScreen extends StatelessWidget {
               );
             },
           ),
+          verticalSpace(20),
+          CustomButton(text: 'Check Out', onTap: () {}),
           verticalSpace(40),
         ],
       ),
