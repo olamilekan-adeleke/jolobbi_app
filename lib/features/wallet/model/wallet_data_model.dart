@@ -16,8 +16,8 @@ class WalletDataModel {
 
   factory WalletDataModel.fromMap(Map<String, dynamic> map) {
     return WalletDataModel(
-      cashBalance: (map['cash_balance']?.toInt() ?? 0) ~/ 100,
-      coinBalance: (map['coin_balance']?.toInt() ?? 0) ~/ 100,
+      cashBalance: (map['cash_balance']?.toInt() ?? 0),
+      coinBalance: (map['coin_balance']?.toInt() ?? 0),
     );
   }
 }

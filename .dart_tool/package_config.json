@@ -572,6 +572,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "mobile_scanner",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/mobile_scanner-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "mocktail",
       "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/mocktail-0.2.0",
       "packageUri": "lib/",
@@ -998,7 +1004,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-04-10T11:03:07.634518Z",
+  "generated": "2022-04-16T13:56:33.526071Z",
   "generator": "pub",
   "generatorVersion": "2.16.2"
 }

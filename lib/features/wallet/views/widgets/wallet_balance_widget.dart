@@ -55,24 +55,39 @@ class WalletBalanceWidget extends StatelessWidget {
                 const Spacer(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: sp(20)),
-                  child: BlocBuilder<FundWalletCubit, FundWalletStateModel>(
-                    builder: (context, state) {
-                      if (state.status == WalletStatus.busy) {
-                        return const CustomButton.loading();
-                      }
+                  child: Row(
+                    children: [
+                      Flexible(
+                        child: CustomButton(
+                          text: 'Send Fund ',
+                          textColor: kcWhite,
+                          color: kcPrimaryColor,
+                          onTap: () {},
+                        ),
+                      ),
+                      horizontalSpace(5),
+                      BlocBuilder<FundWalletCubit, FundWalletStateModel>(
+                        builder: (context, state) {
+                          if (state.status == WalletStatus.busy) {
+                            return const CustomButton.loading();
+                          }
 
-                      return CustomButton(
-                        text: 'Fund Wallet',
-                        textColor: kcTextColor,
-                        color: kcWhite,
-                        onTap: () {
-                          BottomSheetHelper.show(
-                            context: context,
-                            child: const FundWalletAmountWidget(),
+                          return Flexible(
+                            child: CustomButton(
+                              text: 'Fund Wallet',
+                              textColor: kcTextColor,
+                              color: kcWhite,
+                              onTap: () {
+                                BottomSheetHelper.show(
+                                  context: context,
+                                  child: const FundWalletAmountWidget(),
+                                );
+                              },
+                            ),
                           );
                         },
-                      );
-                    },
+                      ),
+                    ],
                   ),
                 ),
                 verticalSpace(),
