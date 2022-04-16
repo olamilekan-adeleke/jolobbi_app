@@ -15,15 +15,15 @@ class OrderFeeModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'deliveryFee': deliveryFee,
-      'serviceFee': serviceFee,
+      'delivery_fee': deliveryFee,
+      'service_fee': serviceFee,
     };
   }
 
   factory OrderFeeModel.fromMap(Map<String, dynamic> map) {
     return OrderFeeModel(
-      deliveryFee: map['deliveryFee']?.toInt() ?? 0,
-      serviceFee: map['serviceFee']?.toInt() ?? 0,
+      deliveryFee: map['delivery_fee']?.toInt() ?? 0,
+      serviceFee: map['service_fee']?.toInt() ?? 0,
     );
   }
 

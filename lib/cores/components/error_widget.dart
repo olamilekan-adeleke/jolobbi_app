@@ -17,7 +17,7 @@ class CustomErrorWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        TextWidget( message),
+        TextWidget(message, textAlign: TextAlign.center),
         const SizedBox(height: 10.0),
         RetryButtonWidget(callback: () => callback!.call()),
       ],
