@@ -6,7 +6,7 @@ import '../../features/authentication/views/screens/login_screen.dart';
 import '../../features/authentication/views/screens/sign_up_screen.dart';
 import '../../features/food/model/food_item_data_model.dart';
 import '../../features/food/model/food_vendor_data_model.dart';
-import '../../features/food/views/screen/cart/cart_page.dart';
+import '../../features/cart/views/screens/cart_page.dart';
 import '../../features/food/views/screen/favorite/favorite_food_screen.dart';
 import '../../features/food/views/screen/food_home_page.dart';
 import '../../features/food/views/screen/selcted_food_item_screen.dart';

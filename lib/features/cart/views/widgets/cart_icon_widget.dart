@@ -5,9 +5,9 @@ import '../../../../../cores/components/custom_text_widget.dart';
 import '../../../../../cores/constants/color.dart';
 import '../../../../../cores/navigator/app_router.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
-import '../../../cubit/cart_cubit.dart';
-import '../../../model/cart_list_state_model.dart';
-import '../../screen/cart/cart_page.dart';
+import '../../cubit/cart_cubit.dart';
+import '../../model/cart_list_state_model.dart';
+import '../screens/cart_page.dart';
 
 class CartIconWidget extends StatelessWidget {
   const CartIconWidget({Key? key, this.iconColor}) : super(key: key);

@@ -5,10 +5,10 @@ import '../../../../cores/components/custom_button.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/navigator/app_router.dart';
 import '../../../../cores/utils/sizer_utils.dart';
-import '../../cubit/cart_cubit.dart';
-import '../../cubit/item_cart_cubit.dart';
+import '../../../cart/cubit/cart_cubit.dart';
+import '../../../cart/cubit/item_cart_cubit.dart';
 import '../../model/food_item_data_model.dart';
-import '../screen/cart/cart_page.dart';
+import '../../../cart/views/screens/cart_page.dart';
 
 class FoodItemCartButtonWidget extends StatelessWidget {
   const FoodItemCartButtonWidget(this.foodItem, {Key? key}) : super(key: key);

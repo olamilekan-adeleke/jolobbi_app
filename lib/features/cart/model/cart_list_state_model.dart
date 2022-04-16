@@ -1,4 +1,6 @@
-import 'cart_item_model.dart';
+
+
+import '../cubit/cart_item_model.dart';
 
 class CartListStateModel {
   List<CartItemModel> cartItems = [];

@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../model/cart_item_model.dart';
-import '../model/food_item_data_model.dart';
+import '../../food/model/food_item_data_model.dart';
 import '../model/item_to_cart_model.dart';
+import 'cart_item_model.dart';
 
 class ItemToCartCubit extends Cubit<ItemToCartModel> {
   ItemToCartCubit() : super(ItemToCartModel());

@@ -6,9 +6,10 @@ import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
-import '../../cubit/item_cart_cubit.dart';
+import '../../../cart/cubit/item_cart_cubit.dart';
+import '../../../cart/model/item_to_cart_model.dart';
 import '../../model/food_item_data_model.dart';
-import '../../model/item_to_cart_model.dart';
+
 
 class FoodItemAddOnListViewWidget extends StatelessWidget {
   const FoodItemAddOnListViewWidget(this.foodItem, {Key? key})
