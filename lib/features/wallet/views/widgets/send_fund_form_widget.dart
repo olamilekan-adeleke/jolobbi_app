@@ -17,6 +17,7 @@ class SendFundToVendorFormWidget extends StatelessWidget {
   const SendFundToVendorFormWidget({Key? key}) : super(key: key);
 
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  static final TextEditingController vendorTag = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +43,7 @@ class SendFundToVendorFormWidget extends StatelessWidget {
             ),
             verticalSpace(40),
             CustomTextField(
+              textEditingController: vendorTag,
               hintText: 'Vendor Tag',
               onChanged: sendFundCubit.onVendorTagChange,
               validator: nameValidator,
@@ -58,8 +60,14 @@ class SendFundToVendorFormWidget extends StatelessWidget {
             ),
             verticalSpace(10),
             GestureDetector(
-              onTap: () {
-                AppRouter.instance.navigate(const ScanQRCodeScreen());
+              onTap: () async {
+                final String? tag =
+                    await AppRouter.instance.navigate(const ScanQRCodeScreen());
+
+                if (tag == null) return;
+
+                vendorTag.text = tag;
+                sendFundCubit.onVendorTagChange(tag);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

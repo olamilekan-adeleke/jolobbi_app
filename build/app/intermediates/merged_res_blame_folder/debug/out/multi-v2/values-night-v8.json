@@ -4,7 +4,7 @@
             "outputFile": "/home/kod-x/projects/jolobbi_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/home/kod-x/.gradle/caches/transforms-2/files-2.1/2af512844b99b74ee6d763d6e2c46e58/appcompat-1.2.0/res/values-night-v8/values-night-v8.xml",
+                    "source": "/home/kod-x/.gradle/caches/transforms-2/files-2.1/b30ba76e51e0bbc15612e0007861bd1a/appcompat-1.4.1/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

@@ -35,6 +35,7 @@ class ScanQRCodeScreen extends StatelessWidget {
         : 300.0;
 
     return CustomScaffoldWidget(
+      usePadding: false,
       useSingleScroll: false,
       body: Stack(
         children: [
