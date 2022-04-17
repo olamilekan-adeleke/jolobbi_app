@@ -15,6 +15,7 @@ class ScanQRCodeScreen extends StatelessWidget {
     qrController = controller;
     qrController!.scannedDataStream.listen((scanData) async {
       final Barcode result = scanData;
+      qrController!.pauseCamera();
       AppRouter.instance.goBack(result.code);
     });
   }
