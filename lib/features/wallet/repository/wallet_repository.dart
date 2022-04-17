@@ -8,7 +8,10 @@ import '../../../cores/constants/http_helper.dart';
 class WalletRepository {
   static final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  static final CollectionReference walletCollectionRef =
+  static final CollectionReference _walletCollectionRef =
+      FirebaseFirestore.instance.collection(WALLET_REF);
+
+  static final CollectionReference _userCollectionRef =
       FirebaseFirestore.instance.collection(WALLET_REF);
 
   Future<Map<String, dynamic>> getWalletBalance() async {
@@ -17,7 +20,7 @@ class WalletRepository {
     if (userId == null) throw 'Error: User not login';
 
     final DocumentSnapshot documentSnapshot =
-        await walletCollectionRef.doc(userId).get();
+        await _walletCollectionRef.doc(userId).get();
 
     if (documentSnapshot.data() == null) {
       throw 'No Wallet was found for this user!';
@@ -26,7 +29,7 @@ class WalletRepository {
     return Map<String, dynamic>.from(documentSnapshot.data() as Map);
   }
 
-  Future<void> verifyTransaction(String transactionRef) async {
+  Future<void> verifyTransaction(int transactionRef) async {
     final String? userId = _firebaseAuth.currentUser?.uid;
 
     if (userId == null) throw 'Error: User not login';
@@ -37,7 +40,7 @@ class WalletRepository {
     );
   }
 
-   Future<void> transferByBusinessTag(Map<String, dynamic> data) async {
+  Future<void> transferByBusinessTag(Map<String, dynamic> data) async {
     final String? userId = _firebaseAuth.currentUser?.uid;
 
     if (userId == null) throw 'Error: User not login';
@@ -46,5 +49,29 @@ class WalletRepository {
       uri: ApiEndpoints.transferToVendor,
       body: <String, dynamic>{...data, 'userId': userId},
     );
+  }
+
+  Future<List<Map<String, dynamic>>> getUserTransactionHistory() async {
+    final String? userId = _firebaseAuth.currentUser?.uid;
+
+    if (userId == null) throw 'Error: User not login';
+
+    final QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await _userCollectionRef
+            .doc(userId)
+            .collection('transactions')
+            .orderBy('timestamp')
+            .limit(5)
+            .get();
+
+    final List<QueryDocumentSnapshot> queryDocumentSnapshot =
+        querySnapshot.docs;
+
+    final List<Map<String, dynamic>> result = queryDocumentSnapshot
+        .map((ele) => ele.data() as Map<String, dynamic>)
+        .toList();
+
+
+    return result;
   }
 }

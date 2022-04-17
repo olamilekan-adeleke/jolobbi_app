@@ -22,6 +22,7 @@ const checkIfTransactionExist = async (userData, flutterwaveData) => {
       amount: flutterwaveData.amount,
       userData: userData,
       flutterwaveData: flutterwaveData,
+      timestamp: admin.firestore.Timestamp.now(),
     });
   });
 };

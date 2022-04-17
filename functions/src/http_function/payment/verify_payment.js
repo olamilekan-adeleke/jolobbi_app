@@ -27,8 +27,8 @@ const verifyPaymentFunction = async (req, res) => {
     await addNewUserTransactionHistory(
       userId,
       "You fund your wallet via flutterwave",
-      "fund_wallet",
-      responseData
+      responseData,
+      "fund_wallet"
     );
 
     // fund user wallet
