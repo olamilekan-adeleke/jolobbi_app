@@ -1,7 +1,12 @@
 const admin = require("../../../firebase_admin_helper");
 const functions = require("firebase-functions");
 
-const addTransferHistoryUser = async (userId, amount, description, vendorTag) => {
+const addTransferHistoryUser = async (
+  userId,
+  amount,
+  description,
+  vendorTag
+) => {
   await admin
     .firestore()
     .collection("users")
@@ -9,7 +14,7 @@ const addTransferHistoryUser = async (userId, amount, description, vendorTag) =>
     .collection("transactions")
     .add({
       description: description,
-      type: 'send_fund',
+      type: "send_fund",
       amount: amount,
       timestamp: admin.firestore.Timestamp.now(),
       vendorTag: vendorTag,
