@@ -89,7 +89,7 @@ class FundWalletAmountWidget extends StatelessWidget {
         "NGN",
         profileCubit.state.userData!.name,
         profileCubit.state.userData!.email,
-        "jollobi-${DateTime.now().millisecondsSinceEpoch}",
+        "jollobi-${const Uuid().v1()}",
         "Description of payment",
         metaData: {
           // TODO: add more metadata
@@ -102,6 +102,8 @@ class FundWalletAmountWidget extends StatelessWidget {
 
     log(transactionResponse.toMap().toString());
 
+    // {paymentDate: , amountPayable: 2000.0, amountPaid: 2000.0, paymentMethod: CARD, transactionStatus: PAID, transactionReference: MNFY|86|20220419170224|000073, paymentReference: jollobi-18e98890-bffa-11ec-b7d5-275c998c2523}
+
     // if (paymentResponse == null) {
     //   AppRouter.instance.goBack();
 
@@ -110,8 +112,6 @@ class FundWalletAmountWidget extends StatelessWidget {
     //     message: 'Opps, it seems like something went wrong!',
     //   );
     // }
-
-    // // {status: successful, customer: {name: Jack The Ripper , email: teduvf@gmail.com, phone_number: 07052936789}, transaction_id: 3280243, tx_ref: jolobbi_food-9f61f1a0-b8cf-11ec-9613-e18c12f05117, flw_ref: FLW-M03K-df672cc4e6e41ea7cc1016820faff81a, currency: NGN, amount: 200}
 
     // _fundWalletCubit.fundWallet(paymentResponse['transaction_id']);
     // AppRouter.instance.goBack();

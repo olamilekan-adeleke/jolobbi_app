@@ -1,6 +1,6 @@
 const flutterwave = require("flutterwave-node-v3");
 
-const verifyTransactionWithFlutterwave = async (id) => {
+const verifyTransactionWithThirdParty = async (id) => {
   const flw = new flutterwave(
     process.env.flutterWavePublicKey,
     process.env.flutterWaveSecretKey
@@ -16,4 +16,4 @@ const verifyTransactionWithFlutterwave = async (id) => {
   return response.data;
 };
 
-module.exports = verifyTransactionWithFlutterwave;
+module.exports = verifyTransactionWithThirdParty;
