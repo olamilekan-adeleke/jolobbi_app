@@ -578,6 +578,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "monnify_flutter_sdk",
+      "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/monnify_flutter_sdk-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "nested",
       "rootUri": "file:///home/kod-x/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/nested-1.0.0",
       "packageUri": "lib/",
@@ -1004,7 +1010,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-04-16T23:46:09.896405Z",
+  "generated": "2022-04-19T12:07:37.784043Z",
   "generator": "pub",
-  "generatorVersion": "2.16.2"
+  "generatorVersion": "2.16.1"
 }

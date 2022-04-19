@@ -290,6 +290,17 @@
             android:exported="false"
             android:initOrder="100" />
 
+        <activity
+            android:name="com.teamapt.monnify.sdk.module.view.activity.SdkActivity"
+            android:screenOrientation="userPortrait"
+            android:theme="@style/SdkTheme" >
+        </activity>
+
+        <provider
+            android:name="com.squareup.picasso.PicassoProvider"
+            android:authorities="com.example.jolobbi_app.com.squareup.picasso"
+            android:exported="false" />
+
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
             android:enabled="true"

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:monnify_flutter_sdk/monnify_flutter_sdk.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../cores/components/custom_button.dart';
@@ -81,30 +82,38 @@ class FundWalletAmountWidget extends StatelessWidget {
       );
     }
 
-    final Map<String, dynamic>? paymentResponse =
-        await AppRouter.instance.navigate(
-      FlutterWeb(
-        amount: _fundWalletCubit.state.amount,
-        transactionRef: "jolobbi_food-${const Uuid().v1()}",
-        description: "Fund Wallet",
-        user: profileCubit.state.userData!,
+    TransactionResponse transactionResponse =
+        await MonnifyFlutterSdk.initializePayment(
+      Transaction(
+        2000,
+        "NGN",
+        profileCubit.state.userData!.name,
+        profileCubit.state.userData!.email,
+        "jollobi-${DateTime.now().millisecondsSinceEpoch}",
+        "Description of payment",
+        metaData: {
+          // TODO: add more metadata
+          "ip": "196.168.45.22",
+          "device": "mobile_flutter"
+        },
+        paymentMethods: [PaymentMethod.CARD, PaymentMethod.ACCOUNT_TRANSFER],
       ),
     );
 
-    log(paymentResponse.toString());
+    log(transactionResponse.toMap().toString());
 
-    if (paymentResponse == null) {
-      AppRouter.instance.goBack();
+    // if (paymentResponse == null) {
+    //   AppRouter.instance.goBack();
 
-      return SnackBarService.showWarningSnackBar(
-        context: context,
-        message: 'Opps, it seems like something went wrong!',
-      );
-    }
+    //   return SnackBarService.showWarningSnackBar(
+    //     context: context,
+    //     message: 'Opps, it seems like something went wrong!',
+    //   );
+    // }
 
-    // {status: successful, customer: {name: Jack The Ripper , email: teduvf@gmail.com, phone_number: 07052936789}, transaction_id: 3280243, tx_ref: jolobbi_food-9f61f1a0-b8cf-11ec-9613-e18c12f05117, flw_ref: FLW-M03K-df672cc4e6e41ea7cc1016820faff81a, currency: NGN, amount: 200}
+    // // {status: successful, customer: {name: Jack The Ripper , email: teduvf@gmail.com, phone_number: 07052936789}, transaction_id: 3280243, tx_ref: jolobbi_food-9f61f1a0-b8cf-11ec-9613-e18c12f05117, flw_ref: FLW-M03K-df672cc4e6e41ea7cc1016820faff81a, currency: NGN, amount: 200}
 
-    _fundWalletCubit.fundWallet(paymentResponse['transaction_id']);
-    AppRouter.instance.goBack();
+    // _fundWalletCubit.fundWallet(paymentResponse['transaction_id']);
+    // AppRouter.instance.goBack();
   }
 }

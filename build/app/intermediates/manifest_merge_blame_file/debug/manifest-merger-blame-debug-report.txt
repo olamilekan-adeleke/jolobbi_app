@@ -520,98 +520,117 @@
 291            android:initOrder="100" />
 291-->[com.google.firebase:firebase-common:20.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/ca0a9ec311157001599b2a78adae11bf/jetified-firebase-common-20.0.0/AndroidManifest.xml:31:13-36
 292
-293        <receiver
-293-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:29:9-33:20
-294            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-294-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:30:13-85
-295            android:enabled="true"
-295-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:31:13-35
-296            android:exported="false" >
-296-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:32:13-37
-297        </receiver>
+293        <activity
+293-->[com.monnify.android-sdk:monnify-android-sdk:1.1.2] /home/kod-x/.gradle/caches/transforms-2/files-2.1/cb7c7448d0bb4a1e8be6005c709b1089/jetified-monnify-android-sdk-1.1.2/AndroidManifest.xml:15:9-19:20
+294            android:name="com.teamapt.monnify.sdk.module.view.activity.SdkActivity"
+294-->[com.monnify.android-sdk:monnify-android-sdk:1.1.2] /home/kod-x/.gradle/caches/transforms-2/files-2.1/cb7c7448d0bb4a1e8be6005c709b1089/jetified-monnify-android-sdk-1.1.2/AndroidManifest.xml:16:13-84
+295            android:screenOrientation="userPortrait"
+295-->[com.monnify.android-sdk:monnify-android-sdk:1.1.2] /home/kod-x/.gradle/caches/transforms-2/files-2.1/cb7c7448d0bb4a1e8be6005c709b1089/jetified-monnify-android-sdk-1.1.2/AndroidManifest.xml:17:13-53
+296            android:theme="@style/SdkTheme" >
+296-->[com.monnify.android-sdk:monnify-android-sdk:1.1.2] /home/kod-x/.gradle/caches/transforms-2/files-2.1/cb7c7448d0bb4a1e8be6005c709b1089/jetified-monnify-android-sdk-1.1.2/AndroidManifest.xml:18:13-44
+297        </activity>
 298
-299        <service
-299-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:35:9-38:40
-300            android:name="com.google.android.gms.measurement.AppMeasurementService"
-300-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:36:13-84
-301            android:enabled="true"
-301-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:37:13-35
+299        <provider
+299-->[com.squareup.picasso:picasso:2.71828] /home/kod-x/.gradle/caches/transforms-2/files-2.1/e6980c3e0bf491e71d6a75d2cc3e55dc/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
+300            android:name="com.squareup.picasso.PicassoProvider"
+300-->[com.squareup.picasso:picasso:2.71828] /home/kod-x/.gradle/caches/transforms-2/files-2.1/e6980c3e0bf491e71d6a75d2cc3e55dc/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
+301            android:authorities="com.example.jolobbi_app.com.squareup.picasso"
+301-->[com.squareup.picasso:picasso:2.71828] /home/kod-x/.gradle/caches/transforms-2/files-2.1/e6980c3e0bf491e71d6a75d2cc3e55dc/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
 302            android:exported="false" />
-302-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:38:13-37
-303        <service
-303-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:39:9-43:72
-304            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-304-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:40:13-87
-305            android:enabled="true"
-305-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:41:13-35
-306            android:exported="false"
-306-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:42:13-37
-307            android:permission="android.permission.BIND_JOB_SERVICE" />
-307-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:43:13-69
-308
-309        <activity
-309-->[com.google.android.gms:play-services-base:17.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/6b896d51bb1b2842e067ab6319f13018/jetified-play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
-310            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-310-->[com.google.android.gms:play-services-base:17.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/6b896d51bb1b2842e067ab6319f13018/jetified-play-services-base-17.1.0/AndroidManifest.xml:24:13-79
-311            android:exported="false"
-311-->[com.google.android.gms:play-services-base:17.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/6b896d51bb1b2842e067ab6319f13018/jetified-play-services-base-17.1.0/AndroidManifest.xml:25:13-37
-312            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-312-->[com.google.android.gms:play-services-base:17.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/6b896d51bb1b2842e067ab6319f13018/jetified-play-services-base-17.1.0/AndroidManifest.xml:26:13-72
-313
-314        <meta-data
-314-->[com.google.android.gms:play-services-basement:18.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/13933eb78ecf902661904589780423ac/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
-315            android:name="com.google.android.gms.version"
-315-->[com.google.android.gms:play-services-basement:18.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/13933eb78ecf902661904589780423ac/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
-316            android:value="@integer/google_play_services_version" />
-316-->[com.google.android.gms:play-services-basement:18.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/13933eb78ecf902661904589780423ac/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
-317
-318        <provider
-318-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
-319            android:name="androidx.startup.InitializationProvider"
-319-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
-320            android:authorities="com.example.jolobbi_app.androidx-startup"
-320-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
-321            android:exported="false" >
-321-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
-322            <meta-data
-322-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
-323                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-323-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
-324                android:value="androidx.startup" />
-324-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
-325            <meta-data
-325-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/71b87554ac000d4e60a3257414987af8/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
-326                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-326-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/71b87554ac000d4e60a3257414987af8/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
-327                android:value="androidx.startup" />
-327-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/71b87554ac000d4e60a3257414987af8/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
-328        </provider>
-329
-330        <activity
-330-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
-331            android:name="com.journeyapps.barcodescanner.CaptureActivity"
-331-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:48:13-74
-332            android:clearTaskOnLaunch="true"
-332-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
-333            android:screenOrientation="sensorLandscape"
-333-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
-334            android:stateNotNeeded="true"
-334-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
-335            android:theme="@style/zxing_CaptureTheme"
-335-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
-336            android:windowSoftInputMode="stateAlwaysHidden" />
-336-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
-337
-338        <provider
-338-->[com.crashlytics.sdk.android:crashlytics:2.9.4] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b6840c41f5d454960eef42f9fe517f1b/jetified-crashlytics-2.9.4/AndroidManifest.xml:12:9-16:39
-339            android:name="com.crashlytics.android.CrashlyticsInitProvider"
-339-->[com.crashlytics.sdk.android:crashlytics:2.9.4] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b6840c41f5d454960eef42f9fe517f1b/jetified-crashlytics-2.9.4/AndroidManifest.xml:13:13-75
-340            android:authorities="com.example.jolobbi_app.crashlyticsinitprovider"
-340-->[com.crashlytics.sdk.android:crashlytics:2.9.4] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b6840c41f5d454960eef42f9fe517f1b/jetified-crashlytics-2.9.4/AndroidManifest.xml:14:13-75
-341            android:exported="false"
-341-->[com.crashlytics.sdk.android:crashlytics:2.9.4] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b6840c41f5d454960eef42f9fe517f1b/jetified-crashlytics-2.9.4/AndroidManifest.xml:15:13-37
-342            android:initOrder="100" />
-342-->[com.crashlytics.sdk.android:crashlytics:2.9.4] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b6840c41f5d454960eef42f9fe517f1b/jetified-crashlytics-2.9.4/AndroidManifest.xml:16:13-36
-343    </application>
-344
-345</manifest>
+302-->[com.squareup.picasso:picasso:2.71828] /home/kod-x/.gradle/caches/transforms-2/files-2.1/e6980c3e0bf491e71d6a75d2cc3e55dc/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
+303
+304        <receiver
+304-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:29:9-33:20
+305            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+305-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:30:13-85
+306            android:enabled="true"
+306-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:31:13-35
+307            android:exported="false" >
+307-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:32:13-37
+308        </receiver>
+309
+310        <service
+310-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:35:9-38:40
+311            android:name="com.google.android.gms.measurement.AppMeasurementService"
+311-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:36:13-84
+312            android:enabled="true"
+312-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:37:13-35
+313            android:exported="false" />
+313-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:38:13-37
+314        <service
+314-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:39:9-43:72
+315            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+315-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:40:13-87
+316            android:enabled="true"
+316-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:41:13-35
+317            android:exported="false"
+317-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:42:13-37
+318            android:permission="android.permission.BIND_JOB_SERVICE" />
+318-->[com.google.android.gms:play-services-measurement:20.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/768ec82a2ccc6cbb9cf62a0537a52b26/jetified-play-services-measurement-20.1.0/AndroidManifest.xml:43:13-69
+319
+320        <activity
+320-->[com.google.android.gms:play-services-base:17.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/6b896d51bb1b2842e067ab6319f13018/jetified-play-services-base-17.1.0/AndroidManifest.xml:23:9-26:75
+321            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+321-->[com.google.android.gms:play-services-base:17.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/6b896d51bb1b2842e067ab6319f13018/jetified-play-services-base-17.1.0/AndroidManifest.xml:24:13-79
+322            android:exported="false"
+322-->[com.google.android.gms:play-services-base:17.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/6b896d51bb1b2842e067ab6319f13018/jetified-play-services-base-17.1.0/AndroidManifest.xml:25:13-37
+323            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+323-->[com.google.android.gms:play-services-base:17.1.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/6b896d51bb1b2842e067ab6319f13018/jetified-play-services-base-17.1.0/AndroidManifest.xml:26:13-72
+324
+325        <meta-data
+325-->[com.google.android.gms:play-services-basement:18.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/13933eb78ecf902661904589780423ac/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+326            android:name="com.google.android.gms.version"
+326-->[com.google.android.gms:play-services-basement:18.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/13933eb78ecf902661904589780423ac/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+327            android:value="@integer/google_play_services_version" />
+327-->[com.google.android.gms:play-services-basement:18.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/13933eb78ecf902661904589780423ac/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+328
+329        <provider
+329-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+330            android:name="androidx.startup.InitializationProvider"
+330-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+331            android:authorities="com.example.jolobbi_app.androidx-startup"
+331-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
+332            android:exported="false" >
+332-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
+333            <meta-data
+333-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+334                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+334-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+335                android:value="androidx.startup" />
+335-->[androidx.emoji2:emoji2:1.0.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b9d3c5135f48419c6a7807bac0bbe82d/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+336            <meta-data
+336-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/71b87554ac000d4e60a3257414987af8/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+337                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+337-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/71b87554ac000d4e60a3257414987af8/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+338                android:value="androidx.startup" />
+338-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/71b87554ac000d4e60a3257414987af8/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+339        </provider>
+340
+341        <activity
+341-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:47:9-53:63
+342            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+342-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:48:13-74
+343            android:clearTaskOnLaunch="true"
+343-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:49:13-45
+344            android:screenOrientation="sensorLandscape"
+344-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:50:13-56
+345            android:stateNotNeeded="true"
+345-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:51:13-42
+346            android:theme="@style/zxing_CaptureTheme"
+346-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:52:13-54
+347            android:windowSoftInputMode="stateAlwaysHidden" />
+347-->[com.journeyapps:zxing-android-embedded:4.3.0] /home/kod-x/.gradle/caches/transforms-2/files-2.1/58fbc976651c74ad0f87d8dfbdd58779/jetified-zxing-android-embedded-4.3.0/AndroidManifest.xml:53:13-60
+348
+349        <provider
+349-->[com.crashlytics.sdk.android:crashlytics:2.9.4] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b6840c41f5d454960eef42f9fe517f1b/jetified-crashlytics-2.9.4/AndroidManifest.xml:12:9-16:39
+350            android:name="com.crashlytics.android.CrashlyticsInitProvider"
+350-->[com.crashlytics.sdk.android:crashlytics:2.9.4] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b6840c41f5d454960eef42f9fe517f1b/jetified-crashlytics-2.9.4/AndroidManifest.xml:13:13-75
+351            android:authorities="com.example.jolobbi_app.crashlyticsinitprovider"
+351-->[com.crashlytics.sdk.android:crashlytics:2.9.4] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b6840c41f5d454960eef42f9fe517f1b/jetified-crashlytics-2.9.4/AndroidManifest.xml:14:13-75
+352            android:exported="false"
+352-->[com.crashlytics.sdk.android:crashlytics:2.9.4] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b6840c41f5d454960eef42f9fe517f1b/jetified-crashlytics-2.9.4/AndroidManifest.xml:15:13-37
+353            android:initOrder="100" />
+353-->[com.crashlytics.sdk.android:crashlytics:2.9.4] /home/kod-x/.gradle/caches/transforms-2/files-2.1/b6840c41f5d454960eef42f9fe517f1b/jetified-crashlytics-2.9.4/AndroidManifest.xml:16:13-36
+354    </application>
+355
+356</manifest>
