@@ -4,7 +4,7 @@ const functions = require("firebase-functions");
 const addNewUserTransactionHistory = async (
   userId,
   description,
-  flutterwaveData,
+  metaData,
   type
 ) => {
   await admin
@@ -14,8 +14,8 @@ const addNewUserTransactionHistory = async (
     .collection("transactions")
     .add({
       description: description,
-      amount: flutterwaveData.amount,
-      transactionData: flutterwaveData,
+      amount: metaData.amountPaid,
+      meta_data: metaData,
       type: type,
       timestamp: admin.firestore.Timestamp.now(),
     });

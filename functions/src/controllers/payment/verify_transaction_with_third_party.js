@@ -1,19 +1,9 @@
-const flutterwave = require("flutterwave-node-v3");
+const { fetchGetRequest } = require("../utils/http_helper");
 
 const verifyTransactionWithThirdParty = async (id) => {
-  const flw = new flutterwave(
-    process.env.flutterWavePublicKey,
-    process.env.flutterWaveSecretKey
-  );
+  const result = await fetchGetRequest("/api/v2/transactions/" + id);
 
-  const payload = { id: id };
-  const response = await flw.Transaction.verify(payload);
-
-  if (response.status !== "success") {
-    throw { code: 400, msg: response.message };
-  }
-
-  return response.data;
+  return response.responseBody;
 };
 
 module.exports = verifyTransactionWithThirdParty;

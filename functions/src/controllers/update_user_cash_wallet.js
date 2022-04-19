@@ -7,9 +7,7 @@ const updateUserCashWallet = async (userId, amount) => {
     .collection("wallets")
     .doc(userId)
     .update({
-      cash_balance: admin.firestore.FieldValue.increment(
-        parseInt(amount) * 100
-      ),
+      cash_balance: admin.firestore.FieldValue.increment(parseInt(amount)),
     });
 
   functions.logger.log(`updated wallet for user ${userId}`);

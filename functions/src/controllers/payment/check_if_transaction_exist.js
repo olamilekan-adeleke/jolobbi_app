@@ -19,7 +19,7 @@ const checkIfTransactionExist = async (userData, flutterwaveData) => {
     await transaction.set(ledgerRef, {
       id: flutterwaveData.tx_ref,
       user_id: userData.id,
-      amount: flutterwaveData.amount,
+      amount: flutterwaveData.amountPaid,
       userData: userData,
       flutterwaveData: flutterwaveData,
       timestamp: admin.firestore.Timestamp.now(),

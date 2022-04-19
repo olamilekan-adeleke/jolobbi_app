@@ -20,24 +20,31 @@ const verifyPaymentFunction = async (req, res) => {
     // verify transaction with Flutterwave
     const responseData = await verifyTransactionWithThirdParty(transId);
 
-    // check if transaction ref already exist
-    await checkIfTransactionExist(userData, responseData);
+    if (responseData.paymentStatus === "PAID") {
+      // check if transaction ref already exist
+      await checkIfTransactionExist(userData, responseData);
 
-    // add transaction to user transaction history!
-    await addNewUserTransactionHistory(
-      userId,
-      "You fund your wallet via flutterwave",
-      responseData,
-      "fund_wallet"
-    );
+      // add transaction to user transaction history!
+      await addNewUserTransactionHistory(
+        userId,
+        "You fund your wallet via flutterwave",
+        responseData,
+        "fund_wallet"
+      );
 
-    // fund user wallet
-    await updateUserCashWallet(userId, responseData.amount);
+      // fund user wallet
+      await updateUserCashWallet(userId, responseData.amountPaid);
 
-    // add stats
-    await updateTotalWalletAmountStat(responseData.amount);
+      // add stats
+      await updateTotalWalletAmountStat(responseData.amountPaid);
 
-    res.status(200).json({ status: "success", msg: "Transaction Successful!" });
+      res
+        .status(200)
+        .json({ status: "success", msg: "Transaction Successful!" });
+    } else if (responseData.paymentStatus === "PENDING") {
+    } else if (responseData.paymentStatus === "EXPIRED") {
+    } else if (responseData.paymentStatus === "FAILED") {
+    }
   } catch (error) {
     functions.logger.error(error);
 
