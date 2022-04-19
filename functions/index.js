@@ -19,7 +19,10 @@ exports.updateUserWalletPin = functions.https.onRequest(
 
 exports.verifyWalletPin = functions.https.onRequest(verifyWalletPinFunction);
 
+// TODO: deprecated functions
 exports.verifyPayment = functions.https.onRequest(verifyPaymentFunction);
+
+exports.monnifyWebHook = functions.https.onRequest();
 
 exports.transferToBusinessByTag = functions.https.onRequest(
   transferToBusinessByTag
