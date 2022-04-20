@@ -102,7 +102,7 @@ class TransactionItemWidget extends StatelessWidget {
           ),
         ),
         TextWidget(
-          'NGN ${currencyFormatter(5200, addDecimal: false)}',
+          'NGN ${currencyFormatter(transactionHistory.amount, addDecimal: false)}',
           fontSize: sp(14),
           fontWeight: FontWeight.w500,
         ),
