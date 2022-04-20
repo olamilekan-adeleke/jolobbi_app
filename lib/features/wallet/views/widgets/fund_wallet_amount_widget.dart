@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jolobbi_app/features/wallet/cubit/wallet_cubit.dart';
 import 'package:monnify_flutter_sdk/monnify_flutter_sdk.dart';
 import 'package:uuid/uuid.dart';
 
@@ -15,7 +16,6 @@ import '../../../../cores/utils/sizer_utils.dart';
 import '../../../../cores/utils/snack_bar_service.dart';
 import '../../../profile/cubit/user_profile/profile_details_cubit.dart';
 import '../../cubit/fund_wallet_cubit.dart';
-import '../screens/flutter_wave_web_view.dart';
 
 class FundWalletAmountWidget extends StatelessWidget {
   const FundWalletAmountWidget({Key? key}) : super(key: key);
@@ -85,7 +85,7 @@ class FundWalletAmountWidget extends StatelessWidget {
     TransactionResponse transactionResponse =
         await MonnifyFlutterSdk.initializePayment(
       Transaction(
-        2000,
+        double.parse(_fundWalletCubit.state.amount),
         "NGN",
         profileCubit.state.userData!.name,
         profileCubit.state.userData!.email,
@@ -101,18 +101,22 @@ class FundWalletAmountWidget extends StatelessWidget {
 
     log(transactionResponse.toMap().toString());
 
-    // {paymentDate: , amountPayable: 2000.0, amountPaid: 2000.0, paymentMethod: CARD, transactionStatus: PAID, transactionReference: MNFY|86|20220419170224|000073, paymentReference: jollobi-18e98890-bffa-11ec-b7d5-275c998c2523}
+    if (transactionResponse.transactionStatus == 'CANCELLED') {
+      AppRouter.instance.goBack();
 
-    // if (paymentResponse == null) {
-    //   AppRouter.instance.goBack();
+      return SnackBarService.showWarningSnackBar(
+        context: context,
+        message: 'Opps, it seems like something went wrong!',
+      );
+    }
 
-    //   return SnackBarService.showWarningSnackBar(
-    //     context: context,
-    //     message: 'Opps, it seems like something went wrong!',
-    //   );
-    // }
+    AppRouter.instance.goBack();
 
-    // _fundWalletCubit.fundWallet(paymentResponse['transaction_id']);
-    // AppRouter.instance.goBack();
+    context.read<WalletCubit>().getWalletBalance();
+
+    return SnackBarService.showSuccessSnackBar(
+      context: context,
+      message: 'Payment Successful, Your transaction is been processed!',
+    );
   }
 }

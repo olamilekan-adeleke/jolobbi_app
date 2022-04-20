@@ -15,6 +15,7 @@ class FundWalletCubit extends Cubit<FundWalletStateModel> {
     emit(state.copyWith(amount: amount, status: WalletStatus.unknown));
   }
 
+  @Deprecated('not in use any more!')
   void fundWallet(int transactionRef) async {
     try {
       emit(state.copyWith(errorText: '', status: WalletStatus.unknown));
