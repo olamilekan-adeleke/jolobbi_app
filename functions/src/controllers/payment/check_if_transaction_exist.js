@@ -20,7 +20,7 @@ const checkIfTransactionExist = async (transactionData) => {
 
     await transaction.set(ledgerRef, {
       id: transactionData.eventData.paymentReference,
-      user_id: transactionData.eventData.metaData.userId,
+      userId: transactionData.eventData.metaData.id,
       amount: transactionData.eventData.amountPaid,
       userData: transactionData.eventData.metaData,
       transactionData: transactionData,

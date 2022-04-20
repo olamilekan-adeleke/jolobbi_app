@@ -34,6 +34,16 @@ class UserProfileDataModel {
     };
   }
 
+   Map<String, dynamic> toMapString() {
+    return {
+      'id': id,
+      'email': email,
+      'name': name,
+      'mobile': mobile.toString(),
+      'profileUrl': profileUrl,
+    };
+  }
+
   factory UserProfileDataModel.fromMap(Map<String, dynamic> map) {
     return UserProfileDataModel(
       id: map['id'] ?? '',

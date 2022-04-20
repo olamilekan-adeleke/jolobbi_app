@@ -92,8 +92,7 @@ class FundWalletAmountWidget extends StatelessWidget {
         "jollobi-${const Uuid().v1()}",
         "Description of payment",
         metaData: {
-          // TODO: add more metadata
-          "ip": "196.168.45.22",
+          ...profileCubit.state.userData?.toMapString() ?? {},
           "device": "mobile_flutter"
         },
         paymentMethods: [PaymentMethod.CARD, PaymentMethod.ACCOUNT_TRANSFER],

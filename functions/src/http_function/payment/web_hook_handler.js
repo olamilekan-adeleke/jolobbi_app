@@ -1,4 +1,3 @@
-const admin = require("../../../firebase_admin_helper");
 const functions = require("firebase-functions");
 const computeHashForMonnify = require("../../controllers/payment/compute_hash_for_monnify");
 const checkIfTransactionExist = require("../../controllers/payment/check_if_transaction_exist");
