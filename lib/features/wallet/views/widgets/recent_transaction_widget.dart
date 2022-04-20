@@ -32,7 +32,7 @@ class RecentTransactionWidget extends StatelessWidget {
         BlocBuilder<TransactionHistoryCubit, TransactionHistoryStateModel>(
           builder: (context, state) {
             if (state.status == WalletStatus.busy) {
-              return const Center(child:  CustomLoadingIndicatorWidget());
+              return const Center(child: CustomLoadingIndicatorWidget());
             } else if (state.status == WalletStatus.error) {
               return CustomErrorWidget(
                 message: state.errorText,
@@ -73,8 +73,8 @@ class TransactionItemWidget extends StatelessWidget {
     return Row(
       children: <Widget>[
         Container(
-          height: sp(35),
-          width: sp(35),
+          height: sp(30),
+          width: sp(30),
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: kcPrimaryColor,
@@ -87,9 +87,9 @@ class TransactionItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextWidget(
-                transactionHistory.description,
-                fontSize: sp(15),
-                fontWeight: FontWeight.w500,
+                '${transactionHistory.description} ${transactionHistory.vendorTag}',
+                fontSize: sp(14),
+                fontWeight: FontWeight.w400,
               ),
               TextWidget(
                 DateTimeHelper.formatDate(
@@ -116,15 +116,15 @@ class TransactionItemWidget extends StatelessWidget {
       return SvgPicture.asset(
         'assets/icons/send.svg',
         color: kcWhite,
-        height: sp(20),
-        width: sp(20),
+        height: sp(15),
+        width: sp(15),
       );
     } else {
       return SvgPicture.asset(
         'assets/icons/wallet.svg',
         color: kcWhite,
-        height: sp(20),
-        width: sp(20),
+        height: sp(15),
+        width: sp(15),
       );
     }
   }
