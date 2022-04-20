@@ -15,8 +15,26 @@ import '../../enum/wallet_enum.dart';
 import '../../model/transaction_history/transaction_history_data_model.dart';
 import '../../model/transaction_history/transaction_history_state_model.dart';
 
-class RecentTransactionWidget extends StatelessWidget {
+class RecentTransactionWidget extends StatefulWidget {
   const RecentTransactionWidget({Key? key}) : super(key: key);
+
+  @override
+  State<RecentTransactionWidget> createState() =>
+      _RecentTransactionWidgetState();
+}
+
+class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      context
+          .read<TransactionHistoryCubit>()
+          .initScrollListener(scrollController);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +63,34 @@ class RecentTransactionWidget extends StatelessWidget {
               );
             }
 
-            return ListView.separated(
-              itemCount: state.transactionHistory.length,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              separatorBuilder: (_, __) => const Divider(),
-              itemBuilder: (_, int index) {
-                final TransactionHistoryDataModel transactionHistory =
-                    state.transactionHistory[index];
-                return TransactionItemWidget(transactionHistory);
-              },
+            return Flexible(
+              child: Stack(
+                children: [
+                  ListView.separated(
+                    itemCount: state.transactionHistory.length,
+                    shrinkWrap: true,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    controller: scrollController,
+                    separatorBuilder: (_, __) => const Divider(),
+                    itemBuilder: (_, int index) {
+                      final TransactionHistoryDataModel transactionHistory =
+                          state.transactionHistory[index];
+                      return TransactionItemWidget(transactionHistory);
+                    },
+                  ),
+                  BlocBuilder<TransactionHistoryCubit,
+                      TransactionHistoryStateModel>(
+                    builder: (context, state) {
+                      return Align(
+                        alignment: Alignment.bottomCenter,
+                        child: state.status == WalletStatus.moreBusy
+                            ? const LoadingMoreWidget()
+                            : Container(),
+                      );
+                    },
+                  ),
+                ],
+              ),
             );
           },
         ),
@@ -88,9 +124,10 @@ class TransactionItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextWidget(
-                '${transactionHistory.description}',
+                transactionHistory.description,
                 fontSize: sp(14),
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w300,
+                textAlign: TextAlign.left,
               ),
               TextWidget(
                 DateTimeHelper.formatDate(
@@ -103,10 +140,14 @@ class TransactionItemWidget extends StatelessWidget {
             ],
           ),
         ),
-        TextWidget(
-          'NGN ${currencyFormatter(transactionHistory.amount, addDecimal: false)}',
-          fontSize: sp(14),
-          fontWeight: FontWeight.w500,
+        horizontalSpace(15),
+        Align(
+          alignment: Alignment.topCenter,
+          child: TextWidget(
+            'NGN ${currencyFormatter(transactionHistory.amount, addDecimal: false)}',
+            fontSize: sp(14),
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ],
     );

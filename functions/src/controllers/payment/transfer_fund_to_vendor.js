@@ -10,17 +10,14 @@ const transferFundToVendor = async (vendorId, userId, amount) => {
   await admin.firestore().runTransaction(async (transaction) => {
     const userWalletSnapshot = await transaction.get(userWalletRef);
 
-    
     if (userWalletSnapshot.data().cash_balance < parseInt(_amount)) {
       throw { code: 400, msg: "Insufficient Balance!" };
     }
 
-    await updateUserCashWallet(vendorId, amount);
+    await updateUserCashWallet({ userId: vendorId, amount: amount });
 
     await transaction.update(userWalletRef, {
-      cash_balance: admin.firestore.FieldValue.increment(
-        -(parseInt(amount) * 100)
-      ),
+      cash_balance: admin.firestore.FieldValue.increment(-parseInt(amount)),
     });
 
     functions.logger.log(`updated wallet for user ${userId}`);

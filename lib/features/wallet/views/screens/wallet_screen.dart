@@ -12,27 +12,10 @@ import '../../enum/wallet_enum.dart';
 import '../../model/fund/fund_wallet_state_model.dart';
 import '../widgets/wallet_balance_widget.dart';
 
-class WalletScreen extends StatefulWidget {
+class WalletScreen extends StatelessWidget {
   const WalletScreen({Key? key}) : super(key: key);
 
   static const String route = '/wallet';
-
-  @override
-  State<WalletScreen> createState() => _WalletScreenState();
-}
-
-class _WalletScreenState extends State<WalletScreen> {
-  final ScrollController scrollController = ScrollController();
-
-  @override
-  void initState() {
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
-      context
-          .read<TransactionHistoryCubit>()
-          .initScrollListener(scrollController);
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,17 +44,21 @@ class _WalletScreenState extends State<WalletScreen> {
           }
         },
         child: CustomScaffoldWidget(
-          scrollController: scrollController,
-          body: Column(
-            children: <Widget>[
-              verticalSpace(),
-              HeaderWidget('Wallet', showSearchWidget: false, onTap: () {}),
-              verticalSpace(20),
-              const WalletBalanceWidget(),
-              verticalSpace(40),
-              const RecentTransactionWidget(),
-              verticalSpace(),
-            ],
+          useSingleScroll: false,
+          body: SizedBox(
+            height: sh(98),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                verticalSpace(),
+                HeaderWidget('Wallet', showSearchWidget: false, onTap: () {}),
+                verticalSpace(20),
+                const WalletBalanceWidget(),
+                verticalSpace(20),
+                const Expanded(child: RecentTransactionWidget()),
+                verticalSpace(),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../model/transaction_history/transaction_history_data_model.dart';
 import '../model/wallet_data/wallet_data_model.dart';
 import '../repository/wallet_repository.dart';
@@ -21,9 +23,11 @@ class WalletService {
     );
   }
 
-  Future<List<TransactionHistoryDataModel>> getUserTransactionHistory() async {
-    List<Map<String, dynamic>> result =
-        await _walletRepository.getUserTransactionHistory();
+  Future<List<TransactionHistoryDataModel>> getUserTransactionHistory({
+    Timestamp? lastDocTime,
+  }) async {
+    List<Map<String, dynamic>> result = await _walletRepository
+        .getUserTransactionHistory(timestamp: lastDocTime);
 
     return result
         .map((ele) => TransactionHistoryDataModel.fromMap(ele))

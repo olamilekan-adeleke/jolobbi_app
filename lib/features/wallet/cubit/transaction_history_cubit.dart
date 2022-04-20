@@ -50,7 +50,9 @@ class TransactionHistoryCubit extends Cubit<TransactionHistoryStateModel> {
       emit(state.copyWith(status: WalletStatus.moreBusy));
 
       final List<TransactionHistoryDataModel> result =
-          await _walletService.getUserTransactionHistory();
+          await _walletService.getUserTransactionHistory(
+        lastDocTime: state.transactionHistory.last.timestamp,
+      );
 
       emit(
         state.copyWith(
