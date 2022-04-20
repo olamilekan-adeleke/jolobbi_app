@@ -7,7 +7,7 @@ import '../model/transaction_history/transaction_history_data_model.dart';
 import '../model/transaction_history/transaction_history_state_model.dart';
 import '../services/wallet_service.dart';
 
-class ad extends Cubit<TransactionHistoryStateModel> {
+class TransactionHistoryCubit extends Cubit<TransactionHistoryStateModel> {
   TransactionHistoryCubit() : super(TransactionHistoryStateModel());
 
   static final WalletService _walletService = WalletService();
