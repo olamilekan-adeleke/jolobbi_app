@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../enum/wallet_enum.dart';
@@ -12,6 +13,17 @@ class TransactionHistoryCubit extends Cubit<TransactionHistoryStateModel> {
 
   static final WalletService _walletService = WalletService();
 
+  void initScrollListener(ScrollController scrollController) {
+    scrollController.addListener(() {
+      if (scrollController.position.pixels >=
+          scrollController.position.maxScrollExtent) {
+        log('end of line');
+
+        getMoreUserTransactionHistory();
+      }
+    });
+  }
+
   Future<void> getUserTransactionHistory() async {
     try {
       emit(state.copyWith(status: WalletStatus.busy));
@@ -23,6 +35,27 @@ class TransactionHistoryCubit extends Cubit<TransactionHistoryStateModel> {
         state.copyWith(
           status: WalletStatus.success,
           transactionHistory: result,
+        ),
+      );
+    } catch (e, s) {
+      log(e.toString());
+      log(s.toString());
+
+      emit(state.copyWith(errorText: '$e', status: WalletStatus.error));
+    }
+  }
+
+  Future<void> getMoreUserTransactionHistory() async {
+    try {
+      emit(state.copyWith(status: WalletStatus.moreBusy));
+
+      final List<TransactionHistoryDataModel> result =
+          await _walletService.getUserTransactionHistory();
+
+      emit(
+        state.copyWith(
+          status: WalletStatus.success,
+          transactionHistory: [...state.transactionHistory, ...result],
         ),
       );
     } catch (e, s) {

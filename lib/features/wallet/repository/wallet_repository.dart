@@ -51,18 +51,25 @@ class WalletRepository {
     );
   }
 
-  Future<List<Map<String, dynamic>>> getUserTransactionHistory() async {
+  Future<List<Map<String, dynamic>>> getUserTransactionHistory({
+    int limit = 5,
+    Timestamp? timestamp,
+  }) async {
     final String? userId = _firebaseAuth.currentUser?.uid;
 
     if (userId == null) throw 'Error: User not login';
 
-    final QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await _userCollectionRef
-            .doc(userId)
-            .collection('transactions')
-            .orderBy('timestamp')
-            .limit(5)
-            .get();
+    Query<Map<String, dynamic>> query = _userCollectionRef
+        .doc(userId)
+        .collection('transactions')
+        .orderBy('timestamp', descending: false)
+        .limit(limit);
+
+    if (timestamp != null) {
+      query = query.startAfter([timestamp]);
+    }
+
+    final QuerySnapshot<Map<String, dynamic>> querySnapshot = await query.get();
 
     final List<QueryDocumentSnapshot> queryDocumentSnapshot =
         querySnapshot.docs;

@@ -1,1 +1,1 @@
-enum WalletStatus{unknown, busy, error,success }
+enum WalletStatus{unknown, busy, moreBusy, error,success }

@@ -15,8 +15,26 @@ import '../../enum/wallet_enum.dart';
 import '../../model/transaction_history/transaction_history_data_model.dart';
 import '../../model/transaction_history/transaction_history_state_model.dart';
 
-class RecentTransactionWidget extends StatelessWidget {
+class RecentTransactionWidget extends StatefulWidget {
   const RecentTransactionWidget({Key? key}) : super(key: key);
+
+  @override
+  State<RecentTransactionWidget> createState() =>
+      _RecentTransactionWidgetState();
+}
+
+class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      context
+          .read<TransactionHistoryCubit>()
+          .initScrollListener(scrollController);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +65,7 @@ class RecentTransactionWidget extends StatelessWidget {
             return ListView.separated(
               itemCount: state.transactionHistory.length,
               shrinkWrap: true,
+              controller: scrollController,
               physics: const NeverScrollableScrollPhysics(),
               separatorBuilder: (_, __) => const Divider(),
               itemBuilder: (_, int index) {
