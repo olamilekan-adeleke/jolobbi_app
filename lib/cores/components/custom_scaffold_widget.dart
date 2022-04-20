@@ -15,6 +15,7 @@ class CustomScaffoldWidget extends StatelessWidget {
     this.drawer,
     this.bottomNav,
     this.floatingActionButton,
+    this.scrollController,
   }) : super(key: key);
 
   final Widget? drawer;
@@ -26,6 +27,7 @@ class CustomScaffoldWidget extends StatelessWidget {
   final bool useSingleScroll;
   final bool useSafeArea;
   final Color? bg;
+  final ScrollController? scrollController;
   final GlobalKey<ScaffoldState>? scaffoldKey;
 
   @override
@@ -46,6 +48,7 @@ class CustomScaffoldWidget extends StatelessWidget {
           height: sh(98),
           child: useSingleScroll
               ? SingleChildScrollView(
+                  controller: scrollController,
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: usePadding ? sp(10.0) : 0,
