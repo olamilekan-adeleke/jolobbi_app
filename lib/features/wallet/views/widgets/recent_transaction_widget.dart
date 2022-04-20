@@ -32,7 +32,7 @@ class RecentTransactionWidget extends StatelessWidget {
         BlocBuilder<TransactionHistoryCubit, TransactionHistoryStateModel>(
           builder: (context, state) {
             if (state.status == WalletStatus.busy) {
-              return const CustomLoadingIndicatorWidget();
+              return const Center(child:  CustomLoadingIndicatorWidget());
             } else if (state.status == WalletStatus.error) {
               return CustomErrorWidget(
                 message: state.errorText,
@@ -93,7 +93,8 @@ class TransactionItemWidget extends StatelessWidget {
               ),
               TextWidget(
                 DateTimeHelper.formatDate(
-                    transactionHistory.timestamp.toDate()),
+                  transactionHistory.timestamp.toDate(),
+                ),
                 fontSize: sp(11),
                 fontWeight: FontWeight.w200,
                 textColor: kcSubTextColor,
@@ -111,11 +112,20 @@ class TransactionItemWidget extends StatelessWidget {
   }
 
   Widget _iconWidget(String type) {
-    return SvgPicture.asset(
-      'assets/icons/bank_icon.svg',
-      color: kcWhite,
-      height: sp(20),
-      width: sp(20),
-    );
+    if (type == 'fund_transfer') {
+      return SvgPicture.asset(
+        'assets/icons/send.svg',
+        color: kcWhite,
+        height: sp(20),
+        width: sp(20),
+      );
+    } else {
+      return SvgPicture.asset(
+        'assets/icons/wallet.svg',
+        color: kcWhite,
+        height: sp(20),
+        width: sp(20),
+      );
+    }
   }
 }
