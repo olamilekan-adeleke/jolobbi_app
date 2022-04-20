@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,23 +19,26 @@ class AuthStateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthenticatedStateCubit, AuthenticatedStatus>(
       builder: (context, state) {
-        return const FoodHomePage();
-        // switch (state) {
-        //   case AuthenticatedStatus.authenticated:
-        //     return const FoodHomePage();
-        //   case AuthenticatedStatus.unauthenticated:
-        //     if (isLoginScreen) {
-        //       return const LoginScreen();
-        //     } else {
-        //       return const SignUpScreen();
-        //     }
-        //   default:
-        //     if (isLoginScreen) {
-        //       return const LoginScreen();
-        //     } else {
-        //       return const SignUpScreen();
-        //     }
-        // }
+        if (kReleaseMode) {
+          switch (state) {
+            case AuthenticatedStatus.authenticated:
+              return const FoodHomePage();
+            case AuthenticatedStatus.unauthenticated:
+              if (isLoginScreen) {
+                return const LoginScreen();
+              } else {
+                return const SignUpScreen();
+              }
+            default:
+              if (isLoginScreen) {
+                return const LoginScreen();
+              } else {
+                return const SignUpScreen();
+              }
+          }
+        } else {
+          return const FoodHomePage();
+        }
       },
     );
   }
