@@ -10,6 +10,17 @@ const updateTotalWalletAmountStat = async (amount) => {
     .firestore()
     .collection("stats")
     .doc("total_wallet_amount")
+    .set(
+      {
+        amount: admin.firestore.FieldValue.increment(amount),
+      },
+      { merge: true }
+    );
+
+  await admin
+    .firestore()
+    .collection("stats")
+    .doc("total_wallet_amount")
     .collection(`${today.getFullYear()}`)
     .doc("stat")
     .set(
