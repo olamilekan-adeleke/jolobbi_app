@@ -112,6 +112,7 @@ class FundWalletAmountWidget extends StatelessWidget {
 
     AppRouter.instance.goBack();
 
+    // TODO: add a time to wait few seconds before calling function
     context.read<WalletCubit>().getWalletBalance();
 
     return SnackBarService.showSuccessSnackBar(
