@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class TransactionHistoryDataModelDataModel {
+class TransactionHistoryDataModel {
   final int? amount;
   final String description;
   final Timestamp timestamp;
@@ -8,7 +8,7 @@ class TransactionHistoryDataModelDataModel {
   final String? vendorTag;
   final Map<String, dynamic>? transactionData;
 
-  TransactionHistoryDataModelDataModel({
+  TransactionHistoryDataModel({
     this.amount,
     required this.description,
     required this.timestamp,
@@ -28,8 +28,8 @@ class TransactionHistoryDataModelDataModel {
     };
   }
 
-  factory TransactionHistoryDataModelDataModel.fromMap(Map<String, dynamic> map) {
-    return TransactionHistoryDataModelDataModel(
+  factory TransactionHistoryDataModel.fromMap(Map<String, dynamic> map) {
+    return TransactionHistoryDataModel(
       amount: map['amount']?.toInt() ?? 0,
       description: map['description'],
       timestamp: map['timestamp'] as Timestamp,
