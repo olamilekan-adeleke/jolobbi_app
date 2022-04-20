@@ -21,14 +21,14 @@ class PushNotificationService {
     'High Importance Notifications', // title
     description:
         'This channel is used for important notifications.', // description
-    importance: Importance.max,
+    importance: Importance.max,added
   );
 
   static final FlutterLocalNotificationsPlugin
       _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
   static const AndroidInitializationSettings _initialzationSettingsAndriod =
-      AndroidInitializationSettings('@mipmap/ic_notification_launcher');
+      AndroidInitializationSettings('@mipmap/ic_launcher');
 
   static const InitializationSettings _initializationSettings =
       InitializationSettings(android: _initialzationSettingsAndriod);
