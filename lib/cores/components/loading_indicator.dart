@@ -17,13 +17,11 @@ class CustomLoadingIndicatorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: CircularProgressIndicator.adaptive(
-        // color: Colors.grey[200],
-        backgroundColor: Colors.grey,
-        strokeWidth: strokeWidth ?? 2.0,
-        value: value,
-      ),
+    return CircularProgressIndicator.adaptive(
+      // color: Colors.grey[200],
+      backgroundColor: Colors.grey,
+      strokeWidth: strokeWidth ?? 2.0,
+      value: value,
     );
   }
 }

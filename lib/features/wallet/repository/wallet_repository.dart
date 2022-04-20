@@ -12,7 +12,7 @@ class WalletRepository {
       FirebaseFirestore.instance.collection(WALLET_REF);
 
   static final CollectionReference _userCollectionRef =
-      FirebaseFirestore.instance.collection(WALLET_REF);
+      FirebaseFirestore.instance.collection(USER_REF);
 
   Future<Map<String, dynamic>> getWalletBalance() async {
     final String? userId = _firebaseAuth.currentUser?.uid;
@@ -70,7 +70,6 @@ class WalletRepository {
     final List<Map<String, dynamic>> result = queryDocumentSnapshot
         .map((ele) => ele.data() as Map<String, dynamic>)
         .toList();
-
 
     return result;
   }
