@@ -35,10 +35,27 @@ const processTransactionFunction = async (snapshot, context) => {
       await sendNotificationToUserById(
         userId,
         "Payment Successful🤑!",
-        `Your wallet has been successfully credited with NGN ${amount}`,
+        `Your wallet has been successfully credited with NGN ${amountPaid}`,
         notificationData
       );
     } else {
+      // add transaction to user transaction history!
+      await addNewUserTransactionHistory({
+        userId: userId,
+        description: "Payment failed",
+        metaData: transactionData,
+        type: "fund_wallet",
+      });
+
+      // send notification to user notification
+      const notificationData = { type: "fund_wallet" };
+
+      await sendNotificationToUserById(
+        userId,
+        "Payment Failed💢❌!",
+        `Your payment of NGN ${amountPaid} was unsuccessfully!`,
+        notificationData
+      );
     }
 
     return Promise.resolve();
