@@ -5,6 +5,7 @@ const transferToBusinessByTag = require("./src/http_function/payment/transafer_t
 const updateUserWalletPinFunction = require("./src/http_function/update_wallet_pin");
 const verifyWalletPinFunction = require("./src/http_function/wallet_pin/verify_pin");
 const onNewUserCreatedFunction = require("./src/trigger_function/on_new_user_created");
+const processTransactionFunction = require("./src/http_function/payment/process_payment");
 
 require("dotenv").config();
 
@@ -33,3 +34,7 @@ exports.transferToBusinessByTag = functions.https.onRequest(
 exports.onNewUserCreate = functions.firestore
   .document("/users/{userID}")
   .onCreate(onNewUserCreatedFunction);
+
+exports.processPaymentMade = functions.firestore
+  .document("/general_ledgers/payments/payments_ledgers/{paymentDocId}")
+  .onCreate(processTransactionFunction);

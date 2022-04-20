@@ -20,7 +20,7 @@ const updateTotalWalletAmountStat = async (amount) => {
       { merge: true }
     );
 
-  functions.logger.log(`New user count incremented`);
+  functions.logger.log(`transaction wallet stat updated`);
 };
 
 module.exports = updateTotalWalletAmountStat;
