@@ -21,7 +21,7 @@ class PushNotificationService {
     'High Importance Notifications', // title
     description:
         'This channel is used for important notifications.', // description
-    importance: Importance.max,added
+    importance: Importance.max,
   );
 
   static final FlutterLocalNotificationsPlugin

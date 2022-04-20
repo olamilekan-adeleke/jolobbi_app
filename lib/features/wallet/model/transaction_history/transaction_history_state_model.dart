@@ -2,7 +2,7 @@ import '../../enum/wallet_enum.dart';
 import 'transaction_history_data_model.dart';
 
 class TransactionHistoryStateModel {
-  List<TransactionHistoryDataModel>? transactionHistory;
+  List<TransactionHistoryDataModel> transactionHistory = [];
   final WalletStatus status;
   final String errorText;
 

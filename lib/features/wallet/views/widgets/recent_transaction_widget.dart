@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:intl/intl.dart';
+
+import 'package:jolobbi_app/cores/components/loading_indicator.dart';
 import 'package:jolobbi_app/cores/utils/currency_formater.dart';
 
 import '../../../../cores/components/custom_text_widget.dart';
+import '../../../../cores/components/error_widget.dart';
 import '../../../../cores/constants/color.dart';
+import '../../../../cores/utils/datetime_helper.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../cubit/transaction_history_cubit.dart';
+import '../../enum/wallet_enum.dart';
+import '../../model/transaction_history/transaction_history_data_model.dart';
+import '../../model/transaction_history/transaction_history_state_model.dart';
 
 class RecentTransactionWidget extends StatelessWidget {
   const RecentTransactionWidget({Key? key}) : super(key: key);
@@ -21,13 +29,32 @@ class RecentTransactionWidget extends StatelessWidget {
           fontWeight: FontWeight.w600,
         ),
         verticalSpace(20),
-        ListView.separated(
-          itemCount: 10,
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (_, __) => const Divider(),
-          itemBuilder: (_, int index) {
-            return const TransactionItemWidget();
+        BlocBuilder<TransactionHistoryCubit, TransactionHistoryStateModel>(
+          builder: (context, state) {
+            if (state.status == WalletStatus.busy) {
+              return const CustomLoadingIndicatorWidget();
+            } else if (state.status == WalletStatus.error) {
+              return CustomErrorWidget(
+                message: state.errorText,
+                callback: () {
+                  context
+                      .read<TransactionHistoryCubit>()
+                      .getUserTransactionHistory();
+                },
+              );
+            }
+
+            return ListView.separated(
+              itemCount: state.transactionHistory.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              separatorBuilder: (_, __) => const Divider(),
+              itemBuilder: (_, int index) {
+                final TransactionHistoryDataModel transactionHistory =
+                    state.transactionHistory[index];
+                return TransactionItemWidget(transactionHistory);
+              },
+            );
           },
         ),
       ],
@@ -36,7 +63,10 @@ class RecentTransactionWidget extends StatelessWidget {
 }
 
 class TransactionItemWidget extends StatelessWidget {
-  const TransactionItemWidget({Key? key}) : super(key: key);
+  const TransactionItemWidget(this.transactionHistory, {Key? key})
+      : super(key: key);
+
+  final TransactionHistoryDataModel transactionHistory;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +79,7 @@ class TransactionItemWidget extends StatelessWidget {
             shape: BoxShape.circle,
             color: kcPrimaryColor,
           ),
-          child: Center(child: _iconWidget()),
+          child: Center(child: _iconWidget(transactionHistory.type)),
         ),
         horizontalSpace(5),
         Expanded(
@@ -57,12 +87,13 @@ class TransactionItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextWidget(
-                'Bank Transfer',
+                transactionHistory.description,
                 fontSize: sp(15),
                 fontWeight: FontWeight.w500,
               ),
               TextWidget(
-                DateFormat('dd MMM, yyyy hh:mm a').format(DateTime.now()),
+                DateTimeHelper.formatDate(
+                    transactionHistory.timestamp.toDate()),
                 fontSize: sp(11),
                 fontWeight: FontWeight.w200,
                 textColor: kcSubTextColor,
@@ -79,7 +110,7 @@ class TransactionItemWidget extends StatelessWidget {
     );
   }
 
-  Widget _iconWidget() {
+  Widget _iconWidget(String type) {
     return SvgPicture.asset(
       'assets/icons/bank_icon.svg',
       color: kcWhite,
