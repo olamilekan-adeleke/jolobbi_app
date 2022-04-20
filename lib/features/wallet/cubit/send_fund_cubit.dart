@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../enum/wallet_enum.dart';
-import '../model/send_fund_state_model.dart';
+import '../model/fund/send_fund_state_model.dart';
 import '../services/wallet_service.dart';
 
 class SendFundCubit extends Cubit<SendFundStateModel> {

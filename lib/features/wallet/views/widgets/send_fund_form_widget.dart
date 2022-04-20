@@ -10,7 +10,7 @@ import '../../../../cores/utils/sizer_utils.dart';
 import '../../../../cores/utils/validator.dart';
 import '../../cubit/send_fund_cubit.dart';
 import '../../enum/wallet_enum.dart';
-import '../../model/send_fund_state_model.dart';
+import '../../model/fund/send_fund_state_model.dart';
 import '../screens/scan_qr_code_screen.dart';
 
 class SendFundToVendorFormWidget extends StatelessWidget {

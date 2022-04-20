@@ -11,8 +11,8 @@ import '../../../../cores/components/custom_text_widget.dart';
 import '../../cubit/fund_wallet_cubit.dart';
 import '../../cubit/wallet_cubit.dart';
 import '../../enum/wallet_enum.dart';
-import '../../model/fund_wallet_state_model.dart';
-import '../../model/wallet_state_model.dart';
+import '../../model/fund/fund_wallet_state_model.dart';
+import '../../model/wallet_data/wallet_state_model.dart';
 import '../screens/send_fund_to_vendor.dart';
 import 'fund_wallet_amount_widget.dart';
 

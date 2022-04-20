@@ -1,4 +1,4 @@
-import '../enum/wallet_enum.dart';
+import '../../enum/wallet_enum.dart';
 
 class SendFundStateModel {
   final String vendorTag;

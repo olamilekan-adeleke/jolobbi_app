@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../cores/utils/crashlytics_helper.dart';
 import '../enum/wallet_enum.dart';
-import '../model/fund_wallet_state_model.dart';
+import '../model/fund/fund_wallet_state_model.dart';
 import '../services/wallet_service.dart';
 
 class FundWalletCubit extends Cubit<FundWalletStateModel> {

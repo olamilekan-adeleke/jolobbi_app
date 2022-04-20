@@ -8,7 +8,7 @@ import '../../../../cores/utils/snack_bar_service.dart';
 import '../../cubit/fund_wallet_cubit.dart';
 import '../../cubit/wallet_cubit.dart';
 import '../../enum/wallet_enum.dart';
-import '../../model/fund_wallet_state_model.dart';
+import '../../model/fund/fund_wallet_state_model.dart';
 import '../widgets/wallet_balance_widget.dart';
 
 class WalletScreen extends StatelessWidget {

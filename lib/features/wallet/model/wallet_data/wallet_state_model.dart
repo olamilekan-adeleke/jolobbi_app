@@ -1,4 +1,4 @@
-import '../enum/wallet_enum.dart';
+import '../../enum/wallet_enum.dart';
 import 'wallet_data_model.dart';
 
 class WalletStateModel {

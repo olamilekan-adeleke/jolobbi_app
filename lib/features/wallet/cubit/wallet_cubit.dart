@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../enum/wallet_enum.dart';
-import '../model/wallet_data_model.dart';
+import '../model/wallet_data/wallet_data_model.dart';
 
 import '../../../cores/utils/crashlytics_helper.dart';
-import '../model/wallet_state_model.dart';
+import '../model/wallet_data/wallet_state_model.dart';
 import '../services/wallet_service.dart';
 
 class WalletCubit extends Cubit<WalletStateModel> {

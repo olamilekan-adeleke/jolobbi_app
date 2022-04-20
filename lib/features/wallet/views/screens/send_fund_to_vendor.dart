@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jolobbi_app/cores/navigator/app_router.dart';
 
 import '../../../../cores/components/app_bar_widget.dart';
 import '../../../../cores/components/custom_scaffold_widget.dart';
+import '../../../../cores/navigator/app_router.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../../../cores/utils/snack_bar_service.dart';
 import '../../cubit/send_fund_cubit.dart';
 import '../../cubit/wallet_cubit.dart';
 import '../../enum/wallet_enum.dart';
-import '../../model/send_fund_state_model.dart';
+import '../../model/fund/send_fund_state_model.dart';
 import '../widgets/send_fund_form_widget.dart';
 
 class SendFundToVendor extends StatelessWidget {
