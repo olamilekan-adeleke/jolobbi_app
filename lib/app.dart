@@ -29,6 +29,7 @@ import 'features/profile/service/update_wallet_service.dart';
 import 'features/profile/service/wallet_service.dart';
 import 'features/wallet/cubit/fund_wallet_cubit.dart';
 import 'features/wallet/cubit/send_fund_cubit.dart';
+import 'features/wallet/cubit/transaction_history_cubit.dart';
 import 'features/wallet/cubit/wallet_cubit.dart';
 
 class JolobbiApp extends StatelessWidget {
@@ -115,6 +116,9 @@ class _BlocProviderHelper {
       BlocProvider<CartCubit>(create: (_) => CartCubit()),
       BlocProvider<OrderFeeCubit>(create: (_) => OrderFeeCubit()..getFee()),
       BlocProvider<SendFundCubit>(create: (_) => SendFundCubit()),
+      BlocProvider<TransactionHistoryCubit>(
+        create: (_) => TransactionHistoryCubit()..getUserTransactionHistory(),
+      ),
     ];
   }
 }
