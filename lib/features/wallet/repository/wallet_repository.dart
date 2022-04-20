@@ -52,7 +52,7 @@ class WalletRepository {
   }
 
   Future<List<Map<String, dynamic>>> getUserTransactionHistory({
-    int limit = 5,
+    int limit = 10,
     Timestamp? timestamp,
   }) async {
     final String? userId = _firebaseAuth.currentUser?.uid;
@@ -62,7 +62,7 @@ class WalletRepository {
     Query<Map<String, dynamic>> query = _userCollectionRef
         .doc(userId)
         .collection('transactions')
-        .orderBy('timestamp', descending: false)
+        .orderBy('timestamp', descending: true)
         .limit(limit);
 
     if (timestamp != null) {

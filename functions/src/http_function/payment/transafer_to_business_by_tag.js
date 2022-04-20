@@ -40,7 +40,12 @@ const transferToBusinessByTag = async (req, res) => {
     );
 
     // add to transaction history to user
-    addTransferHistoryUser(userId, amount, "Transfer fund to ", businessTag);
+    addTransferHistoryUser(
+      userId,
+      amount,
+      `Transfer fund to @${businessTag}`,
+      businessTag
+    );
 
     res.status(200).json({ status: "success", msg: "Transfer Successful!" });
   } catch (error) {

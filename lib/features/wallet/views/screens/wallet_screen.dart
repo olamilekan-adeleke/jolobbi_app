@@ -6,6 +6,7 @@ import 'package:jolobbi_app/features/wallet/views/widgets/recent_transaction_wid
 import '../../../../cores/components/custom_scaffold_widget.dart';
 import '../../../../cores/utils/snack_bar_service.dart';
 import '../../cubit/fund_wallet_cubit.dart';
+import '../../cubit/transaction_history_cubit.dart';
 import '../../cubit/wallet_cubit.dart';
 import '../../enum/wallet_enum.dart';
 import '../../model/fund/fund_wallet_state_model.dart';
@@ -20,16 +21,21 @@ class WalletScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () async {
-        await context.read<WalletCubit>().getWalletBalance();
+        await Future.wait([
+          context.read<WalletCubit>().getWalletBalance(),
+          context.read<TransactionHistoryCubit>().getUserTransactionHistory(),
+        ]);
       },
       child: BlocListener<FundWalletCubit, FundWalletStateModel>(
         listener: (context, state) {
           if (state.status == WalletStatus.error) {
             return SnackBarService.showErrorSnackBar(
-                context: context, message: state.errorText,);
+              context: context,
+              message: state.errorText,
+            );
           } else if (state.status == WalletStatus.success) {
             context.read<WalletCubit>().getWalletBalance();
-            
+
             return SnackBarService.showSuccessSnackBar(
               context: context,
               message: 'Transaction is been processed, '
@@ -38,21 +44,16 @@ class WalletScreen extends StatelessWidget {
           }
         },
         child: CustomScaffoldWidget(
-          body: RefreshIndicator(
-            onRefresh: () async {
-              context.read<WalletCubit>().getWalletBalance();
-            },
-            child: Column(
-              children: <Widget>[
-                verticalSpace(),
-                HeaderWidget('Wallet', showSearchWidget: false, onTap: () {}),
-                verticalSpace(20),
-                const WalletBalanceWidget(),
-                verticalSpace(40),
-                const RecentTransactionWidget(),
-                verticalSpace(),
-              ],
-            ),
+          useSingleScroll: false,
+          body: Column(
+            children: <Widget>[
+              verticalSpace(),
+              HeaderWidget('Wallet', showSearchWidget: false, onTap: () {}),
+              verticalSpace(20),
+              const WalletBalanceWidget(),
+              verticalSpace(40),
+              const RecentTransactionWidget(),
+            ],
           ),
         ),
       ),

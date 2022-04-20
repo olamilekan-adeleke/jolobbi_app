@@ -66,7 +66,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
               itemCount: state.transactionHistory.length,
               shrinkWrap: true,
               controller: scrollController,
-              physics: const NeverScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               separatorBuilder: (_, __) => const Divider(),
               itemBuilder: (_, int index) {
                 final TransactionHistoryDataModel transactionHistory =
@@ -106,7 +106,7 @@ class TransactionItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextWidget(
-                '${transactionHistory.description} ${transactionHistory.vendorTag}',
+                '${transactionHistory.description}',
                 fontSize: sp(14),
                 fontWeight: FontWeight.w400,
               ),
