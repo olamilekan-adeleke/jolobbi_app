@@ -118,16 +118,18 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
     }
   }
 
-  void onSearchFieldChanged(String query) {
-    this.query = query;
+  void onSearchFieldChanged(String searchQuery) {
+    query = searchQuery;
 
     _debounce?.cancel();
 
     _debounce = Timer(const Duration(milliseconds: 500), () {
-      if (query.isNotEmpty) {
+      log('hit');
+      if (searchQuery.isEmpty) {
         getFoodVendor();
       } else {
-        searchFoodVendor(query);
+        log('hit 2');
+        searchFoodVendor(searchQuery);
       }
     });
   }
