@@ -92,7 +92,10 @@ class _BlocProviderHelper {
             FoodVendorCubit(foodVendorService)..getPopularFoodVendor(),
       ),
       BlocProvider<FoodItemCubit>(
-        create: (_) => FoodItemCubit(foodVendorService)..getFoodItem(),
+        create: (_) => FoodItemCubit(foodVendorService)
+          ..getFoodItem()
+          ..getSnackItem()
+          ..getDrinkItem(),
       ),
       BlocProvider<VendorMenuCubit>(
         create: (_) => VendorMenuCubit(foodVendorService),

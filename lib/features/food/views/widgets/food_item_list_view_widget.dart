@@ -38,7 +38,7 @@ class _FoodItemListViewWidgetState extends State<FoodItemListViewWidget> {
               child: TabBarView(
                 children: [
                   const FoodListScreen(),
-                  Container(),
+                  const SnackListScreen(),
                   Container(),
                 ],
               ),
@@ -107,6 +107,73 @@ class _FoodListScreenState extends State<FoodListScreen> {
             Align(
               alignment: Alignment.bottomCenter,
               child: state.foodItemStatus == FoodItemStatus.moreBusy
+                  ? const LoadingMoreWidget()
+                  : Container(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class SnackListScreen extends StatefulWidget {
+  const SnackListScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SnackListScreen> createState() => _SnackListScreenState();
+}
+
+class _SnackListScreenState extends State<SnackListScreen> {
+  static final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      context.read<FoodItemCubit>().initSnackScrollListener(scrollController);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<FoodItemCubit, FoodItemStateModel>(
+      builder: (context, state) {
+        if (state.snackItemStatus == FoodItemStatus.busy) {
+          return Center(
+            child: Column(
+              children: [
+                const CustomLoadingIndicatorWidget(),
+                verticalSpace(5),
+              ],
+            ),
+          );
+        }
+
+        if (state.snackItemStatus == FoodItemStatus.error) {
+          return Center(
+            child: CustomErrorWidget(
+              message: state.snackErrorText,
+              callback: context.read<FoodItemCubit>().getSnackItem,
+            ),
+          );
+        }
+
+        return Stack(
+          children: [
+            ListView.builder(
+              controller: scrollController,
+              shrinkWrap: true,
+              itemCount: state.snackItems.length,
+              itemBuilder: (_, int index) {
+                final FoodItemDataModel snackItem = state.snackItems[index];
+
+                return FoodItemWidget(snackItem);
+              },
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: state.snackItemStatus == FoodItemStatus.moreBusy
                   ? const LoadingMoreWidget()
                   : Container(),
             ),
