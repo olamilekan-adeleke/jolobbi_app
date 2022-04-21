@@ -11,6 +11,7 @@ import '../../cubit/cart_item_model.dart';
 import '../../model/cart_list_state_model.dart';
 import '../widgets/cart_icon_widget.dart';
 import '../widgets/cart_item_widget.dart';
+import '../widgets/empty_cart_widget.dart';
 import 'order_summary_screen.dart';
 
 class CartScreen extends StatelessWidget {
@@ -22,15 +23,19 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffoldWidget(
       // useSingleScroll: false,
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          verticalSpace(),
-          const AppBarWidget('My Cart', trilling: CartIconWidget()),
-          verticalSpace(),
-          BlocBuilder<CartCubit, CartListStateModel>(
-            builder: (context, state) {
-              return Flexible(
+      body: BlocBuilder<CartCubit, CartListStateModel>(
+        builder: (context, state) {
+          if (state.cartItems.isEmpty) {
+            return const EmptyCartWidget();
+          }
+
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              verticalSpace(),
+              const AppBarWidget('My Cart', trilling: CartIconWidget()),
+              verticalSpace(),
+              Flexible(
                 child: ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -41,18 +46,18 @@ class CartScreen extends StatelessWidget {
                     return CartItemWidget(cartItem);
                   },
                 ),
-              );
-            },
-          ),
-          verticalSpace(20),
-          CustomButton(
-            text: 'Check Out',
-            onTap: () {
-              AppRouter.instance.navigateTo(OrderSummaryScreen.route);
-            },
-          ),
-          verticalSpace(40),
-        ],
+              ),
+              verticalSpace(20),
+              CustomButton(
+                text: 'Check Out',
+                onTap: () {
+                  AppRouter.instance.navigateTo(OrderSummaryScreen.route);
+                },
+              ),
+              verticalSpace(40),
+            ],
+          );
+        },
       ),
     );
   }
