@@ -1,7 +1,6 @@
-import 'package:jolobbi_app/features/cart/model/order_data_model.dart';
-
 import '../../profile/model/user_profile_data_model.dart';
 import '../enum/cart_enum.dart';
+import 'order_data_model.dart';
 
 class OrderDetailsStateModel {
   final OrderDataModel? orderData;

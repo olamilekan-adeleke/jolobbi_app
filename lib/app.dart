@@ -15,6 +15,7 @@ import 'features/authentication/repository/login_repository.dart';
 import 'features/authentication/repository/sign_up_repositry.dart';
 import 'features/authentication/views/screens/auth_state_screen.dart';
 import 'features/cart/cubit/cart_cubit.dart';
+import 'features/cart/cubit/order_cubit_state.dart';
 import 'features/cart/cubit/order_fee_cubit.dart';
 import 'features/food/cubit/food_item_cubit.dart';
 import 'features/food/cubit/food_vendor_cubit.dart';
@@ -119,6 +120,7 @@ class _BlocProviderHelper {
       BlocProvider<TransactionHistoryCubit>(
         create: (_) => TransactionHistoryCubit()..getUserTransactionHistory(),
       ),
+      BlocProvider<AddOrderCubit>(create: (_) => AddOrderCubit()),
     ];
   }
 }
