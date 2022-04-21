@@ -100,6 +100,7 @@ class _BlocProviderHelper {
       BlocProvider<ProfileDetailsCubit>(
         create: (_) =>
             ProfileDetailsCubit(profileService)..getCurrentLoginUserData(),
+        lazy: false,
       ),
       BlocProvider<UpdateProfileCubit>(
         create: (_) => UpdateProfileCubit(profileService),

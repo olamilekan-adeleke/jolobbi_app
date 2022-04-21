@@ -1,6 +1,6 @@
 import '../model/order_data_model.dart';
 import '../model/order_fee_model.dart';
-import '../repository/order_repository.dart';
+import '../repository/order_reopsitory.dart';
 
 class OrderService {
   static final OrderRepository _orderRepository = OrderRepository();

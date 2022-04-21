@@ -9,6 +9,8 @@ import '../../../../cores/navigator/app_router.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../../../cores/utils/snack_bar_service.dart';
 import '../../../authentication/views/screens/auth_state_screen.dart';
+import '../../../profile/cubit/user_profile/profile_details_cubit.dart';
+import '../../cubit/cart_cubit.dart';
 import '../../cubit/order_cubit_state.dart';
 import '../../cubit/order_fee_cubit.dart';
 import '../../enum/cart_enum.dart';
@@ -79,9 +81,32 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
             verticalSpace(),
             const CartAddressWidget(),
             const Spacer(),
-            CustomButton(
-              text: 'Proceed To Payment',
-              onTap: () {},
+            BlocBuilder<AddOrderCubit, OrderDetailsStateModel>(
+              builder: (context, state) {
+                if (state.status == OrderStatus.busy) {
+                  return const CustomButton.loading();
+                }
+
+                return CustomButton(
+                  text: 'Proceed To Payment',
+                  onTap: () {
+                    final CartCubit cartCubit = context.read<CartCubit>();
+
+                    final OrderFeeCubit orderFeeCubit =
+                        context.read<OrderFeeCubit>();
+
+                    final ProfileDetailsCubit profile =
+                        context.read<ProfileDetailsCubit>();
+
+                    context.read<AddOrderCubit>().createOrder(
+                          items: cartCubit.state.cartItems,
+                          deliveryFee: orderFeeCubit.state.deliveryFee,
+                          serviceFee: orderFeeCubit.state.serviceFee,
+                          userData: profile.state.userData!,
+                        );
+                  },
+                );
+              },
             ),
             verticalSpace(20),
           ],
