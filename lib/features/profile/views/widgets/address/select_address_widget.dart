@@ -22,7 +22,7 @@ class BottomSheetSelectAddressWidget extends StatelessWidget {
       child: BlocBuilder<ProfileDetailsCubit, UserProfileStateModel>(
         builder: (context, state) {
           if (state.status == ProfileDetailsStatus.busy) {
-            return const CustomLoadingIndicatorWidget();
+            return const Center(child: CustomLoadingIndicatorWidget());
           } else if (state.userData?.address == null) {
             return GestureDetector(
               onTap: () {

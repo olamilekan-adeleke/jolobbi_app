@@ -25,6 +25,10 @@ class CartAddressWidget extends StatelessWidget {
         );
 
         log('$address');
+
+        if (address == null) return;
+
+        context.read<AddOrderCubit>().onAddressChange(address);
       },
       child: Card(
         child: Container(
