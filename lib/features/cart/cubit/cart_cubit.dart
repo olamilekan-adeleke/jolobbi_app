@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../enum/cart_enum.dart';
 import '../model/cart_list_state_model.dart';
 import 'cart_item_model.dart';
 
@@ -17,9 +18,15 @@ class CartCubit extends Cubit<CartListStateModel> {
 
       cartList[index] = cartItem;
 
-      emit(state.copyWith(cartItems: [...cartList]));
+      emit(state.copyWith(
+        cartItems: [...cartList],
+        status: CartStatus.addedToCart,
+      ));
     } else {
-      emit(state.copyWith(cartItems: [...state.cartItems, cartItem]));
+      emit(state.copyWith(
+        cartItems: [...state.cartItems, cartItem],
+        status: CartStatus.addedToCart,
+      ));
     }
 
     log('cart: ${state.toString()}');

@@ -28,6 +28,10 @@ class ItemToCartCubit extends Cubit<ItemToCartModel> {
     log(state.toString());
   }
 
+  void clear() {
+    emit(state.copyWith(addOn: [], extras: [], foodItem:  null));
+  }
+
   void addExtraItem(Extras extra) {
     if (state.extras.any((CartAddOn ele) => ele.name == extra.name)) {
       final int index =

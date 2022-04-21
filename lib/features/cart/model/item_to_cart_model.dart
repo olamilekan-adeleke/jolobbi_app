@@ -1,6 +1,5 @@
 import '../cubit/cart_item_model.dart';
 
-
 class ItemToCartModel {
   final CartItemModel? foodItem;
   List<CartAddOn> addOn = [];

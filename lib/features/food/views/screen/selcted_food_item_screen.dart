@@ -7,7 +7,11 @@ import '../../../../cores/components/image_widget.dart';
 import '../../../../cores/constants/color.dart';
 import '../../../../cores/utils/currency_formater.dart';
 import '../../../../cores/utils/sizer_utils.dart';
+import '../../../../cores/utils/snack_bar_service.dart';
+import '../../../cart/cubit/cart_cubit.dart';
 import '../../../cart/cubit/item_cart_cubit.dart';
+import '../../../cart/enum/cart_enum.dart';
+import '../../../cart/model/cart_list_state_model.dart';
 import '../../../cart/views/widgets/cart_icon_widget.dart';
 import '../../model/food_item_data_model.dart';
 import '../widgets/food_item_cart_buttom_widget.dart';
@@ -25,59 +29,69 @@ class SelectedFoodItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => ItemToCartCubit(),
-      child: CustomScaffoldWidget(
-        useSingleScroll: false,
-        usePadding: false,
-        useSafeArea: false,
-        body: Stack(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topCenter,
-              child: SizedBox(
-                height: sh(35),
-                width: double.infinity,
-                child: CustomImageWidget(
-                  imageUrl: foodItem.image,
-                  imageTypes: ImageTypes.network,
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: sh(68),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: kcWhite,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(sp(10)),
-                    topRight: Radius.circular(sp(10)),
+      child: BlocListener<CartCubit, CartListStateModel>(
+        listener: (context, state) {
+          if (state.status == CartStatus.addedToCart) {
+            SnackBarService.showSuccessSnackBar(
+              context: context,
+              message: 'Added To Cart',
+            );
+          }
+        },
+        child: CustomScaffoldWidget(
+          useSingleScroll: false,
+          usePadding: false,
+          useSafeArea: false,
+          body: Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.topCenter,
+                child: SizedBox(
+                  height: sh(35),
+                  width: double.infinity,
+                  child: CustomImageWidget(
+                    imageUrl: foodItem.image,
+                    imageTypes: ImageTypes.network,
+                    fit: BoxFit.fill,
                   ),
                 ),
-                child: FoodItemBodyWidget(foodItem),
               ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: FoodItemCartButtonWidget(foodItem),
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: sp(15),
-                  horizontal: sp(10),
-                ),
-                child: Row(
-                  children: const [
-                    Spacer(),
-                    CartIconWidget(iconColor: kcWhite),
-                  ],
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  height: sh(68),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: kcWhite,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(sp(10)),
+                      topRight: Radius.circular(sp(10)),
+                    ),
+                  ),
+                  child: FoodItemBodyWidget(foodItem),
                 ),
               ),
-            ),
-          ],
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: FoodItemCartButtonWidget(foodItem),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: sp(15),
+                    horizontal: sp(10),
+                  ),
+                  child: Row(
+                    children: const [
+                      Spacer(),
+                      CartIconWidget(iconColor: kcWhite),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

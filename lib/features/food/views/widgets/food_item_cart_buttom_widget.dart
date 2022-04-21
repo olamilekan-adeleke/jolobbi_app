@@ -35,6 +35,8 @@ class FoodItemCartButtonWidget extends StatelessWidget {
               cartCubit.addFoodItemToCart(itemToCartCubit.state.foodItem!);
 
               AppRouter.instance.navigateTo(CartScreen.route);
+
+              itemToCartCubit.clear();
             },
           ),
         ),
@@ -48,6 +50,8 @@ class FoodItemCartButtonWidget extends StatelessWidget {
               if (itemToCartCubit.state.foodItem == null) return;
 
               cartCubit.addFoodItemToCart(itemToCartCubit.state.foodItem!);
+
+              itemToCartCubit.clear();
             },
           ),
         ),
