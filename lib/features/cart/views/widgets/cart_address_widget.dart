@@ -34,7 +34,7 @@ class CartAddressWidget extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: sp(5), vertical: sp(8)),
           child: SizedBox(
-            height: sp(60),
+            height: sp(65),
             child: Row(
               children: <Widget>[
                 SizedBox(
@@ -55,9 +55,11 @@ class CartAddressWidget extends StatelessWidget {
                         children: [
                           TextWidget(
                             state.address?.location ?? 'Select Address',
-                            fontSize: sp(15),
+                            fontSize: sp(14),
                             fontWeight: FontWeight.w500,
                             textAlign: TextAlign.left,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
                           TextWidget(
                             state.address?.location ??

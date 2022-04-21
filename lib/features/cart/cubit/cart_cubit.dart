@@ -262,4 +262,8 @@ class CartCubit extends Cubit<CartListStateModel> {
 
     return extraTotal + addOnTotal + itemTotal;
   }
+
+  void clearCart() {
+    emit(state.copyWith(cartItems: []));
+  }
 }

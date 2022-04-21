@@ -55,6 +55,8 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
           AppRouter.instance.navigateToAndReplaceUntil(
             AuthStateScreen.route,
           );
+
+          context.read<CartCubit>().clearCart();
         }
       },
       child: CustomScaffoldWidget(

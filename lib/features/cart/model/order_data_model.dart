@@ -30,6 +30,9 @@ class OrderDataModel {
   });
 
   Map<String, dynamic> toMapForInitOrder() {
+    final _userData = userData.toMap();
+    userData.toMap().remove('address');
+
     return {
       'items': items.map((x) => x.toMap()).toList(),
       'address': address.toMap(),
@@ -40,7 +43,7 @@ class OrderDataModel {
       'orderId': orderId,
       'orderStatus': orderStatus,
       'vendorNameList': vendorNameList,
-      'userData': userData.toMap(),
+      'userData': _userData,
       'userId': userId,
     };
   }
