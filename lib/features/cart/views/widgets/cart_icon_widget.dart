@@ -18,45 +18,47 @@ class CartIconWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => AppRouter.instance.navigateTo(CartScreen.route),
-      child: SizedBox(
-        height: sp(35),
-        width: sp(30),
-        child: Stack(
-          children: [
-            SizedBox(
-              height: sp(35),
-              width: sp(30),
-              child: Icon(
-                CupertinoIcons.cart,
-                size: sp(20),
-                color: iconColor ?? kcIconGrey,
-              ),
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                height: sp(15),
-                width: sp(15),
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: kcPrimaryColor,
-                ),
-                child: Center(
-                  child: BlocBuilder<CartCubit, CartListStateModel>(
-                    builder: (context, state) {
-                      return TextWidget(
-                        '${state.cartItems.length}',
-                        fontWeight: FontWeight.w500,
-                        fontSize: sp(10),
-                        textColor: kcWhite,
-                      );
-                    },
+      child: BlocBuilder<CartCubit, CartListStateModel>(
+        builder: (context, state) {
+          return SizedBox(
+            height: sp(35),
+            width: sp(30),
+            child: Stack(
+              children: [
+                SizedBox(
+                  height: sp(35),
+                  width: sp(30),
+                  child: Icon(
+                    CupertinoIcons.cart,
+                    size: sp(20),
+                    color: iconColor ?? kcIconGrey,
                   ),
                 ),
-              ),
-            )
-          ],
-        ),
+                state.cartItems.isNotEmpty
+                    ? Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          height: sp(15),
+                          width: sp(15),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: kcPrimaryColor,
+                          ),
+                          child: Center(
+                            child: TextWidget(
+                              '${state.cartItems.length}',
+                              fontWeight: FontWeight.w500,
+                              fontSize: sp(10),
+                              textColor: kcWhite,
+                            ),
+                          ),
+                        ),
+                      )
+                    : const SizedBox(),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
