@@ -7,10 +7,12 @@ import 'package:jolobbi_app/features/food/model/food_vendor_data_model.dart';
 
 import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/components/image_widget.dart';
+import '../../../../cores/navigator/app_router.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../cubit/food_vendor_cubit.dart';
 import '../../enum/food_enum.dart';
 import '../../model/food_vendor_state_model.dart';
+import '../screen/vendor/selected_vendor_screen.dart';
 
 class PopularFoodVendorWidget extends StatelessWidget {
   const PopularFoodVendorWidget({Key? key}) : super(key: key);
@@ -45,7 +47,8 @@ class PopularFoodVendorWidget extends StatelessWidget {
                   children: [
                     CustomErrorWidget(
                       message: state.errorText,
-                      callback: context.read<FoodVendorCubit>().getPopularFoodVendor,
+                      callback:
+                          context.read<FoodVendorCubit>().getPopularFoodVendor,
                     ),
                     verticalSpace(5),
                   ],
@@ -63,29 +66,37 @@ class PopularFoodVendorWidget extends StatelessWidget {
                   final FoodVendorDataModel foodVendor =
                       state.popularFoodVendorDataModels[index];
 
-                  return SizedBox(
-                    width: sp(65),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: sp(40),
-                          width: sp(40),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(sp(100)),
-                            child: CustomImageWidget(
-                              imageUrl: foodVendor.image,
-                              imageTypes: ImageTypes.network,
+                  return GestureDetector(
+                    onTap: () {
+                      AppRouter.instance.navigateTo(
+                        SelectedVendorScreen.route,
+                        arguments: foodVendor,
+                      );
+                    },
+                    child: SizedBox(
+                      width: sp(65),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: sp(40),
+                            width: sp(40),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(sp(100)),
+                              child: CustomImageWidget(
+                                imageUrl: foodVendor.image,
+                                imageTypes: ImageTypes.network,
+                              ),
                             ),
                           ),
-                        ),
-                        TextWidget(
-                          foodVendor.name,
-                          fontSize: sp(14),
-                          fontWeight: FontWeight.w400,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                          TextWidget(
+                            foodVendor.name,
+                            fontSize: sp(14),
+                            fontWeight: FontWeight.w400,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
