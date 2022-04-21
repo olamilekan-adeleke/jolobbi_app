@@ -140,13 +140,24 @@ class FoodItemHeaderWidget extends StatelessWidget {
             ],
           ),
         ),
-        Row(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Icon(Icons.star_rate, size: sp(15), color: kcPrimaryColor),
-            Icon(Icons.star_rate, size: sp(15), color: kcPrimaryColor),
-            Icon(Icons.star_rate, size: sp(15), color: kcPrimaryColor),
-            Icon(Icons.star_rate, size: sp(15), color: kcPrimaryColor),
-            Icon(Icons.star_rate, size: sp(15), color: kcPrimaryColor),
+            Row(
+              children: [
+                Icon(Icons.star_rate, size: sp(15), color: kcPrimaryColor),
+                Icon(Icons.star_rate, size: sp(15), color: kcPrimaryColor),
+                Icon(Icons.star_rate, size: sp(15), color: kcPrimaryColor),
+                Icon(Icons.star_rate, size: sp(15), color: kcPrimaryColor),
+                Icon(Icons.star_rate, size: sp(15), color: kcPrimaryColor),
+              ],
+            ),
+            TextWidget(
+              '${foodVendor.rating} Rating',
+              fontSize: sp(12),
+              fontWeight: FontWeight.w300,
+              textAlign: TextAlign.right,
+            ),
           ],
         ),
       ],
