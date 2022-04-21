@@ -41,7 +41,7 @@ class _FoodItemListViewWidgetState extends State<FoodItemListViewWidget> {
           verticalSpace(),
           BlocBuilder<FoodItemCubit, FoodItemStateModel>(
             builder: (context, state) {
-              if (state.status == FoodItemStatus.busy) {
+              if (state.foodItemStatus == FoodItemStatus.busy) {
                 return Center(
                   child: Column(
                     children: [
@@ -52,10 +52,10 @@ class _FoodItemListViewWidgetState extends State<FoodItemListViewWidget> {
                 );
               }
 
-              if (state.status == FoodItemStatus.error) {
+              if (state.foodItemStatus == FoodItemStatus.error) {
                 return Center(
                   child: CustomErrorWidget(
-                    message: state.errorText,
+                    message: state.foodErrorText,
                     callback: context.read<FoodItemCubit>().getFoodItem,
                   ),
                 );
@@ -77,7 +77,7 @@ class _FoodItemListViewWidgetState extends State<FoodItemListViewWidget> {
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
-                      child: state.status == FoodItemStatus.moreBusy
+                      child: state.foodItemStatus == FoodItemStatus.moreBusy
                           ? const LoadingMoreWidget()
                           : Container(),
                     ),

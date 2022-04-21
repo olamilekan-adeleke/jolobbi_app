@@ -3,8 +3,12 @@ import 'food_item_data_model.dart';
 
 class FoodItemStateModel {
   FoodItemStateModel({
-    this.status = FoodItemStatus.unknown,
-    this.errorText = "",
+    this.foodItemStatus = FoodItemStatus.unknown,
+    this.snackItemStatus = FoodItemStatus.unknown,
+    this.drinkItemStatus = FoodItemStatus.unknown,
+    this.foodErrorText = "",
+    this.snackErrorText = "",
+    this.drinkErrorText = "",
     List<FoodItemDataModel>? foodItems,
     List<FoodItemDataModel>? drinkItems,
     List<FoodItemDataModel>? snackItems,
@@ -12,22 +16,30 @@ class FoodItemStateModel {
         drinkItems = drinkItems ?? [],
         snackItems = snackItems ?? [];
 
-  final FoodItemStatus status;
-  final String errorText;
+  final FoodItemStatus foodItemStatus;
+  final FoodItemStatus snackItemStatus;
+  final FoodItemStatus drinkItemStatus;
+  final String foodErrorText;
+  final String snackErrorText;
+  final String drinkErrorText;
   List<FoodItemDataModel> foodItems;
   List<FoodItemDataModel> drinkItems;
   List<FoodItemDataModel> snackItems;
 
   FoodItemStateModel copyWith({
-    FoodItemStatus? status,
-    String? errorText,
+    FoodItemStatus? foodItemStatus,
+    FoodItemStatus? snackItemStatus,
+    FoodItemStatus? drinkItemStatus,
+    String? foodErrorText,
+    String? snackErrorText,
+    String? drinkErrorText,
     List<FoodItemDataModel>? foodItems,
     List<FoodItemDataModel>? drinkItems,
     List<FoodItemDataModel>? snackItems,
   }) {
     return FoodItemStateModel(
-      status: status ?? this.status,
-      errorText: errorText ?? this.errorText,
+      foodItemStatus: foodItemStatus ?? this.foodItemStatus,
+      foodErrorText: foodErrorText ?? this.foodErrorText,
       foodItems: foodItems ?? this.foodItems,
       drinkItems: drinkItems ?? this.drinkItems,
       snackItems: snackItems ?? this.snackItems,

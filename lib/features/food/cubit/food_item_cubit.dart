@@ -29,21 +29,23 @@ class FoodItemCubit extends Cubit<FoodItemStateModel> {
 
   Future<void> getFoodItem() async {
     try {
-      emit(state.copyWith(status: FoodItemStatus.busy, errorText: ''));
+      emit(
+        state.copyWith(foodItemStatus: FoodItemStatus.busy, foodErrorText: ''),
+      );
 
       List<FoodItemDataModel> foodList = await foodVendorService.getFoodItems();
 
       emit(
         state.copyWith(
-          status: FoodItemStatus.success,
+          foodItemStatus: FoodItemStatus.success,
           foodItems: foodList,
         ),
       );
     } catch (e, s) {
       emit(
         state.copyWith(
-          status: FoodItemStatus.error,
-          errorText: e.toString(),
+          foodItemStatus: FoodItemStatus.error,
+          foodErrorText: e.toString(),
         ),
       );
 
@@ -56,12 +58,14 @@ class FoodItemCubit extends Cubit<FoodItemStateModel> {
   }
 
   Future<void> getMoreFoodItem() async {
-    if (state.foodItems.isEmpty || state.status == FoodItemStatus.moreBusy) {
+    if (state.foodItems.isEmpty ||
+        state.foodItemStatus == FoodItemStatus.moreBusy) {
       return;
     }
 
     try {
-      emit(state.copyWith(status: FoodItemStatus.moreBusy, errorText: ''));
+      emit(state.copyWith(
+          foodItemStatus: FoodItemStatus.moreBusy, foodErrorText: ''));
 
       List<FoodItemDataModel> foodList = await foodVendorService.getFoodItems(
         lastDocId: state.foodItems.last.id,
@@ -70,15 +74,15 @@ class FoodItemCubit extends Cubit<FoodItemStateModel> {
 
       emit(
         state.copyWith(
-          status: FoodItemStatus.success,
+          foodItemStatus: FoodItemStatus.success,
           foodItems: [...state.foodItems, ...foodList],
         ),
       );
     } catch (e, s) {
       emit(
         state.copyWith(
-          status: FoodItemStatus.moreError,
-          errorText: e.toString(),
+          foodItemStatus: FoodItemStatus.moreError,
+          foodErrorText: e.toString(),
         ),
       );
 
