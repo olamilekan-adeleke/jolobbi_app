@@ -26,8 +26,8 @@ class _FoodItemListViewWidgetState extends State<FoodItemListViewWidget> {
       child: DefaultTabController(
         length: 3,
         child: Column(
-          children: <Widget>[
-            const TabBar(
+          children: const <Widget>[
+            TabBar(
               tabs: [
                 Tab(text: 'Foods'),
                 Tab(text: 'Snacks'),
@@ -37,9 +37,9 @@ class _FoodItemListViewWidgetState extends State<FoodItemListViewWidget> {
             Expanded(
               child: TabBarView(
                 children: [
-                  const FoodListScreen(),
-                  const SnackListScreen(),
-                  Container(),
+                  FoodListScreen(),
+                  SnackListScreen(),
+                  DrinkListScreen(),
                 ],
               ),
             ),
@@ -174,6 +174,73 @@ class _SnackListScreenState extends State<SnackListScreen> {
             Align(
               alignment: Alignment.bottomCenter,
               child: state.snackItemStatus == FoodItemStatus.moreBusy
+                  ? const LoadingMoreWidget()
+                  : Container(),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class DrinkListScreen extends StatefulWidget {
+  const DrinkListScreen({Key? key}) : super(key: key);
+
+  @override
+  State<DrinkListScreen> createState() => _DrinkListScreenState();
+}
+
+class _DrinkListScreenState extends State<DrinkListScreen> {
+  static final ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      context.read<FoodItemCubit>().initDrinkScrollListener(scrollController);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<FoodItemCubit, FoodItemStateModel>(
+      builder: (context, state) {
+        if (state.drinkItemStatus == FoodItemStatus.busy) {
+          return Center(
+            child: Column(
+              children: [
+                const CustomLoadingIndicatorWidget(),
+                verticalSpace(5),
+              ],
+            ),
+          );
+        }
+
+        if (state.drinkItemStatus == FoodItemStatus.error) {
+          return Center(
+            child: CustomErrorWidget(
+              message: state.drinkErrorText,
+              callback: context.read<FoodItemCubit>().getDrinkItem,
+            ),
+          );
+        }
+
+        return Stack(
+          children: [
+            ListView.builder(
+              controller: scrollController,
+              shrinkWrap: true,
+              itemCount: state.drinkItems.length,
+              itemBuilder: (_, int index) {
+                final FoodItemDataModel drinkItem = state.drinkItems[index];
+
+                return FoodItemWidget(drinkItem);
+              },
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: state.drinkItemStatus == FoodItemStatus.moreBusy
                   ? const LoadingMoreWidget()
                   : Container(),
             ),
