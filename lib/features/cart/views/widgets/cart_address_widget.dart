@@ -50,14 +50,14 @@ class CartAddressWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextWidget(
-                            state.address?.location ?? 'Pick Location',
+                            state.address?.location ?? 'Select Address',
                             fontSize: sp(15),
                             fontWeight: FontWeight.w500,
                             textAlign: TextAlign.left,
                           ),
                           TextWidget(
                             state.address?.location ??
-                                'Tap to select your delivery location',
+                                'Tap to select your delivery address',
                             fontSize: sp(12),
                             fontWeight: FontWeight.w300,
                             textAlign: TextAlign.left,

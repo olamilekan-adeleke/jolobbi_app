@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../cores/components/custom_text_widget.dart';
+import '../../../../../cores/components/loading_indicator.dart';
 import '../../../../../cores/constants/color.dart';
 import '../../../../../cores/navigator/app_router.dart';
 import '../../../../../cores/utils/sizer_utils.dart';
 import '../../../cubit/user_profile/profile_details_cubit.dart';
+import '../../../enum/profile_enum.dart';
 import '../../../model/user_profile_data_model.dart';
 import '../../../model/user_profile_state_model.dart';
+import '../../screens/address/add_address_page.dart';
 
 class BottomSheetSelectAddressWidget extends StatelessWidget {
   const BottomSheetSelectAddressWidget({Key? key}) : super(key: key);
@@ -18,23 +21,30 @@ class BottomSheetSelectAddressWidget extends StatelessWidget {
       height: sh(50),
       child: BlocBuilder<ProfileDetailsCubit, UserProfileStateModel>(
         builder: (context, state) {
-          if (state.userData?.address == null) {
-            return Column(
-              children: [
-                verticalSpace(100),
-                Icon(
-                  Icons.location_on_outlined,
-                  color: kcIconGrey.withOpacity(0.5),
-                  size: sp(80),
-                ),
-                TextWidget(
-                  'opps, it seems you have not added any delivery address, Click on the button below to add an address',
-                  fontSize: sp(12),
-                  textColor: kcSubTextColor,
-                  textAlign: TextAlign.center,
-                  fontWeight: FontWeight.w300,
-                ),
-              ],
+          if (state.status == ProfileDetailsStatus.busy) {
+            return const CustomLoadingIndicatorWidget();
+          } else if (state.userData?.address == null) {
+            return GestureDetector(
+              onTap: () {
+                AppRouter.instance.navigateTo(AddAddressScreen.route);
+              },
+              child: Column(
+                children: [
+                  verticalSpace(100),
+                  Icon(
+                    Icons.location_on_outlined,
+                    color: kcIconGrey.withOpacity(0.5),
+                    size: sp(80),
+                  ),
+                  TextWidget(
+                    'opps, it seems you have not added any delivery address, Click add an address',
+                    fontSize: sp(12),
+                    textColor: kcSubTextColor,
+                    textAlign: TextAlign.center,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ],
+              ),
             );
           }
 
