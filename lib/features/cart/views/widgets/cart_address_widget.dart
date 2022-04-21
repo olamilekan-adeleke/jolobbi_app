@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../cores/components/custom_text_widget.dart';
 import '../../../../cores/components/image_widget.dart';
@@ -8,6 +9,8 @@ import '../../../../cores/utils/bottom_sheet_helper.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 import '../../../profile/model/user_profile_data_model.dart';
 import '../../../profile/views/widgets/address/select_address_widget.dart';
+import '../../cubit/order_cubit_state.dart';
+import '../../model/order_details_state_model.dart';
 
 class CartAddressWidget extends StatelessWidget {
   const CartAddressWidget({Key? key}) : super(key: key);
@@ -39,25 +42,32 @@ class CartAddressWidget extends StatelessWidget {
                   ),
                 ),
                 horizontalSpace(),
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextWidget(
-                        'Office',
-                        fontSize: sp(15),
-                        fontWeight: FontWeight.w500,
+                BlocBuilder<AddOrderCubit, OrderDetailsStateModel>(
+                  builder: (context, state) {
+                    return Flexible(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextWidget(
+                            state.address?.location ?? 'Pick Location',
+                            fontSize: sp(15),
+                            fontWeight: FontWeight.w500,
+                            textAlign: TextAlign.left,
+                          ),
+                          TextWidget(
+                            state.address?.location ??
+                                'Tap to select your delivery location',
+                            fontSize: sp(12),
+                            fontWeight: FontWeight.w300,
+                            textAlign: TextAlign.left,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
-                      TextWidget(
-                        'Your office address goes here ' * 34,
-                        fontSize: sp(12),
-                        fontWeight: FontWeight.w300,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
                 horizontalSpace(5),
                 Align(
