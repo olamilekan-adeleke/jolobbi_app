@@ -39,7 +39,11 @@ class FoodItemStateModel {
   }) {
     return FoodItemStateModel(
       foodItemStatus: foodItemStatus ?? this.foodItemStatus,
+      snackItemStatus: snackItemStatus ?? this.snackItemStatus,
+      drinkItemStatus: drinkItemStatus ?? this.drinkItemStatus,
       foodErrorText: foodErrorText ?? this.foodErrorText,
+      snackErrorText: snackErrorText ?? this.snackErrorText,
+      drinkErrorText: drinkErrorText ?? this.drinkErrorText,
       foodItems: foodItems ?? this.foodItems,
       drinkItems: drinkItems ?? this.drinkItems,
       snackItems: snackItems ?? this.snackItems,

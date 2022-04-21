@@ -124,7 +124,7 @@ class FoodItemCubit extends Cubit<FoodItemStateModel> {
       emit(
         state.copyWith(
           snackItemStatus: FoodItemStatus.success,
-          foodItems: snackList,
+          snackItems: snackList,
         ),
       );
     } catch (e, s) {
