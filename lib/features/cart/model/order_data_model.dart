@@ -1,5 +1,3 @@
-
-
 import '../../profile/model/user_profile_data_model.dart';
 import '../cubit/cart_item_model.dart';
 
@@ -23,15 +21,15 @@ class OrderDataModel {
     required this.deliveryFee,
     required this.serviceFee,
     required this.totalFee,
-    required this.hasRated,
+    this.hasRated = false,
     required this.orderId,
-    required this.orderStatus,
+    this.orderStatus = 'pending',
     required this.vendorNameList,
     required this.userData,
     required this.userId,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMapForInitOrder() {
     return {
       'items': items.map((x) => x.toMap()).toList(),
       'address': address.toMap(),
@@ -49,7 +47,8 @@ class OrderDataModel {
 
   factory OrderDataModel.fromMap(Map<String, dynamic> map) {
     return OrderDataModel(
-      items: List<CartItemModel>.from(map['items']?.map((x) => CartItemModel.fromMap(x))),
+      items: List<CartItemModel>.from(
+          map['items']?.map((x) => CartItemModel.fromMap(x))),
       address: AddressModel.fromMap(map['address']),
       deliveryFee: map['deliveryFee']?.toInt() ?? 0,
       serviceFee: map['serviceFee']?.toInt() ?? 0,
@@ -62,6 +61,4 @@ class OrderDataModel {
       userId: map['userId'] ?? '',
     );
   }
-
- 
 }
