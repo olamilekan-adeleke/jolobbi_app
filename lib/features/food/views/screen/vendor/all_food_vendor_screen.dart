@@ -51,8 +51,10 @@ class _AllFoodVendorScreenState extends State<AllFoodVendorScreen> {
           verticalSpace(),
           SearchBarWidget(
             title: 'Search for vendor',
-            onTap: () {
-              AppRouter.instance.navigateTo(VendorSearchScreen.route);
+            onTap: () async {
+              await AppRouter.instance.navigateTo(VendorSearchScreen.route);
+
+               context.read<FoodVendorCubit>().onSearchFieldChanged('');
             },
           ),
           verticalSpace(),

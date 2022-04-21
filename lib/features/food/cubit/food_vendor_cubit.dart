@@ -73,7 +73,7 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
           ),
         );
       } else {
-        if (state.allFoodVendorDataModels.isNotEmpty) return;
+        // if (state.allFoodVendorDataModels.isNotEmpty) return;
         emit(
           state.copyWith(
             status: FoodVendorStatus.getAllBusy,
@@ -126,6 +126,7 @@ class FoodVendorCubit extends Cubit<FoodVendorStateModel> {
     _debounce = Timer(const Duration(milliseconds: 500), () {
       log('hit');
       if (searchQuery.isEmpty) {
+        log('hit 1');
         getFoodVendor();
       } else {
         log('hit 2');
