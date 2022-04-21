@@ -28,7 +28,6 @@ class FoodHomePage extends StatelessWidget {
           ),
           verticalSpace(),
           const PopularFoodVendorWidget(),
-          verticalSpace(5),
           const FoodItemListViewWidget(),
         ],
       ),

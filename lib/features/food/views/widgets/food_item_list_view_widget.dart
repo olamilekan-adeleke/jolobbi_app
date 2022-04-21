@@ -15,13 +15,49 @@ import 'food_item_widget.dart';
 class FoodItemListViewWidget extends StatefulWidget {
   const FoodItemListViewWidget({Key? key}) : super(key: key);
 
-  static final ScrollController scrollController = ScrollController();
-
   @override
   State<FoodItemListViewWidget> createState() => _FoodItemListViewWidgetState();
 }
 
 class _FoodItemListViewWidgetState extends State<FoodItemListViewWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: DefaultTabController(
+        length: 3,
+        child: Column(
+          children: <Widget>[
+            const TabBar(
+              tabs: [
+                Tab(text: 'Foods'),
+                Tab(text: 'Snacks'),
+                Tab(text: 'Drinks'),
+              ],
+            ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  const FoodListScreen(),
+                  Container(),
+                  Container(),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FoodListScreen extends StatefulWidget {
+  const FoodListScreen({Key? key}) : super(key: key);
+
+  @override
+  State<FoodListScreen> createState() => _FoodListScreenState();
+}
+
+class _FoodListScreenState extends State<FoodListScreen> {
   static final ScrollController scrollController = ScrollController();
 
   @override
@@ -34,60 +70,49 @@ class _FoodItemListViewWidgetState extends State<FoodItemListViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        children: <Widget>[
-          const FoodItemListViewTabBarWidget(),
-          verticalSpace(),
-          BlocBuilder<FoodItemCubit, FoodItemStateModel>(
-            builder: (context, state) {
-              if (state.foodItemStatus == FoodItemStatus.busy) {
-                return Center(
-                  child: Column(
-                    children: [
-                      const CustomLoadingIndicatorWidget(),
-                      verticalSpace(5),
-                    ],
-                  ),
-                );
-              }
+    return BlocBuilder<FoodItemCubit, FoodItemStateModel>(
+      builder: (context, state) {
+        if (state.foodItemStatus == FoodItemStatus.busy) {
+          return Center(
+            child: Column(
+              children: [
+                const CustomLoadingIndicatorWidget(),
+                verticalSpace(5),
+              ],
+            ),
+          );
+        }
 
-              if (state.foodItemStatus == FoodItemStatus.error) {
-                return Center(
-                  child: CustomErrorWidget(
-                    message: state.foodErrorText,
-                    callback: context.read<FoodItemCubit>().getFoodItem,
-                  ),
-                );
-              }
+        if (state.foodItemStatus == FoodItemStatus.error) {
+          return Center(
+            child: CustomErrorWidget(
+              message: state.foodErrorText,
+              callback: context.read<FoodItemCubit>().getFoodItem,
+            ),
+          );
+        }
 
-              return Expanded(
-                child: Stack(
-                  children: [
-                    ListView.builder(
-                      controller: scrollController,
-                      shrinkWrap: true,
-                      itemCount: state.foodItems.length,
-                      itemBuilder: (_, int index) {
-                        final FoodItemDataModel foodItem =
-                            state.foodItems[index];
+        return Stack(
+          children: [
+            ListView.builder(
+              controller: scrollController,
+              shrinkWrap: true,
+              itemCount: state.foodItems.length,
+              itemBuilder: (_, int index) {
+                final FoodItemDataModel foodItem = state.foodItems[index];
 
-                        return FoodItemWidget(foodItem);
-                      },
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: state.foodItemStatus == FoodItemStatus.moreBusy
-                          ? const LoadingMoreWidget()
-                          : Container(),
-                    ),
-                  ],
-                ),
-              );
-            },
-          )
-        ],
-      ),
+                return FoodItemWidget(foodItem);
+              },
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: state.foodItemStatus == FoodItemStatus.moreBusy
+                  ? const LoadingMoreWidget()
+                  : Container(),
+            ),
+          ],
+        );
+      },
     );
   }
 }
