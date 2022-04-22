@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -23,6 +24,17 @@ class CustomImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (imageTypes) {
       case ImageTypes.network:
+        if (kIsWeb) {
+          return Image.network(
+            imageUrl,
+            fit: fit ?? BoxFit.fill,
+            errorBuilder: (_, __, e) {
+              log(e.toString());
+              return const Center(child: Icon(Icons.error));
+            },
+          );
+        }
+
         return CachedNetworkImage(
           imageUrl: imageUrl,
           fit: fit ?? BoxFit.fill,
@@ -51,6 +63,17 @@ class CustomImageWidget extends StatelessWidget {
         return const Placeholder();
 
       case ImageTypes.profile:
+        if (kIsWeb) {
+          return Image.network(
+            imageUrl,
+            fit: fit ?? BoxFit.fill,
+            errorBuilder: (_, __, e) {
+              log(e.toString());
+              return const Center(child: Icon(Icons.error));
+            },
+          );
+        }
+
         return CachedNetworkImage(
           imageUrl: imageUrl,
           fit: fit ?? BoxFit.fill,

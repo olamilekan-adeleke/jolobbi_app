@@ -16,12 +16,7 @@ Future<void> main() async {
 
     await PushNotificationService().initNotification();
 
-    MonnifyFlutterSdk.initialize(
-      'MK_TEST_BM0J9L4PF8',
-      '5496050632',
-      ApplicationMode.TEST,
-    );
-
+   
     runApp(const JolobbiApp());
   } else {
     runZonedGuarded<Future<void>>(
