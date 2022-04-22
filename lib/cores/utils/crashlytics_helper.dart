@@ -6,7 +6,7 @@ class CrashlyticsHelper {
   final LocalStorage _localStorage = LocalStorage.instance;
 
   CrashlyticsHelper() {
-    _init();
+    // _init();
   }
 
   Future<void> _init() async {
@@ -23,14 +23,14 @@ class CrashlyticsHelper {
   }
 
   Future<void> setUserDetailsKey(String userId, String email) async {
-    await FirebaseCrashlytics.instance.setCustomKey('user_id', userId);
-    await FirebaseCrashlytics.instance.setCustomKey('username', email);
+    // await FirebaseCrashlytics.instance.setCustomKey('user_id', userId);
+    // await FirebaseCrashlytics.instance.setCustomKey('username', email);
   }
 
   Future<void> log(String message, {Map? extraData}) async {
-    await FirebaseCrashlytics.instance.log(
-      '$message | ${extraData != null ? extraData.toString() : ''}',
-    );
+    // await FirebaseCrashlytics.instance.log(
+    //   '$message | ${extraData != null ? extraData.toString() : ''}',
+    // );
   }
 
   Future<void> logError(
@@ -42,14 +42,14 @@ class CrashlyticsHelper {
   }) async {
     final String userId = _localStorage.userEmail;
 
-    FirebaseCrashlytics.instance.setUserIdentifier(userId);
+    // FirebaseCrashlytics.instance.setUserIdentifier(userId);
 
-    await FirebaseCrashlytics.instance.recordError(
-      error,
-      stackTrace,
-      reason: '@$functionName | ${action ?? ''}',
-      fatal: fatal,
-    );
+    // await FirebaseCrashlytics.instance.recordError(
+    //   error,
+    //   stackTrace,
+    //   reason: '@$functionName | ${action ?? ''}',
+    //   fatal: fatal,
+    // );
 
     log(error);
     log(stackTrace.toString());

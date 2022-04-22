@@ -19,7 +19,7 @@ class AuthStateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthenticatedStateCubit, AuthenticatedStatus>(
       builder: (context, state) {
-        if (kReleaseMode) {
+        if (true) {
           switch (state) {
             case AuthenticatedStatus.authenticated:
               return const FoodHomePage();
