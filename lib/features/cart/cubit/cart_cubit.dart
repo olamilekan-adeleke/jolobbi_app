@@ -233,6 +233,11 @@ class CartCubit extends Cubit<CartListStateModel> {
 
       emit(state.copyWith(cartItems: list));
     }
+
+    // update local storage
+    List<Map<String, dynamic>> dataToSave =
+        state.cartItems.map((ele) => ele.toMap()).toList();
+    _localStorage.saveCartItem(dataToSave);
   }
 
   void decrementCartSubItemCount(CartItemModel cart, CartAddOn subItem) {
@@ -275,6 +280,10 @@ class CartCubit extends Cubit<CartListStateModel> {
 
       emit(state.copyWith(cartItems: list));
     }
+    // update local storage
+    List<Map<String, dynamic>> dataToSave =
+        state.cartItems.map((ele) => ele.toMap()).toList();
+    _localStorage.saveCartItem(dataToSave);
   }
 
   int itemTotalPrice() {
