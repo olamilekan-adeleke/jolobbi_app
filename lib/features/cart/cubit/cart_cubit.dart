@@ -2,12 +2,28 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../cores/utils/local_storage.dart';
 import '../enum/cart_enum.dart';
 import '../model/cart_list_state_model.dart';
 import 'cart_item_model.dart';
 
 class CartCubit extends Cubit<CartListStateModel> {
-  CartCubit() : super(CartListStateModel());
+  CartCubit() : super(CartListStateModel()) {
+    getCachedCartData();
+  }
+
+  static final LocalStorage _localStorage = LocalStorage.instance;
+
+  Future<void> getCachedCartData() async {
+    List<Map<String, dynamic>>? data = await _localStorage.getCartItem();
+
+    if (data == null) return;
+
+    List<CartItemModel> cartList =
+        data.map((ele) => CartItemModel.fromMap(ele)).toList();
+
+    emit(state.copyWith(cartItems: cartList));
+  }
 
   void addFoodItemToCart(CartItemModel cartItem) {
     if (state.cartItems.any((ele) => ele.name == cartItem.name)) {
@@ -31,7 +47,10 @@ class CartCubit extends Cubit<CartListStateModel> {
 
     log('cart: ${state.toString()}');
 
-    // TODO: update local storage
+    // update local storage
+    List<Map<String, dynamic>> dataToSave =
+        state.cartItems.map((ele) => ele.toMap()).toList();
+    _localStorage.saveCartItem(dataToSave);
   }
 
   void deleteCartItem(CartItemModel cart) {
@@ -44,7 +63,10 @@ class CartCubit extends Cubit<CartListStateModel> {
 
     emit(state.copyWith(cartItems: items));
 
-    // TODO: update local storage
+    // update local storage
+    List<Map<String, dynamic>> dataToSave =
+        state.cartItems.map((ele) => ele.toMap()).toList();
+    _localStorage.saveCartItem(dataToSave);
   }
 
   void deleteExtraCartItem(CartItemModel cart, item) {
@@ -83,7 +105,10 @@ class CartCubit extends Cubit<CartListStateModel> {
       emit(state);
     }
 
-    // TODO: update local storage
+    // update local storage
+    List<Map<String, dynamic>> dataToSave =
+        state.cartItems.map((ele) => ele.toMap()).toList();
+    _localStorage.saveCartItem(dataToSave);
   }
 
   int getCartItemCount(CartItemModel cart) {
@@ -111,7 +136,10 @@ class CartCubit extends Cubit<CartListStateModel> {
 
       emit(state.copyWith(cartItems: list));
 
-      // TODO: update local storage
+      // update local storage
+      List<Map<String, dynamic>> dataToSave =
+          state.cartItems.map((ele) => ele.toMap()).toList();
+      _localStorage.saveCartItem(dataToSave);
     }
   }
 
@@ -132,7 +160,10 @@ class CartCubit extends Cubit<CartListStateModel> {
 
       emit(state.copyWith(cartItems: list));
 
-      // TODO: update local storage
+      // update local storage
+      List<Map<String, dynamic>> dataToSave =
+          state.cartItems.map((ele) => ele.toMap()).toList();
+      _localStorage.saveCartItem(dataToSave);
     }
   }
 

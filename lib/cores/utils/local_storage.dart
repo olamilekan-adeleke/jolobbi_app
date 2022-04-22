@@ -12,6 +12,7 @@ class LocalStorage {
 
   final FlutterSecureStorage storage = const FlutterSecureStorage();
   final loginDetailsKey = 'LoginDetailsKey';
+  final cartKey = 'cartKey';
 
   Future<void> saveLoginDetails(String email, String password) async {
     try {
@@ -48,5 +49,27 @@ class LocalStorage {
     }
 
     return _loginModel;
+  }
+
+  Future<void> saveCartItem(List<Map<String, dynamic>> items) async {
+    try {
+      final String value = json.encode(items);
+
+      await storage.write(key: cartKey, value: value);
+    } catch (_) {}
+  }
+
+  Future<List<Map<String, dynamic>>?> getCartItem() async {
+    try {
+      final String? value = await storage.read(key: cartKey);
+
+      if (value == null) return null;
+
+      final List<dynamic> data = json.decode(value);
+
+      return List<Map<String, dynamic>>.from(data);
+    } catch (_) {
+      return null;
+    }
   }
 }
