@@ -73,58 +73,60 @@ class _BlocProviderHelper {
   List<BlocProvider> blocList(BuildContext context) {
     return <BlocProvider>[
       BlocProvider<AuthenticatedStateCubit>(
-        create: (_) => AuthenticatedStateCubit(
+        create: (context) => AuthenticatedStateCubit(
           authStatus: AuthenticatedStatus.unauthenticated,
         ),
         lazy: false,
       ),
       BlocProvider<LoginCubit>(
-        create: (_) => LoginCubit(loginRepository: loginRepository),
+        create: (context) => LoginCubit(loginRepository: loginRepository),
       ),
       BlocProvider<SignUpCubit>(
-        create: (_) => SignUpCubit(signUpRepository: signUpRepository),
+        create: (context) => SignUpCubit(signUpRepository: signUpRepository),
       ),
       BlocProvider<ForgotPasswordCubit>(
-        create: (_) => ForgotPasswordCubit(forgotPasswordRepository),
+        create: (context) => ForgotPasswordCubit(forgotPasswordRepository),
       ),
       BlocProvider<FoodVendorCubit>(
-        create: (_) =>
+        create: (context) =>
             FoodVendorCubit(foodVendorService)..getPopularFoodVendor(),
       ),
       BlocProvider<FoodItemCubit>(
-        create: (_) => FoodItemCubit(foodVendorService)
+        create: (context) => FoodItemCubit(foodVendorService)
           ..getFoodItem()
           ..getSnackItem()
           ..getDrinkItem(),
       ),
       BlocProvider<VendorMenuCubit>(
-        create: (_) => VendorMenuCubit(foodVendorService),
+        create: (context) => VendorMenuCubit(foodVendorService),
       ),
       BlocProvider<ProfileDetailsCubit>(
-        create: (_) =>
+        create: (context) =>
             ProfileDetailsCubit(profileService)..getCurrentLoginUserData(),
         lazy: false,
       ),
       BlocProvider<UpdateProfileCubit>(
-        create: (_) => UpdateProfileCubit(profileService),
+        create: (context) => UpdateProfileCubit(profileService),
       ),
       BlocProvider<UpdateWalletPinCubit>(
-        create: (_) => UpdateWalletPinCubit(walletPinService),
+        create: (context) => UpdateWalletPinCubit(walletPinService),
       ),
       BlocProvider<UpdateAddressCubit>(
-        create: (_) => UpdateAddressCubit(updateAddressService),
+        create: (context) => UpdateAddressCubit(updateAddressService),
       ),
       BlocProvider<WalletCubit>(
-        create: (_) => WalletCubit()..getWalletBalance(),
+        create: (context) => WalletCubit()..getWalletBalance(),
       ),
-      BlocProvider<FundWalletCubit>(create: (_) => FundWalletCubit()),
-      BlocProvider<CartCubit>(create: (_) => CartCubit()),
-      BlocProvider<OrderFeeCubit>(create: (_) => OrderFeeCubit()..getFee()),
-      BlocProvider<SendFundCubit>(create: (_) => SendFundCubit()),
+      BlocProvider<FundWalletCubit>(create: (context) => FundWalletCubit()),
+      BlocProvider<CartCubit>(create: (context) => CartCubit()),
+      BlocProvider<OrderFeeCubit>(
+          create: (context) => OrderFeeCubit()..getFee()),
+      BlocProvider<SendFundCubit>(create: (context) => SendFundCubit()),
       BlocProvider<TransactionHistoryCubit>(
-        create: (_) => TransactionHistoryCubit()..getUserTransactionHistory(),
+        create: (context) =>
+            TransactionHistoryCubit()..getUserTransactionHistory(),
       ),
-      BlocProvider<AddOrderCubit>(create: (_) => AddOrderCubit()),
+      BlocProvider<AddOrderCubit>(create: (context) => AddOrderCubit()),
     ];
   }
 }

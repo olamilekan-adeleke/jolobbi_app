@@ -312,5 +312,10 @@ class CartCubit extends Cubit<CartListStateModel> {
 
   void clearCart() {
     emit(state.copyWith(cartItems: []));
+
+    // update local storage
+    // List<Map<String, dynamic>> dataToSave =
+    //     state.cartItems.map((ele) => ele.toMap()).toList();
+    // _localStorage.saveCartItem(dataToSave);
   }
 }
