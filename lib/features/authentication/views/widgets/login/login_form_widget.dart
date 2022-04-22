@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +34,6 @@ class LoginFormWidget extends StatelessWidget {
             'Enter your email and password to access your account',
             fontWeight: FontWeight.w300,
             fontSize: sp(11),
-
           ),
           verticalSpace(20),
           CustomTextField(
@@ -82,27 +82,28 @@ class LoginFormWidget extends StatelessWidget {
             },
           ),
           verticalSpace(20),
-          BlocBuilder<LoginCubit, LoginModel>(
-            builder: (context, state) {
-              if (state.loginStatus == LoginStatus.busy) {
-                return Container();
-              }
+          if (!kIsWeb)
+            BlocBuilder<LoginCubit, LoginModel>(
+              builder: (context, state) {
+                if (state.loginStatus == LoginStatus.busy) {
+                  return Container();
+                }
 
-              return Center(
-                child: GestureDetector(
-                  onTap: context.read<LoginCubit>().biometricLogin,
-                  child: SizedBox(
-                    height: sp(20),
-                    width: sp(20),
-                    child: const CustomImageWidget(
-                      imageUrl: 'assets/images/thumb_print_icon.svg',
-                      imageTypes: ImageTypes.svg,
+                return Center(
+                  child: GestureDetector(
+                    onTap: context.read<LoginCubit>().biometricLogin,
+                    child: SizedBox(
+                      height: sp(20),
+                      width: sp(20),
+                      child: const CustomImageWidget(
+                        imageUrl: 'assets/images/thumb_print_icon.svg',
+                        imageTypes: ImageTypes.svg,
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-          ),
+                );
+              },
+            ),
           verticalSpace(20),
           GestureDetector(
             onTap: () {

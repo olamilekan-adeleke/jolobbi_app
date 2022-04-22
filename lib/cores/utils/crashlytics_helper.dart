@@ -14,7 +14,7 @@ class CrashlyticsHelper {
     if (kDebugMode) {
       // Force disable Crashlytics collection while doing every day development.
       // Temporarily toggle this to true if you want to test crash reporting in your app.
-      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+      // await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
     } else {
       // await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
       // Handle Crashlytics enabled status when not in Debug,
