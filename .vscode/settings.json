@@ -11,5 +11,8 @@
     "paystack",
     "Shima",
     "Tanke"
-  ]
+  ],
+  "docwriter.style": "Auto-detect",
+  "docwriter.progress.trackClasses": true,
+  "docwriter.progress.trackTypes": true
 }
