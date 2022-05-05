@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../profile/model/user_profile_data_model.dart';
 import '../cubit/cart_item_model.dart';
 
@@ -14,6 +16,7 @@ class OrderDataModel {
   final List<String> vendorNameList;
   final UserProfileDataModel userData;
   final String userId;
+  final Timestamp? timestamp;
 
   OrderDataModel({
     required this.items,
@@ -27,6 +30,7 @@ class OrderDataModel {
     required this.vendorNameList,
     required this.userData,
     required this.userId,
+    this.timestamp,
   });
 
   Map<String, dynamic> toMapForInitOrder() {
@@ -45,6 +49,7 @@ class OrderDataModel {
       'vendorNameList': vendorNameList,
       'userData': _userData,
       'userId': userId,
+      'timestamp': Timestamp.now(),
     };
   }
 

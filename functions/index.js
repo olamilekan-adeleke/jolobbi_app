@@ -6,7 +6,7 @@ const updateUserWalletPinFunction = require("./src/http_function/update_wallet_p
 const verifyWalletPinFunction = require("./src/http_function/wallet_pin/verify_pin");
 const onNewUserCreatedFunction = require("./src/trigger_function/on_new_user_created");
 const processTransactionFunction = require("./src/http_function/payment/process_payment");
-const onNewOrderFunction = require("./src/trigger_function/new_order/on_new_order_function");
+const onNewOrderFunction = require("./src/trigger_function/orders/on_new_order_function");
 
 require("dotenv").config();
 
