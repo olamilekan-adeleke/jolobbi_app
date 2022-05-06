@@ -17,7 +17,7 @@ const createUserWalletPinFunction = async (req, res) => {
 
     res
       .status(error.code || 500)
-      .json({ status: "fail", msg: error.msg ?? "something went wrong" });
+      .json({ status: "fail", msg: error.msg || "something went wrong" });
   }
 };
 

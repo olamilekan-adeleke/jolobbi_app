@@ -52,8 +52,8 @@ const transferToBusinessByTag = async (req, res) => {
     functions.logger.error(error);
 
     res
-      .status(error.code ?? 500)
-      .json({ status: "fail", msg: error.msg ?? "something went wrong" });
+      .status(error.code || 500)
+      .json({ status: "fail", msg: error.msg || "something went wrong" });
   }
 };
 

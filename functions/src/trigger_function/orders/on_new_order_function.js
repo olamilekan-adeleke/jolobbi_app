@@ -12,10 +12,10 @@ const onNewOrderFunction = async (snapshot, context) => {
   });
 
   // all vendor notification for new order
-  orderData.vendorNameList.forEach(element => {
+  orderData.vendorNameList.forEach(async (element) => {
     //TODO: remove override later
 
-    element = 'Shop 123';
+    element = "Shop 123";
     const vendorData = await getVendorDataByName(element);
 
     await sendNotificationHelper(
@@ -26,13 +26,12 @@ const onNewOrderFunction = async (snapshot, context) => {
     );
   });
 
-
   // send user notification
   await sendNotificationToUserById(
     userId,
     "Order Successful!",
     "Your order has been successfully passed, you will get" +
-    " a notification once all vendor has approved your order for processing",
+      " a notification once all vendor has approved your order for processing",
     notificationData
   );
 };
