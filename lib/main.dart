@@ -15,7 +15,6 @@ Future<void> main() async {
     await Firebase.initializeApp();
 
     await PushNotificationService().initNotification();
-
    
     runApp(const JolobbiApp());
   } else {

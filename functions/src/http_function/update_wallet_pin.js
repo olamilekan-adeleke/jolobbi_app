@@ -21,7 +21,7 @@ const updateUserWalletPinFunction = async (req, res) => {
     functions.logger.error(error);
 
     res
-      .status(error.code ?? 500)
+      .status(error.code || 500)
       .json({ status: "fail", msg: error.msg ?? "something went wrong" });
   }
 };
