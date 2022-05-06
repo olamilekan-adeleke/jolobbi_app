@@ -1,6 +1,6 @@
 const functions = require("firebase-functions");
 const sendNotificationHelper = require("../../controllers/notification/notification_helper");
-const sendNotificationToUserById = require("../../controllers/notification/send_notifcation_user_by_id");
+const sendNotificationToUserById = require("../../controllers/notification/send_notification_user_by_id");
 const addTransferHistoryUser = require("../../controllers/payment/add_transfer_history_for_user");
 const getVendorDataByTag = require("../../controllers/payment/get_business_data_by_tag");
 const transferFundToVendor = require("../../controllers/payment/transfer_fund_to_vendor");

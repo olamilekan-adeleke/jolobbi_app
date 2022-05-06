@@ -1,5 +1,5 @@
 const functions = require("firebase-functions");
-const sendNotificationToUserById = require("../../controllers/notification/send_notifcation_user_by_id");
+const sendNotificationToUserById = require("../../controllers/notification/send_notification_user_by_id");
 
 const addNewUserTransactionHistory = require("../../controllers/payment/add_new_user_transaction_history");
 const updateTotalWalletAmountStat = require("../../controllers/stats/update_total_amount_stats");
