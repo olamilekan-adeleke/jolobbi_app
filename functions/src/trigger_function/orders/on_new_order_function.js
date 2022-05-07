@@ -1,3 +1,4 @@
+const sendNotificationHelper = require("../../controllers/notification/notification_helper");
 const sendNotificationToUserById = require("../../controllers/notification/send_notification_user_by_id");
 const getVendorDataByName = require("../../controllers/payment/get_business_data_by_tag");
 const moveFundFromUserToJolobbiWallet = require("../../controllers/payment/move_funds_from_user_to_jolobbi_wallet");
@@ -29,7 +30,7 @@ const onNewOrderFunction = async (snapshot, context) => {
 
   // send user notification
   await sendNotificationToUserById(
-    userId,
+    orderData.userId,
     "Order Successful!",
     "Your order has been successfully passed, you will get" +
       " a notification once all vendor has approved your order for processing",

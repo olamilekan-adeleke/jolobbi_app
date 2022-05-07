@@ -5,13 +5,14 @@ const sendNotificationHelper = require("./notification_helper");
 const sendNotificationToUserById = async (userId, title, body, data) => {
   const userData = await getUserDataById(userId);
 
+  if (!userData || !userData.fcm_token) {
+    functions.logger.warn(`unable send notification for user ${userId}`);
+    return;
+  }
+
   const fcmToken = userData.fcm_token;
 
   functions.logger.log(`fcm token ${fcmToken}`);
-
-  if (!fcmToken) {
-    return;
-  }
 
   await sendNotificationHelper(fcmToken, title, body, data);
 
