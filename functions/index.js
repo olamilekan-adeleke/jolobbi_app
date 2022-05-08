@@ -7,11 +7,11 @@ const verifyWalletPinFunction = require("./src/http_function/wallet_pin/verify_p
 const onNewUserCreatedFunction = require("./src/trigger_function/on_new_user_created");
 const processTransactionFunction = require("./src/http_function/payment/process_payment");
 const onNewOrderFunction = require("./src/trigger_function/orders/on_new_order_function");
+const onOrderStatusChangeFunction = require("./src/trigger_function/orders/on_order_status_change_function");
 
 require("dotenv").config();
 
 // http functions
-
 exports.createUserWalletPin = functions.https.onRequest(
   createUserWalletPinFunction
 );
@@ -41,3 +41,6 @@ exports.processNewOrder = functions.firestore
   .document("orders/{orderId}")
   .onCreate(onNewOrderFunction);
 
+exports.processOrderStatus = functions.firestore
+  .document("orders/{orderId}")
+  .onUpdate(onOrderStatusChangeFunction);

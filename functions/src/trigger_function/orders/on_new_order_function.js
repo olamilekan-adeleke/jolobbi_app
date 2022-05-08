@@ -18,13 +18,8 @@ const onNewOrderFunction = async (snapshot, context) => {
   await orderData.vendorNameList.forEach(async (element) => {
     //TODO: remove override later
 
-    functions.logger.log(`${element}`);
     element = "Shop 123";
-
-    functions.logger.log(`${element}`);
     const vendorData = await getVendorDataByName(element);
-
-    functions.logger.log(`${JSON.stringify(vendorData)}`);
 
     await sendNotificationHelper(
       vendorData.fcm_token,

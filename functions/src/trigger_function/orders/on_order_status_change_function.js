@@ -1,21 +1,12 @@
+const pendingOrderController = require("../../controllers/order/order_status/pending_order_controller");
+
 const onOrderStatusChangeFunction = async (snapshot, context) => {
-  //check if is [orderStatus] change, else return
-  //
-  //
-  //check if orderStatus is pending
-  //
-  //    update item approved in items List e.g {approved: true}
-  //
-  //    check if every vendor have accepted the order, if yes..
-  //
-  //            send notification to user that order are being processed
-  //
-  //            pay all vendor
-  //
-  //            send notification to vendor to start processing order
-  //
-  //
-  //send user notification on orderStatus change
+  const orderData = snapshot.data();
+
+  //check orderStatus 
+  if (orderData.orderStatus == "pending") {
+    await pendingOrderController();
+  }
 };
 
 module.exports = onOrderStatusChangeFunction;

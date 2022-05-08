@@ -3,7 +3,7 @@ const sendNotificationHelper = require("../../controllers/notification/notificat
 const sendNotificationToUserById = require("../../controllers/notification/send_notification_user_by_id");
 const addTransferHistoryUser = require("../../controllers/payment/add_transfer_history_for_user");
 const getVendorDataByTag = require("../../controllers/payment/get_business_data_by_tag");
-const transferFundToVendor = require("../../controllers/payment/transfer_fund_to_vendor");
+const transferFundFromUserToVendor = require("../../controllers/payment/transfer_fund_to_vendor");
 
 const transferToBusinessByTag = async (req, res) => {
   try {
@@ -21,7 +21,7 @@ const transferToBusinessByTag = async (req, res) => {
     functions.logger.log(vendorData);
 
     // make transfer from user wallet to vendor wallet
-    await transferFundToVendor(vendorData.id, userId, amount);
+    await transferFundFromUserToVendor(vendorData.id, userId, amount);
 
     const notificationData = { type: "fund_transfer" };
 

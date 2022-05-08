@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require("../../firebase_admin_helper");
 
+// @ts-ignore
 const updateUserCashWallet = async ({userId, amount}={}) => {
   await admin
     .firestore()
