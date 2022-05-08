@@ -1,3 +1,4 @@
+const sendNotificationHelper = require("../../notification/notification_helper");
 const sendNotificationToUserById = require("../../notification/send_notification_user_by_id");
 const getVendorDataByName = require("../../payment/get_business_data_by_tag");
 const transferFundFromJolobbiToVendor = require("../../payment/transfer_fund_from_jolobbi_to_vendor");
@@ -29,19 +30,24 @@ const pendingOrderController = async (orderData) => {
 
     //pay all vendor
     await orderData.vendorNameList.forEach(async (element) => {
+      //TODO: remove override later
+      element = "Shop 123";
+
       const vendorData = await getVendorDataByName(element);
 
-        
-        //? continuc
       await transferFundFromJolobbiToVendor({
         vendorId: vendorData.id,
-        amount: 10,
+        amount: 100,
       });
+
+      //send notification to vendor to start processing order
+      await sendNotificationHelper(
+        vendorData.fcm_token,
+        "Alert!",
+        "New order to process is available, please prepare order while driver is on his way to pick it up!",
+        notificationData
+      );
     });
-    //
-    //send notification to vendor to start processing order
-    //
-    //
   } else {
     return Promise.resolve();
   }
