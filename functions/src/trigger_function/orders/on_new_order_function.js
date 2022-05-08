@@ -1,3 +1,4 @@
+const functions = require("firebase-functions");
 const sendNotificationHelper = require("../../controllers/notification/notification_helper");
 const sendNotificationToUserById = require("../../controllers/notification/send_notification_user_by_id");
 const getVendorDataByName = require("../../controllers/payment/get_business_data_by_tag");
@@ -14,11 +15,16 @@ const onNewOrderFunction = async (snapshot, context) => {
   });
 
   // all vendor notification for new order
-  orderData.vendorNameList.forEach(async (element) => {
+  await orderData.vendorNameList.forEach(async (element) => {
     //TODO: remove override later
 
+    functions.logger.log(`${element}`);
     element = "Shop 123";
+
+    functions.logger.log(`${element}`);
     const vendorData = await getVendorDataByName(element);
+
+    functions.logger.log(`${JSON.stringify(vendorData)}`);
 
     await sendNotificationHelper(
       vendorData.fcm_token,
@@ -32,7 +38,7 @@ const onNewOrderFunction = async (snapshot, context) => {
   await sendNotificationToUserById(
     orderData.userId,
     "Order Successful!",
-    "Your order has been successfully passed, you will get" +
+    "Your order has been successfully placed, you will get" +
       " a notification once all vendor has approved your order for processing",
     notificationData
   );
