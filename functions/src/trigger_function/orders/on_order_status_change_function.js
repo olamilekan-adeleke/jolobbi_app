@@ -1,3 +1,4 @@
+const enrouteOrderController = require("../../controllers/order/order_status/enroute_order_controller");
 const pendingOrderController = require("../../controllers/order/order_status/pending_order_controller");
 
 const onOrderStatusChangeFunction = async (snapshot, context) => {
@@ -10,6 +11,11 @@ const onOrderStatusChangeFunction = async (snapshot, context) => {
   //check orderStatus
   if (orderData.orderStatus == "pending") {
     await pendingOrderController(orderData);
+  } else if (orderData.orderStatus == "processing") {
+  } else if (orderData.orderStatus == "enroute") {
+    await enrouteOrderController(orderData);
+  } else if (orderData.orderStatus == "completed") {
+  } else if (orderData.orderStatus == "rejected") {
   }
 };
 

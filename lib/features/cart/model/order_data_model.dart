@@ -11,7 +11,7 @@ class OrderDataModel {
   final int totalFee;
   final bool hasRated;
   final String orderId;
-  // pending, accepted, processing, enroute, completed, rejected,
+  // pending, processing, enroute, completed, rejected,
   final String orderStatus;
   final List<String> vendorNameList;
   final UserProfileDataModel userData;
