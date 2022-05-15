@@ -23,7 +23,7 @@ const onOrderStatusChangeFunction = async (snapshot, context) => {
       await rejectedOrderController(orderData);
     }
   } catch (error) {
-    functions.logger.error(error);
+    functions.logger.error(JSON.stringify(error));
 
     return Promise.reject(error);
   }

@@ -36,13 +36,7 @@ const pendingOrderController = async (orderData) => {
         return item.fastFoodName === element;
       });
 
-      functions.logger.log(
-        `food data (${element}): ${JSON.stringify(foodItem)}`
-      );
-
       const totalFee = calculateItemFeeByVendorName(foodItem);
-
-      functions.logger.log(`food data Fee (${element}): ${totalFee}`);
 
       //TODO: remove override later
       element = "Shop 123";
