@@ -19,7 +19,7 @@ const transferFundFromJolobbiToVendor = async ({ vendorId, amount }) => {
       throw { code: 400, msg: "Data not found!" };
     }
 
-    if (jolobbiWalletSnapshot.data().cash_balance < parseInt(vendorAmount)) {
+    if (jolobbiWalletSnapshot.data().cash_balance < parseFloat(vendorAmount)) {
       throw { code: 400, msg: "Insufficient Balance!" };
     }
 
@@ -27,7 +27,7 @@ const transferFundFromJolobbiToVendor = async ({ vendorId, amount }) => {
 
     await transaction.update(jolobbiWalletRef, {
       cash_balance: admin.firestore.FieldValue.increment(
-        -parseInt(`${vendorAmount}`)
+        -parseFloat(`${vendorAmount}`)
       ),
     });
 
@@ -46,9 +46,17 @@ const _getVendorFeeByPercentage = async (amount) => {
     throw { code: 400, msg: "No Vendor Percentage Data Found" };
   }
 
+  functions.logger.log(JSON.stringify(vendorPercentageSnapshot.data()));
+  functions.logger.log(JSON.stringify(vendorPercentageSnapshot.data().percent));
+
   const percentage = vendorPercentageSnapshot.data().percent || 0;
 
+
+
   const _amount = ((percentage / 100) * amount).toFixed(2);
+
+
+  functions.logger.log(_amount);
 
   return _amount;
 };

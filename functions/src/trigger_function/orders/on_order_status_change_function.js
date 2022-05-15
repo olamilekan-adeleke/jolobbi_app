@@ -1,24 +1,31 @@
+const functions = require("firebase-functions");
 const enrouteOrderController = require("../../controllers/order/order_status/enroute_order_controller");
 const pendingOrderController = require("../../controllers/order/order_status/pending_order_controller");
 const rejectedOrderController = require("../../controllers/order/order_status/rejected_order_controller");
 
 const onOrderStatusChangeFunction = async (snapshot, context) => {
-  const orderData = snapshot.after.data();
+  try {
+    const orderData = snapshot.after.data();
 
-  if (snapshot.before.data() === snapshot.after.data()) {
-    return Promise.resolve();
-  }
+    if (snapshot.before.data() === snapshot.after.data()) {
+      return Promise.resolve();
+    }
 
-  //check orderStatus
-  if (orderData.orderStatus == "pending") {
-    await pendingOrderController(orderData);
-  } else if (orderData.orderStatus == "processing") {
-  } else if (orderData.orderStatus == "enroute") {
-    await enrouteOrderController(orderData);
-  } else if (orderData.orderStatus == "completed") {
-    //
-  } else if (orderData.orderStatus == "rejected") {
-    await rejectedOrderController(orderData);
+    //check orderStatus
+    if (orderData.orderStatus == "pending") {
+      await pendingOrderController(orderData);
+    } else if (orderData.orderStatus == "processing") {
+    } else if (orderData.orderStatus == "enroute") {
+      await enrouteOrderController(orderData);
+    } else if (orderData.orderStatus == "completed") {
+      //
+    } else if (orderData.orderStatus == "rejected") {
+      await rejectedOrderController(orderData);
+    }
+  } catch (error) {
+    functions.logger.error(error);
+
+    return Promise.reject(error);
   }
 };
 

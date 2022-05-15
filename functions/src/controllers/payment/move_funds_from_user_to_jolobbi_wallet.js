@@ -2,6 +2,7 @@ const admin = require("../../../firebase_admin_helper");
 const functions = require("firebase-functions");
 const updateJolobbiWallet = require("./update_jolobbi_wallet");
 
+// @ts-ignore
 const moveFundFromUserToJolobbiWallet = async ({ userId, amount } = {}) => {
   const userWalletRef = admin.firestore().collection("wallets").doc(userId);
 

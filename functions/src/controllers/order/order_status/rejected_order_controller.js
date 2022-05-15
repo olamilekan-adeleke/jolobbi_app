@@ -9,6 +9,8 @@ const rejectedOrderController = async (orderData) => {
     "Your order has been rejected by a vendor😞, Tap to see more details",
     notificationData
   );
+
+  // TODO: add refund user
 };
 
 module.exports = rejectedOrderController;

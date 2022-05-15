@@ -1,7 +1,9 @@
+const functions = require("firebase-functions");
 const sendNotificationHelper = require("../../notification/notification_helper");
 const sendNotificationToUserById = require("../../notification/send_notification_user_by_id");
 const getVendorDataByName = require("../../payment/get_business_data_by_tag");
 const transferFundFromJolobbiToVendor = require("../../payment/transfer_fund_from_jolobbi_to_vendor");
+const calculateItemFeeByVendorName = require("../helpers/calcuate_item_fee_by_vendor_name");
 
 const pendingOrderController = async (orderData) => {
   let approvedItemCount = 0;
@@ -30,6 +32,18 @@ const pendingOrderController = async (orderData) => {
 
     //pay all vendor
     await orderData.vendorNameList.forEach(async (element) => {
+      const foodItem = orderData.items.find((item) => {
+        return item.fastFoodName === element;
+      });
+
+      functions.logger.log(
+        `food data (${element}): ${JSON.stringify(foodItem)}`
+      );
+
+      const totalFee = calculateItemFeeByVendorName(foodItem);
+
+      functions.logger.log(`food data Fee (${element}): ${totalFee}`);
+
       //TODO: remove override later
       element = "Shop 123";
 
@@ -37,7 +51,7 @@ const pendingOrderController = async (orderData) => {
 
       await transferFundFromJolobbiToVendor({
         vendorId: vendorData.id,
-        amount: 100,
+        amount: totalFee,
       });
 
       //send notification to vendor to start processing order

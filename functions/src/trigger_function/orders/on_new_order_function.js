@@ -5,38 +5,44 @@ const getVendorDataByName = require("../../controllers/payment/get_business_data
 const moveFundFromUserToJolobbiWallet = require("../../controllers/payment/move_funds_from_user_to_jolobbi_wallet");
 
 const onNewOrderFunction = async (snapshot, context) => {
-  const orderData = snapshot.data();
-  const notificationData = { type: "order" };
+  try {
+    const orderData = snapshot.data();
+    const notificationData = { type: "order" };
 
-  // move money from user wallet to jolobbi wallet
-  await moveFundFromUserToJolobbiWallet({
-    userId: orderData.userId,
-    amount: orderData.totalFee,
-  });
+    // move money from user wallet to jolobbi wallet
+    await moveFundFromUserToJolobbiWallet({
+      userId: orderData.userId,
+      amount: orderData.totalFee,
+    });
 
-  // all vendor notification for new order
-  await orderData.vendorNameList.forEach(async (element) => {
-    //TODO: remove override later
+    // all vendor notification for new order
+    await orderData.vendorNameList.forEach(async (element) => {
+      //TODO: remove override later
 
-    element = "Shop 123";
-    const vendorData = await getVendorDataByName(element);
+      element = "Shop 123";
+      const vendorData = await getVendorDataByName(element);
 
-    await sendNotificationHelper(
-      vendorData.fcm_token,
-      "New Order Alert!",
-      `A new order was just made!`,
+      await sendNotificationHelper(
+        vendorData.fcm_token,
+        "New Order Alert!",
+        `A new order was just made!`,
+        notificationData
+      );
+    });
+
+    // send user notification
+    await sendNotificationToUserById(
+      orderData.userId,
+      "Order Successful!",
+      "Your order has been successfully placed, you will get" +
+        " a notification once all vendor has approved your order for processing",
       notificationData
     );
-  });
+  } catch (error) {
+    functions.logger.error(error);
 
-  // send user notification
-  await sendNotificationToUserById(
-    orderData.userId,
-    "Order Successful!",
-    "Your order has been successfully placed, you will get" +
-      " a notification once all vendor has approved your order for processing",
-    notificationData
-  );
+    return Promise.reject(error);
+  }
 };
 
 module.exports = onNewOrderFunction;
