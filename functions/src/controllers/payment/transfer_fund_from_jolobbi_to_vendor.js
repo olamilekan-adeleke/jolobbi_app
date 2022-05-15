@@ -33,7 +33,7 @@ const transferFundFromJolobbiToVendorOrUserById = async ({
         amount: admin.firestore.FieldValue.increment(-vendorAmount),
       });
 
-      functions.logger.log(`updated wallet for vendor ${receiverId}`);
+      functions.logger.log(`updated wallet for vendor/user ${receiverId}`);
     })
     .catch((error) => {
       functions.logger.error(JSON.stringify(error));

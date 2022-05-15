@@ -12,7 +12,6 @@ const rejectedOrderController = async (orderData) => {
     notificationData
   );
 
-  // TODO: add refund user
   await transferFundFromJolobbiToVendorOrUserById({
     receiverId: orderData.userId,
     amount: orderData.totalFee,
