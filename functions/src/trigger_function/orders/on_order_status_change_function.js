@@ -16,9 +16,9 @@ const onOrderStatusChangeFunction = async (snapshot, context) => {
   } else if (orderData.orderStatus == "enroute") {
     await enrouteOrderController(orderData);
   } else if (orderData.orderStatus == "completed") {
-    await rejectedOrderController(orderData);
+    //
   } else if (orderData.orderStatus == "rejected") {
-
+    await rejectedOrderController(orderData);
   }
 };
 

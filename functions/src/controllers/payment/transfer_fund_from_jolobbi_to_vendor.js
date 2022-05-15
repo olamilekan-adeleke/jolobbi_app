@@ -10,6 +10,8 @@ const transferFundFromJolobbiToVendor = async ({ vendorId, amount }) => {
 
   const vendorAmount = await _getVendorFeeByPercentage(amount);
 
+  functions.logger.log("vendorAmount: " + vendorAmount);
+
   await admin.firestore().runTransaction(async (transaction) => {
     const jolobbiWalletSnapshot = await transaction.get(jolobbiWalletRef);
 
@@ -44,7 +46,7 @@ const _getVendorFeeByPercentage = async (amount) => {
     throw { code: 400, msg: "No Vendor Percentage Data Found" };
   }
 
-  const percentage = vendorPercentageSnapshot.data().percentage;
+  const percentage = vendorPercentageSnapshot.data().percent || 0;
 
   const _amount = ((percentage / 100) * amount).toFixed(2);
 
