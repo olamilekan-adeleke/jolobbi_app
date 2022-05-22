@@ -23,4 +23,27 @@ const incrementNewUserCount = async () => {
   functions.logger.log(`New user count incremented`);
 };
 
+const incrementNewVendorCount = async () => {
+  const today = new Date();
+  const month = today.getMonth() + 1;
+  const date = today.getFullYear() + "-" + month + "-" + today.getDate();
+
+  await admin
+    .firestore()
+    .collection("stats")
+    .doc("new_vendor_count")
+    .collection(`${today.getFullYear()}`)
+    .doc("stat")
+    .set(
+      {
+        [`${date}`]: admin.firestore.FieldValue.increment(1),
+        [`month_${month}`]: admin.firestore.FieldValue.increment(1),
+      },
+      { merge: true }
+    );
+
+  functions.logger.log(`New user count incremented`);
+};
+
 module.exports = incrementNewUserCount;
+module.exports = incrementNewVendorCount;

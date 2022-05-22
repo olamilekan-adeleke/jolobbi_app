@@ -8,6 +8,7 @@ const onNewUserCreatedFunction = require("./src/trigger_function/on_new_user_cre
 const processTransactionFunction = require("./src/http_function/payment/process_payment");
 const onNewOrderFunction = require("./src/trigger_function/orders/on_new_order_function");
 const onOrderStatusChangeFunction = require("./src/trigger_function/orders/on_order_status_change_function");
+const onNewVendorCreatedFunction = require("./src/trigger_function/on_new_user_created");
 
 require("dotenv").config();
 
@@ -32,6 +33,10 @@ exports.transferToBusinessByTag = functions.https.onRequest(
 exports.onNewUserCreate = functions.firestore
   .document("/users/{userID}")
   .onCreate(onNewUserCreatedFunction);
+
+exports.onNewVendorCreate = functions.firestore
+  .document("/vendors/{vendorID}")
+  .onCreate(onNewVendorCreatedFunction);
 
 exports.processPaymentMade = functions.firestore
   .document("/general_ledgers/payments/payments_ledgers/{paymentDocId}")
