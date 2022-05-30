@@ -17,9 +17,9 @@ const onNewOrderFunction = async (snapshot, context) => {
 
     // all vendor notification for new order
     await orderData.vendorNameList.forEach(async (element) => {
-      //TODO: remove override later
+      
 
-      element = "Shop 123";
+      // element = "Shop 123";
       const vendorData = await getVendorDataByName(element);
 
       await sendNotificationHelper(

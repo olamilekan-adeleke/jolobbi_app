@@ -2,7 +2,7 @@ const functions = require("firebase-functions");
 const sendNotificationHelper = require("../../notification/notification_helper");
 const sendNotificationToUserById = require("../../notification/send_notification_user_by_id");
 const getVendorDataByName = require("../../payment/get_business_data_by_tag");
-const transferFundFromJolobbiToVendorOrUserById = require("../../payment/transfer_fund_from_jolobbi_to_vendor");
+const transferFundFromJolobbiToVendorById = require("../../payment/transfer_fund_from_jolobbi_to_vendor");
 const calculateItemFeeByVendorName = require("../helpers/calcuate_item_fee_by_vendor_name");
 
 const pendingOrderController = async (orderData) => {
@@ -38,12 +38,11 @@ const pendingOrderController = async (orderData) => {
 
       const totalFee = calculateItemFeeByVendorName(foodItem);
 
-      //TODO: remove override later
-      element = "Shop 123";
+      // element = "Shop 123";
 
       const vendorData = await getVendorDataByName(element);
 
-      await transferFundFromJolobbiToVendorOrUserById({
+      await transferFundFromJolobbiToVendorById({
         receiverId: vendorData.id,
         amount: totalFee,
       });
