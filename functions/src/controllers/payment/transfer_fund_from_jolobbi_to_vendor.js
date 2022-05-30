@@ -12,6 +12,12 @@ const transferFundFromJolobbiToVendorOrUserById = async ({
     .collection("stats")
     .doc("jolobbi_wallet_amount");
 
+  const userDataRef = admin
+    .firestore()
+    .collection("users")
+    .doc(receiverId)
+    .collection("transactions");
+
   const vendorAmount = await calculateVendorFeePercentage(amount);
 
   await admin
@@ -40,6 +46,13 @@ const transferFundFromJolobbiToVendorOrUserById = async ({
 
       return Promise.reject(error);
     });
+
+  await userDataRef.add({
+    description: `YOu Just Received NGN ${amount}`,
+    amount: amount,
+    type: "credit",
+    timestamp: admin.firestore.Timestamp.now(),
+  });
 };
 
 module.exports = transferFundFromJolobbiToVendorOrUserById;
