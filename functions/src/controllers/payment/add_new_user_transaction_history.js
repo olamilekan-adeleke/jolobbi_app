@@ -6,7 +6,7 @@ const addNewUserTransactionHistory = async ({
   description,
   metaData,
   type,
-} = {}) => {
+}) => {
   await admin
     .firestore()
     .collection("users")

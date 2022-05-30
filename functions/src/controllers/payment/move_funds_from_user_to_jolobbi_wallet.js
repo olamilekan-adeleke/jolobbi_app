@@ -5,6 +5,11 @@ const updateJolobbiWallet = require("./update_jolobbi_wallet");
 // @ts-ignore
 const moveFundFromUserToJolobbiWallet = async ({ userId, amount } = {}) => {
   const userWalletRef = admin.firestore().collection("wallets").doc(userId);
+  const userDataRef = admin
+    .firestore()
+    .collection("users")
+    .doc(userId)
+    .collection("transactions");
 
   await admin.firestore().runTransaction(async (transaction) => {
     const userWalletSnapshot = await transaction.get(userWalletRef);
@@ -20,6 +25,13 @@ const moveFundFromUserToJolobbiWallet = async ({ userId, amount } = {}) => {
     });
 
     functions.logger.log("move fund from user wallet to jolobbi wallet ");
+  });
+
+  await userDataRef.add({
+    description: `Debited ${amount}`,
+    amount: amount,
+    type: "debit",
+    timestamp: admin.firestore.Timestamp.now(),
   });
 };
 
