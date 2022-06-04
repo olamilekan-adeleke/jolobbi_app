@@ -1,6 +1,7 @@
 const admin = require("../../../firebase_admin_helper");
 const functions = require("firebase-functions");
 const updateJolobbiWallet = require("./update_jolobbi_wallet");
+const sendNotificationToUserById = require("../notification/send_notification_user_by_id");
 
 // @ts-ignore
 const moveFundFromUserToJolobbiWallet = async ({ userId, amount } = {}) => {
@@ -15,6 +16,13 @@ const moveFundFromUserToJolobbiWallet = async ({ userId, amount } = {}) => {
     const userWalletSnapshot = await transaction.get(userWalletRef);
 
     if (userWalletSnapshot.data().cash_balance < parseInt(amount)) {
+      await sendNotificationToUserById(
+        userId,
+        "Order Failed!",
+        "Your order could not be processed, Insufficient Balance!",
+        { type: "order" }
+      );
+
       throw { code: 400, msg: "Insufficient Balance!" };
     }
 

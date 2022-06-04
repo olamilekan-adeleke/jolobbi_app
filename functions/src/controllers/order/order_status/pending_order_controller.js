@@ -5,7 +5,7 @@ const getVendorDataByName = require("../../payment/get_business_data_by_tag");
 const transferFundFromJolobbiToVendorById = require("../../payment/transfer_fund_from_jolobbi_to_vendor");
 const calculateItemFeeByVendorName = require("../helpers/calcuate_item_fee_by_vendor_name");
 
-const pendingOrderController = async (orderData) => {
+const pendingOrderController = async (snapshot, orderData) => {
   let approvedItemCount = 0;
   const notificationData = { type: "order" };
 
@@ -29,6 +29,8 @@ const pendingOrderController = async (orderData) => {
       "Your order has been approved by all vendor and is been processed",
       notificationData
     );
+    
+    await snapshot.ref.update({ orderStatus: "processing" });
 
     //pay all vendor
     await orderData.vendorNameList.forEach(async (element) => {

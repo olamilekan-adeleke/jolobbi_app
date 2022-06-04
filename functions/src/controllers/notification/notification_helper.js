@@ -13,7 +13,6 @@ const sendNotificationHelper = async (token, title, body, data) => {
     },
     data: data,
     token: token,
-   
   };
 
   return admin.messaging().send(payload);

@@ -14,7 +14,7 @@ const onOrderStatusChangeFunction = async (snapshot, context) => {
 
     //check orderStatus
     if (orderData.orderStatus == "pending") {
-      await pendingOrderController(orderData);
+      await pendingOrderController(snapshot, orderData);
     } else if (orderData.orderStatus == "processing") {
     } else if (orderData.orderStatus == "enroute") {
       await enrouteOrderController(orderData);

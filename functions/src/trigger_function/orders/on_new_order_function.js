@@ -17,8 +17,6 @@ const onNewOrderFunction = async (snapshot, context) => {
 
     // all vendor notification for new order
     await orderData.vendorNameList.forEach(async (element) => {
-      
-
       // element = "Shop 123";
       const vendorData = await getVendorDataByName(element);
 
@@ -40,6 +38,9 @@ const onNewOrderFunction = async (snapshot, context) => {
     );
   } catch (error) {
     functions.logger.error(error);
+
+    //todo: update order to fail
+    await snapshot.ref.update({ orderStatus: "failed" });
 
     return Promise.reject(error);
   }
