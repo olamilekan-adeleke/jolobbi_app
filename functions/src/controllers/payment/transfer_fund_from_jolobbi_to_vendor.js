@@ -9,7 +9,7 @@ const transferFundFromJolobbiToVendorById = async ({ receiverId, amount }) => {
     .collection("stats")
     .doc("jolobbi_wallet_amount");
 
-  const userDataRef = admin
+  const vendorDataRef = admin
     .firestore()
     .collection("vendors")
     .doc(receiverId)
@@ -44,12 +44,14 @@ const transferFundFromJolobbiToVendorById = async ({ receiverId, amount }) => {
       return Promise.reject(error);
     });
 
-  await userDataRef.add({
+  await vendorDataRef.add({
     description: `You Just Received NGN ${amount}`,
     amount: amount,
     type: "credit",
     timestamp: admin.firestore.Timestamp.now(),
   });
+
+  functions.logger.info("got to transaction!");
 };
 
 const transferFundFromJolobbiToUserById = async ({ receiverId, amount }) => {
@@ -94,12 +96,15 @@ const transferFundFromJolobbiToUserById = async ({ receiverId, amount }) => {
     });
 
   await userDataRef.add({
-    description: `YOu Just Received NGN ${amount}`,
+    description: `You Just Received NGN ${amount}`,
     amount: amount,
     type: "credit",
     timestamp: admin.firestore.Timestamp.now(),
   });
 };
 
-module.exports = transferFundFromJolobbiToVendorById;
-module.exports = transferFundFromJolobbiToUserById;
+module.exports = {
+  transferFundFromJolobbiToVendorById,
+  transferFundFromJolobbiToUserById,
+};
+// module.exports = ;

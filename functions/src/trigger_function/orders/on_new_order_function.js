@@ -40,7 +40,7 @@ const onNewOrderFunction = async (snapshot, context) => {
     functions.logger.error(error);
 
     //todo: update order to fail
-    await snapshot.ref.update({ orderStatus: "failed" });
+    await snapshot.ref.set({ orderStatus: "failed" }, { merge: true });
 
     return Promise.reject(error);
   }

@@ -1,5 +1,5 @@
 const sendNotificationToUserById = require("../../notification/send_notification_user_by_id");
-const transferFundFromJolobbiToUserById = require("../../payment/transfer_fund_from_jolobbi_to_vendor");
+const {transferFundFromJolobbiToUserById} = require("../../payment/transfer_fund_from_jolobbi_to_vendor");
 
 const rejectedOrderController = async (orderData) => {
   const notificationData = { type: "order" };
