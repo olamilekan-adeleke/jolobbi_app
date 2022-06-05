@@ -2,6 +2,7 @@ const admin = require("../../../firebase_admin_helper");
 const functions = require("firebase-functions");
 const updateUserCashWallet = require("../update_user_cash_wallet");
 const calculateVendorFeePercentage = require("../order/helpers/calculate_vendor_fee_percentage");
+const { updateVendorOrderAmount } = require("./helper/update_vendor_stats");
 
 const transferFundFromJolobbiToVendorById = async ({ receiverId, amount }) => {
   const jolobbiWalletRef = admin
@@ -45,13 +46,13 @@ const transferFundFromJolobbiToVendorById = async ({ receiverId, amount }) => {
     });
 
   await vendorDataRef.add({
-    description: `You Just Received NGN ${amount}`,
-    amount: amount,
+    description: `You Just Received NGN ${vendorAmount}`,
+    amount: vendorAmount,
     type: "credit",
     timestamp: admin.firestore.Timestamp.now(),
   });
 
-  functions.logger.info("got to transaction!");
+  await updateVendorOrderAmount({ vendorId: receiverId, amount: vendorAmount });
 };
 
 const transferFundFromJolobbiToUserById = async ({ receiverId, amount }) => {
