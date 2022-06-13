@@ -6,7 +6,7 @@ const deliveredOrderController = async (orderData) => {
   await sendNotificationToUserById(
     orderData.userId,
     "Order Delivered!",
-    "Your order has been delivered by a vendor and a refund has been made",
+    "Your order has been delivered by a rider!",
     notificationData
   );
 

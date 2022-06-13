@@ -16,8 +16,12 @@ const updateVendorOrderAmount = async ({ vendorId, amount }) => {
     {
       [`orderCount_day_${today}`]: admin.firestore.FieldValue.increment(1),
       [`orderCount_month_${month}`]: admin.firestore.FieldValue.increment(1),
-      [`amount_day_${today}`]: admin.firestore.FieldValue.increment(amount),
-      [`amount_month_${month}`]: admin.firestore.FieldValue.increment(amount),
+      [`amount_day_${today}`]: admin.firestore.FieldValue.increment(
+        parseFloat(amount)
+      ),
+      [`amount_month_${month}`]: admin.firestore.FieldValue.increment(
+        parseFloat(amount)
+      ),
     },
     { merge: true }
   );
