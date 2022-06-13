@@ -46,6 +46,8 @@ const transferFundFromJolobbiToVendorById = async ({ receiverId, amount }) => {
       return Promise.reject(error);
     });
 
+  functions.logger.log(`added history vendor/user ${receiverId}`);
+
   await vendorDataRef.add({
     description: `You Just Received NGN ${vendorAmount}`,
     amount: vendorAmount,
@@ -54,6 +56,8 @@ const transferFundFromJolobbiToVendorById = async ({ receiverId, amount }) => {
   });
 
   await updateVendorOrderAmount({ vendorId: receiverId, amount: vendorAmount });
+
+  functions.logger.log(`update vendor stats ${receiverId}`);
 };
 
 const transferFundFromJolobbiToUserById = async ({ receiverId, amount }) => {
