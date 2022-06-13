@@ -27,6 +27,7 @@ const transferFundFromJolobbiToVendorById = async ({ receiverId, amount }) => {
         throw { code: 400, msg: "Data not found!" };
       }
 
+      // @ts-ignore
       if (jolobbiWalletSnapshot.data().amount < vendorAmount) {
         throw { code: 400, msg: "Insufficient Balance!" };
       }
@@ -78,6 +79,7 @@ const transferFundFromJolobbiToUserById = async ({ receiverId, amount }) => {
         throw { code: 400, msg: "Data not found!" };
       }
 
+      // @ts-ignore
       if (jolobbiWalletSnapshot.data().amount < vendorAmount) {
         throw { code: 400, msg: "Insufficient Balance!" };
       }
