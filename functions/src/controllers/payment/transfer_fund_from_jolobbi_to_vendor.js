@@ -38,7 +38,7 @@ const transferFundFromJolobbiToVendorById = async ({ receiverId, amount }) => {
         amount: admin.firestore.FieldValue.increment(-vendorAmount),
       });
 
-      functions.logger.log(`updated wallet for vendor/user ${receiverId}`);
+      functions.logger.log(`updated wallet for vendor ${receiverId}`);
     })
     .catch((error) => {
       functions.logger.error(JSON.stringify(error));
@@ -46,11 +46,11 @@ const transferFundFromJolobbiToVendorById = async ({ receiverId, amount }) => {
       return Promise.reject(error);
     });
 
-  functions.logger.log(`added history vendor/user ${receiverId}`);
+  functions.logger.log(`added history vendor ${receiverId}`);
 
   await vendorDataRef.add({
     description: `You Just Received NGN ${vendorAmount}`,
-    amount: vendorAmount,
+    amount: parseFloat(`${vendorAmount.toString()}`),
     type: "credit",
     timestamp: admin.firestore.Timestamp.now(),
   });
@@ -72,7 +72,7 @@ const transferFundFromJolobbiToUserById = async ({ receiverId, amount }) => {
     .doc(receiverId)
     .collection("transactions");
 
-  const vendorAmount = await calculateVendorFeePercentage(amount);
+  const refundAmount = parseInt(`${amount.toString()}`);
 
   await admin
     .firestore()
@@ -84,17 +84,17 @@ const transferFundFromJolobbiToUserById = async ({ receiverId, amount }) => {
       }
 
       // @ts-ignore
-      if (jolobbiWalletSnapshot.data().amount < vendorAmount) {
+      if (jolobbiWalletSnapshot.data().amount < refundAmount) {
         throw { code: 400, msg: "Insufficient Balance!" };
       }
 
-      await updateUserCashWallet({ userId: receiverId, amount: vendorAmount });
+      await updateUserCashWallet({ userId: receiverId, amount: refundAmount });
 
       await transaction.update(jolobbiWalletRef, {
-        amount: admin.firestore.FieldValue.increment(-vendorAmount),
+        amount: admin.firestore.FieldValue.increment(-refundAmount),
       });
 
-      functions.logger.log(`updated wallet for vendor/user ${receiverId}`);
+      functions.logger.log(`refund user fund ${receiverId}`);
     })
     .catch((error) => {
       functions.logger.error(JSON.stringify(error));
@@ -103,8 +103,8 @@ const transferFundFromJolobbiToUserById = async ({ receiverId, amount }) => {
     });
 
   await userDataRef.add({
-    description: `You Just Received NGN ${amount}`,
-    amount: amount,
+    description: `You Just Received NGN ${refundAmount}`,
+    amount: refundAmount,
     type: "credit",
     timestamp: admin.firestore.Timestamp.now(),
   });
